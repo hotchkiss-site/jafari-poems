@@ -85,6 +85,7 @@ CSS = """
     .toc-table {
       width: 100%;
       border-collapse: collapse;
+      table-layout: fixed;
     }
 
     .toc-table tr {
@@ -407,9 +408,11 @@ def render_toc(poems):
         '<th class="toc-col-english" style="text-align:left;">Page &amp; Title</th>'
         '<th class="toc-col-dates" style="text-align:left;">Translated'
         '<span style="float:right;">Written</span></th>'
-        '<th class="toc-col-persian" style="display:flex;">'
+        '<th class="toc-col-persian">'
+        '<div style="display:flex;">'
         '<span style="flex:1;direction:rtl;text-align:right;">عنوان</span>'
         '<span style="flex-shrink:0;min-width:2.2rem;padding-right:1.2rem;padding-left:0.3rem;text-align:left;white-space:nowrap;">صفحه</span>'
+        '</div>'
         '</th>'
         '</tr>'
     )
