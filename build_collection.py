@@ -58,8 +58,16 @@ CSS = """
       letter-spacing: 0.05em;
     }
 
-    .toc {
+    .toc-wrapper {
+      width: 100%;
+      background: #f5f0e8;
+      padding: 0 2rem 3.5rem;
       margin-bottom: 3.5rem;
+    }
+
+    .toc {
+      max-width: 1400px;
+      margin: 0 auto;
     }
 
     .toc-title {
@@ -381,7 +389,6 @@ def meta_line(poem):
         parts.append(str(poem["date_written"]))
     if poem.get("page_number"):
         parts.append("p.\u00a0" + poem["page_number"])
-    parts.append("Mohammad Ebrahim Jafari")
     if poem.get("date_translated"):
         parts.append("translated " + str(poem["date_translated"]))
     return " \u00b7 ".join(parts)
@@ -519,17 +526,19 @@ def render_collection(poems, book_persian, book_english, author):
 </head>
 <body>
 <div class="page">
-
   <div class="book-header">
     <p class="book-title-persian">{book_persian}</p>
     <p class="book-title-english">{book_english}</p>
     <p class="book-author">{author}</p>
   </div>
+</div>
 
+<div class="toc-wrapper">
   {toc}
+</div>
 
+<div class="page">
   {sections}
-
 </div>
 </body>
 </html>
