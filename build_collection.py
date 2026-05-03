@@ -326,8 +326,32 @@ CSS = """
       white-space: pre-wrap;
     }
 
-    @media (max-width: 640px) {
-      .pair {
+    .back-to-toc {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 2.8rem;
+      height: 2.8rem;
+      background: #c9843a;
+      color: #f5f0e8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.4rem;
+      line-height: 1;
+      opacity: 0.65;
+      transition: opacity 0.2s;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .back-to-toc:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: 640px) {      .pair {
         grid-template-columns: 1fr;
         gap: 1.2rem;
       }
@@ -535,13 +559,15 @@ def render_collection(poems, book_persian, book_english, author):
   </div>
 </div>
 
-<div class="toc-wrapper">
+<div id="toc" class="toc-wrapper">
   {toc}
 </div>
 
 <div class="page">
   {sections}
 </div>
+
+<a href="#toc" class="back-to-toc" title="Back to contents">^</a>
 </body>
 </html>
 """
