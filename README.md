@@ -9,6 +9,9 @@ Every `.poem` file in `poems/` is read by `build_collection.py` and compiled
 into `index.html`. GitHub Actions rebuilds and commits `index.html` automatically
 whenever you push a change to any `.poem` file or to `build_collection.py`.
 
+Github page:
+https://hotchkiss-site.github.io/jafari-poems/
+
 ## How to add or edit a poem
 
 1. Create or edit a `.poem` file inside `poems/`.
