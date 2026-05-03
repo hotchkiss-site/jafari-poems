@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+venv/
+*.egg-info/
+dist/
+build/
+.env
+
+# old build output (superseded by index.html)
+collection.html
+
+# scratch / backup files
+*- Copy.py
