@@ -21,7 +21,7 @@ CSS = """
       background: #f5f0e8;
       color: #2a1f14;
       font-family: 'Crimson Text', serif;
-      font-size: 1.05rem;
+      font-size: 1.31rem;
       margin: 0;
       padding: 2rem 1rem 4rem;
     }
@@ -39,21 +39,21 @@ CSS = """
     }
 
     .book-title-persian {
-      font-size: 2rem;
+      font-size: 2.5rem;
       font-weight: 700;
       direction: rtl;
       margin: 0 0 0.4rem;
     }
 
     .book-title-english {
-      font-size: 1.3rem;
+      font-size: 1.63rem;
       font-style: italic;
       color: #6b5240;
       margin: 0 0 0.6rem;
     }
 
     .book-author {
-      font-size: 1rem;
+      font-size: 1.25rem;
       color: #9c7f60;
       letter-spacing: 0.05em;
     }
@@ -71,13 +71,15 @@ CSS = """
     }
 
     .toc-title {
-      font-variant: small-caps;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.85rem;
-      color: #b8923a;
-      margin-bottom: 1.2rem;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #2a1f14;
+      text-align: center;
       display: block;
+      margin-bottom: 1.8rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid #c9843a;
+      letter-spacing: 0.04em;
     }
 
     .toc-table {
@@ -124,16 +126,11 @@ CSS = """
       font-variant: small-caps;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      font-size: 0.75rem;
+      font-size: 0.94rem;
       color: #b8923a;
       font-weight: normal;
       padding: 0 0.4rem 0.6rem;
       border-bottom: 1px solid #ddd0b8;
-    }
-
-    .toc-table th.toc-th-right {
-      text-align: right;
-      direction: rtl;
     }
 
     /* header row doesn't get hover or pointer */
@@ -152,7 +149,7 @@ CSS = """
     }
 
     .toc-page-num {
-      font-size: 0.9rem;
+      font-size: 1.13rem;
       color: #9c7f60;
       white-space: nowrap;
       padding-top: 0.1rem;
@@ -167,11 +164,11 @@ CSS = """
 
     .toc-english-title {
       color: #2a1f14;
-      font-size: 1rem;
+      font-size: 1.25rem;
     }
 
     .toc-first-line {
-      font-size: 0.88rem;
+      font-size: 1.1rem;
       font-style: italic;
       color: #7a6050;
       margin-top: 0.1rem;
@@ -182,7 +179,7 @@ CSS = """
       display: flex;
       justify-content: space-between;
       gap: 0.5rem;
-      font-size: 0.9rem;
+      font-size: 1.13rem;
       color: #9c7f60;
     }
 
@@ -201,19 +198,19 @@ CSS = """
     }
 
     .toc-persian-title-text {
-      font-size: 1rem;
+      font-size: 1.25rem;
       color: #4a3525;
     }
 
     .toc-persian-first-line {
-      font-size: 0.85rem;
+      font-size: 1.06rem;
       font-style: italic;
       color: #7a6050;
       margin-top: 0.1rem;
     }
 
     .toc-persian-page {
-      font-size: 0.9rem;
+      font-size: 1.13rem;
       color: #9c7f60;
       white-space: nowrap;
       padding-right: 1.2rem;
@@ -239,21 +236,21 @@ CSS = """
     }
 
     .poem-header-persian {
-      font-size: 1.6rem;
+      font-size: 2rem;
       font-weight: 700;
       direction: rtl;
       margin: 0 0 0.3rem;
     }
 
     .poem-header-english {
-      font-size: 1.15rem;
+      font-size: 1.44rem;
       font-style: italic;
       color: #6b5240;
       margin: 0 0 0.4rem;
     }
 
     .poem-header-meta {
-      font-size: 0.88rem;
+      font-size: 1.1rem;
       color: #9c7f60;
       letter-spacing: 0.04em;
     }
@@ -267,7 +264,7 @@ CSS = """
 
     .persian {
       direction: rtl;
-      font-size: 1.15rem;
+      font-size: 1.44rem;
       line-height: 2;
       border-right: 3px solid #c9843a;
       padding-right: 1.2rem;
@@ -275,7 +272,7 @@ CSS = """
 
     .english {
       direction: ltr;
-      font-size: 1.05rem;
+      font-size: 1.31rem;
       line-height: 1.9;
       border-left: 3px solid #8aab72;
       padding-left: 1.2rem;
@@ -289,13 +286,13 @@ CSS = """
 
     .poem-block.persian-poem {
       text-align: right;
-      font-size: 1.1rem;
+      font-size: 1.38rem;
       line-height: 2.2;
     }
 
     .poem-block.english-poem {
       font-style: italic;
-      font-size: 1rem;
+      font-size: 1.25rem;
       line-height: 2.1;
     }
 
@@ -308,7 +305,7 @@ CSS = """
       font-variant: small-caps;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      font-size: 0.78rem;
+      font-size: 0.98rem;
       color: #b8923a;
       margin-bottom: 0.7rem;
       display: block;
@@ -318,7 +315,7 @@ CSS = """
       margin-top: 1.5rem;
       padding-top: 1rem;
       border-top: 1px solid #ddd0b8;
-      font-size: 0.92rem;
+      font-size: 1.15rem;
       color: #5a4432;
       line-height: 1.7;
     }
@@ -407,11 +404,13 @@ def first_line(text):
 def render_toc(poems):
     header = (
         '<tr class="toc-header">'
-        '<th class="toc-col-english">Page &amp; Title</th>'
+        '<th class="toc-col-english" style="text-align:left;">Page &amp; Title</th>'
         '<th class="toc-col-dates" style="text-align:left;">Translated'
         '<span style="float:right;">Written</span></th>'
-        '<th class="toc-col-persian toc-th-right">عنوان'
-        '<span style="float:left;direction:ltr;">صفحه</span></th>'
+        '<th class="toc-col-persian" style="display:flex;justify-content:space-between;">'
+        '<span style="direction:rtl;">عنوان</span>'
+        '<span>صفحه</span>'
+        '</th>'
         '</tr>'
     )
 
@@ -469,7 +468,7 @@ def render_toc(poems):
 
     return (
         '<div class="toc">'
-        '<span class="toc-title">Contents</span>'
+        '<span class="toc-title">Poems — اشعار</span>'
         '<table class="toc-table">'
         + header
         + "".join(rows)
