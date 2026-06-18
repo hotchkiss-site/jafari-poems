@@ -14,6 +14,61 @@ import re
 from pathlib import Path
 
 
+def parse_toml(text: str) -> dict:
+    """Parse a flat TOML file with string values and string arrays."""
+    result = {}
+    for line in text.splitlines():
+        line = line.strip()
+        if not line or line.startswith('#'):
+            continue
+        if '=' not in line:
+            continue
+        key, _, val = line.partition('=')
+        key = key.strip()
+        val = val.strip()
+        if val.startswith('[') and val.endswith(']'):
+            result[key] = re.findall(r'"([^"]*)"', val)
+        elif val.startswith('"') and val.endswith('"'):
+            result[key] = val[1:-1]
+        elif val.lstrip('-').isdigit():
+            result[key] = int(val)
+        else:
+            result[key] = val
+    return result
+
+
+def parse_sections(text: str) -> dict:
+    """Parse ===section=== blocks from a .poem file."""
+    sections = {}
+    current_section = None
+    current_lines = []
+
+    def flush():
+        if current_section:
+            sections[current_section] = "\n".join(current_lines).strip()
+
+    for line in text.splitlines():
+        m = re.match(r'^===(\w+)===$', line.strip())
+        if m:
+            flush()
+            current_section = m.group(1)
+            current_lines = []
+        elif current_section is not None:
+            current_lines.append(line)
+    flush()
+    return sections
+
+
+def load_poem(meta_path: Path, poems_dir: Path) -> dict:
+    """Merge a meta/*.toml file with its corresponding poems/*.poem sections."""
+    poem = parse_toml(meta_path.read_text(encoding="utf-8"))
+    poem_id = poem.get("id", meta_path.stem)
+    poem_path = poems_dir / f"{poem_id}.poem"
+    if poem_path.exists():
+        poem.update(parse_sections(poem_path.read_text(encoding="utf-8")))
+    return poem
+
+
 CSS = """
     *, *::before, *::after { box-sizing: border-box; }
 
@@ -371,31 +426,6 @@ CSS = """
 """
 
 
-def parse_poem(text):
-    poem = {}
-    current_section = None
-    current_lines = []
-
-    def flush():
-        if current_section:
-            poem[current_section] = "\n".join(current_lines).strip()
-
-    for line in text.splitlines():
-        m = re.match(r'^===(\w+)===$', line.strip())
-        if m:
-            flush()
-            current_section = m.group(1)
-            current_lines = []
-        elif current_section is None:
-            if ':' in line:
-                key, _, val = line.partition(':')
-                poem[key.strip()] = val.strip()
-        else:
-            current_lines.append(line)
-
-    flush()
-    return poem
-
 
 def extract_year(date_string):
     """Pull a 4-digit year from a string like 'Autumn 1989' or '1959'."""
@@ -574,25 +604,31 @@ def render_collection(poems, book_persian, book_english, author):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Render all .poem files in a folder to one HTML.")
-    parser.add_argument("folder", help="Path to folder containing .poem files")
+    parser = argparse.ArgumentParser(description="Render all poems (meta/ + poems/) to one HTML file.")
+    parser.add_argument("folder", nargs="?", default="poems", help="Path to poems/ folder (default: poems)")
+    parser.add_argument("--meta", default=None, help="Path to meta/ folder (default: sibling of poems/)")
     parser.add_argument("--out", default="index.html", help="Output HTML path")
     parser.add_argument("--book-persian", default="\u0628\u0648\u06cc \u06a9\u0627\u0647\u06af\u0644 \u0648 \u0622\u0648\u0627\u0632 \u067e\u0631\u0646\u062f\u0647")
     parser.add_argument("--book-english", default="The Smell of Adobe and Birdsong")
     parser.add_argument("--author", default="Mohammad Ebrahim Jafari")
     args = parser.parse_args()
 
-    folder = Path(args.folder)
-    if not folder.is_dir():
-        print(f"Error: {folder} is not a directory.")
+    poems_dir = Path(args.folder)
+    meta_dir  = Path(args.meta) if args.meta else poems_dir.parent / "meta"
+
+    if not poems_dir.is_dir():
+        print(f"Error: poems folder '{poems_dir}' not found.")
+        sys.exit(1)
+    if not meta_dir.is_dir():
+        print(f"Error: meta folder '{meta_dir}' not found. Run migrate.py first.")
         sys.exit(1)
 
-    poem_files = sorted(folder.glob("*.poem"))
-    if not poem_files:
-        print(f"No .poem files found in {folder}.")
+    meta_files = sorted(meta_dir.glob("*.toml"))
+    if not meta_files:
+        print(f"No .toml files found in {meta_dir}.")
         sys.exit(1)
 
-    poems = [parse_poem(f.read_text(encoding="utf-8")) for f in poem_files]
+    poems = [load_poem(f, poems_dir) for f in meta_files]
 
     def sort_key(p):
         pn = p.get("page_number")
@@ -607,7 +643,8 @@ def main():
 
     out_path = Path(args.out)
     out_path.write_text(html, encoding="utf-8")
-    print(f"Written: {out_path} ({len(poems)} poem{'s' if len(poems) != 1 else ''})")
+    n = len(poems)
+    print(f"Written: {out_path} ({n} poem{'s' if n != 1 else ''})")
 
 
 if __name__ == "__main__":
