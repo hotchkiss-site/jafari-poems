@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-build_poem.py — render a single Jafari poem file to a styled HTML page.
-Usage: python build_poem.py poems/almond-blossoms.poem
-Output: almond-blossoms.html (or pass --out to specify)
+build_poem.py — render a single poem to a styled HTML page.
+Usage: python build_poem.py ancient-tree
+       python build_poem.py ancient-tree --poems poems/ --meta meta/
+Output: ancient-tree.html (or pass --out to specify)
 
-File format:
-    key: value metadata lines at the top
-    then ===section=== delimiters for multiline content
-    Sections: persian, machine, translation, footnotes
+Reads from:
+    meta/<id>.toml   — structured metadata
+    poems/<id>.poem  — ===section=== text blocks
 """
 
 import sys
@@ -199,20 +199,38 @@ FOOTNOTES_BLOCK = """\
 """
 
 
-def parse_poem(text):
-    """
-    Parse a .poem file.
-    - key: value lines before the first ===section=== become metadata
-    - ===section=== delimiters mark multiline blocks
-    - leading/trailing blank lines within each section are stripped
-    """
-    poem = {}
+def parse_toml(text: str) -> dict:
+    """Parse a flat TOML file with string values and string arrays."""
+    result = {}
+    for line in text.splitlines():
+        line = line.strip()
+        if not line or line.startswith('#'):
+            continue
+        if '=' not in line:
+            continue
+        key, _, val = line.partition('=')
+        key = key.strip()
+        val = val.strip()
+        if val.startswith('[') and val.endswith(']'):
+            result[key] = re.findall(r'"([^"]*)"', val)
+        elif val.startswith('"') and val.endswith('"'):
+            result[key] = val[1:-1]
+        elif val.lstrip('-').isdigit():
+            result[key] = int(val)
+        else:
+            result[key] = val
+    return result
+
+
+def parse_sections(text: str) -> dict:
+    """Parse ===section=== blocks from a .poem file."""
+    sections = {}
     current_section = None
     current_lines = []
 
     def flush():
         if current_section:
-            poem[current_section] = "\n".join(current_lines).strip()
+            sections[current_section] = "\n".join(current_lines).strip()
 
     for line in text.splitlines():
         m = re.match(r'^===(\w+)===$', line.strip())
@@ -220,14 +238,22 @@ def parse_poem(text):
             flush()
             current_section = m.group(1)
             current_lines = []
-        elif current_section is None:
-            if ':' in line:
-                key, _, val = line.partition(':')
-                poem[key.strip()] = val.strip()
-        else:
+        elif current_section is not None:
             current_lines.append(line)
-
     flush()
+    return sections
+
+
+def load_poem(poem_id: str, poems_dir: Path, meta_dir: Path) -> dict:
+    """Merge meta/<id>.toml with poems/<id>.poem sections."""
+    meta_path = meta_dir / f"{poem_id}.toml"
+    poem_path = poems_dir / f"{poem_id}.poem"
+    if not meta_path.exists():
+        print(f"Error: {meta_path} not found.")
+        sys.exit(1)
+    poem = parse_toml(meta_path.read_text(encoding="utf-8"))
+    if poem_path.exists():
+        poem.update(parse_sections(poem_path.read_text(encoding="utf-8")))
     return poem
 
 
@@ -267,20 +293,17 @@ def render_poem(poem):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Render a single poem file to HTML.")
-    parser.add_argument("input", help="Path to .poem file")
+    parser = argparse.ArgumentParser(description="Render a single poem to HTML.")
+    parser.add_argument("id", help="Poem ID / slug (e.g. ancient-tree)")
+    parser.add_argument("--poems", default="poems", help="Path to poems/ folder (default: poems)")
+    parser.add_argument("--meta",  default="meta",  help="Path to meta/ folder (default: meta)")
     parser.add_argument("--out", help="Output HTML path (default: <id>.html)")
     args = parser.parse_args()
 
-    source = Path(args.input)
-    if not source.exists():
-        print(f"Error: {source} not found.")
-        sys.exit(1)
-
-    poem = parse_poem(source.read_text(encoding="utf-8"))
+    poem = load_poem(args.id, Path(args.poems), Path(args.meta))
     html = render_poem(poem)
 
-    out_path = Path(args.out) if args.out else Path(poem.get("id", source.stem) + ".html")
+    out_path = Path(args.out) if args.out else Path(args.id + ".html")
     out_path.write_text(html, encoding="utf-8")
     print(f"Written: {out_path}")
 

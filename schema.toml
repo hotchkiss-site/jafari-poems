@@ -1,0 +1,55 @@
+# Jafari Poems — Metadata Schema
+# Defines every allowed field in meta/*.toml files.
+# Fields marked required = true must have a non-empty value.
+# All other fields are optional — leave them as empty string or empty array.
+# Do not add fields that are not listed here; add them to the schema first.
+
+[fields.id]
+type        = "string"
+required    = true
+description = "URL-safe slug — must match both the .toml and .poem filename (e.g. 'ancient-tree')"
+
+[fields.english_title]
+type        = "string"
+required    = false
+description = "English title of the poem"
+
+[fields.persian_title]
+type        = "string"
+required    = false
+description = "Persian title of the poem (Unicode, RTL)"
+
+[fields.date_written]
+type        = "string"
+required    = false
+description = "Date or period the poem was written (freeform; may include Persian calendar date)"
+
+[fields.date_translated]
+type        = "string"
+required    = false
+description = "Date this English translation was completed"
+
+[fields.page_number]
+type        = "string"
+required    = false
+description = "Page number in the source book (Arabic numerals as a string, e.g. '35')"
+
+[fields.persian_page_number]
+type        = "string"
+required    = false
+description = "Page number in Persian-Indic numerals (e.g. '۳۵')"
+
+[fields.source]
+type        = "string"
+required    = false
+description = "Where this poem was found — journal title, app name, manuscript label, etc."
+
+[fields.tags]
+type        = "array"
+required    = false
+description = "Thematic tags for searching and grouping (e.g. [\"nature\", \"exile\", \"water\"])"
+
+[fields.notes]
+type        = "string"
+required    = false
+description = "Curator notes on provenance, textual variants, or editorial context"

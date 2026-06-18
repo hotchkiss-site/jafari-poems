@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "poems/**.poem"
+      - "meta/**.toml"
       - "build_collection.py"
 
 permissions:
