@@ -1,0 +1,11 @@
+id                  = "one-thing"
+english_title       = ""
+persian_title       = ""
+date_written        = "1988 - ۱۳۶۷"
+date_translated     = ""
+page_number         = "59"
+persian_page_number = "۵۹"
+source              = "raw-jafari-adobe-3.txt"
+tags                = ["love"]
+notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending."
+draft               = true

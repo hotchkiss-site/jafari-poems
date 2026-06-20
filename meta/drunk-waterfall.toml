@@ -1,0 +1,11 @@
+id                  = "drunk-waterfall"
+english_title       = ""
+persian_title       = ""
+date_written        = "1960 - ۱۳۳۹"
+date_translated     = ""
+page_number         = "26"
+persian_page_number = "۲۶"
+source              = "raw-jafari-adobe-1.txt"
+tags                = ["love", "longing", "water", "snow"]
+notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending."
+draft               = true

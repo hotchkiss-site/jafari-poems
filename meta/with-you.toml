@@ -1,0 +1,11 @@
+id                  = "with-you"
+english_title       = ""
+persian_title       = ""
+date_written        = "1963 - ۱۳۴۲"
+date_translated     = ""
+page_number         = ""
+persian_page_number = ""
+source              = "raw-jafari-adobe-1.txt"
+tags                = ["love", "longing", "maryam"]
+notes               = "Untitled in source; dedicated 'برای مریم' (For Maryam). Stray OCR '<Br>' markers removed from the body. English block is a raw machine draft (kept in the machine section); finished translation pending."
+draft               = true

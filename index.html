@@ -278,6 +278,85 @@
       text-align: center;
     }
 
+    /* ── Draft layer toggles (Drafts tab only) ──────────── */
+    .layer-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+    }
+
+    .layer-badge {
+      font-family: inherit;
+      font-variant: small-caps;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.85rem;
+      padding: 0.15rem 0.85rem;
+      border-radius: 1rem;
+      border: 1px solid #b8702a;
+      color: #b8702a;
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .layer-badge:hover {
+      background: rgba(184,112,42,0.12);
+    }
+
+    .layer-badge.is-active {
+      background: #b8702a;
+      color: #f5f0e8;
+    }
+
+    /* Drafts use a full-width canvas: each column keeps a fixed ~single-column
+       width so adding a layer adds width rather than compressing line breaks.
+       An over-wide poem scrolls horizontally within its own section. */
+    #tab-drafts .page {
+      max-width: none;
+      padding: 0 1.5rem;
+    }
+
+    #tab-drafts .poem-section {
+      overflow-x: auto;
+    }
+
+    #tab-drafts .pair {
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+      width: max-content;
+      margin: 0 auto;
+      padding: 1.8rem 0;
+    }
+
+    #tab-drafts .persian {
+      flex: 0 0 27rem;
+    }
+
+    #tab-drafts .english-layers {
+      flex: 0 0 auto;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      direction: ltr;
+      border-left: 3px solid #8aab72;
+      padding-left: 1.2rem;
+      min-height: 2rem;
+    }
+
+    #tab-drafts .english-layer {
+      flex: 0 0 27rem;
+      font-size: 1.31rem;
+      line-height: 1.9;
+    }
+
+    #tab-drafts .english-layer:not(.is-active) {
+      display: none;
+    }
+
     .poems .pair {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -389,6 +468,24 @@
         padding-bottom: 1rem;
       }
       .poems .english {
+        border-left: none;
+        border-top: 3px solid #8aab72;
+        padding-left: 0;
+        padding-top: 1rem;
+      }
+      #tab-drafts .pair {
+        flex-direction: column;
+        gap: 1.2rem;
+        width: auto;
+      }
+      #tab-drafts .persian,
+      #tab-drafts .english-layer {
+        flex-basis: auto;
+        width: 100%;
+      }
+      #tab-drafts .english-layers {
+        flex-direction: column;
+        gap: 1.2rem;
         border-left: none;
         border-top: 3px solid #8aab72;
         padding-left: 0;
@@ -1270,12 +1367,161 @@ than another’s arrival</p></div></div></div></div>
 </div>
 
 <div id="tab-drafts" class="tab-panel poems">
-  <p class="drafts-note">Work in progress — the English here is a raw machine draft awaiting a finished translation.</p>
+  <p class="drafts-note">Work in progress — toggle the layers under each poem to compare them side by side: <b>Machine</b> (raw OCR) · <b>Lantern</b> (a working draft) · <b>Ben</b> (the finished translation). Empty layers are hidden.</p>
   <div id="toc-drafts" class="toc-wrapper">
-    <div class="toc"><span class="toc-title">Drafts — پیش‌نویس‌ها</span><table class="toc-table"><tr class="toc-header"><th class="toc-col-english" style="text-align:left;">Page &amp; Title</th><th class="toc-col-dates" style="text-align:left;">Translated<span style="float:right;">Written</span></th><th class="toc-col-persian"><div style="display:flex;"><span style="flex:1;direction:rtl;text-align:right;">عنوان</span><span style="flex-shrink:0;min-width:2.2rem;padding-right:1.2rem;padding-left:0.3rem;text-align:left;white-space:nowrap;">صفحه</span></div></th></tr><tr onclick="location.href='#city-smoke'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">25</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">From the side of the plain</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1968 - ۱۳۴۷</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۲۵</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">از کنار ..دشت</div></div></div></td></tr><tr onclick="location.href='#fifty-moons'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num"></span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">In the night,</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>January 1972 - تهران دی ماه ۱۳۵۱</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page"></span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">در عبور شب</div></div></div></td></tr></table></div>
+    <div class="toc"><span class="toc-title">Drafts — پیش‌نویس‌ها</span><table class="toc-table"><tr class="toc-header"><th class="toc-col-english" style="text-align:left;">Page &amp; Title</th><th class="toc-col-dates" style="text-align:left;">Translated<span style="float:right;">Written</span></th><th class="toc-col-persian"><div style="display:flex;"><span style="flex:1;direction:rtl;text-align:right;">عنوان</span><span style="flex-shrink:0;min-width:2.2rem;padding-right:1.2rem;padding-left:0.3rem;text-align:left;white-space:nowrap;">صفحه</span></div></th></tr><tr onclick="location.href='#dark-city'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">13</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">The city is dark</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1968 - ۱۳۴۷</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۱۳</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">شهر تاریک است</div></div></div></td></tr><tr onclick="location.href='#dried-spring'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">22</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">In the sands of the dried spring, the imagination is like a root and does not grow. You do not make a branch from the ground that will eventually blossom. A bud of hope in the heart that is far from happiness. You do not make a leaf that will eventually create a shadow. This heart is free from the burning rays of the sun.</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1958 - بروجرد ۱۳۳۷</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۲۲</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">در ماسه های چشمه خشکیده خیال</div></div></div></td></tr><tr onclick="location.href='#almond-flowers'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">23</span><div class="toc-english-text"><div class="toc-english-title">Almond Flowers</div><div class="toc-first-line">You are not in front of me, you have not come to my side, you have sat in my heart like sorrow, I do not know what you are.</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1959 - بروجرد ۱۳۳۸</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۲۳</span><div class="toc-persian-text"><div class="toc-persian-title-text">گل های بادام</div><div class="toc-persian-first-line">به رویم در نیستی تو</div></div></div></td></tr><tr onclick="location.href='#city-smoke'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">25</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">From the side of the plain</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1968 - ۱۳۴۷</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۲۵</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">از کنار ..دشت</div></div></div></td></tr><tr onclick="location.href='#sky-swallows'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">25</span><div class="toc-english-text"><div class="toc-english-title">Swallows in the Vault of the Sky</div><div class="toc-first-line">The horizons are bright, warm shadows. Don't you know that the birds of your imagination are pecking in pain at the vault of my chest</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1960 - ۱۳۳۹</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۲۵</span><div class="toc-persian-text"><div class="toc-persian-title-text">پرستوها به طاق آسمونند</div><div class="toc-persian-first-line">افق ها سایه روشن گرم خونند نمی دونی که مرغان خیالت به طاق سینه ام با درد چونند</div></div></div></td></tr><tr onclick="location.href='#drunk-waterfall'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">26</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">That happy and drunk waterfall</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1960 - ۱۳۳۹</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۲۶</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">آن آبشار سرخوش و مستم</div></div></div></td></tr><tr onclick="location.href='#wooden-horse'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">32</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">City of Smoke</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>Tehran 1961 - تهران ۱۳۴۰</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۳۲</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">شهر دود</div></div></div></td></tr><tr onclick="location.href='#road-peasant'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">34</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">In the furnace of the roads....</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>Autumn 1961, on the road to Borujerd - پاییز ۱۳۴۰ در راه بروجرد</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۳۴</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">در کوره راه ها....</div></div></div></td></tr><tr onclick="location.href='#beggar-dogs'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">36</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">Dad was a municipal official</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1962 - ۱۳۴۱</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۳۶</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">بابا مأمور شهرداری بود</div></div></div></td></tr><tr onclick="location.href='#shepherd-figs'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">49</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">gray</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>Autumn 1982 - پاییز ۱۳۶۱</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۴۹</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">خاکستری</div></div></div></td></tr><tr onclick="location.href='#bomb-kiss'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">50</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">I closed my eyes</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1984 - ۱۳۶۳</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۵۰</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">چشمانم را بستم</div></div></div></td></tr><tr onclick="location.href='#green-woodpecker'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">51</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">I have taken refuge in the safe shade of a tree and... sleep has taken hold of me.</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>Summer 1987 - تابستان ۱۳۶۶</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۵۱</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">به چتر درختی ایمن پناه برده ام و... مرا خواب در ربوده است</div></div></div></td></tr><tr onclick="location.href='#barren-cloud'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">52</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">i love you</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>Summer 1987 - تابستان ۱۳۶۶</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۵۲</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">تو را دوست دارم</div></div></div></td></tr><tr onclick="location.href='#drink-sea'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">53</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">I am waiting for you in the darkness of the beach...</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>November 1987 - ۱۳۶۶/۸/۳۰</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۵۳</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">در تاریکی ساحل در انتظارت نشسته ام...</div></div></div></td></tr><tr onclick="location.href='#horse-hooves'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">54</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">This is the sound of horses' hoofs</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>Winter 1987 - زمستان ۱۳۶۶</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۵۴</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">این صدای سم اسبان است</div></div></div></td></tr><tr onclick="location.href='#sunless-gaze'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">56</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">I'm saddened by your lack of sunshine.</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>Winter 1987 - زمستان ۱۳۶۶</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۵۶</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">دلم گرفته نگاه تو آفتابی نیست</div></div></div></td></tr><tr onclick="location.href='#green-pond'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">57</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">Hey... I love you</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>Winter 1987 - زمستان ۱۳۶۶</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۵۷</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">های... دوست دارمت</div></div></div></td></tr><tr onclick="location.href='#gray-kisses'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">58</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">Oh, your half-open eyes.</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1988 - ۱۳۶۷</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۵۸</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">آه از چشم های نیمه باز تو</div></div></div></td></tr><tr onclick="location.href='#one-thing'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">59</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">Only one thing from you</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1988 - ۱۳۶۷</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۵۹</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">تنها یک چیز را از تو</div></div></div></td></tr><tr onclick="location.href='#shelter-wall'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">60</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">I am in the shelter</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1988 - ۱۳۶۷</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۶۰</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">من در پناهگاهم</div></div></div></td></tr><tr onclick="location.href='#blowing-winds'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num"></span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">These winds that blow, these leaves that crawl</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>Tehran 1960 - تهران ۱۳۳۹</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page"></span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">این بادها که می وزند این برگها که می خزند</div></div></div></td></tr><tr onclick="location.href='#fifty-moons'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num"></span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">In the night,</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>January 1972 - تهران دی ماه ۱۳۵۱</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page"></span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">در عبور شب</div></div></div></td></tr><tr onclick="location.href='#half-ghazal'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num"></span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">Were you the sun on the roof or the echo of the heart in a cup? I didn't say anything from your heart, but you were a half-finished ghazal.</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1961 - ۱۳۴۰</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page"></span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">آفتاب لب بامی بودی یا طنین دل جامی بودی از دلت هیچ نگشتم آگه غزل نیمه تمامی بودی</div></div></div></td></tr><tr onclick="location.href='#longest-shadow'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num"></span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">If the clouds leave your longest shadow</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1960s - دهه ۱۳۴۰</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page"></span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">اگر ابرها بگذارند بلندترین سایه تو را</div></div></div></td></tr><tr onclick="location.href='#moon-crystal'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num"></span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">When the moon crystal</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>Summer 1962, Tuyserkan - تویسرکان تابستان ۱۳۴۱</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page"></span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">وقتی بلور ماه</div></div></div></td></tr><tr onclick="location.href='#nightingale-cloud'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num"></span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">The nightingale has no use for clouds</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>2001 - ۱۳۸۰</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page"></span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">هوای ابر را بلبل نداره</div></div></div></td></tr><tr onclick="location.href='#oldest-song'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num"></span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">I love</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>Tehran 1966 - تهران ۱۳۴۵</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page"></span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">دوست دارم</div></div></div></td></tr><tr onclick="location.href='#rain-forgotten'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num"></span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">O... rain... you are raining... so that you bring back the smell of adobe that you have forgotten— pour, rain...</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>Tehran, Autumn 1989 - تهران، پاییز ۱۳۶۸</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page"></span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">های... باران... تو می باری...</div></div></div></td></tr><tr onclick="location.href='#with-you'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num"></span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">For Maryam</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1963 - ۱۳۴۲</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page"></span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">برای مریم</div></div></div></td></tr></table></div>
   </div>
   <div class="page">
-    <div class="poem-section" id="city-smoke"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1968 - ۱۳۴۷ · p. 25</p><span class="poem-status is-draft">Draft</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>از کنار ..دشت
+    <div class="poem-section" id="dark-city"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1968 - ۱۳۴۷ · p. 13</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="dark-city" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>شهر تاریک است
+کوچه های خسته در هذیان خواب آلود
+می سوزد...
+چشم شهر از دود می سوزد.
+شهربانان آتشی افروخته
+با بوته های جهل
+آتشی که گفته اند...
+این نور جاوید است....
+جاودانه آتش بیدار خورشید است....
+.... دروغی را که باید کرد باور
+خنجر رنجی ست.
+جان از این معنا که
+ما با رنج می سازیم... می سوزد
+جز دل سنگین دژخیمان
+هر چه در آتش می اندازیم میسوزد.
+موسم خواری ست...
+موسمی که معنی فریاد آشوب است...
+غنچه ها می پژ مرد در سردی دلها
+و.... گل فریاد بر لبها نمی روید.
+موسم خواری ست...
+هر که بر لب قفل دارد
+دست هایش شاخ پرباری ست.
+شهر .... دشت تشنه را ماند
+آب میخواهد.
+شهربان پیر اما....
+شهریان را خواب میخواهد
+
+۱۳۴۷</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="dark-city" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>The city is dark
+The tired streets in sleepy delirium
+Burns...
+The eyes of the city burn with smoke.
+The city guards have lit a fire
+With the bushes of ignorance
+The fire that they have said...
+This is the eternal light...
+The eternal fire is the awakened sun...
+.... Believe the lie that must be told
+The dagger of suffering.
+The soul, in the sense that
+We build with suffering... burns
+Except for the heavy hearts of our murderers
+Whatever we throw into the fire burns.
+It is the season of humiliation...
+A season that means the cry of chaos...
+The buds wither and die in the coldness of hearts
+And.... The flower of a cry does not grow on the lips.
+It is the season of humiliation...
+Whoever has a lock on his lips
+His hands are fruitful horns.
+The city.... has become a thirsty plain
+He wants water.
+The old mayor, but....
+He wants the citizens to sleep
+
+1347</p></div></div></div></div></div>
+<div class="poem-section" id="dried-spring"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1958 - بروجرد ۱۳۳۷ · p. 22</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="dried-spring" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>در ماسه های چشمه خشکیده خیال
+ چون ریشه مانده ای و نمی رویی از زمین
+ شاخی نمی کنی که دمی غنچه امید
+ در قلب دور مانده از شادی م وا شود
+ برگی نمی کنی که دمی سایه ای کند
+ این دل از تیرهای جگرسوز آفتاب
+ یک دم رها شود.
+
+این موی ریشه های تو
+چون مار زخم دار
+دیوانه وار میدود و می دواندم
+در شوره زار داغ تنم تاب می خورد
+آنگه به سوی ساغر می میکشاندم
+آنقدر میخورم کز هوش میروم
+
+ای ساقه امید
+مردم در انتظار نیش خدنگ جوانه ات
+از خاک شعله برکش و چون سالهای پیش
+سر کن ترانه ات
+ای اشکهای کوچک پرشادی بهار
+من بغض خاموشم مردم در انتظار
+
+بروجرد ۱۳۳۷</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="dried-spring" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>In the sands of the dried spring, the imagination is like a root and does not grow. You do not make a branch from the ground that will eventually blossom. A bud of hope in the heart that is far from happiness. You do not make a leaf that will eventually create a shadow. This heart is free from the burning rays of the sun.
+
+This hair of your roots
+Like a wounded snake
+I would run and run like crazy
+My body sways in the hot salt marsh
+Then I would pull it towards the ocean
+I would eat so much that I would lose consciousness
+
+O stem of hope
+People are waiting for the sting of the mongoose of your bud
+Rise a flame from the soil and, like in the past years
+Sing your song
+O small tears of spring joy
+I am a silent grudge, people are waiting
+
+Borojerd 1337</p></div></div></div></div></div>
+<div class="poem-section" id="almond-flowers"><div class="poem-header"><p class="poem-header-persian">گل های بادام</p><p class="poem-header-english">Almond Flowers</p><p class="poem-header-meta">1959 - بروجرد ۱۳۳۸ · p. 23</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="almond-flowers" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>به رویم در نیستی تو
+ ز پهلویم نرستی تو
+ چو غم در دل نشستی تو
+ نمی دانم چه هستی تو.
+
+نه از آبی نه از خاکی
+ نه از طوفان و کولاکی
+ به دل آوای غمناکی
+ نمی دانم چه هستی تو.
+
+به بام آسمان برفی
+ درون قلب شنگرفی
+ به چشم اشک و
+ به لب حرفی
+ نمی دانم چه هستی تو.
+
+تو چون گلهای بادامی
+ شقایق های بر بامی
+ طنینی از دل جامی
+ نمیدانم چه هستی تو.
+
+تو ناقوس کلیسایی
+ از آن مغرب مایی
+
+به هر قلبی یک آوایی
+ نمی دانم چه هستی تو
+
+پرستوی بهار من
+ اميد من قرار من
+ ز خود راه فرار من
+ نمیدانم چه هستی تو.
+
+به هر راهی تو پوینده
+ ز هر دردی تو جوینده
+ به هر لفظی تو گوینده
+ نمیدانم چه هستی تو.
+
+به جز راهت نمی پویم
+ به جز وصلت نمیجویم
+ اگر چه فاش میگویم
+ نمیدانم چه هستی تو.
+
+بروجرد ۱۳۳۸</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="almond-flowers" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>You are not in front of me, you have not come to my side, you have sat in my heart like sorrow, I do not know what you are.
+Not from water, not from earth, not from storm and blizzard, in the heart of a sad voice, I do not know what you are.
+On the roof of the snowy sky, in the heart of a thorn, with tears in my eyes and words on my lips, I do not know what you are.
+You are like almond flowers, poppies on the roof, resounding from the heart of a cup, I do not know what you are.
+
+You are a church bell from our west.
+I don't know what you are with every heart, a single sound
+
+My spring swallow, my hope, my destiny, my escape from myself, I don't know what you are.
+You are the one who follows every path, you are the one who seeks every pain, you are the one who speaks every word, I don't know what you are.
+I don't follow except your path, I don't seek except union, even though I say it openly, I don't know what you are.
+
+Borujerd 1338</p></div></div></div></div></div>
+<div class="poem-section" id="city-smoke"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1968 - ۱۳۴۷ · p. 25</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="city-smoke" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>از کنار ..دشت
 از جوار کوه....
 از زلال آبی قدیم پرشکوه....
 من به شهر دود آمدم....
@@ -1304,7 +1550,7 @@ than another’s arrival</p></div></div></div></div>
 شهر پرده ای سیاه بود
 عشق روی تو چراغ راه بود.... شعله ای برای محو هر گناه بود...
 
-۱۳۴۷</p></div></div><div class="english"><span class="label">Machine Draft</span><div class="poem-block english-poem"><p>From the side of the plain
+۱۳۴۷</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="city-smoke" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>From the side of the plain
 From the side of the mountain...
 From the clear blue of the old, glorious...
 I came to the city of smoke...
@@ -1332,8 +1578,532 @@ Life was ruined.
 The city was a black curtain
 Love on you was a beacon.... It was a flame to erase every sin...
 
-1347</p></div></div></div></div>
-<div class="poem-section" id="fifty-moons"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">January 1972 - تهران دی ماه ۱۳۵۱</p><span class="poem-status is-draft">Draft</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>در عبور شب
+1347</p></div></div></div></div></div>
+<div class="poem-section" id="sky-swallows"><div class="poem-header"><p class="poem-header-persian">پرستوها به طاق آسمونند</p><p class="poem-header-english">Swallows in the Vault of the Sky</p><p class="poem-header-meta">1960 - ۱۳۳۹ · p. 25</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="sky-swallows" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>افق ها سایه روشن گرم خونند نمی دونی که مرغان خیالت به طاق سینه ام با درد چونند
+
+۱۳۳۹</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="sky-swallows" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>The horizons are bright, warm shadows. Don't you know that the birds of your imagination are pecking in pain at the vault of my chest
+
+1339</p></div></div></div></div></div>
+<div class="poem-section" id="drunk-waterfall"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1960 - ۱۳۳۹ · p. 26</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="drunk-waterfall" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>آن آبشار سرخوش و مستم
+که سال ها
+بر ماسه های گرم تنت اشک ریختم
+دیوانه وار
+تا که بمیرم به دامنت
+از دام برفهای سپیدم گریختم
+
+وقتی شراب شیشه خورشید می چکید
+برق تنم به تندی تیر نگاه بود
+
+وقتی نگاه آینه مهر میشکست امواج سینه ام به سپیدی ماه بود افیون بادهای سحر پیکر مرا بی تاب مینمود در آغوش بسترم هر شاخه میگرفت به بازی تن مرا
+
+هر برگ می گذشت به آسانی از سرم...
+
+در تلخی زمانه چو شور تو داشتم چون شهد مینمود مرا انتظار تو می سوختم از گرمی آغوش این خیال دریای من تو بودی و من آبشار تو اکنون که در برابر من موج میزنی از خواب پر فریب تو بیدار میشوم تو مست و شاد از نگه آسمان و من در ساحل خموش تو در شن فرو روم
+
+تابوت استخوانی سینه چو گور تنگ
+در هم فشرده لاشه سرد غرور من
+
+میگریم ای دریغ
+چرا نیستم باز... من برف دره ها و
+تو دریای دور من
+
+۱۳۳۹</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="drunk-waterfall" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>That happy and drunk waterfall
+that for years
+I shed tears on the warm sands of your body
+Like a madman
+Until I die in your lap
+I escaped from the trap of my white snow
+When the wine dripped from the glass of the sun
+The lightning of my body was as swift as a glance
+
+When the look of the mirror of the seal broke, the waves of my chest were as white as the moon, the opium of the dawn winds made my body impatient in the embrace of my bed, every branch took my body to play with
+
+Every leaf passed easily over my head...
+
+In the bitterness of time, I was as thirsty as you, as if you were nectar, I was waiting for you, I was burning with the warmth of the embrace of this dream of my sea, you were and I am your waterfall, now that you are waving in front of me, I wake up from your deceptive sleep, you are drunk and happy from the hold of the sky and I sink into the sand on your silent shore
+
+A coffin of bones, a chest like a narrow grave
+The cold carcass of my pride, compressed together
+
+We cry, oh my goodness
+Why am I not here again... I am the snow of the valleys and
+In the sea far away from me
+
+1339</p></div></div></div></div></div>
+<div class="poem-section" id="wooden-horse"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">Tehran 1961 - تهران ۱۳۴۰ · p. 32</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="wooden-horse" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>شهر دود
+شهر داد
+
+شهر بی داد
+
+شهر نیش
+
+شهر نوش
+شهر شب گرفته خاموش
+در شهر دود
+کودکی را دیدم
+نامش رستم بود
+خسته و سوار بر اسب چوبین شکسته
+می خواند
+من میترسم... می ترسم... می ترسم
+چوب گزینم کو...
+و مادرش صدا میزد
+های رستم درست را بخوان
+رستم درس خواند
+رستم مرد شد...
+و از اسب چوبینش میزی ساختند.
+
+تهران ۱۳۴۰</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="wooden-horse" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>City of Smoke
+City of Dad
+City of Nod
+City of Nish
+City of Drink
+City of Silence in the Night
+In the City of Smoke
+I saw a child
+His name was Rostam
+Tired and riding a broken wooden horse
+He was singing
+I am afraid... I am afraid... I am afraid
+I will choose a stick...
+And his mother was calling
+Hey Rostam, sing the right song
+Rostam studied
+Rostam became a man...
+And they made a table out of his wooden horse.
+
+Tehran 1961</p></div></div></div></div></div>
+<div class="poem-section" id="road-peasant"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">Autumn 1961, on the road to Borujerd - پاییز ۱۳۴۰ در راه بروجرد · p. 34</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="road-peasant" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>در کوره راه ها....
+آبی خاکستری سیاه
+پیکر دهقانی است با چوبدست بلندش
+سپید سیاه
+خرش را میگویم
+با خرواری از خارهای باران زده
+سیاه سیاه
+بختش را میگویم
+که همچون سایه
+از کنار پاهایش روییده است.
+
+پاییز ۱۳۴۰ در راه بروجرد</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="road-peasant" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>In the furnace of the roads....
+Blue, gray, black
+The figure of a peasant with his long staff
+White, black
+I speak of the bull
+With a heap of thorns, rain-swept
+Black, black
+I speak of his luck
+That, like a shadow
+has grown from his feet.
+
+Autumn 1340 on the road to Borujerd</p></div></div></div></div></div>
+<div class="poem-section" id="beggar-dogs"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1962 - ۱۳۴۱ · p. 36</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="beggar-dogs" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>بابا مأمور شهرداری بود
+پا با سنگها را میکشت
+یک روز آفتابی
+بابا
+با یک تکه گوشت زهر آلود
+در تعقیب سگی بود...
+بچه گداها بازی میکردند
+بچه گداها با سگ بازی میکردند
+سگ گوشت را نخورد
+بچه گداها خوردند.
+بچه گداها مردند.
+بابا دید
+بابا خندید
+بابا قاتل بود
+با با گوشت خورد
+بابا مرد...
+من نصف حقوق بابا را از شهرداری میگرفتم
+من درس خواندم
+من شهردار شدم
+من سگ ها را نمی کشم
+من سگ ها را عقیم میکنم
+شاید بچه گداها عقیم شوند.
+
+نشریه نامه دانشجو دانشگاه تهران (۱۳۴۱)</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="beggar-dogs" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>Dad was a municipal official
+He used to beat stones
+One sunny day
+Dad
+He was chasing a dog with a piece of poisoned meat...
+The beggar children were playing
+The beggar children were playing with the dog
+The dog did not eat the meat
+The beggar children did.
+The beggar children died.
+Dad saw
+Dad laughed
+Dad was a murderer
+He ate the meat
+Dad died...
+I used to get half of Dad's salary from the municipality
+I studied
+I became the mayor
+I do not kill dogs
+I sterilize dogs
+Maybe the beggar children will be sterilized.
+
+Tehran University Student's Newsletter (1962)</p></div></div></div></div></div>
+<div class="poem-section" id="shepherd-figs"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">Autumn 1982 - پاییز ۱۳۶۱ · p. 49</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="shepherd-figs" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>خاکستری
+خاکستری
+خاکستری
+مه باران صبح
+نگاه خاطره ابر
+در من ترانه ای نبود تو خواندی
+در من آینه ای نبود تو دیدی
+ریشه ای بودم در خواب خاکهای متبرک
+بی باران در نگاه تو سبز شدم
+برقی از چشمانت برخاست
+نگاهم بارانی شد
+گونه هایت خیس باران
+چشم هایت آفتابی
+گرگ ها میزایند
+بره ها را دریابیم...
+تو با چشمانت مرا بنواز
+چوبدست چوپانیم سلاحی کارگر خواهد شد
+بعد از جنگ
+با چوبدستم انجیرهای تازه را
+برای تو خواهم چید
+با تو خواهم ماند
+با تو خواهم خواند
+و تو را در بهت آفتابیت
+خواهم بوسید
+اگر ابرها بگذارند...
+
+پاییز ۱۳۶۱</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="shepherd-figs" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>gray
+gray
+gray
+morning rain fog
+cloud memory look
+There was no song in me, you sang it.
+There was no mirror in me, you saw.
+I was a root in the dream of the blessed soil.
+I became green in your eyes without rain.
+A spark came from your eyes.
+My eyes became cloudy
+Your cheeks are wet with rain
+Your eyes are sunny
+The wolves are coming
+Let's find the lambs...
+You play with me with your eyes.
+Our shepherd's staff will become a useful weapon.
+after the war
+I pluck fresh figs with my stick.
+I will pick for you
+I will stay with you
+I will read with you
+And you are in the sun's glare.
+i will kiss
+If the clouds leave...
+
+Autumn 1361</p></div></div></div></div></div>
+<div class="poem-section" id="bomb-kiss"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1984 - ۱۳۶۳ · p. 50</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge" data-poem="bomb-kiss" data-layer="machine">Machine</button><button type="button" class="layer-badge is-active" data-poem="bomb-kiss" data-layer="lantern">Lantern</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>چشمانم را بستم
+تا تو را عاشقانه ببوسم
+بمب افتاد...
+مرغابی ها پریدند
+چشم گشودم
+تو،
+در آغوش دیگری بودی...
+های... جنگ...
+
+۱۳۶۳</p></div></div><div class="english-layers"><div class="english-layer" data-poem="bomb-kiss" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>I closed my eyes
+To kiss you lovingly
+The bomb dropped...
+The ducks jumped
+I opened my eyes
+so,
+You were in someone else's arms...
+hi... war...
+
+1363</p></div></div><div class="english-layer is-active" data-poem="bomb-kiss" data-layer="lantern"><span class="label">Lantern</span><div class="poem-block english-poem"><p>I closed my eyes
+to kiss you the way lovers do —
+then the bomb fell.
+The wild ducks scattered.
+I opened my eyes:
+you
+were already in another's arms...
+
+Ah... war...</p></div></div></div></div></div>
+<div class="poem-section" id="green-woodpecker"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">Summer 1987 - تابستان ۱۳۶۶ · p. 51</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="green-woodpecker" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>به چتر درختی ایمن پناه برده ام و... مرا خواب در ربوده است
+از صدای دور دارکوبی بیدار میشوم
+خش خشی میشنوم
+تو از درختان انبوه
+به دریا می روی
+جنگل بستری ست از برگهای رنگین
+با صدای انفجاری... از جا میپرم...
+جنگل پر از همهمه میشود.
+هواپیماها میرند.
+تو هیچ نمی ترسی...
+به آغوش من پناه می آوری
+بوی برگها... بوی خاک...
+طعم دريا... و عطر نفس های تو...
+پرندگان جنگل خاموش اند....
+آفتاب رفته است....
+و من با پر سبز دارکوبی
+بر پشت چشمان بسته ات سایه میزنم
+
+تابستان ۱۳۶۶</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="green-woodpecker" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>I have taken refuge in the safe shade of a tree and... sleep has taken hold of me.
+I wake up to the distant sound of knocking.
+I hear rustling.
+You are from the thick trees
+You go to the sea
+The forest is a bed of colorful leaves.
+With an explosive sound... I jump up...
+The forest is filled with noise.
+Planes go.
+You are not afraid of anything...
+You take refuge in my arms
+The smell of leaves... the smell of soil...
+The taste of the sea... and the scent of your breath...
+The birds of the forest are silent.
+The sun has gone...
+And I, with a green feather, am a woodpecker.
+I cast a shadow behind your closed eyes.
+
+Summer 1366</p></div></div></div></div></div>
+<div class="poem-section" id="barren-cloud"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">Summer 1987 - تابستان ۱۳۶۶ · p. 52</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="barren-cloud" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>تو را دوست دارم
+بی باران
+و باران را دوست دارم
+با تو...
+های... با من باش
+تا ابر عقیم بر سرزمین گرفتار ببارد
+و چوبدست خشک دژخیم
+در خاک شب زده سبز شود...
+با من باش
+تا هر تیرک مرگ آور
+گیاه برگ آوری شود
+و بر اوج مناره ها که
+کلاغان لانه کرده اند
+پرستوها زمزمه کنند
+با من باش
+تا بجای گریز از بمبها
+در پناهگاه های بی پناه
+به چتر درختی ایمن از باران
+پناه بریم...
+های... تو را دوست دارم...
+
+تابستان ۱۳۶۶</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="barren-cloud" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>i love you
+no rain
+And I like the rain
+with you
+Hey... stay with me
+Until the barren cloud falls on the troubled land
+And the dry, deadly stick
+To grow in the night-stricken soil...
+be with me
+to every deadly pole
+The plant should be leafed
+And on the top of the minarets that
+Crows have nested
+The swallows whisper.
+be with me
+Instead of running away from bombs
+In homeless shelters
+Under the umbrella of a tree, safe from the rain
+Let's take refuge...
+Hey... I love you...
+
+Summer 1366</p></div></div></div></div></div>
+<div class="poem-section" id="drink-sea"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">November 1987 - ۱۳۶۶/۸/۳۰ · p. 53</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="drink-sea" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>در تاریکی ساحل در انتظارت نشسته ام...
+با زمزمه دریا چشمانم را میبندم
+و چون میگشایم
+دو ستاره گرم بر گونه هایم مینشیند
+تو در بازوان بسته ام روییده ای...
+چشمانت را میبندی
+و لبانت را میگشایی...
+های... دریا را ...
+دریا را ...
+دریا را مینوشم...
+
+۱۳۶۶/۸/۳۰</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="drink-sea" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>I am waiting for you in the darkness of the beach...
+I close my eyes to the whisper of the sea.
+And when we open
+Two warm stars sit on my cheeks.
+You grew up in my closed arms...
+You close your eyes
+And you open your lips...
+Hai... the sea...
+the sea...
+I drink the sea...
+
+1366/8/30</p></div></div></div></div></div>
+<div class="poem-section" id="horse-hooves"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">Winter 1987 - زمستان ۱۳۶۶ · p. 54</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="horse-hooves" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>این صدای سم اسبان است
+با رپ رپه طبل ها ...
+تو را در برکه های هذیانی تبهایم
+بر اسب میبینم
+اسب می ماند.
+سم می کوبد...
+سر می ساید
+تو خاموشی...
+و من لبهایم را
+به بلندترین فریاد گشوده ام.
+نسیم از دریا به جنگل در گذار است
+تو میشنوی که میگویم
+دوستت دارم...
+نگاهت آفتابی میشود.
+سایه اسب بر ساحل مینشیند
+اسب میرمد
+رعد در بال
+باد در پاها...
+هنوز لبانم به بلندترین فریاد گشوده است
+فریاد در جنگل میپیچد
+بمان...
+جنگ تمام خواهد شد....
+پرندگان مانده اند... بمان... دوستت دارم...
+تو... می روی...
+و... من لحظه دیشب در سر
+لحظه امشب در دل
+به پناهگاه بر می گردم...
+
+زمستان ۱۳۶۶</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="horse-hooves" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>This is the sound of horses' hoofs
+With the rap of the drums...
+I will bathe you in delirious pools.
+I see on a horse
+The horse stays.
+The hoof knocks...
+head rubs
+You are silent...
+And I my lips
+I have opened the loudest cry.
+The breeze is passing from the sea to the forest.
+You hear me say.
+I love you...
+Your gaze becomes sunny.
+The shadow of a horse sits on the shore.
+The horse dies
+Thunder in the wings
+Wind in the legs...
+My lips are still open to the loudest scream.
+A scream echoes through the forest
+stay...
+The war will end.
+The birds have stayed... Stay... I love you...
+you... go...
+And... I was thinking about it last night.
+Tonight's moment in the heart
+I'm going back to the shelter...
+
+Winter 1366</p></div></div></div></div></div>
+<div class="poem-section" id="sunless-gaze"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">Winter 1987 - زمستان ۱۳۶۶ · p. 56</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="sunless-gaze" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>دلم گرفته نگاه تو آفتابی نیست
+به بیکران کبودت زلال آبی نیست
+ز سردی نگهت قامت دلم افسرد
+قیامتی است در آن دل که صبر و تابی نیست
+به آب دیده بشویم غبار چشمانت
+در این زمانه که در برگِ گل گلابی نیست
+نگاه میرمد از چشم من به گیسویت اسیر تشنه به ظلمات و برق آبی نیست دلیر باش و شبی جرئت گناهی کن در این دو روزه اگر فرصت ثوابی نیست
+بنوش ورنه چو نوبت به غم رسد بینی درون ساغر شوقت نم شرابی نیست بیا به گرمی محجوب عشق دلبندیم
+به دشت شب زده امید آفتابی نیست
+
+زمستان ۱۳۶۶</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="sunless-gaze" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>I'm saddened by your lack of sunshine.
+Your infinite blueness is not as clear as blue.
+My heart is depressed by the coldness of your posture.
+There is a resurrection in that heart where there is no patience or endurance.
+Let's be seen in the water, the dust in your eyes
+At this time, when there is no pear in the leaf of the flower
+My eyes wander to your hair, a captive thirsty for darkness and no blue lightning. Be brave and dare to sin one night. If there is no opportunity for reward in these two days,
+Drink, otherwise when the time comes for sadness, your nose in the cup of longing is not a drop of wine. Come, let us fall in love with the unobstructed warmth of love.
+There is no sunny hope in the night-stricken plain.
+
+Winter 1366</p></div></div></div></div></div>
+<div class="poem-section" id="green-pond"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">Winter 1987 - زمستان ۱۳۶۶ · p. 57</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="green-pond" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>های... دوست دارمت
+دوست دارمت...
+با عبور این صدا
+از کویر حنجرم
+در نگاه تو
+برکه کبود
+سبز میشود...
+
+زمستان ۱۳۶۶</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="green-pond" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>Hey... I love you
+I love you...
+By passing this sound
+from Hanjarm desert
+in your eyes
+Blue Pond
+It turns green...
+
+Winter 1366</p></div></div></div></div></div>
+<div class="poem-section" id="gray-kisses"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1988 - ۱۳۶۷ · p. 58</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="gray-kisses" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>آه از چشم های نیمه باز تو
+بعد از بلندترین
+بوسه های خاکستری باران....
+
+۱۳۶۷</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="gray-kisses" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>Oh, your half-open eyes.
+After the tallest
+gray rain kisses
+
+1367</p></div></div></div></div></div>
+<div class="poem-section" id="one-thing"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1988 - ۱۳۶۷ · p. 59</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="one-thing" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>تنها یک چیز را از تو
+بیشتر دوست دارم
+این که... تو را دوست دارم...
+
+۱۳۶۷</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="one-thing" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>Only one thing from you
+I like more
+That... I love you...
+
+1367</p></div></div></div></div></div>
+<div class="poem-section" id="shelter-wall"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1988 - ۱۳۶۷ · p. 60</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="shelter-wall" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>من در پناهگاهم
+تو دور از من
+به تو می اندیشم
+شعری در من نطفه میبندد
+شعرم را به دیوار پناهگاه مینویسم
+و در فاصله دو انفجار
+به دیدار تو میشتابم
+در گذار از جنگل به دریا
+هوا مه آلود است
+و طعم گونه هایت
+همچون همهمه دریاست در نفسی بلند
+در شانه هایت میخوانم
+تو را دوست دارم بی باران
+و باران را دوست دارم با تو
+و تو را دوست دارم
+و باران را دوست دارم
+و فاصله دو بمب را دوست دارم
+های... بیا با یاد سهراب
+همه مرغابی های وحشت زده را بشمریم...
+
+۱۳۶۷</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="shelter-wall" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>I am in the shelter
+you are far from me
+I think of you
+A poem is sprouting in me.
+I write my poetry on the wall of the shelter.
+And within two explosions
+I am rushing to meet you.
+In the transition from the forest to the sea
+The weather is foggy
+And the taste of your cheeks
+It is like the roar of the sea in a long breath.
+I sing on your shoulders.
+I love you without rain
+And I love the rain with you.
+and i love you
+And I like the rain
+And I like the distance between the two bombs.
+Hey... come with Sohrab's memory
+Let's count all the scared ducks...
+
+1367</p></div></div></div></div></div>
+<div class="poem-section" id="blowing-winds"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">Tehran 1960 - تهران ۱۳۳۹</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="blowing-winds" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>این بادها که می وزند این برگها که می خزند
+این بوی نم کشیده دیوارهای باغ
+این پیچ و تاب مضطرب بالهای زاغ این عطر نیم خفته که در شیشه فضا از لاشه های وحشی باران چکیده است
+این بادهای مست
+وقتی که می وزند
+با شدتی که سینه گنجشک میزند
+با سرعتی که سایه یک عنکبوت کور
+بر سقف خانه ام شبح تار میتند
+دردی درون سینه من تاب میخورد
+یک درد ناشناس از سالهای دور با جانم آشناست.
+این بادها که می وزند این برگها که می خزند
+
+تهران ۱۳۳۹</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="blowing-winds" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>These winds that blow, these leaves that crawl
+This damp smell of the garden walls
+This anxious twist of the raven's wings, this half-asleep perfume that has dripped from the wild carcasses of the rain in the glass of space
+These drunken winds
+When they blow
+With the intensity of a sparrow's chest
+With the speed of a blind spider's shadow
+A shadow looms on the roof of my house
+A pain swings inside my chest
+An unknown pain is familiar to my soul from distant years.
+These winds that blow, these leaves that crawl
+
+Tehran 1339</p></div></div></div></div></div>
+<div class="poem-section" id="fifty-moons"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">January 1972 - تهران دی ماه ۱۳۵۱</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="fifty-moons" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>در عبور شب
 گرد گیسوی تو میگردم
 مست از بوی تو می گردم
 لب به گوش تو میکنم نجوا
@@ -1344,7 +2114,7 @@ Love on you was a beacon.... It was a flame to erase every sin...
 چند مهتاب دگر ؟
 چند قرص ماه؟
 
-تهران دی ماه ۱۳۵۱</p></div></div><div class="english"><span class="label">Machine Draft</span><div class="poem-block english-poem"><p>In the night,
+تهران دی ماه ۱۳۵۱</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="fifty-moons" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>In the night,
 I wander around your hair
 I wander drunk on your scent
 I whisper in your ear
@@ -1355,7 +2125,196 @@ Your laughter is accompanied by my tears...
 How many more moons?
 How many moons?
 
-Tehran, January 1972</p></div></div></div></div>
+Tehran, January 1972</p></div></div></div></div></div>
+<div class="poem-section" id="half-ghazal"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1961 - ۱۳۴۰</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="half-ghazal" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>آفتاب لب بامی بودی یا طنین دل جامی بودی از دلت هیچ نگشتم آگه غزل نیمه تمامی بودی
+
+۱۳۴۰</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="half-ghazal" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>Were you the sun on the roof or the echo of the heart in a cup? I didn't say anything from your heart, but you were a half-finished ghazal.
+
+1340</p></div></div></div></div></div>
+<div class="poem-section" id="longest-shadow"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1960s - دهه ۱۳۴۰</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="longest-shadow" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>اگر ابرها بگذارند بلندترین سایه تو را
+چون باغچه ای گل خواهم ..کاشت
+و.... فصل نورت را .... آیه آیه...
+بر حجم تاریکی خواهم نشاند....
+اگر ابرها بگذارند
+کوتاه ترین سایه مردی را که حاکم است و ظلم میکند
+با تیر به زمین خواهم دوخت
+آن گاه...
+بلندترین سایه تو را که خوبی... که ساده ای
+چون باغچه ای گل خواهم کاشت
+.... مهربانی را با خون آب خواهم داد.
+اگر ابرها بگذارند.
+
+دهه ۱۳۴۰</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="longest-shadow" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>If the clouds leave your longest shadow
+I will plant flowers like a garden
+And.... the season of your light.... verse by verse...
+I will plant it on the volume of darkness....
+If the clouds leave
+I will nail the shortest shadow of a man who rules and oppresses
+to the ground with an arrow
+Then...
+Your longest shadow, who is good... who is simple
+I will plant flowers like a garden
+... I will water kindness with blood.
+If the clouds leave.
+
+1960s</p></div></div></div></div></div>
+<div class="poem-section" id="moon-crystal"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">Summer 1962, Tuyserkan - تویسرکان تابستان ۱۳۴۱</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="moon-crystal" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>وقتی بلور ماه
+در چشمه ها شکست....
+وقتی شب سیاه....
+در غارها و سایه گهارها نشست....
+وقتی که مرغ شب...
+ابریشم نوای دل آویز خویش را ....
+بر پیله طلایی صدها ستاره بست
+من از نشیب دره بسوی تو میدوم
+با اسب راهوار...
+لرزان و بی قرار
+دیوانه وار می پرم از سنگچین رود.
+تا در کنار چشمه نمانی به انتظار
+
+تویسرکان تابستان ۱۳۴۱
+
+برای مریم</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="moon-crystal" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>When the moon crystal
+broke in the springs....
+When the black night....
+Sat in the caves and shadows of the caves....
+When the night bird...
+The silk of its heart-rending song....
+It tied hundreds of stars to the golden cocoon
+I run towards you from the valley slope
+On a walking horse...
+Shaking and restless
+I jump like a madman from the river's cobblestones.
+So that you don't stay by the spring, waiting
+
+Twiserkan, summer 1341
+For Maryam</p></div></div></div></div></div>
+<div class="poem-section" id="nightingale-cloud"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">2001 - ۱۳۸۰</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge" data-poem="nightingale-cloud" data-layer="machine">Machine</button><button type="button" class="layer-badge is-active" data-poem="nightingale-cloud" data-layer="translation">Ben</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>هوای ابر را بلبل نداره
+به جز شوق گل و سنبل نداره
+نمی‌دونه اگه بارون نباره
+گل پژمرده بوی گل نداره
+
+۱۳۸۰</p></div></div><div class="english-layers"><div class="english-layer" data-poem="nightingale-cloud" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>The nightingale has no longing for the cloud
+- only desire for the rose and hyacinth.
+It doesn't know: if the rain doesn't fall,
+the wilted flower has no flower's scent...
+
+1380</p></div></div><div class="english-layer is-active" data-poem="nightingale-cloud" data-layer="translation"><span class="label">Ben</span><div class="poem-block english-poem"><p>The nightingale has no use for clouds
+just the rose and hyacinth.
+It doesn't know: if the rain won't fall,
+the wilted flower has no scent...</p></div></div></div></div></div>
+<div class="poem-section" id="oldest-song"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">Tehran 1966 - تهران ۱۳۴۵</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="oldest-song" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>دوست دارم
+این گمان
+این سرود سالخورد جاودان
+این سرشته فرشته های آسمان
+این یقین
+این کهن ترین ترانه زمین
+مثل رنگ ابر
+مثل بوی خاک
+مثل طعم اشک
+مثل خواب کوه ها....
+همیشگی ست...
+
+تهران ۱۳۴۵</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="oldest-song" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>I love
+This thought
+This song of eternal aging
+This nature of the angels of heaven
+This certainty
+This oldest song of the earth
+Like the color of the clouds
+Like the smell of the soil
+Like the taste of tears
+Like the sleep of the mountains....
+It is eternal...
+
+Tehran 1966</p></div></div></div></div></div>
+<div class="poem-section" id="rain-forgotten"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">Tehran, Autumn 1989 - تهران، پاییز ۱۳۶۸</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge" data-poem="rain-forgotten" data-layer="machine">Machine</button><button type="button" class="layer-badge is-active" data-poem="rain-forgotten" data-layer="translation">Ben</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>های... باران... تو می باری...
+تا بوی کاهگل را
+که فراموش کرده ای
+به خاطر آوری باران ببار...
+زنی را که دوست دارم
+سفر می کند و چون برگردد
+مرا از خاطر برده است.
+
+تهران، پاییز ۱۳۶۸</p></div></div><div class="english-layers"><div class="english-layer" data-poem="rain-forgotten" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>Hey... rain... you are raining... to remind you of the smell of straw that you have forgotten . Rain... the woman I love is traveling and when she returns she has forgotten me.
+
+Tehran, Autumn 1989</p></div></div><div class="english-layer is-active" data-poem="rain-forgotten" data-layer="translation"><span class="label">Ben</span><div class="poem-block english-poem"><p>O... rain... you are raining... so that you bring back the smell of adobe that you have forgotten— pour, rain...
+The woman I love is traveling, and when she returns she has carried me out of her memory.</p></div></div></div></div></div>
+<div class="poem-section" id="with-you"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1963 - ۱۳۴۲</p><div class="layer-badges" role="group" aria-label="Translation layers"><button type="button" class="layer-badge is-active" data-poem="with-you" data-layer="machine">Machine</button></div></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>برای مریم
+تا تو با منی
+گل برای من گل است.
+شب برای من شب است
+سبزه... سبزه است.
+برف ها برای من
+ژاله های خفته اند
+آبهای مرده اند
+ابرهای سال خورده اند.
+کوه ها برای من دوانتهای دره اند.
+تا تو با منی
+آسمان برای من...
+راه آبی پرنده است.
+گریه خاک خیس دانه های خنده است.
+تا تو با منی...
+رنگ برف ها سپید و رنگ ابرها کبود.
+تا تو با منی...
+ابر رنگ ابر دارد و.... دود رنگ دود
+بی تو زندگی چه سود.
+بی تو... روزها و.... برف ها و.....
+ابرها و.... شام ها....
+نه سپیدشان سپید...
+نه کبودشان کبود... نه سیاهشان سیاه....
+بی تو آسمان پاک سینه ام..... کهکشان هر ستاره گناه
+تو برای من... مثل جیوه ای برای آینه..... بی تو شیشه ام.....
+بی تو عمق من... پر از تهیست....
+بی تو در کویر بهت من سراب نیست....
+بی تو زندگی برای من سراب... بی تو نقش من بر آب...
+بی تو سرب سایه ها درون من مذاب....
+سوز آه من... این کبوتر غمین گمشده...
+روی بام حنجرم به خون نشسته است.... خون خاموشی...
+در رگ ترانه های من لخته بسته است....
+بی تو... شام ها و برف ها و ابرها.....
+نه... سیاهشان سیاه... نه... سپیدشان سپید...
+نه... کبودشان کبود
+بی تو زندگی چه سود
+
+۱۳۴۲</p></div></div><div class="english-layers"><div class="english-layer is-active" data-poem="with-you" data-layer="machine"><span class="label">Machine</span><div class="poem-block english-poem"><p>For Maryam
+
+As long as you are with me
+Flowers are flowers for me.
+Night is night for me
+Greenery... is greenery.
+Snows are for me
+Sleeping dewdrops
+Dead waters
+Clouds are old.
+Mountains are the ends of valleys for me.
+As long as you are with me
+The sky is for me...
+The blue path of birds.
+The cry of wet soil is the seeds of laughter.
+As long as you are with me...
+The color of snow is white and the color of clouds is blue.
+As long as you are with me...
+Clouds are the color of clouds and....smoke is the color of smoke
+What good is life without you?
+Without you...days and....snows and.....
+Clouds and....evenings...
+Neither their white is white...
+Neither their blue is blue... nor their black is black...
+Without you, the sky is pure in my chest..... The galaxy of every star is sin
+You are to me... like mercury for a mirror..... Without you, I am glass.....
+Without you, my depth... is full of emptiness....
+Without you, in the desert, there is no mirage for me....
+Without you, life is a mirage for me... Without you, my footprint on the water...
+Without you, the lead of the shadows inside me is molten....
+My burning ah... This dove of sorrow is lost...
+The roof of my throat is filled with blood.... The blood of silence...
+A clot has formed in the veins of my songs....
+Without you... The evenings and the snows and the clouds.....
+No... their black is black... No... their white is white...
+No... their blue is blue
+Without you, what is the use of life
+
+1342</p></div></div></div></div></div>
   </div>
 </div>
 
@@ -1395,6 +2354,21 @@ Tehran, January 1972</p></div></div></div></div>
     } else {
       activate('preface');
     }
+  })();
+</script>
+<script>
+  (function () {
+    var badges = document.querySelectorAll('.layer-badge');
+    badges.forEach(function (badge) {
+      badge.addEventListener('click', function () {
+        var poem = badge.dataset.poem;
+        var layer = badge.dataset.layer;
+        var on = badge.classList.toggle('is-active');
+        var sel = '.english-layer[data-poem="' + poem + '"][data-layer="' + layer + '"]';
+        var col = document.querySelector(sel);
+        if (col) col.classList.toggle('is-active', on);
+      });
+    });
   })();
 </script>
 </body>

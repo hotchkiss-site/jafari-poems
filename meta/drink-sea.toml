@@ -1,0 +1,11 @@
+id                  = "drink-sea"
+english_title       = ""
+persian_title       = ""
+date_written        = "November 1987 - ۱۳۶۶/۸/۳۰"
+date_translated     = ""
+page_number         = "53"
+persian_page_number = "۵۳"
+source              = "raw-jafari-adobe-3.txt"
+tags                = ["love", "sea", "longing"]
+notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending."
+draft               = true

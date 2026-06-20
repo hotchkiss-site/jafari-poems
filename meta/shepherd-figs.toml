@@ -1,0 +1,11 @@
+id                  = "shepherd-figs"
+english_title       = ""
+persian_title       = ""
+date_written        = "Autumn 1982 - پاییز ۱۳۶۱"
+date_translated     = ""
+page_number         = "49"
+persian_page_number = "۴۹"
+source              = "raw-jafari-adobe-3.txt"
+tags                = ["love", "war", "rain", "hope"]
+notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending."
+draft               = true

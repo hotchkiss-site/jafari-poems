@@ -1,0 +1,11 @@
+id                  = "blowing-winds"
+english_title       = ""
+persian_title       = ""
+date_written        = "Tehran 1960 - تهران ۱۳۳۹"
+date_translated     = ""
+page_number         = ""
+persian_page_number = ""
+source              = "raw-jafari-adobe-1.txt"
+tags                = ["wind", "memory", "melancholy"]
+notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending."
+draft               = true

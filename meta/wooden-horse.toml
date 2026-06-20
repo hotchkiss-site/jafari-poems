@@ -1,0 +1,11 @@
+id                  = "wooden-horse"
+english_title       = ""
+persian_title       = ""
+date_written        = "Tehran 1961 - تهران ۱۳۴۰"
+date_translated     = ""
+page_number         = "32"
+persian_page_number = "۳۲"
+source              = "raw-jafari-adobe-1.txt"
+tags                = ["city", "childhood", "disillusion"]
+notes               = "Untitled in source; opens 'شهر دود / شهر داد'. Distinct from 'city-smoke' despite the shared 'city of smoke' image. English block is a raw machine draft (kept in the machine section); finished translation pending."
+draft               = true

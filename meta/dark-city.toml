@@ -1,0 +1,11 @@
+id                  = "dark-city"
+english_title       = ""
+persian_title       = ""
+date_written        = "1968 - ۱۳۴۷"
+date_translated     = ""
+page_number         = "13"
+persian_page_number = "۱۳"
+source              = "raw-jafari-adobe-1.txt"
+tags                = ["city", "oppression", "politics"]
+notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending."
+draft               = true

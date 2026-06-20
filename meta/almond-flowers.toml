@@ -1,0 +1,11 @@
+id                  = "almond-flowers"
+english_title       = "Almond Flowers"
+persian_title       = "گل های بادام"
+date_written        = "1959 - بروجرد ۱۳۳۸"
+date_translated     = ""
+page_number         = "23"
+persian_page_number = "۲۳"
+source              = "raw-jafari-adobe-1.txt"
+tags                = ["love", "longing", "mystery"]
+notes               = "Titled in source ('گل های بادام' / 'Almond Flowers'). English block is a raw machine draft (kept in the machine section); finished translation pending."
+draft               = true

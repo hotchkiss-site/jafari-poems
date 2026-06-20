@@ -380,6 +380,85 @@ CSS = """
       text-align: center;
     }
 
+    /* ── Draft layer toggles (Drafts tab only) ──────────── */
+    .layer-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+    }
+
+    .layer-badge {
+      font-family: inherit;
+      font-variant: small-caps;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.85rem;
+      padding: 0.15rem 0.85rem;
+      border-radius: 1rem;
+      border: 1px solid #b8702a;
+      color: #b8702a;
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .layer-badge:hover {
+      background: rgba(184,112,42,0.12);
+    }
+
+    .layer-badge.is-active {
+      background: #b8702a;
+      color: #f5f0e8;
+    }
+
+    /* Drafts use a full-width canvas: each column keeps a fixed ~single-column
+       width so adding a layer adds width rather than compressing line breaks.
+       An over-wide poem scrolls horizontally within its own section. */
+    #tab-drafts .page {
+      max-width: none;
+      padding: 0 1.5rem;
+    }
+
+    #tab-drafts .poem-section {
+      overflow-x: auto;
+    }
+
+    #tab-drafts .pair {
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+      width: max-content;
+      margin: 0 auto;
+      padding: 1.8rem 0;
+    }
+
+    #tab-drafts .persian {
+      flex: 0 0 27rem;
+    }
+
+    #tab-drafts .english-layers {
+      flex: 0 0 auto;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      direction: ltr;
+      border-left: 3px solid #8aab72;
+      padding-left: 1.2rem;
+      min-height: 2rem;
+    }
+
+    #tab-drafts .english-layer {
+      flex: 0 0 27rem;
+      font-size: 1.31rem;
+      line-height: 1.9;
+    }
+
+    #tab-drafts .english-layer:not(.is-active) {
+      display: none;
+    }
+
     .poems .pair {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -491,6 +570,24 @@ CSS = """
         padding-bottom: 1rem;
       }
       .poems .english {
+        border-left: none;
+        border-top: 3px solid #8aab72;
+        padding-left: 0;
+        padding-top: 1rem;
+      }
+      #tab-drafts .pair {
+        flex-direction: column;
+        gap: 1.2rem;
+        width: auto;
+      }
+      #tab-drafts .persian,
+      #tab-drafts .english-layer {
+        flex-basis: auto;
+        width: 100%;
+      }
+      #tab-drafts .english-layers {
+        flex-direction: column;
+        gap: 1.2rem;
         border-left: none;
         border-top: 3px solid #8aab72;
         padding-left: 0;
@@ -772,7 +869,7 @@ def render_toc(poems, english_source="translation", title="Poems — اشعار"
         date_trans    = str(p.get("date_translated", ""))
         english_title = p.get("english_title", "")
         persian_title = p.get("persian_title", "")
-        fl_en         = first_line(p.get(english_source, ""))
+        fl_en         = first_line(english_source(p) if callable(english_source) else p.get(english_source, ""))
         fl_fa         = first_line(p.get("persian", ""))
 
         onclick = 'onclick="location.href=\'' + '#' + poem_id + '\'"'
@@ -825,15 +922,82 @@ def render_toc(poems, english_source="translation", title="Poems — اشعار"
     )
 
 
+# The English layers a draft can carry, in increasing order of refinement.
+# Each is an independent ===section=== in the .poem file; the badge label is what
+# the reader sees in the Drafts tab. A layer with no text shows no badge.
+DRAFT_LAYERS = [
+    ("machine",     "Machine"),   # raw OCR / machine translation (scratch)
+    ("lantern",     "Lantern"),   # working interpretive draft
+    ("translation", "Ben"),       # the finished human translation
+]
+
+
+def render_footnotes(poem):
+    if not poem.get("footnotes"):
+        return ""
+    return (
+        '<div class="footnotes">'
+        '<span class="label">Translator\'s Notes</span>'
+        "<p>" + poem["footnotes"] + "</p>"
+        "</div>"
+    )
+
+
+def draft_english(poem):
+    """Best available English for a draft's TOC snippet (most refined first)."""
+    for key in ("translation", "lantern", "machine"):
+        if poem.get(key, "").strip():
+            return poem[key]
+    return ""
+
+
+def render_draft_section(poem):
+    """A draft poem with one latching badge + column per non-empty English layer."""
+    poem_id   = poem.get("id", "")
+    available = [(k, lbl) for k, lbl in DRAFT_LAYERS if poem.get(k, "").strip()]
+    # Default the most refined available layer to visible.
+    default_key = available[-1][0] if available else None
+
+    badges = "".join(
+        f'<button type="button" class="layer-badge{" is-active" if k == default_key else ""}" '
+        f'data-poem="{poem_id}" data-layer="{k}">{lbl}</button>'
+        for k, lbl in available
+    )
+    badges_html = (
+        f'<div class="layer-badges" role="group" aria-label="Translation layers">{badges}</div>'
+    )
+
+    layers = "".join(
+        f'<div class="english-layer{" is-active" if k == default_key else ""}" '
+        f'data-poem="{poem_id}" data-layer="{k}">'
+        f'<span class="label">{lbl}</span>'
+        '<div class="poem-block english-poem"><p>' + poem.get(k, "") + "</p></div>"
+        "</div>"
+        for k, lbl in available
+    )
+
+    return (
+        f'<div class="poem-section" id="{poem_id}">'
+        '<div class="poem-header">'
+        f'<p class="poem-header-persian">{poem.get("persian_title", "")}</p>'
+        f'<p class="poem-header-english">{poem.get("english_title", "")}</p>'
+        f'<p class="poem-header-meta">{meta_line(poem)}</p>'
+        f'{badges_html}'
+        "</div>"
+        '<div class="pair">'
+        '<div class="persian">'
+        '<span class="label">متن اصلی</span>'
+        '<div class="poem-block persian-poem"><p>' + poem.get("persian", "") + "</p></div>"
+        "</div>"
+        f'<div class="english-layers">{layers}</div>'
+        "</div>"
+        + render_footnotes(poem)
+        + "</div>"
+    )
+
+
 def render_poem_section(poem, english_field="translation", english_label="Translation"):
-    footnotes_html = ""
-    if poem.get("footnotes"):
-        footnotes_html = (
-            '<div class="footnotes">'
-            '<span class="label">Translator\'s Notes</span>'
-            "<p>" + poem["footnotes"] + "</p>"
-            "</div>"
-        )
+    footnotes_html = render_footnotes(poem)
 
     if is_draft(poem):
         status_html = '<span class="poem-status is-draft">Draft</span>'
@@ -923,6 +1087,23 @@ TAB_SCRIPT = """
 """
 
 
+LAYER_SCRIPT = """
+  (function () {
+    var badges = document.querySelectorAll('.layer-badge');
+    badges.forEach(function (badge) {
+      badge.addEventListener('click', function () {
+        var poem = badge.dataset.poem;
+        var layer = badge.dataset.layer;
+        var on = badge.classList.toggle('is-active');
+        var sel = '.english-layer[data-poem="' + poem + '"][data-layer="' + layer + '"]';
+        var col = document.querySelector(sel);
+        if (col) col.classList.toggle('is-active', on);
+      });
+    });
+  })();
+"""
+
+
 def render_collection(poems, preface, book_persian, book_english, author):
     rendered = [p for p in poems if not is_draft(p)]
     drafts   = [p for p in poems if is_draft(p)]
@@ -930,11 +1111,8 @@ def render_collection(poems, preface, book_persian, book_english, author):
     toc = render_toc(rendered)
     sections = "\n".join(render_poem_section(p) for p in rendered)
 
-    drafts_toc = render_toc(drafts, english_source="machine", title="Drafts — پیش‌نویس‌ها")
-    drafts_sections = "\n".join(
-        render_poem_section(p, english_field="machine", english_label="Machine Draft")
-        for p in drafts
-    )
+    drafts_toc = render_toc(drafts, english_source=draft_english, title="Drafts — پیش‌نویس‌ها")
+    drafts_sections = "\n".join(render_draft_section(p) for p in drafts)
     preface_html = render_preface(preface)
 
     return f"""<!DOCTYPE html>
@@ -977,7 +1155,7 @@ def render_collection(poems, preface, book_persian, book_english, author):
 </div>
 
 <div id="tab-drafts" class="tab-panel poems">
-  <p class="drafts-note">Work in progress \u2014 the English here is a raw machine draft awaiting a finished translation.</p>
+  <p class="drafts-note">Work in progress \u2014 toggle the layers under each poem to compare them side by side: <b>Machine</b> (raw OCR) \u00b7 <b>Lantern</b> (a working draft) \u00b7 <b>Ben</b> (the finished translation). Empty layers are hidden.</p>
   <div id="toc-drafts" class="toc-wrapper">
     {drafts_toc}
   </div>
@@ -988,6 +1166,7 @@ def render_collection(poems, preface, book_persian, book_english, author):
 
 <a href="#toc" class="back-to-toc" title="Back to contents">^</a>
 <script>{TAB_SCRIPT}</script>
+<script>{LAYER_SCRIPT}</script>
 </body>
 </html>
 """

@@ -1,0 +1,11 @@
+id                  = "barren-cloud"
+english_title       = ""
+persian_title       = ""
+date_written        = "Summer 1987 - تابستان ۱۳۶۶"
+date_translated     = ""
+page_number         = "52"
+persian_page_number = "۵۲"
+source              = "raw-jafari-adobe-3.txt"
+tags                = ["love", "war", "rain", "resistance"]
+notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending."
+draft               = true

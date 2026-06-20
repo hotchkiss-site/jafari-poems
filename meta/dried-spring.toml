@@ -1,0 +1,11 @@
+id                  = "dried-spring"
+english_title       = ""
+persian_title       = ""
+date_written        = "1958 - بروجرد ۱۳۳۷"
+date_translated     = ""
+page_number         = "22"
+persian_page_number = "۲۲"
+source              = "raw-jafari-adobe-1.txt"
+tags                = ["longing", "hope", "nature"]
+notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending."
+draft               = true

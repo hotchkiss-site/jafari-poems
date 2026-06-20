@@ -1,0 +1,11 @@
+id                  = "road-peasant"
+english_title       = ""
+persian_title       = ""
+date_written        = "Autumn 1961, on the road to Borujerd - پاییز ۱۳۴۰ در راه بروجرد"
+date_translated     = ""
+page_number         = "34"
+persian_page_number = "۳۴"
+source              = "raw-jafari-adobe-1.txt"
+tags                = ["peasant", "road", "fate"]
+notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending."
+draft               = true

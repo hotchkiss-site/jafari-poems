@@ -1,0 +1,11 @@
+id                  = "sky-swallows"
+english_title       = "Swallows in the Vault of the Sky"
+persian_title       = "پرستوها به طاق آسمونند"
+date_written        = "1960 - ۱۳۳۹"
+date_translated     = ""
+page_number         = "25"
+persian_page_number = "۲۵"
+source              = "raw-jafari-adobe-1.txt"
+tags                = ["longing", "sky", "imagination"]
+notes               = "Titled in source. English block is a raw machine draft (kept in the machine section); finished translation pending."
+draft               = true

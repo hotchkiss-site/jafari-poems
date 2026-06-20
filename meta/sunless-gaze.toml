@@ -1,0 +1,11 @@
+id                  = "sunless-gaze"
+english_title       = ""
+persian_title       = ""
+date_written        = "Winter 1987 - زمستان ۱۳۶۶"
+date_translated     = ""
+page_number         = "56"
+persian_page_number = "۵۶"
+source              = "raw-jafari-adobe-3.txt"
+tags                = ["love", "longing", "ghazal"]
+notes               = "Untitled in source; classical ghazal form (radif '...نیست'). English block is a raw machine draft (kept in the machine section); finished translation pending."
+draft               = true

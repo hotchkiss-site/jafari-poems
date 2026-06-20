@@ -30,7 +30,10 @@ Plain text with named section delimiters. No metadata header.
 <original Persian text>
 
 ===machine===
-<raw machine translation — scratch only, not rendered>
+<raw OCR / machine translation — the literal first pass>
+
+===lantern===
+<working interpretive draft — a step between machine and the finished hand>
 
 ===translation===
 <finished English translation>
@@ -38,6 +41,8 @@ Plain text with named section delimiters. No metadata header.
 ===footnotes===
 <translator's notes — word choices, cultural context, variants>
 ```
+
+The three English sections are **layers** of increasing refinement: `machine` (raw OCR), `lantern` (a working draft), `translation` (the finished human version, labelled "Ben" in the UI). `lantern` is optional and need not be present in every file. In the **Drafts** tab each non-empty layer gets a clickable, latching badge under the poem; click one or several to show those layers side by side on the English side (empty layers show no badge). The **Poems** tab renders only the finished `translation`. The `===section===` parser is generic, so adding another layer later is a builder change, not a parser one.
 
 ### `meta/<id>.toml`
 Flat TOML. All fields defined in `schema.toml`. Every field is present in every file (empty string or empty array if unused).
@@ -58,7 +63,7 @@ draft               = false
 
 The `id` field must match the filename stem exactly. It is the link between the two files — there is no other join key.
 
-`draft = true` marks a poem whose English is still a raw machine draft (the `===translation===` section is empty and only `===machine===` is filled). Drafts are pulled out of the **Poems** tab and shown under a separate **Drafts** tab, where the English column renders the `machine` text and the poem carries a "Draft" badge. All finished poems are `draft = false` and carry a "Rendered" badge. Promote a poem by writing its finished `===translation===` and flipping `draft` to `false`.
+`draft = true` marks a poem whose English is not yet a finished translation. Drafts are pulled out of the **Poems** tab into a separate **Drafts** tab, where each non-empty English layer (`machine` / `lantern` / `translation`→"Ben") is shown as a togglable badge for side-by-side comparison (see the `.poem` format above); the most refined available layer is shown by default. A draft *may* already carry a finished `===translation===` that is staged but withheld from the Poems tab — it surfaces as the "Ben" layer in Drafts and stays out of Poems until you flip `draft` to `false` (e.g. poems imported in bulk as drafts that already had a human translation in the source). Finished poems are `draft = false`, carry a "Rendered" badge, and appear in **Poems** with their `translation`. Promote a poem by writing its finished `===translation===` and flipping `draft` to `false`.
 
 ### `preface/<NN-slug>.html`
 Front matter is richer than the poems (prose interleaved with quoted poems, footnotes, signatures), so each section is a **self-contained HTML fragment** rather than a `.poem`/`.toml` pair. Metadata lives inline in a `<!--meta-->` header; there is no sidecar TOML. Files are rendered in filename order, so the `NN-` numeric prefix controls section order.
@@ -121,3 +126,20 @@ CI runs `build_collection.py` automatically on pushes to `main` that touch `poem
 - **Tags** are lowercase English words. Add new ones freely; update `schema.toml` notes if a tag develops a specific meaning.
 - **The `machine` section** is a scratch space — it is parsed but never rendered in the HTML output.
 - `index.html` is committed by CI and should not be edited manually.
+
+## Documenting session decisions (files, not memory)
+
+Durable knowledge produced in a working session — process learnings, translation
+rationale, naming/format decisions, grammar explanations — is recorded in **versioned
+repo files, not in agent memory.** Memory is per-machine, invisible to collaborators and
+CI, and does not travel with the repo; the repo is the shared source of truth. So when a
+session generates something meant to outlast it, write it into the right file:
+
+- **Conversion / import process** → `jafari-conversion-skill.md`
+- **Repo structure, file formats, build behavior** → this file (`CLAUDE.md`)
+- **Farsi grammar explanations** → `farsi-grammar.md` — one section per point; **append**
+  a new section, never overwrite earlier entries or recreate the file
+- **Per-poem editorial notes** → the `notes` field in that poem's `meta/*.toml`
+
+When asked to "remember" a convention or explanation, default to documenting it in one of
+these files rather than to memory.

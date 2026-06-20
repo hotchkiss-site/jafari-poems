@@ -1,0 +1,11 @@
+id                  = "shelter-wall"
+english_title       = ""
+persian_title       = ""
+date_written        = "1988 - ۱۳۶۷"
+date_translated     = ""
+page_number         = "60"
+persian_page_number = "۶۰"
+source              = "raw-jafari-adobe-3.txt"
+tags                = ["love", "war", "shelter"]
+notes               = "Untitled in source. Alludes to Sohrab Sepehri ('با یاد سهراب ... مرغابی ها را بشمریم'). English block is a raw machine draft (kept in the machine section); finished translation pending."
+draft               = true

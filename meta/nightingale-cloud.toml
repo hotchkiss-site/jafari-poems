@@ -1,0 +1,11 @@
+id                  = "nightingale-cloud"
+english_title       = ""
+persian_title       = ""
+date_written        = "2001 - ۱۳۸۰"
+date_translated     = ""
+page_number         = ""
+persian_page_number = ""
+source              = "raw-jafari-adobe-1.txt"
+tags                = ["nightingale", "rain", "longing"]
+notes               = "Untitled in source. Source includes a polished human translation (kept in the translation section); imported as a draft per instruction — flip draft to false to render it. The machine section holds the raw MT shown in the Drafts tab."
+draft               = true
