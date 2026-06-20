@@ -8,3 +8,4 @@ persian_page_number = "۲۰۲"
 source              = ""
 tags                = []
 notes               = ""
+draft               = false

@@ -8,3 +8,4 @@ persian_page_number = "۱۲۷"
 source              = ""
 tags                = []
 notes               = ""
+draft               = false

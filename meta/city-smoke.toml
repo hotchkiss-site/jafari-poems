@@ -1,0 +1,11 @@
+id                  = "city-smoke"
+english_title       = ""
+persian_title       = ""
+date_written        = "1968 - ۱۳۴۷"
+date_translated     = ""
+page_number         = "25"
+persian_page_number = "۲۵"
+source              = "raw_Jafari-adobe-2.txt"
+tags                = ["city", "longing", "exile"]
+notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending."
+draft               = true

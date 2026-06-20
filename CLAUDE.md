@@ -7,13 +7,18 @@ A git-based bilingual poetry collection. The poems are translations of Mohammad 
 ```
 poems/          one .poem file per poem — text sections only
 meta/           one .toml file per poem — structured metadata
+preface/        front matter — one self-contained HTML fragment per section
 schema.toml     authoritative list of allowed metadata fields
-build_collection.py   renders all poems → index.html
+build_collection.py   renders preface + poems → index.html (tabbed)
 build_poem.py         renders a single poem → <id>.html
 new-poem.sh     interactive scaffolding for a new poem (both files)
 migrate.py      one-time migration script (kept for reference)
 index.html      generated output — do not edit by hand
 ```
+
+The rendered `index.html` has three tabs below a shared book header:
+**Preface** (the `preface/` sections), **Poems** (the TOC + finished poem sections),
+and **Drafts** (poems with `draft = true` — machine-only English awaiting a finished translation).
 
 ## File formats
 
@@ -48,9 +53,31 @@ persian_page_number = "۳۵"
 source              = ""
 tags                = ["nature", "solitude"]
 notes               = ""
+draft               = false
 ```
 
 The `id` field must match the filename stem exactly. It is the link between the two files — there is no other join key.
+
+`draft = true` marks a poem whose English is still a raw machine draft (the `===translation===` section is empty and only `===machine===` is filled). Drafts are pulled out of the **Poems** tab and shown under a separate **Drafts** tab, where the English column renders the `machine` text and the poem carries a "Draft" badge. All finished poems are `draft = false` and carry a "Rendered" badge. Promote a poem by writing its finished `===translation===` and flipping `draft` to `false`.
+
+### `preface/<NN-slug>.html`
+Front matter is richer than the poems (prose interleaved with quoted poems, footnotes, signatures), so each section is a **self-contained HTML fragment** rather than a `.poem`/`.toml` pair. Metadata lives inline in a `<!--meta-->` header; there is no sidecar TOML. Files are rendered in filename order, so the `NN-` numeric prefix controls section order.
+
+```html
+<!--meta
+label_fa: محمد ابراهیم جعفری
+label_en: Mohammad Ibrahim Jafari
+date: ۱۳۹۶ / 2017
+-->
+
+<div class="pair">
+  <div class="persian">…Persian (RTL) prose, <span class="aphorism">…</span>, <div class="poem-block"><div class="poem-fa">…</div></div></div>
+  <div class="english">…English prose, <div class="poem-block"><div class="poem-en">…</div></div></div>
+</div>
+<div class="signature">…author · date…</div>
+```
+
+The build reads the `<!--meta-->` header (drives the `.section-break` heading) and drops the body verbatim into the namespaced `.preface` container. Available classes: `pair` / `persian` / `english` (bilingual column), `poem-block` + `poem-fa` / `poem-en` (a quoted poem), `aphorism`, `footnotes` (+ `footnotes-fa`), `signature`, `label`, `needs-work` (+ `needs-work-note`). Preface CSS is scoped under `.preface` and poem CSS under `.poems`, so the shared class names (`pair`, `persian`, …) never collide between tabs.
 
 ## Adding a new poem
 
@@ -69,6 +96,10 @@ The script prompts for all fields, writes both files, and guards against duplica
    ```
 3. If the field should appear in the rendered HTML, update `build_collection.py` (see `render_poem_section` and `render_toc`).
 
+## Adding / editing a preface section
+
+Create or edit a file in `preface/` (e.g. `preface/05-afterword.html`). Give it a `NN-` prefix to place it in the running order, add a `<!--meta-->` header, and write the bilingual body using the classes listed above. No scaffolding script — just write the HTML and rebuild. To restyle the preface, edit the `.preface …` rules in `CSS` inside `build_collection.py` (and `render_preface_section` for the heading markup).
+
 ## Building
 
 ```bash
@@ -79,9 +110,9 @@ python build_collection.py poems/
 python build_poem.py ancient-tree
 ```
 
-Both scripts read from `meta/` (defaults to sibling of `poems/`) and `poems/`. Pass `--meta <path>` to override.
+Both scripts read from `meta/` (defaults to sibling of `poems/`) and `poems/`. `build_collection.py` also reads `preface/` (sibling of `poems/`). Pass `--meta <path>` / `--preface <path>` to override. If `preface/` is absent the Preface tab is simply empty.
 
-CI runs `build_collection.py` automatically on pushes to `main` that touch `poems/`, `meta/`, or the build script, and commits the updated `index.html`.
+CI runs `build_collection.py` automatically on pushes to `main` that touch `poems/`, `meta/`, `preface/`, or the build script, and commits the updated `index.html`.
 
 ## Conventions
 

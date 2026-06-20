@@ -53,3 +53,8 @@ description = "Thematic tags for searching and grouping (e.g. [\"nature\", \"exi
 type        = "string"
 required    = false
 description = "Curator notes on provenance, textual variants, or editorial context"
+
+[fields.draft]
+type        = "boolean"
+required    = false
+description = "true if the English is still a raw machine draft (no finished human translation). Draft poems appear under the Drafts tab; finished ('rendered') poems appear under Poems. Defaults to false (rendered)."

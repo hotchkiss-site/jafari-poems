@@ -6,6 +6,7 @@ on:
     paths:
       - "poems/**.poem"
       - "meta/**.toml"
+      - "preface/**.html"
       - "build_collection.py"
 
 permissions:

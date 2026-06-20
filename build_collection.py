@@ -30,6 +30,8 @@ def parse_toml(text: str) -> dict:
             result[key] = re.findall(r'"([^"]*)"', val)
         elif val.startswith('"') and val.endswith('"'):
             result[key] = val[1:-1]
+        elif val in ('true', 'false'):
+            result[key] = (val == 'true')
         elif val.lstrip('-').isdigit():
             result[key] = int(val)
         else:
@@ -67,6 +69,43 @@ def load_poem(meta_path: Path, poems_dir: Path) -> dict:
     if poem_path.exists():
         poem.update(parse_sections(poem_path.read_text(encoding="utf-8")))
     return poem
+
+
+def load_preface_section(path: Path) -> dict:
+    """Parse a preface/*.html fragment: a <!--meta ... --> header + HTML body.
+
+    The meta header holds the bilingual section labels and date that drive the
+    section heading. The body is verbatim HTML (the .pair / .signature blocks),
+    rendered as-is inside the namespaced .preface container.
+    """
+    text = path.read_text(encoding="utf-8")
+    meta = {}
+    body = text
+
+    m = re.search(r"<!--\s*meta\s*(.*?)-->", text, re.DOTALL)
+    if m:
+        for line in m.group(1).splitlines():
+            line = line.strip()
+            if not line or ":" not in line:
+                continue
+            key, _, val = line.partition(":")
+            meta[key.strip()] = val.strip()
+        body = text[m.end():]
+
+    return {
+        "stem": path.stem,
+        "label_fa": meta.get("label_fa", ""),
+        "label_en": meta.get("label_en", ""),
+        "date": meta.get("date", ""),
+        "body": body.strip(),
+    }
+
+
+def load_preface(preface_dir: Path) -> list:
+    """Load all preface/*.html fragments, ordered by filename (NN- prefix)."""
+    if not preface_dir.is_dir():
+        return []
+    return [load_preface_section(f) for f in sorted(preface_dir.glob("*.html"))]
 
 
 CSS = """
@@ -311,14 +350,44 @@ CSS = """
       letter-spacing: 0.04em;
     }
 
-    .pair {
+    .poem-status {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-variant: small-caps;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.85rem;
+      padding: 0.15rem 0.7rem;
+      border-radius: 1rem;
+      border: 1px solid currentColor;
+    }
+
+    .poem-status.is-rendered {
+      color: #5e7a4a;
+    }
+
+    .poem-status.is-draft {
+      color: #b8702a;
+    }
+
+    .drafts-note {
+      max-width: 900px;
+      margin: 0 auto 2rem;
+      padding: 0 2rem;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #7a6050;
+      text-align: center;
+    }
+
+    .poems .pair {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2.5rem;
       padding: 1.8rem 0;
     }
 
-    .persian {
+    .poems .persian {
       direction: rtl;
       font-size: 1.44rem;
       line-height: 2;
@@ -326,7 +395,7 @@ CSS = """
       padding-right: 1.2rem;
     }
 
-    .english {
+    .poems .english {
       direction: ltr;
       font-size: 1.31rem;
       line-height: 1.9;
@@ -334,30 +403,30 @@ CSS = """
       padding-left: 1.2rem;
     }
 
-    .poem-block {
+    .poems .poem-block {
       background: rgba(255,255,255,0.45);
       border-radius: 6px;
       padding: 1rem 1.2rem;
     }
 
-    .poem-block.persian-poem {
+    .poems .poem-block.persian-poem {
       text-align: right;
       font-size: 1.38rem;
       line-height: 2.2;
     }
 
-    .poem-block.english-poem {
+    .poems .poem-block.english-poem {
       font-style: italic;
       font-size: 1.25rem;
       line-height: 2.1;
     }
 
-    .poem-block p {
+    .poems .poem-block p {
       margin: 0;
       white-space: pre-wrap;
     }
 
-    .label {
+    .poems .label {
       font-variant: small-caps;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -367,7 +436,7 @@ CSS = """
       display: block;
     }
 
-    .footnotes {
+    .poems .footnotes {
       margin-top: 1.5rem;
       padding-top: 1rem;
       border-top: 1px solid #ddd0b8;
@@ -376,7 +445,7 @@ CSS = """
       line-height: 1.7;
     }
 
-    .footnotes p {
+    .poems .footnotes p {
       margin: 0.3rem 0;
       white-space: pre-wrap;
     }
@@ -390,7 +459,7 @@ CSS = """
       background: #c9843a;
       color: #f5f0e8;
       border-radius: 50%;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       text-decoration: none;
@@ -402,29 +471,252 @@ CSS = """
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
+    body.on-poems .back-to-toc {
+      display: flex;
+    }
+
     .back-to-toc:hover {
       opacity: 1;
     }
 
-    @media (max-width: 640px) {      .pair {
+    @media (max-width: 640px) {
+      .poems .pair {
         grid-template-columns: 1fr;
         gap: 1.2rem;
       }
-      .persian {
+      .poems .persian {
         border-right: none;
         border-bottom: 3px solid #c9843a;
         padding-right: 0;
         padding-bottom: 1rem;
       }
-      .english {
+      .poems .english {
         border-left: none;
         border-top: 3px solid #8aab72;
         padding-left: 0;
         padding-top: 1rem;
       }
     }
+
+    /* ── Tabs ───────────────────────────────────────────── */
+    .tabs {
+      max-width: 900px;
+      margin: 0 auto 2.5rem;
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 2px solid #c9843a;
+      padding: 0 1rem;
+    }
+
+    .tab-btn {
+      appearance: none;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 1.25rem;
+      color: #9c7f60;
+      cursor: pointer;
+      padding: 0.7rem 1.4rem;
+      border-radius: 6px 6px 0 0;
+      transition: background 0.15s, color 0.15s;
+      position: relative;
+      top: 2px;
+    }
+
+    .tab-btn:hover {
+      color: #6b5240;
+    }
+
+    .tab-btn.active {
+      color: #2a1f14;
+      font-weight: 600;
+      border: 2px solid #c9843a;
+      border-bottom: 2px solid #f5f0e8;
+      background: #f5f0e8;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* ── Preface (namespaced; mirrors the standalone intro page) ─ */
+    .preface {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem 4rem;
+    }
+
+    .preface .section-break {
+      text-align: center;
+      margin: 3rem 0 2rem;
+    }
+
+    .preface .section-break:first-child {
+      margin-top: 0;
+    }
+
+    .preface .section-break::before {
+      content: '';
+      display: block;
+      border-top: 1px solid #c9b89a;
+      margin-bottom: 1.5rem;
+    }
+
+    .preface .section-label-fa {
+      font-size: 1.4rem;
+      direction: rtl;
+      color: #6b4f2f;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .preface .section-label-en {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: #9a7a55;
+      letter-spacing: 0.04em;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .preface .section-meta {
+      font-size: 1rem;
+      color: #b0956e;
+    }
+
+    .preface .pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #ddd0b8;
+    }
+
+    .preface .pair:last-of-type {
+      border-bottom: none;
+    }
+
+    .preface .persian {
+      direction: rtl;
+      font-size: 1.3rem;
+      line-height: 2;
+      color: #2a1f14;
+      border-right: 3px solid #c9843a;
+      padding-right: 1.2rem;
+    }
+
+    .preface .english {
+      direction: ltr;
+      font-size: 1.2rem;
+      line-height: 1.9;
+      color: #3a2e22;
+      border-left: 3px solid #8aab72;
+      padding-left: 1.2rem;
+    }
+
+    .preface .poem-block {
+      background: rgba(255,255,255,0.45);
+      border-radius: 6px;
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .preface .poem-fa {
+      direction: rtl;
+      font-size: 1.25rem;
+      line-height: 2.2;
+      text-align: right;
+    }
+
+    .preface .poem-en {
+      font-size: 1.15rem;
+      line-height: 2.1;
+      font-style: italic;
+    }
+
+    .preface .label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #9a7a55;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .preface .aphorism {
+      font-style: italic;
+      color: #4a3520;
+    }
+
+    .preface .footnotes {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: #7a5e40;
+      line-height: 1.8;
+      border-top: 1px dashed #c9b89a;
+      padding-top: 1rem;
+    }
+
+    .preface .footnotes-fa {
+      direction: rtl;
+      text-align: right;
+    }
+
+    .preface .signature {
+      margin-top: 3rem;
+      text-align: center;
+      color: #6b4f2f;
+      font-style: italic;
+      font-size: 1.15rem;
+    }
+
+    .preface .needs-work {
+      opacity: 0.75;
+      font-style: italic;
+    }
+
+    .preface .needs-work-note {
+      font-size: 0.9rem;
+      color: #a07850;
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .preface .pair {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .preface .persian {
+        border-right: none;
+        border-bottom: 2px solid #c9843a;
+        padding-right: 0;
+        padding-bottom: 1rem;
+      }
+      .preface .english {
+        border-left: none;
+        border-top: 2px solid #8aab72;
+        padding-left: 0;
+        padding-top: 1rem;
+      }
+    }
 """
 
+
+
+def is_draft(poem):
+    """True if the poem is still a raw machine draft (no finished translation).
+
+    Accepts a real bool from parse_toml or a stray 'true'/'True' string.
+    """
+    v = poem.get("draft", False)
+    return v is True or (isinstance(v, str) and v.strip().lower() == "true")
 
 
 def extract_year(date_string):
@@ -456,7 +748,7 @@ def first_line(text):
     return ""
 
 
-def render_toc(poems):
+def render_toc(poems, english_source="translation", title="Poems — اشعار"):
     header = (
         '<tr class="toc-header">'
         '<th class="toc-col-english" style="text-align:left;">Page &amp; Title</th>'
@@ -480,7 +772,7 @@ def render_toc(poems):
         date_trans    = str(p.get("date_translated", ""))
         english_title = p.get("english_title", "")
         persian_title = p.get("persian_title", "")
-        fl_en         = first_line(p.get("translation", ""))
+        fl_en         = first_line(p.get(english_source, ""))
         fl_fa         = first_line(p.get("persian", ""))
 
         onclick = 'onclick="location.href=\'' + '#' + poem_id + '\'"'
@@ -525,7 +817,7 @@ def render_toc(poems):
 
     return (
         '<div class="toc">'
-        '<span class="toc-title">Poems — اشعار</span>'
+        f'<span class="toc-title">{title}</span>'
         '<table class="toc-table">'
         + header
         + "".join(rows)
@@ -533,7 +825,7 @@ def render_toc(poems):
     )
 
 
-def render_poem_section(poem):
+def render_poem_section(poem, english_field="translation", english_label="Translation"):
     footnotes_html = ""
     if poem.get("footnotes"):
         footnotes_html = (
@@ -543,12 +835,18 @@ def render_poem_section(poem):
             "</div>"
         )
 
+    if is_draft(poem):
+        status_html = '<span class="poem-status is-draft">Draft</span>'
+    else:
+        status_html = '<span class="poem-status is-rendered">Rendered</span>'
+
     return (
         f'<div class="poem-section" id="{poem.get("id", "")}">'
         '<div class="poem-header">'
         f'<p class="poem-header-persian">{poem.get("persian_title", "")}</p>'
         f'<p class="poem-header-english">{poem.get("english_title", "")}</p>'
         f'<p class="poem-header-meta">{meta_line(poem)}</p>'
+        f'{status_html}'
         "</div>"
         '<div class="pair">'
         '<div class="persian">'
@@ -556,8 +854,8 @@ def render_poem_section(poem):
         '<div class="poem-block persian-poem"><p>' + poem.get("persian", "") + "</p></div>"
         "</div>"
         '<div class="english">'
-        '<span class="label">Translation</span>'
-        '<div class="poem-block english-poem"><p>' + poem.get("translation", "") + "</p></div>"
+        f'<span class="label">{english_label}</span>'
+        '<div class="poem-block english-poem"><p>' + poem.get(english_field, "") + "</p></div>"
         "</div>"
         "</div>"
         + footnotes_html
@@ -565,9 +863,79 @@ def render_poem_section(poem):
     )
 
 
-def render_collection(poems, book_persian, book_english, author):
-    toc = render_toc(poems)
-    sections = "\n".join(render_poem_section(p) for p in poems)
+def render_preface_section(section):
+    header = ""
+    if section.get("label_fa") or section.get("label_en") or section.get("date"):
+        meta = (
+            f'<span class="section-meta">{section["date"]}</span>'
+            if section.get("date") else ""
+        )
+        header = (
+            '<div class="section-break">'
+            f'<span class="section-label-fa">{section.get("label_fa", "")}</span>'
+            f'<span class="section-label-en">{section.get("label_en", "")}</span>'
+            f'{meta}'
+            '</div>'
+        )
+    return f'{header}\n{section.get("body", "")}'
+
+
+def render_preface(sections):
+    return "\n".join(render_preface_section(s) for s in sections)
+
+
+TAB_SCRIPT = """
+  (function () {
+    var buttons = document.querySelectorAll('.tab-btn');
+    var panels = document.querySelectorAll('.tab-panel');
+    var backToToc = document.querySelector('.back-to-toc');
+    function activate(name) {
+      buttons.forEach(function (b) {
+        b.classList.toggle('active', b.dataset.tab === name);
+      });
+      panels.forEach(function (p) {
+        p.classList.toggle('active', p.id === 'tab-' + name);
+      });
+      var onPoems = name === 'poems' || name === 'drafts';
+      document.body.classList.toggle('on-poems', onPoems);
+      if (backToToc) {
+        backToToc.setAttribute('href', name === 'drafts' ? '#toc-drafts' : '#toc');
+      }
+      if (history.replaceState) history.replaceState(null, '', '#' + name);
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { activate(b.dataset.tab); });
+    });
+    // Open the tab whose panel contains the hash target; else the named tab; else preface.
+    var hash = (location.hash || '').replace('#', '');
+    function panelHas(tab) {
+      return hash && document.getElementById('tab-' + tab) &&
+        document.getElementById('tab-' + tab).querySelector('#' + CSS.escape(hash));
+    }
+    if (hash === 'drafts' || hash === 'toc-drafts' || panelHas('drafts')) {
+      activate('drafts');
+    } else if (hash === 'poems' || hash === 'toc' || panelHas('poems')) {
+      activate('poems');
+    } else {
+      activate('preface');
+    }
+  })();
+"""
+
+
+def render_collection(poems, preface, book_persian, book_english, author):
+    rendered = [p for p in poems if not is_draft(p)]
+    drafts   = [p for p in poems if is_draft(p)]
+
+    toc = render_toc(rendered)
+    sections = "\n".join(render_poem_section(p) for p in rendered)
+
+    drafts_toc = render_toc(drafts, english_source="machine", title="Drafts — پیش‌نویس‌ها")
+    drafts_sections = "\n".join(
+        render_poem_section(p, english_field="machine", english_label="Machine Draft")
+        for p in drafts
+    )
+    preface_html = render_preface(preface)
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -589,15 +957,37 @@ def render_collection(poems, book_persian, book_english, author):
   </div>
 </div>
 
-<div id="toc" class="toc-wrapper">
-  {toc}
+<div class="tabs">
+  <button class="tab-btn active" data-tab="preface">Preface &middot; \u067e\u06cc\u0634\u06af\u0641\u062a\u0627\u0631</button>
+  <button class="tab-btn" data-tab="poems">Poems &middot; \u0627\u0634\u0639\u0627\u0631</button>
+  <button class="tab-btn" data-tab="drafts">Drafts &middot; \u067e\u06cc\u0634\u200c\u0646\u0648\u06cc\u0633</button>
 </div>
 
-<div class="page">
-  {sections}
+<div id="tab-preface" class="tab-panel preface active">
+  {preface_html}
+</div>
+
+<div id="tab-poems" class="tab-panel poems">
+  <div id="toc" class="toc-wrapper">
+    {toc}
+  </div>
+  <div class="page">
+    {sections}
+  </div>
+</div>
+
+<div id="tab-drafts" class="tab-panel poems">
+  <p class="drafts-note">Work in progress \u2014 the English here is a raw machine draft awaiting a finished translation.</p>
+  <div id="toc-drafts" class="toc-wrapper">
+    {drafts_toc}
+  </div>
+  <div class="page">
+    {drafts_sections}
+  </div>
 </div>
 
 <a href="#toc" class="back-to-toc" title="Back to contents">^</a>
+<script>{TAB_SCRIPT}</script>
 </body>
 </html>
 """
@@ -607,14 +997,16 @@ def main():
     parser = argparse.ArgumentParser(description="Render all poems (meta/ + poems/) to one HTML file.")
     parser.add_argument("folder", nargs="?", default="poems", help="Path to poems/ folder (default: poems)")
     parser.add_argument("--meta", default=None, help="Path to meta/ folder (default: sibling of poems/)")
+    parser.add_argument("--preface", default=None, help="Path to preface/ folder (default: sibling of poems/)")
     parser.add_argument("--out", default="index.html", help="Output HTML path")
     parser.add_argument("--book-persian", default="\u0628\u0648\u06cc \u06a9\u0627\u0647\u06af\u0644 \u0648 \u0622\u0648\u0627\u0632 \u067e\u0631\u0646\u062f\u0647")
     parser.add_argument("--book-english", default="The Smell of Adobe and Birdsong")
     parser.add_argument("--author", default="Mohammad Ebrahim Jafari")
     args = parser.parse_args()
 
-    poems_dir = Path(args.folder)
-    meta_dir  = Path(args.meta) if args.meta else poems_dir.parent / "meta"
+    poems_dir   = Path(args.folder)
+    meta_dir    = Path(args.meta) if args.meta else poems_dir.parent / "meta"
+    preface_dir = Path(args.preface) if args.preface else poems_dir.parent / "preface"
 
     if not poems_dir.is_dir():
         print(f"Error: poems folder '{poems_dir}' not found.")
@@ -639,12 +1031,16 @@ def main():
 
     poems.sort(key=sort_key)
 
-    html = render_collection(poems, args.book_persian, args.book_english, args.author)
+    preface = load_preface(preface_dir)
+
+    html = render_collection(poems, preface, args.book_persian, args.book_english, args.author)
 
     out_path = Path(args.out)
     out_path.write_text(html, encoding="utf-8")
     n = len(poems)
-    print(f"Written: {out_path} ({n} poem{'s' if n != 1 else ''})")
+    s = len(preface)
+    print(f"Written: {out_path} ({n} poem{'s' if n != 1 else ''}, "
+          f"{s} preface section{'s' if s != 1 else ''})")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بوی خاک و آواز پرندگان — Smell of Clay and Birdsong</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f5f0e8;
+    color: #2a1f14;
+    font-family: 'Crimson Text', Georgia, serif;
+    min-height: 100vh;
+  }
+
+  header {
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    border-bottom: 1px solid #c9b89a;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .title-fa {
+    font-size: 2rem;
+    direction: rtl;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  .title-en {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: #6b4f2f;
+  }
+
+  .byline {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: #8a6e50;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .section-break {
+    text-align: center;
+    margin: 3rem 0 2rem;
+    position: relative;
+  }
+
+  .section-break::before {
+    content: '';
+    display: block;
+    border-top: 1px solid #c9b89a;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-label-fa {
+    font-size: 1.1rem;
+    direction: rtl;
+    color: #6b4f2f;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .section-label-en {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: #9a7a55;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .section-meta {
+    font-size: 0.8rem;
+    color: #b0956e;
+  }
+
+  .pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid #ddd0b8;
+  }
+
+  .pair:last-child {
+    border-bottom: none;
+  }
+
+  .persian {
+    direction: rtl;
+    font-size: 1.15rem;
+    line-height: 2;
+    color: #2a1f14;
+    border-right: 3px solid #c9843a;
+    padding-right: 1.2rem;
+  }
+
+  .english {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #3a2e22;
+    border-left: 3px solid #8aab72;
+    padding-left: 1.2rem;
+  }
+
+  .poem-block {
+    background: rgba(255,255,255,0.45);
+    border-radius: 6px;
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .poem-fa {
+    direction: rtl;
+    font-size: 1.1rem;
+    line-height: 2.2;
+    text-align: right;
+  }
+
+  .poem-en {
+    font-size: 1rem;
+    line-height: 2.1;
+    font-style: italic;
+  }
+
+  .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #9a7a55;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .footnotes {
+    margin-top: 1.5rem;
+    font-size: 0.88rem;
+    color: #7a5e40;
+    line-height: 1.8;
+    border-top: 1px dashed #c9b89a;
+    padding-top: 1rem;
+  }
+
+  .footnotes-fa {
+    direction: rtl;
+    text-align: right;
+  }
+
+  .signature {
+    margin-top: 3rem;
+    text-align: center;
+    color: #6b4f2f;
+    font-style: italic;
+    font-size: 1rem;
+  }
+
+  .aphorism {
+    font-style: italic;
+    color: #4a3520;
+  }
+
+  .needs-work {
+    opacity: 0.75;
+    font-style: italic;
+  }
+
+  .needs-work-note {
+    font-size: 0.78rem;
+    color: #a07850;
+    display: block;
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .pair {
+      grid-template-columns: 1fr;
+    }
+    .persian {
+      border-right: none;
+      border-bottom: 2px solid #c9843a;
+      padding-right: 0;
+      padding-bottom: 1rem;
+    }
+    .english {
+      border-left: none;
+      border-top: 2px solid #8aab72;
+      padding-left: 0;
+      padding-top: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title-fa">بوی خاک و آواز پرندگان</div>
+  <div class="title-en">Smell of Clay and Birdsong</div>
+  <div class="byline">Mohammad Ibrahim Jafari — Ordibehesht 1396 / Spring 2017</div>
+</header>
+
+<div class="container">
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 1: JAFARI'S OWN WORDS
+       ═══════════════════════════════════════════════════ -->
+
+  <div class="section-break">
+    <span class="section-label-fa">محمد ابراهیم جعفری</span>
+    <span class="section-label-en">Mohammad Ibrahim Jafari</span>
+    <span class="section-meta">۱۳۹۶ / 2017</span>
+  </div>
+
+  <!-- Jafari — single block -->
+  <div class="pair">
+    <div class="persian">
+      <span class="label" style="text-align:right; direction:rtl;">فارسی</span>
+      <span class="aphorism">کوتاه‌ترین غزلی که می‌شناسم «بید مجنون» است.</span>
+      <br><br>
+      <span class="aphorism">شنیده‌ام هنر حیاتی شدت یافته است. عشق با نگاه شدت یافته آغاز می‌شود. نگاهی درخشنده و تابناک.</span><sup>۱</sup>
+      <br><br>
+      <span class="aphorism">اگر شگفتی امروز را تا آخرین قطره بنوشی، فردا تشنه‌تر خواهی بود.</span>
+      <br><br>
+      <span class="aphorism">یک نفس از امروز را به فردا مگذار. آن که در دیروز نفس می‌کشد، امروز آوازی تازه ندارد.</span><sup>۲</sup>
+      <br><br>
+      <span class="aphorism">میان سنت و نوگرایی پلی است که با پاهای شوق پیموده می‌شود.</span>
+      <div class="poem-block">
+        <div class="poem-fa">از هم‌آغوشی جانم با شوق<br>در پی تاب و تبی پیچاپیچ<br>سایه‌ای می‌روید<br>در پس پردهٔ هیچ...</div>
+      </div>
+      <span class="aphorism">وقتی نگاهی نو به واقعیت می‌کنی، واقعیت به واقعه تبدیل می‌شود.</span>
+      <br><br>
+      <span class="aphorism">باغ شعر من در این سایه‌ها گل داده است.</span>
+      <br><br>
+      من باور دارم که...
+      <div class="poem-block">
+        <div class="poem-fa">الهام هر چه باشد، از «نمی‌دانم» «دانم» می‌روید.</div>
+      </div>
+      من باور دارم که...
+      <div class="poem-block">
+        <div class="poem-fa">«شعر نباید معنی داشته باشد، شعر باید باشد.»</div>
+      </div>
+      <div style="text-align:right; direction:rtl; font-style:italic; color:#6b4f2f; margin-top:1.5rem; margin-bottom:1rem;">
+        محمد ابراهیم جعفری، ۱۳۹۶
+      </div>
+      <div class="footnotes footnotes-fa">
+        <sup>١</sup> ویساوا شیمبورسکا، شاعر لهستانی برندهٔ جایزهٔ نوبل ادبیات (۱۹۲۳–۲۰۱۲)<br>
+        <sup>٢</sup> آرچیبالد مک‌لیش، شاعر و کتابدار آمریکایی (۱۸۹۲–۱۹۸۲)
+      </div>
+    </div>
+    <div class="english">
+      <span class="label">English</span>
+      <span class="aphorism">The shortest ghazal I know is "The Mad Willow."</span>
+      <br><br>
+      <span class="aphorism">I have heard that art has become more vital. Love begins with an intensified gaze. A radiant and luminous gaze.</span><sup>1</sup>
+      <br><br>
+      <span class="aphorism">If you drink today's wonder to the last drop, you will be thirstier tomorrow.</span>
+      <br><br>
+      <span class="aphorism">Don't let one breath from today into tomorrow. That which breathes in yesterday has no new song today.</span><sup>2</sup>
+      <br><br>
+      <span class="aphorism">Between tradition and modernity is a bridge that is crossed by the feet of passion.</span>
+      <div class="poem-block">
+        <div class="poem-en">From the embrace of my soul with passion,<br>following the twists and turns of a fever,<br>a shadow grows<br>behind the curtain of nothing...</div>
+      </div>
+      <span class="aphorism">When you take a new look at reality, reality becomes an event.</span>
+      <br><br>
+      <span class="aphorism">My garden of poetry has blossomed in these shadows.</span>
+      <br><br>
+      I believe that...
+      <div class="poem-block">
+        <div class="poem-en">Whatever inspiration is, it grows from <em>I don't know</em> into <em>I know</em>.</div>
+      </div>
+      I believe that...
+      <div class="poem-block">
+        <div class="poem-en">"A poem should not mean, but be."</div>
+      </div>
+      <div style="font-style:italic; color:#6b4f2f; margin-top:1.5rem; margin-bottom:1rem;">
+        Mohammad Ibrahim Jafari, 2017
+      </div>
+      <div class="footnotes">
+        <sup>1</sup> Wisława Szymborska, Polish poet and Nobel Prize winner in Literature (1923–2012)<br>
+        <sup>2</sup> Archibald MacLeish, American poet and librarian (1892–1982)
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 2: KHOSROW SINAI'S PREFACE
+       ═══════════════════════════════════════════════════ -->
+
+  <div class="section-break">
+    <span class="section-label-fa">سرخی دانهٔ انار — پیشگفتار خسرو سینایی</span>
+    <span class="section-label-en">The Redness of the Pomegranate Seed — Preface by Khosrow Sinai</span>
+    <span class="section-meta">اردیبهشت ۱۳۹۶ / Spring 2017</span>
+  </div>
+
+  <!-- Sinai Block 1 -->
+  <div class="pair">
+    <div class="persian">
+      <span class="label" style="text-align:right; direction:rtl;">فارسی</span>
+      بالاخره پس از سال‌ها تأخیر، آنچه که باید، اتفاق افتاد. من فقط خوشحال نیستم، ذوق‌زده‌ام. خوب می‌دانم که این ذوق‌زدگی فقط از سر رفاقت من با محمدابراهیم جعفری نیست. یادم هست چند سال پیش فردی منتقد از من پرسید: «شما فکر می‌کنی خودت هنرمندی؟!» جواب دادم: «نمی‌دانم!»
+      <br><br>
+      ...اما خوب می‌دانم که حدود شصت‌سال با انواع هنرمندان ارتباط دوستی دور و نزدیک داشته‌ام، شاعر... نقاش... موسیقیدان... و بالاخره فیلمساز... و آموخته‌ام تشخیص دهم که چه کسی ذاتاً هنرمند است و چه‌کسی با باد به غیبغب انداختن و تقرعن و نوچه‌پروری آثارش را به مردمان تحمیل می‌کند. طی همهٔ این سال‌ها چه نادر بودند کسانی که ذات هنرمندشان، مرا به شگفتی واداشت، و بی‌تردید محمدابراهیم جعفری یکی از آن‌هاست.
+    </div>
+    <div class="english">
+      <span class="label">English</span>
+      Finally, after years of delay, what needed to happen has happened. I am not merely glad — I am elated. I know well enough that this elation isn't simply a product of my friendship with Mohammad Ibrahim Jafari. I remember a few years ago a critic asked me: "Do you think you yourself are an artist?!" I answered: "I don't know!"
+      <br><br>
+      ...But I know well that for roughly sixty years I have had close and distant friendships with all manner of artists — poets... painters... musicians... and finally filmmakers — and I have learned to recognize who is genuinely an artist by nature, and who imposes their work on people through self-inflation, arrogance, and the cultivation of sycophants. Throughout all these years, how rare were those whose artistic essence filled me with wonder — and Mohammad Ibrahim Jafari is without doubt one of them.
+    </div>
+  </div>
+
+  <!-- Sinai Block 2 -->
+  <div class="pair">
+    <div class="persian">
+      طنزگزندهٔ او در بعضی از اشعارش همیشه مرا در فضایی میان اشعار عبید زاکانی و ایرج‌میرزا قرار می‌داد. یادم نمی‌رود در آن شب‌هایی که بر سرمان بمب و موشک می‌بارید، او در جمع دوستان دوتارش را برمی‌داشت، ضرب‌آهنگی را تکرار می‌کرد و با صدایی خش‌دار برایمان می‌خواند: «جنگلا پُر تَمشکه!» و ما دوستان در آن شب‌های غم‌آلود، با احساسی میان گریه و خنده با او همدل و همزبان و هم‌آواز می‌شدیم. مگر نه این که او در پایان شعری گفته:
+      <div class="poem-block">
+        <div class="poem-fa">«گاه خندان می‌گریم...<br>گاه گریان می‌خندم...<br>عاقلان می‌گویند:...<br>من هنرمندم!»</div>
+      </div>
+      بعدها از روش آوازخوانی‌اش که ایرانی بود، محلی بود، غیرمتعارف بود، اما اصیل و امروزی بود، کسانی برداشت کردند، به شهرت رسیدند و کمتر کسی دانست که او آغازگر آن راه بود.
+    </div>
+    <div class="english">
+      The biting wit of some of his poems always placed me in a space between the verses of Obeyd Zakani and Iraj Mirza. I cannot forget those nights when bombs and missiles rained down on us — he would pick up his dutar among friends, repeat a rhythm, and sing to us in his raspy voice: "The forest is full of blackberries!" And we friends, in those grief-laden nights, with a feeling suspended between weeping and laughter, would find ourselves in sympathy, in voice, in unison with him. Has he not said, at the end of one poem:
+      <div class="poem-block">
+        <div class="poem-en">"Sometimes I weep while laughing...<br>Sometimes I laugh while weeping...<br>The wise say:...<br>I am an artist!"</div>
+      </div>
+      Afterward, others borrowed from his singing style — which was Iranian, local, unconventional, yet authentic and contemporary — rose to fame, and few knew that he had been the one to open that road.
+    </div>
+  </div>
+
+  <!-- Sinai Block 3 — with folk poem -->
+  <div class="pair">
+    <div class="persian">
+      گاه فروتنی و صمیمیت ترانه‌هایش مرا به یاد باباطاهر می‌اندازد. وقتی می‌گوید:
+      <div class="poem-block">
+        <div class="poem-fa">دوتا کفتر سفید و زعفرونی<br>نشستن دِ تثار سایه‌بونی<br>سفیده ناله سو... سیل شفق کرد<br>سه کو... آفتو مِزه مِثه جوونی</div>
+      </div>
+      گاه در رندی و ظرافت اشعارش همان جنس وجود شاعری را می‌یابم که بزرگی چون حافظ را به تاریخ فرهنگمان هدیه کرد. او همیشه در ذهن من تروبادورهای قرون وسطای اروپا را تداعی می‌کند، همان خوانندگان دوره‌گردی که آوازخوان از شهری به شهری می‌رفتند، و سرودن جزئی از بودنشان بود.
+    </div>
+    <div class="english">
+      Sometimes the humility and intimacy of his songs remind me of Baba Taher. When he sings:
+      <div class="poem-block">
+        <div class="poem-en">Two doves, white and saffron-colored,<br>Settled in the shade of the arbor —<br>The white one cried toward dawn... the horizon flooded red,<br>Three coos... the sun tastes like youth.</div>
+      </div>
+      At other times, in the wit and delicacy of his verses, I find the very same quality of poetic being that gave someone like Hafez to our cultural history. He always evokes in my mind the troubadours of medieval Europe — those wandering singers who went from city to city in song, for whom composing was part of simply existing.
+    </div>
+  </div>
+
+  <!-- Sinai Block 4 -->
+  <div class="pair">
+    <div class="persian">
+      همیشه به او گفته‌ام که ذهن شاعرانه آنچنان در تو می‌جوشد، که چون فرزندانی که قدر ثروت پدری را نمی‌دانند، ثروت ذاتی وجودت را چنان مُسرفانه و با فروتنی ارائه می‌کنی، که آن‌ها که از حساسیت هنرمندانه تو بی‌بهره‌اند، ممکن است به‌سادگی از آن‌ها بگذرند و در انتظار شاعرانی! بمانند که باد به غیبغب می‌اندازند و آنچه را که نه خود می‌فهمند و نه مخاطبان، با آب‌وتاب به دیگران حُقنه می‌کنند.
+      <br><br>
+      اگر بپذیریم که جنین شعر در ذهن شاعر جان می‌گیرد و رشد می‌کند؛ آنچه که آن را به بیرون از ذهن متجلی می‌کند، یعنی به مخاطب منتقل می‌کند، جز ابزاری نیست که شاعر بر آن تسلط دارد، و این ابزار کلام می‌تواند باشد، موسیقی باشد، نقاشی باشد، و یا هر هنر دیگری که عامل خلاقیت شاعرانه در آن نقشی دارد. جعفری طی سال‌ها از دو گونه ابزار استفاده کرده است: کلام و نقاشی، که در دومی سال‌ها در مقام استاد به پرورش نسل‌های جوان پرداخته است. یکی از شاگردانش که امروز خود نقاش نامداری‌ست، روزی درباره او به من گفت: «اغلب اساتید به ما فنون نقاشی را می‌آموختند، اما او علاوه‌بر آن روح هنرمند را در ما بیدار می‌کرد.»
+    </div>
+    <div class="english">
+      I have always told him: the poetic mind wells up in you so abundantly that, like children who don't recognize the value of their father's inheritance, you offer your innate wealth so lavishly and so humbly that those who lack your artistic sensitivity might simply pass it by — waiting instead for poets! who inflate themselves and force upon others, with great fanfare, what neither they themselves nor their audience truly understands.
+      <br><br>
+      If we accept that the embryo of a poem takes life and grows in the poet's mind, then what brings it into the world — what transmits it to the audience — is nothing but the instrument the poet has mastered. That instrument can be language, or music, or painting, or any other art in which the poetic creative impulse plays a role. Jafari, over the years, has used two instruments: words and painting — and in the latter, he spent years as a teacher nurturing younger generations. One of his students, himself now a celebrated painter, once said to me about him: "Most teachers taught us the techniques of painting — but he, beyond that, awakened the artist's soul in us."
+    </div>
+  </div>
+
+  <!-- Sinai Block 5 — final poem -->
+  <div class="pair">
+    <div class="persian">
+      راست می‌گفت! به‌عنوان دوستش همیشه او را چون سیم ظریف سه‌تاری شناخته‌ام که وقتی مرتعش می‌شود، فقط سیم‌هایی را به ارتعاش درمی‌آورد که از ظرافتی مشابه برخوردارند. همین یک شعر او نمونه‌ای از گواهان بسیار این گفتهٔ من است:
+      <div class="poem-block">
+        <div class="poem-fa">دل من انار هزاردانه‌ای‌ست<br>با توان سرخ عشقی<br>در هر دانه...<br>وقتی تو به من نگاه می‌کنی<br>یکی از دانه‌ها سرخ‌تر می‌شود.</div>
+      </div>
+      اعتراف می‌کنم که به‌عنوان یکی از اهالی هنر، گاهی به جوشش شاعرانهٔ ذهن او غبطه خورده‌ام.
+    </div>
+    <div class="english">
+      He was right. As his friend, I have always known him as a delicate string of a setar — when it vibrates, it only sets into vibration those strings that possess a similar delicacy. This single poem is one of many witnesses to what I am saying:
+      <div class="poem-block">
+        <div class="poem-en">My heart is a pomegranate of a thousand seeds,<br>with the red capacity of a love<br>in every seed...<br>When you look at me,<br>one of the seeds grows redder.</div>
+      </div>
+      I confess that as someone who lives in the world of art, I have sometimes felt a quiet envy toward the poetic welling of his mind.
+    </div>
+  </div>
+
+  <!-- Sinai Block 6 — closing -->
+  <div class="pair">
+    <div class="persian">
+      خوشحالم که بالاخره به‌کوشش همسر گرامی‌اش، پذیرفت تا اشعارش، که به باور من از زلال‌ترین اشعار زمانهٔ ما هستند، به گسترهٔ وسیع‌تری از مخاطبان ارائه شود، تا پی‌ببرند که چگونه می‌توان بدون سردرگم کردن مخاطب در پیچیدگی جملات نامفهوم و هزارتوی نظریه‌های گنگ، ایرانی بود، اصیل بود، امروزی بود... و شاعر بود!
+    </div>
+    <div class="english">
+      I am glad that finally, through the efforts of his dear wife, he agreed to let his poems — which I believe are among the clearest verses of our time — be offered to a wider audience, so that they might discover how one can, without bewildering the reader in impenetrable sentences and labyrinthine obscure theories, be Iranian, be authentic, be contemporary... and be a poet!
+    </div>
+  </div>
+
+  <div class="signature">
+    خسرو سینایی، اردیبهشت ۱۳۹۶<br>
+    <em>Khosrow Sinai — Spring 2017</em>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 3: BAJLAN FARROKHI'S INTRODUCTION
+       ═══════════════════════════════════════════════════ -->
+
+  <div class="section-break">
+    <span class="section-label-fa">مقدمهٔ باجلان فرخی</span>
+    <span class="section-label-en">Introduction by Bajlan Farrokhi</span>
+    <span class="section-meta">اردیبهشت ۱۳۹۶ / Spring 2017</span>
+  </div>
+
+  <!-- Farrokhi Block 1 -->
+  <div class="pair">
+    <div class="persian">
+      <span class="label" style="text-align:right; direction:rtl;">فارسی</span>
+      استاد محمد ابراهیم جعفری صورتگر و نقاش بزرگ را شعرهایی است که دوشادوش تکامل او در نقش‌بندی سرایش یافته و از به دفتر نشستن آن‌ها دوری جسته است. سرانجام اما ابرام همدم همدل و همسر فرزانهٔ وی، بانو مریم... و دوستان نزدیک به چاپ این نخستین دفتر انجامید. جعفری در نقاشی تثبیت‌کنندهٔ داده‌های سوبژکتیو لحظه‌های زندگی‌ست و در شعرهای خویش سخنگوی این لحظه‌ها... و چنین است که بسیاری از سروده‌هایش با نقش‌بندهایش پهلو می‌زند و گاه یک و همان است.
+    </div>
+    <div class="english">
+      <span class="label">English</span>
+      The great painter and sculptor, Professor Mohammad Ibrahim Jafari, has poems that have been composed alongside his development in composition and avoided sitting in a notebook. Finally, through the persistent warmth of his dear companion and wise wife, Lady Maryam... and close friends, the publication of this first collection came to be. In painting, Jafari is the one who fixes the subjective data of life's moments; in his poems, he is their speaker — and so it is that many of his verses stand alongside his compositions, and at times are one and the same.
+    </div>
+  </div>
+
+  <!-- Farrokhi Block 2 — haiku / painter-poets + "I am silent" poem -->
+  <div class="pair">
+    <div class="persian">
+      شعرهای کوتاه این دفتر در خوانش چنان چون ضرب‌آهنگ قلم‌مویی در خلق یک اثر می‌باشد و غنای آن در مرحلهٔ نخست یادآور تک‌بیت‌های شگفت‌انگیز شاعران کلاسیک پارسی و گاه هایکوهای ژرف ژاپنی است؛ و در کار شعر همانند نقاشی نه پیرو دیگران که متکی بر خویشتن خویش است. صورتگران شاعر در کار خویش باریک‌بین و بی‌همتا هستند — در سرزمین‌های دیگر نیز می‌توان از ژنی‌هایی چون وانگ وی، نقاش و شاعر چینی (۶۳۷–۷۴۰ میلادی)، و میکل‌آنژ، پیکرتراش، نقاش و شاعر ایتالیایی، یاد کرد.
+      <br><br>
+      از جعفری است:
+      <div class="poem-block">
+        <div class="poem-fa">من<br>خاموشم<br>تا ماه... با تو... بگوید</div>
+      </div>
+    </div>
+    <div class="english">
+      The short poems of this collection, in the reading, are like the rhythm of a brushstroke in the making of a work — their richness in the first instance is reminiscent of the remarkable single couplets of classical Persian poets, and at times of the profound Japanese haiku; and in the work of poetry, as in painting, he follows no one but himself. Painter-poets are precise and singular in their work — in other lands one can name geniuses such as Wang Wei, the Chinese painter and poet (637–740 AD), and Michelangelo, the Italian sculptor, painter, and poet.
+      <br><br>
+      From Jafari:
+      <div class="poem-block">
+        <div class="poem-en">I<br>am silent<br>until the moon... speaks to you...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Farrokhi Block 3 — moon as collaborator, Wang Wei, Basho, Jafari poems -->
+  <div class="pair">
+    <div class="persian">
+      که گویی ماه از سویی به یاری شاعر آمده است تا با همدلی از ناگفته‌های او و یگانه شدن با شاعر بگوید که خاموشی و شب سرشار از ناگفته‌هاست.
+      <br><br>
+      و این شعر از وانگ وی در برگردان فارسی:
+      <div class="poem-block">
+        <div class="poem-fa">تنهایم و عود می‌نوازم در نیزار دور<br>نوایی را با سوت زمزمه می‌کنم<br>در نیزار بی‌انتها کسی نیست<br>ماه و انوار رخشانش</div>
+      </div>
+      و این شعر باشو (۱۶۴۴–۱۶۹۴ میلادی)، از برگردان فارسی شاملو و پاشایی:
+      <div class="poem-block">
+        <div class="poem-fa">ابرها<br>استراحتی می‌دهند<br>نظارگان ماه را</div>
+      </div>
+      و این شعر از جعفری که تابلویی شگفت‌انگیز است:
+      <div class="poem-block">
+        <div class="poem-fa">پنجاه سال است<br>که این قمری<br>بر شاخهٔ پر برف نشسته است.</div>
+      </div>
+      که در آن زمان به بی‌زمانی و قمری به جاودانگی راه می‌یابد.
+      <br><br>
+      و باز این شعر جعفری:
+      <div class="poem-block">
+        <div class="poem-fa">وقتی به یاد تو گریه می‌کنم، اشک‌هایم آبی است...<br>من تو را آسمانی دوست دارم<br>که عشق آبی است و آسمان نیز</div>
+      </div>
+    </div>
+    <div class="english">
+      It is as if the moon has come to the poet's aid from one side — to become one with the poet, to say with sympathy what is unspoken: that silence and night are full of unsaid things.
+      <br><br>
+      And this poem by Wang Wei, in Persian translation:
+      <div class="poem-block">
+        <div class="poem-en">Alone, I play the oud in the distant reeds —<br>I hum a tune under my breath.<br>In the endless reeds, there is no one.<br>The moon and its shining light.</div>
+      </div>
+      And this poem by Bashō (1644–1694 AD), from the Persian translation by Shamlou and Pashaei:
+      <div class="poem-block">
+        <div class="poem-en">Clouds<br>give rest<br>to the watchers of the moon.</div>
+      </div>
+      And this poem by Jafari, which is a remarkable painting:
+      <div class="poem-block">
+        <div class="poem-en">For fifty years now<br>this turtledove<br>has been sitting on a snow-heavy branch.</div>
+      </div>
+      In which time finds its way to timelessness, and the turtledove to eternity.
+      <br><br>
+      And again, this poem by Jafari:
+      <div class="poem-block">
+        <div class="poem-en">When I weep remembering you, my tears are blue...<br>I love you the way one loves a sky —<br>for love is blue, and so is the sky.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Farrokhi Block 4 — earthquake poem -->
+  <div class="pair">
+    <div class="persian">
+      و این شعر، یادمان غمبار زلزلهٔ رودبار در ۱۳۶۹:
+      <div class="poem-block">
+        <div class="poem-fa">در شب زلزله...<br>ماه در چشم کرم شبتاب<br>بارانی از مهتاب شد... و...<br>بر آوارها ریخت.<br>کرم شبتاب توان نداشت تا بشنود<br>غم‌انگیزترین همسرایی را<br>از مردمی که<br>هرگز چنین یکدل نخوانده‌اند.<br>تا... آخرین نفس...</div>
+      </div>
+      که تابلوی غمبار و غم‌آوایی دردناک است تا... آخرین نفس....
+    </div>
+    <div class="english">
+      And this poem — a sorrowful elegy for the Rudbar earthquake of 1369 (1990):
+      <div class="poem-block">
+        <div class="poem-en">On the night of the earthquake...<br>The moon in the eye of the firefly<br>became a rain of moonlight... and...<br>poured down on the rubble.<br>The firefly could not bear to hear<br>the saddest chorus<br>from people who<br>had never sung so unanimously.<br>Until... the last breath...</div>
+      </div>
+      A painting of sorrow, a painful elegy — until... the last breath....
+    </div>
+  </div>
+
+  <!-- Farrokhi Block 5 — long poems / in becoming -->
+  <div class="pair">
+    <div class="persian">
+      سروده‌های بلند جعفری همانند شعرهای کوتاه وی و تابلوهای شگفت‌انگیزش، تو در توست. شعر او پیوسته نیست و همانند بسیاری از شاعران ماندگار، در گذر زمان و با توجه به تاریخ سروده‌ها، از رمانتیک تا شعر روز، از نظر شکل و محتوا دگرگون می‌شود — که ذات جعفری صورتگر و شاعر ایستا نیست و مدام در شدن است:
+      <div class="poem-block">
+        <div class="poem-fa">در کوره‌راه‌ها<br>آبی، خاکستری، سیاه<br>دهقانی است با چوبدست بلندش<br>سپید، سیاه<br>خرش را می‌گویم<br>با خرواری از خارهای باران‌زده<br>سیاه سیاه...<br><br>بختش را می‌گویم.<br>که همچون سایه در کنار پاهایش روییده است.</div>
+      </div>
+      که تابلویی است از دهقانی با جامهٔ آبی، شلوار خاکستری، و خر سیاه‌وسفید، بارکش با باری از خارهای باران‌خورده برای افروختن هیزم اجاق و تنور دیگران — نماد فقر روستا و...
+    </div>
+    <div class="english">
+      Jafari's long poems are like his short poems and his remarkable paintings: layered, folded inward. His poetry is not continuous — and like many enduring poets, it transforms over time in form and content, from romantic to contemporary. The essence of Jafari as painter and poet is not static; it is constantly in the act of becoming:
+      <div class="poem-block">
+        <div class="poem-en">On the back roads —<br>blue, gray, black —<br>a peasant with his long walking stick.<br>White, black.<br>I mean his donkey —<br>laden with a cartload of rain-soaked thorns.<br>Black, black...<br><br>I mean his luck —<br>which has grown like a shadow at his feet.</div>
+      </div>
+      A painting of a peasant in a blue shirt and gray trousers, a black-and-white donkey carrying rain-soaked thorns to light the fires of others' stoves and ovens — a symbol of village poverty, and...
+    </div>
+  </div>
+
+  <!-- Farrokhi Block 6 — waterfall poem -->
+  <div class="pair">
+    <div class="persian">
+      و تابلو شعر آبشار:
+      <div class="poem-block">
+        <div class="poem-fa">آن آبشار سرخوش و مستم<br>که سال‌ها<br>بر ماسه‌های گرم تنت اشک ریختم<br>دیوانه‌وار<br>تا که بمیرم به دامنت<br>از دام برف‌های سپیدم گریختم</div>
+      </div>
+      که در آن ریزش انوار خورشید بر تنهٔ آبشار و قطره‌های رنگارنگ آب چون برق، تیر نگاه، و امواج سینهٔ آبشار به سپیدی ماه است — و در شوق یکی شدن، قله تا دریا را در می‌نوردد. با رسیدن به دریا در آرزوی بازگشت به دره‌های دور و قله است — چرخه‌ای که آرزوی بازگشت به آغاز را مطرح می‌سازد. شعری است که حدود شصت سال پیش سروده شده و از شعر شاعران آن روزگار اگر فراتر نباشد با همان سبک و سیاق با آن‌ها پهلو می‌زند. گویای جانی همیشه شاعر و مداماً هوشیار است — احساس فرو شدن در طبیعت، یگانه شدن با آبشار، آرزوی فرو شدن در دریای بی‌پایان، و باز آرزوی بازگشت به قله.
+    </div>
+    <div class="english">
+      And the poem-painting of a waterfall:
+      <div class="poem-block">
+        <div class="poem-en">That waterfall — I am its joy, its intoxication —<br>for years<br>I wept on the warm sands of your body,<br>like a madman,<br>until I die in your lap.<br>I escaped from the trap of my own white snows.</div>
+      </div>
+      In it, the rays of the sun fall on the body of the waterfall, the colorful drops like lightning, like an arrow of gaze — the chest of the waterfall white as the moon. In its longing to become one, it travels from peak to sea; reaching the sea, it yearns to return to distant valleys and peaks — a cycle expressing the wish to return to the beginning. This is a poem written some sixty years ago, and it stands alongside, if not beyond, the poetry of its time and spirit. It speaks of a soul always a poet, always alert — the feeling of sinking into nature, of becoming one with the waterfall, of wishing to sink into the endless sea, and again wishing to return to the peak.
+    </div>
+  </div>
+
+  <!-- Farrokhi Block 7 — romances / love poems -->
+  <div class="pair">
+    <div class="persian">
+      عاشقانه‌های جعفری در این دفتر اندک نیست، چرا که بسیاری از این نمودها از جانی همیشه عاشق بر می‌خیزند — و در برترین نما، نه عشقی اروتیک، که عشقی است به انسان و همهٔ باشندگان:
+      <div class="poem-block">
+        <div class="poem-fa">دوستت دارم<br>این گمان<br>ای سرود سالخورد جاودان<br>این سرشتهٔ فرشته‌های آسمان<br>این یقین<br>این کهن‌ترین ترانهٔ زمین<br>مثل رنگ ابر<br>مثل بوی خاک<br>مثل طعم اشک<br>مثل خواب کوه‌ها همیشگی است...</div>
+      </div>
+    </div>
+    <div class="english">
+      Jafari's love poems in this collection are not few — for many of these manifestations rise from a soul that is always in love, and in their highest form, not an erotic love but a love for the human and for all living things:
+      <div class="poem-block">
+        <div class="poem-en">I love you —<br>this intuition,<br>O eternal ancient song,<br>this nature woven by the angels of heaven,<br>this certainty,<br>this oldest song of the earth —<br>like the color of cloud,<br>like the smell of soil,<br>like the taste of tears,<br>like the eternal sleep of mountains...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Farrokhi Block 8 — tower poem -->
+  <div class="pair">
+    <div class="persian">
+      و باز در این دفتر اینجا و آنجا صورتگر بزرگ را می‌بینی که در آرزوی در خود شدن است — تا از جان خویش تابلویی بی‌بدیل برآورد و سرایش و پردازش‌های خود را یک و همان کند:
+      <div class="poem-block">
+        <div class="poem-fa">کاشکی من برج ویرانی به راهی دور بودم<br>تا که در شب‌های بارانی<br>کبوترها نم‌آلوده به زیر سقف ایوانم<br>به یک پا تکیه می‌دادند و می‌خفتند.<br>…<br>پای ایوان در کنار آتش سوزان<br>دو شبگرد غم‌آلوده<br>برای یکدگر از سرگذشت خویش می‌گفتند.</div>
+      </div>
+    </div>
+    <div class="english">
+      And again, here and there in this collection you see the great shaper — longing to become himself, to raise an incomparable painting from his own soul, to make his composing and his rendering one and the same:
+      <div class="poem-block">
+        <div class="poem-en">I wish I were a ruined tower on a distant road —<br>so that on rainy nights<br>the damp pigeons, under the eaves of my porch,<br>would lean on one leg and sleep.<br>…<br>At the foot of the porch, beside the burning fire,<br>two sorrowful night-wanderers<br>told each other the story of their lives.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Farrokhi Block 9 — closing -->
+  <div class="pair">
+    <div class="persian">
+      که جعفری در هنر، تمام دنیایش پنجره‌ای است دستی و حنجره‌ای توانمند — که در این قلعهٔ پیر بس سخن‌های ناگفته دارد، در تجانس آوایی و تجسم کلماتش و رنگین‌کمان رنگ‌ها و نقش‌بندی‌هایش.
+      <br><br>
+      بگذار خواننده را بر خوانش سروده‌های این دفتر واگذاریم و چونان هوکوسایی باشیم که آرزویش خلاصه کردن همهٔ آثار خود در نقطه‌ای بود، و بس.
+    </div>
+    <div class="english">
+      For Jafari, in art, his entire world is a hand-held window and a powerful larynx — and in this ancient castle he has many unspoken words, in the harmonic resonance and embodied precision of his language, in the rainbow of colors and compositions.
+      <br><br>
+      Let us leave the reader to the reading of the poems in this collection — and let us be like Hokusai, whose dream was to compress all his works into a single point, and nothing more.
+    </div>
+  </div>
+
+  <div class="signature">
+    باجلان فرخی (م.ح)، اردیبهشت ۱۳۹۶<br>
+    <em>Bajlan Farrokhi (M.H.) — Spring 2017</em>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       CODA: A POEM BY JAFARI
+       (camera-paste source — English needs retranslation)
+       ═══════════════════════════════════════════════════ -->
+
+  <div class="section-break">
+    <span class="section-label-fa">از جعفری</span>
+    <span class="section-label-en">From Jafari</span>
+  </div>
+
+  <div class="pair">
+    <div class="persian">
+      <span class="label" style="text-align:right; direction:rtl;">فارسی</span>
+      امشب صدای کبود ترانم را نقاشی کردم.<br>
+      در دیوارهای تو در توی سیاهی<br>
+      گردان نان‌های ناز<br>
+      کی ترا شناختی؟<br>
+      منی آواز خواندم<br>
+      برین باد و کارپوری آواز خواندم<br>
+      پرسی و خط آلی، یک آنکه دوستش دارم<br>
+      آواز خستهٔ مرا زانی کرد<br>
+      میو تو آواز خواندم<br>
+      کانفی مهتابی کردی در گاتهام‌های تردیدم<br>
+      تمام شب تابی در مربع خنده‌های کویر<br>
+      کودکی آن برای نقاشی می‌کرده‌ای<br>
+      کاشی باران باریا — کاش باران ببارد<br>
+      بودی کامنگل<br>
+      آواز پرنده نیر رنگ‌تر می‌کند... پُر
+    </div>
+    <div class="english">
+      <span class="label">English</span>
+      <span class="needs-work">Tonight I painted the dark blue of my song.<br>
+      In your maze of blackness —<br>
+      the spinning sweet breads —<br>
+      when did you know me?<br>
+      I sang as myself,<br>
+      I sang above the wind and the work,<br>
+      Persian and the green line — the one I love.<br>
+      My tired song made me forget.<br>
+      I sang with you,<br>
+      you who became moonlit in my cities of doubt,<br>
+      all the fireflies in the square of the desert's laughter —<br>
+      childhood was making paintings of that.<br>
+      O rain-tile — if only it would rain.<br>
+      You were like a brazier.<br>
+      The bird's song makes the sky more full of color... full.</span>
+      <span class="needs-work-note">[ source text garbled in scanning — retranslation needed ]</span>
+    </div>
+  </div>
+
+  <div class="signature">
+    محمد ابراهیم جعفری<br>
+    <em>Mohammad Ibrahim Jafari</em>
+  </div>
+
+</div>
+</body>
+</html>

@@ -248,14 +248,44 @@
       letter-spacing: 0.04em;
     }
 
-    .pair {
+    .poem-status {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-variant: small-caps;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.85rem;
+      padding: 0.15rem 0.7rem;
+      border-radius: 1rem;
+      border: 1px solid currentColor;
+    }
+
+    .poem-status.is-rendered {
+      color: #5e7a4a;
+    }
+
+    .poem-status.is-draft {
+      color: #b8702a;
+    }
+
+    .drafts-note {
+      max-width: 900px;
+      margin: 0 auto 2rem;
+      padding: 0 2rem;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #7a6050;
+      text-align: center;
+    }
+
+    .poems .pair {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2.5rem;
       padding: 1.8rem 0;
     }
 
-    .persian {
+    .poems .persian {
       direction: rtl;
       font-size: 1.44rem;
       line-height: 2;
@@ -263,7 +293,7 @@
       padding-right: 1.2rem;
     }
 
-    .english {
+    .poems .english {
       direction: ltr;
       font-size: 1.31rem;
       line-height: 1.9;
@@ -271,30 +301,30 @@
       padding-left: 1.2rem;
     }
 
-    .poem-block {
+    .poems .poem-block {
       background: rgba(255,255,255,0.45);
       border-radius: 6px;
       padding: 1rem 1.2rem;
     }
 
-    .poem-block.persian-poem {
+    .poems .poem-block.persian-poem {
       text-align: right;
       font-size: 1.38rem;
       line-height: 2.2;
     }
 
-    .poem-block.english-poem {
+    .poems .poem-block.english-poem {
       font-style: italic;
       font-size: 1.25rem;
       line-height: 2.1;
     }
 
-    .poem-block p {
+    .poems .poem-block p {
       margin: 0;
       white-space: pre-wrap;
     }
 
-    .label {
+    .poems .label {
       font-variant: small-caps;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -304,7 +334,7 @@
       display: block;
     }
 
-    .footnotes {
+    .poems .footnotes {
       margin-top: 1.5rem;
       padding-top: 1rem;
       border-top: 1px solid #ddd0b8;
@@ -313,7 +343,7 @@
       line-height: 1.7;
     }
 
-    .footnotes p {
+    .poems .footnotes p {
       margin: 0.3rem 0;
       white-space: pre-wrap;
     }
@@ -327,7 +357,7 @@
       background: #c9843a;
       color: #f5f0e8;
       border-radius: 50%;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       text-decoration: none;
@@ -339,23 +369,237 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
+    body.on-poems .back-to-toc {
+      display: flex;
+    }
+
     .back-to-toc:hover {
       opacity: 1;
     }
 
-    @media (max-width: 640px) {      .pair {
+    @media (max-width: 640px) {
+      .poems .pair {
         grid-template-columns: 1fr;
         gap: 1.2rem;
       }
-      .persian {
+      .poems .persian {
         border-right: none;
         border-bottom: 3px solid #c9843a;
         padding-right: 0;
         padding-bottom: 1rem;
       }
-      .english {
+      .poems .english {
         border-left: none;
         border-top: 3px solid #8aab72;
+        padding-left: 0;
+        padding-top: 1rem;
+      }
+    }
+
+    /* ── Tabs ───────────────────────────────────────────── */
+    .tabs {
+      max-width: 900px;
+      margin: 0 auto 2.5rem;
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 2px solid #c9843a;
+      padding: 0 1rem;
+    }
+
+    .tab-btn {
+      appearance: none;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 1.25rem;
+      color: #9c7f60;
+      cursor: pointer;
+      padding: 0.7rem 1.4rem;
+      border-radius: 6px 6px 0 0;
+      transition: background 0.15s, color 0.15s;
+      position: relative;
+      top: 2px;
+    }
+
+    .tab-btn:hover {
+      color: #6b5240;
+    }
+
+    .tab-btn.active {
+      color: #2a1f14;
+      font-weight: 600;
+      border: 2px solid #c9843a;
+      border-bottom: 2px solid #f5f0e8;
+      background: #f5f0e8;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* ── Preface (namespaced; mirrors the standalone intro page) ─ */
+    .preface {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem 4rem;
+    }
+
+    .preface .section-break {
+      text-align: center;
+      margin: 3rem 0 2rem;
+    }
+
+    .preface .section-break:first-child {
+      margin-top: 0;
+    }
+
+    .preface .section-break::before {
+      content: '';
+      display: block;
+      border-top: 1px solid #c9b89a;
+      margin-bottom: 1.5rem;
+    }
+
+    .preface .section-label-fa {
+      font-size: 1.4rem;
+      direction: rtl;
+      color: #6b4f2f;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .preface .section-label-en {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: #9a7a55;
+      letter-spacing: 0.04em;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .preface .section-meta {
+      font-size: 1rem;
+      color: #b0956e;
+    }
+
+    .preface .pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #ddd0b8;
+    }
+
+    .preface .pair:last-of-type {
+      border-bottom: none;
+    }
+
+    .preface .persian {
+      direction: rtl;
+      font-size: 1.3rem;
+      line-height: 2;
+      color: #2a1f14;
+      border-right: 3px solid #c9843a;
+      padding-right: 1.2rem;
+    }
+
+    .preface .english {
+      direction: ltr;
+      font-size: 1.2rem;
+      line-height: 1.9;
+      color: #3a2e22;
+      border-left: 3px solid #8aab72;
+      padding-left: 1.2rem;
+    }
+
+    .preface .poem-block {
+      background: rgba(255,255,255,0.45);
+      border-radius: 6px;
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .preface .poem-fa {
+      direction: rtl;
+      font-size: 1.25rem;
+      line-height: 2.2;
+      text-align: right;
+    }
+
+    .preface .poem-en {
+      font-size: 1.15rem;
+      line-height: 2.1;
+      font-style: italic;
+    }
+
+    .preface .label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #9a7a55;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .preface .aphorism {
+      font-style: italic;
+      color: #4a3520;
+    }
+
+    .preface .footnotes {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: #7a5e40;
+      line-height: 1.8;
+      border-top: 1px dashed #c9b89a;
+      padding-top: 1rem;
+    }
+
+    .preface .footnotes-fa {
+      direction: rtl;
+      text-align: right;
+    }
+
+    .preface .signature {
+      margin-top: 3rem;
+      text-align: center;
+      color: #6b4f2f;
+      font-style: italic;
+      font-size: 1.15rem;
+    }
+
+    .preface .needs-work {
+      opacity: 0.75;
+      font-style: italic;
+    }
+
+    .preface .needs-work-note {
+      font-size: 0.9rem;
+      color: #a07850;
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .preface .pair {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .preface .persian {
+        border-right: none;
+        border-bottom: 2px solid #c9843a;
+        padding-right: 0;
+        padding-bottom: 1rem;
+      }
+      .preface .english {
+        border-left: none;
+        border-top: 2px solid #8aab72;
         padding-left: 0;
         padding-top: 1rem;
       }
@@ -372,12 +616,422 @@
   </div>
 </div>
 
-<div id="toc" class="toc-wrapper">
-  <div class="toc"><span class="toc-title">Poems — اشعار</span><table class="toc-table"><tr class="toc-header"><th class="toc-col-english" style="text-align:left;">Page &amp; Title</th><th class="toc-col-dates" style="text-align:left;">Translated<span style="float:right;">Written</span></th><th class="toc-col-persian"><div style="display:flex;"><span style="flex:1;direction:rtl;text-align:right;">عنوان</span><span style="flex-shrink:0;min-width:2.2rem;padding-right:1.2rem;padding-left:0.3rem;text-align:left;white-space:nowrap;">صفحه</span></div></th></tr><tr onclick="location.href='#bird-behind-wall'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">12</span><div class="toc-english-text"><div class="toc-english-title">Adobe</div><div class="toc-first-line">A bird calls</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span>4-8-2026</span><span>Autumn 1989</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page"></span><div class="toc-persian-text"><div class="toc-persian-title-text">بوی کاهگل</div><div class="toc-persian-first-line">پرنده ای</div></div></div></td></tr><tr onclick="location.href='#old-news'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">28</span><div class="toc-english-text"><div class="toc-english-title">Old News</div><div class="toc-first-line">I wish I was a ruined watch tower</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1960 - ۱۳۳۹</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۲۸</span><div class="toc-persian-text"><div class="toc-persian-title-text">آخرین خبر</div><div class="toc-persian-first-line">کاشکی من برج ویرانی به راهی دور بودم</div></div></div></td></tr><tr onclick="location.href='#moonlight-sunlight'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">30</span><div class="toc-english-text"><div class="toc-english-title">Moonlight, Sunlight</div><div class="toc-first-line">Go - be moonlight for another’s evening</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span>4-3-2026</span><span>Borojerd 1960 - ۱۳۳۹</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۳۰</span><div class="toc-persian-text"><div class="toc-persian-title-text">مهتاب</div><div class="toc-persian-first-line">بُرو مهتاب شام دیگران باش</div></div></div></td></tr><tr onclick="location.href='#ancient-tree'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">35</span><div class="toc-english-text"><div class="toc-english-title">Ancient Tree</div><div class="toc-first-line">An ancient tree</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span>3/22/26</span><span>1961 - ۱۳۴۰</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۳۵</span><div class="toc-persian-text"><div class="toc-persian-title-text">درختی کهن</div><div class="toc-persian-first-line">تک درختی کهن</div></div></div></td></tr><tr onclick="location.href='#life-tune'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">40</span><div class="toc-english-text"><div class="toc-english-title">Life...</div><div class="toc-first-line">Life...</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>University Quarter, Tehran, 1963 - ۱۳۴۲</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۴۰</span><div class="toc-persian-text"><div class="toc-persian-title-text">زندگی...</div><div class="toc-persian-first-line">زندگی...</div></div></div></td></tr><tr onclick="location.href='#shadow-daughter'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">48</span><div class="toc-english-text"><div class="toc-english-title">To my daughter Shade</div><div class="toc-first-line">moments</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span>4-29-26</span><span>1980s دهه ۱۳۶۰</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۴۸</span><div class="toc-persian-text"><div class="toc-persian-title-text">به دخترم سایه</div><div class="toc-persian-first-line">لحظه ها</div></div></div></td></tr><tr onclick="location.href='#jungle-bomb'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">61</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">In the space between the sea & jungle</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>May 9, 1988, Isfahan - ۱۳۶۷/۲/۱۹</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۶۱</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">در فاصله دریا و جنگل</div></div></div></td></tr><tr onclick="location.href='#laugh-cry'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">62</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">I told you my poem …</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>Nov 1988 - ۱۳۶۷/۹</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۶۲</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">شعرم را برای تو گفتم...</div></div></div></td></tr><tr onclick="location.href='#soul-mold'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">66</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">Ah struggle…</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1989 - ۱۳۶۸</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۶۶</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">های...</div></div></div></td></tr><tr onclick="location.href='#gone-coming'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">100</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">Spring came</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>12/17/1989 ۱۳۶۸/۱۲/۱۷</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۱۰۰</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">بهار می آید و تو رفته ای</div></div></div></td></tr><tr onclick="location.href='#quiet-moon'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">127</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">I</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>April 1991 ۱۳۷۰ فروردین</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۱۲۷</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">من</div></div></div></td></tr><tr onclick="location.href='#heart-partridge'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">128</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">One thousand birds of love</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1/4/1991 کلاردشت ۱۳۷۰/۱/۴</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۱۲۸</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">هزار پرنده عاشق</div></div></div></td></tr><tr onclick="location.href='#meager-dew'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">131</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">No matter how much</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>April 15 1992 ۱۳۷۰/۱/۱۶</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۱۳۱</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">هر چه دوستم داری</div></div></div></td></tr><tr onclick="location.href='#water-cage'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">149</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">I watered the cage</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>July 25 1993 - ۱۳۷۲/۵/۳</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۱۴۹</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">قفس را دادم</div></div></div></td></tr><tr onclick="location.href='#morning-glory'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">202</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">you</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span>05/03/2026</span><span>2000s - دهه ۱۳۸۰</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۲۰۲</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">تو</div></div></div></td></tr><tr onclick="location.href='#snow-beautiful'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">203</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">Snow falls...</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span>05/3/2026</span><span>1990s - دهه ۱۳۷۰</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۲۰۳</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">برف میبارد...</div></div></div></td></tr><tr onclick="location.href='#stay-go'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num"></span><div class="toc-english-text"><div class="toc-english-title">Stay</div><div class="toc-first-line">You wish to stay</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span></span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page"></span><div class="toc-persian-text"><div class="toc-persian-title-text">می خواهی بمان</div><div class="toc-persian-first-line">می خواهی بمان،</div></div></div></td></tr></table></div>
+<div class="tabs">
+  <button class="tab-btn active" data-tab="preface">Preface &middot; پیشگفتار</button>
+  <button class="tab-btn" data-tab="poems">Poems &middot; اشعار</button>
+  <button class="tab-btn" data-tab="drafts">Drafts &middot; پیش‌نویس</button>
 </div>
 
-<div class="page">
-  <div class="poem-section" id="bird-behind-wall"><div class="poem-header"><p class="poem-header-persian">بوی کاهگل</p><p class="poem-header-english">Adobe</p><p class="poem-header-meta">Autumn 1989 · p. 12 · translated 4-8-2026</p></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>پرنده ای
+<div id="tab-preface" class="tab-panel preface active">
+  <div class="section-break"><span class="section-label-fa">محمد ابراهیم جعفری</span><span class="section-label-en">Mohammad Ebrahim Jafari</span><span class="section-meta">۱۳۹۶ / 2017</span></div>
+<div class="pair">
+  <div class="persian">
+    <span class="label" style="text-align:right; direction:rtl;">فارسی</span>
+    <span class="aphorism">کوتاه‌ترین غزلی که می‌شناسم «بید مجنون» است.</span>
+    <br><br>
+    <span class="aphorism">شنیده‌ام هنر حیاتی شدت یافته است. عشق با نگاه شدت یافته آغاز می‌شود. نگاهی درخشنده و تابناک.</span><sup>۱</sup>
+    <br><br>
+    <span class="aphorism">اگر شگفتی امروز را تا آخرین قطره بنوشی، فردا تشنه‌تر خواهی بود.</span>
+    <br><br>
+    <span class="aphorism">یک نفس از امروز را به فردا مگذار. آن که در دیروز نفس می‌کشد، امروز آوازی تازه ندارد.</span><sup>۲</sup>
+    <br><br>
+    <span class="aphorism">میان سنت و نوگرایی پلی است که با پاهای شوق پیموده می‌شود.</span>
+    <div class="poem-block">
+      <div class="poem-fa">از هم‌آغوشی جانم با شوق<br>در پی تاب و تبی پیچاپیچ<br>سایه‌ای می‌روید<br>در پس پردهٔ هیچ...</div>
+    </div>
+    <span class="aphorism">وقتی نگاهی نو به واقعیت می‌کنی، واقعیت به واقعه تبدیل می‌شود.</span>
+    <br><br>
+    <span class="aphorism">باغ شعر من در این سایه‌ها گل داده است.</span>
+    <br><br>
+    من باور دارم که...
+    <div class="poem-block">
+      <div class="poem-fa">الهام هر چه باشد، از «نمی‌دانم» «دانم» می‌روید.</div>
+    </div>
+    من باور دارم که...
+    <div class="poem-block">
+      <div class="poem-fa">«شعر نباید معنی داشته باشد، شعر باید باشد.»</div>
+    </div>
+    <div style="text-align:right; direction:rtl; font-style:italic; color:#6b4f2f; margin-top:1.5rem; margin-bottom:1rem;">
+      محمد ابراهیم جعفری، ۱۳۹۶
+    </div>
+    <div class="footnotes footnotes-fa">
+      <sup>١</sup> ویساوا شیمبورسکا، شاعر لهستانی برندهٔ جایزهٔ نوبل ادبیات (۱۹۲۳–۲۰۱۲)<br>
+      <sup>٢</sup> آرچیبالد مک‌لیش، شاعر و کتابدار آمریکایی (۱۸۹۲–۱۹۸۲)
+    </div>
+  </div>
+  <div class="english">
+    <span class="label">English</span>
+    <span class="aphorism">The shortest ghazal I know is the weeping willow.</span>
+    <br><br>
+    <span class="aphorism">I have heard that vital art has intensified. Love begins with an intensified gaze — a gaze glittering and radiant.</span><sup>1</sup>
+    <br><br>
+    <span class="aphorism">If you drink today's wonder to the last drop, tomorrow you will be thirstier still.</span>
+    <br><br>
+    <span class="aphorism">Don't carry one breath of today over into tomorrow. Whoever breathes in yesterday has no fresh song today.</span><sup>2</sup>
+    <br><br>
+    <span class="aphorism">Between tradition and modernism stands a bridge, crossed on the feet of ardent longing.</span>
+    <div class="poem-block">
+      <div class="poem-en">From the embracing of my soul with ardor,<br>in the wake of a writhing twist and fever,<br>a shadow sprouts<br>behind the veil of nothingness…</div>
+    </div>
+    <span class="aphorism">When you look at the real anew, the real turns into an occurrence.</span>
+    <br><br>
+    <span class="aphorism">My garden of poetry has flowered among these shadows.</span>
+    <br><br>
+    I believe that…
+    <div class="poem-block">
+      <div class="poem-en">Whatever inspiration may be, out of <em>I do not know</em> grows <em>I know</em>.</div>
+    </div>
+    I believe that…
+    <div class="poem-block">
+      <div class="poem-en">"A poem should not mean, but be."</div>
+    </div>
+    <div style="font-style:italic; color:#6b4f2f; margin-top:1.5rem; margin-bottom:1rem;">
+      Mohammad Ebrahim Jafari, 2017
+    </div>
+    <div class="footnotes">
+      <sup>1</sup> Wisława Szymborska, Polish poet and Nobel Prize winner in Literature (1923–2012)<br>
+      <sup>2</sup> Archibald MacLeish, American poet and librarian (1892–1982)
+    </div>
+  </div>
+</div>
+<div class="section-break"><span class="section-label-fa">سرخی دانهٔ انار — پیشگفتار خسرو سینایی</span><span class="section-label-en">The Redness of the Pomegranate Seed — Preface by Khosrow Sinai</span><span class="section-meta">اردیبهشت ۱۳۹۶ / Spring 2017</span></div>
+<!-- Sinai Block 1 -->
+<div class="pair">
+  <div class="persian">
+    <span class="label" style="text-align:right; direction:rtl;">فارسی</span>
+    بالاخره پس از سال‌ها تأخیر، آنچه که باید، اتفاق افتاد. من فقط خوشحال نیستم، ذوق‌زده‌ام. خوب می‌دانم که این ذوق‌زدگی فقط از سر رفاقت من با محمدابراهیم جعفری نیست. یادم هست چند سال پیش فردی منتقد از من پرسید: «شما فکر می‌کنی خودت هنرمندی؟!» جواب دادم: «نمی‌دانم!»
+    <br><br>
+    ...اما خوب می‌دانم که حدود شصت‌سال با انواع هنرمندان ارتباط دوستی دور و نزدیک داشته‌ام، شاعر... نقاش... موسیقیدان... و بالاخره فیلمساز... و آموخته‌ام تشخیص دهم که چه کسی ذاتاً هنرمند است و چه‌کسی با باد به غبغب انداختن و تفرعن و نوچه‌پروری آثارش را به مردمان تحمیل می‌کند. طی همهٔ این سال‌ها چه نادر بودند کسانی که ذات هنرمندشان، مرا به شگفتی واداشت، و بی‌تردید محمدابراهیم جعفری یکی از آن‌هاست.
+  </div>
+  <div class="english">
+    <span class="label">English</span>
+    Finally, after years of delay, what had to happen has happened. I am not merely glad — I am thrilled. And I know well that this delight is not simply a matter of my comradeship with Mohammad Ebrahim Jafari. I remember, a few years ago, a critic asked me: "Do you think you yourself are an artist?!" I answered: "I don't know!"
+    <br><br>
+    ...But I know this much: for some sixty years I have kept friendships, near and far, with artists of every kind — poets... painters... musicians... and at last filmmakers — and I have learned to tell who is an artist by his very nature, and who puffs out his jowls, plays the pharaoh, breeds a retinue of yes-men, and forces his work on people. In all those years, how rare were the ones whose artistic essence struck me with wonder — and Mohammad Ebrahim Jafari is, beyond doubt, one of them.
+  </div>
+</div>
+
+<!-- Sinai Block 2 -->
+<div class="pair">
+  <div class="persian">
+    طنزگزندهٔ او در بعضی از اشعارش همیشه مرا در فضایی میان اشعار عبید زاکانی و ایرج‌میرزا قرار می‌داد. یادم نمی‌رود در آن شب‌هایی که بر سرمان بمب و موشک می‌بارید، او در جمع دوستان دوتارش را برمی‌داشت، ضرب‌آهنگی را تکرار می‌کرد و با صدایی خش‌دار برایمان می‌خواند: «جنگلا پُر تَمشکه!» و ما دوستان در آن شب‌های غم‌آلود، با احساسی میان گریه و خنده با او همدل و همزبان و هم‌آواز می‌شدیم. مگر نه این که او در پایان شعری گفته:
+    <div class="poem-block">
+      <div class="poem-fa">«گاه خندان می‌گریم...<br>گاه گریان می‌خندم...<br>عاقلان می‌گویند:...<br>من هنرمندم!»</div>
+    </div>
+    بعدها از روش آوازخوانی‌اش که ایرانی بود، محلی بود، غیرمتعارف بود، اما اصیل و امروزی بود، کسانی برداشت کردند، به شهرت رسیدند و کمتر کسی دانست که او آغازگر آن راه بود.
+  </div>
+  <div class="english">
+    The biting satire of some of his poems always set me somewhere between the verse of Obeyd Zakani and Iraj Mirza. I will never forget those nights when bombs and missiles rained down on our heads — he would take up his dutar among friends, work a rhythm over and over, and sing to us in his raspy voice: "The woods are full o' brambleberries!" And we friends, on those grief-laden nights, with a feeling caught between weeping and laughter, would become of one heart, one tongue, one voice with him. Did he not say, at the close of one poem:
+    <div class="poem-block">
+      <div class="poem-en">"Sometimes, laughing, I weep…<br>Sometimes, weeping, I laugh…<br>The sensible ones say:<br>I am an artist!"</div>
+    </div>
+    Later, others took up his way of singing — Iranian, regional, unconventional, yet rooted and of-the-moment — and rose to fame, while few knew he had been the one to open that road.
+  </div>
+</div>
+
+<!-- Sinai Block 3 — with folk poem -->
+<div class="pair">
+  <div class="persian">
+    گاه فروتنی و صمیمیت ترانه‌هایش مرا به یاد باباطاهر می‌اندازد. وقتی می‌گوید:
+    <div class="poem-block">
+      <div class="poem-fa">دوتا کفتر سفید و زعفرونی<br>نشستن دِ تثار سایه‌بونی<br>سفیده ناله سو... سیل شفق کرد<br>سه کو... آفتو مِزه مِثه جوونی</div>
+    </div>
+    گاه در رندی و ظرافت اشعارش همان جنس وجود شاعری را می‌یابم که بزرگی چون حافظ را به تاریخ فرهنگمان هدیه کرد. او همیشه در ذهن من تروبادورهای قرون وسطای اروپا را تداعی می‌کند، همان خوانندگان دوره‌گردی که آوازخوان از شهری به شهری می‌رفتند، و سرودن جزئی از بودنشان بود.
+  </div>
+  <div class="english">
+    Sometimes the humility and heartfelt warmth of his songs put me in mind of Baba Taher. When he says:
+    <div class="poem-block">
+      <div class="poem-en">Two doves, white and saffron,<br>settled in the shade of the arbor —<br>the white one moaned toward the light… the dawn-glow flooded red,<br>three coos… the sun, tasting like youth.</div>
+    </div>
+    And sometimes, in the roguish grace and delicacy of his verse, I find the very stuff of that poetic being which gave a Hafez to the history of our culture. He has always called to my mind the troubadours of medieval Europe — those wandering singers who went from town to town in song, for whom composing was simply part of being alive.
+  </div>
+</div>
+
+<!-- Sinai Block 4 -->
+<div class="pair">
+  <div class="persian">
+    همیشه به او گفته‌ام که ذهن شاعرانه آنچنان در تو می‌جوشد، که چون فرزندانی که قدر ثروت پدری را نمی‌دانند، ثروت ذاتی وجودت را چنان مُسرفانه و با فروتنی ارائه می‌کنی، که آن‌ها که از حساسیت هنرمندانه تو بی‌بهره‌اند، ممکن است به‌سادگی از آن‌ها بگذرند و در انتظار شاعرانی! بمانند که باد به غیبغب می‌اندازند و آنچه را که نه خود می‌فهمند و نه مخاطبان، با آب‌وتاب به دیگران حُقنه می‌کنند.
+    <br><br>
+    اگر بپذیریم که جنین شعر در ذهن شاعر جان می‌گیرد و رشد می‌کند؛ آنچه که آن را به بیرون از ذهن متجلی می‌کند، یعنی به مخاطب منتقل می‌کند، جز ابزاری نیست که شاعر بر آن تسلط دارد، و این ابزار کلام می‌تواند باشد، موسیقی باشد، نقاشی باشد، و یا هر هنر دیگری که عامل خلاقیت شاعرانه در آن نقشی دارد. جعفری طی سال‌ها از دو گونه ابزار استفاده کرده است: کلام و نقاشی، که در دومی سال‌ها در مقام استاد به پرورش نسل‌های جوان پرداخته است. یکی از شاگردانش که امروز خود نقاش نامداری‌ست، روزی درباره او به من گفت: «اغلب اساتید به ما فنون نقاشی را می‌آموختند، اما او علاوه‌بر آن روح هنرمند را در ما بیدار می‌کرد.»
+  </div>
+  <div class="english">
+    I have always told him: the poetic mind wells up in you so abundantly that — like children who don't know the worth of their father's wealth — you spend the wealth native to you so prodigally, and so humbly, that those without your artistic sense may pass it by, and wait instead for "poets"! who puff out their jowls and, with much pomp, force-feed others what neither they nor their listeners understand.
+    <br><br>
+    If we grant that the embryo of a poem takes life and grows in the poet's mind, then what makes it manifest beyond that mind — what carries it to the listener — is nothing but the instrument the poet has mastered. That instrument may be the word, or music, or painting, or any other art in which the poetic creative force plays a part. Over the years Jafari has used two instruments — word and painting — and in the second he spent years as a master, nurturing the young. One of his students, himself now a renowned painter, once said to me of him: "Most teachers taught us the techniques of painting — but he, beyond that, woke the artist's soul in us."
+  </div>
+</div>
+
+<!-- Sinai Block 5 — final poem -->
+<div class="pair">
+  <div class="persian">
+    راست می‌گفت! به‌عنوان دوستش همیشه او را چون سیم ظریف سه‌تاری شناخته‌ام که وقتی مرتعش می‌شود، فقط سیم‌هایی را به ارتعاش درمی‌آورد که از ظرافتی مشابه برخوردارند. همین یک شعر او نمونه‌ای از گواهان بسیار این گفتهٔ من است:
+    <div class="poem-block">
+      <div class="poem-fa">دل من انار هزاردانه‌ای‌ست<br>با توان سرخ عشقی<br>در هر دانه...<br>وقتی تو به من نگاه می‌کنی<br>یکی از دانه‌ها سرخ‌تر می‌شود.</div>
+    </div>
+    اعتراف می‌کنم که به‌عنوان یکی از اهالی هنر، گاهی به جوشش شاعرانهٔ ذهن او غبطه خورده‌ام.
+  </div>
+  <div class="english">
+    He was right. As his friend, I have always known him as the delicate string of a setar: when it is set trembling, it stirs into vibration only those strings that share its delicacy. This one poem of his is one of many witnesses to what I mean:
+    <div class="poem-block">
+      <div class="poem-en">My heart is a pomegranate of a thousand seeds,<br>holding a love's red power<br>in every seed…<br>When you look at me,<br>one of the seeds turns redder.</div>
+    </div>
+    I confess that, as one of art's own people, I have at times felt an admiring envy at the poetic welling of his mind.
+  </div>
+</div>
+
+<!-- Sinai Block 6 — closing -->
+<div class="pair">
+  <div class="persian">
+    خوشحالم که بالاخره به‌کوشش همسر گرامی‌اش، پذیرفت تا اشعارش، که به باور من از زلال‌ترین اشعار زمانهٔ ما هستند، به گسترهٔ وسیع‌تری از مخاطبان ارائه شود، تا پی‌ببرند که چگونه می‌توان بدون سردرگم کردن مخاطب در پیچیدگی جملات نامفهوم و هزارتوی نظریه‌های گنگ، ایرانی بود، اصیل بود، امروزی بود... و شاعر بود!
+  </div>
+  <div class="english">
+    I am glad that at last, through the efforts of his dear wife, he agreed to let his poems — which I hold among the most limpid verses of our age — reach a wider audience, so they might see how one can, without losing the reader in a tangle of unintelligible sentences and a labyrinth of murky theory, be Iranian, be rooted, be of-the-moment… and be a poet!
+  </div>
+</div>
+
+<div class="signature">
+  خسرو سینایی، اردیبهشت ۱۳۹۶<br>
+  <em>Khosrow Sinai — Spring 2017</em>
+</div>
+<div class="section-break"><span class="section-label-fa">مقدمهٔ باجلان فرخی</span><span class="section-label-en">Introduction by Bajlan Farrokhi</span><span class="section-meta">اردیبهشت ۱۳۹۶ / Spring 2017</span></div>
+<!-- Farrokhi Block 1 -->
+<div class="pair">
+  <div class="persian">
+    <span class="label" style="text-align:right; direction:rtl;">فارسی</span>
+    استاد محمد ابراهیم جعفری صورتگر و نقاش بزرگ را شعرهایی است که دوشادوش تکامل او در نقش‌بندی سرایش یافته و از به دفتر نشستن آن‌ها دوری جسته است. سرانجام اما ابرام همدم همدل و همسر فرزانهٔ وی، بانو مریم... و دوستان نزدیک به چاپ این نخستین دفتر انجامید. جعفری در نقاشی تثبیت‌کنندهٔ داده‌های سوبژکتیو لحظه‌های زندگی‌ست و در شعرهای خویش سخنگوی این لحظه‌ها... و چنین است که بسیاری از سروده‌هایش با نقش‌بندهایش پهلو می‌زند و گاه یک و همان است.
+  </div>
+  <div class="english">
+    <span class="label">English</span>
+    Master Mohammad Ebrahim Jafari — the great image-maker and painter — has poems composed shoulder to shoulder with his growth in pictorial composition, poems that shied away from ever being set down on the page. In the end, though, the insistence of his kindred companion and wise wife, Lady Maryam... and of close friends, brought this first volume to print. In painting, Jafari fixes fast the subjective data of life's moments; in his poems, he is the spokesman of those moments — and so it is that many of his verses stand cheek by jowl with his paintings, and at times are one and the same.
+  </div>
+</div>
+
+<!-- Farrokhi Block 2 — haiku / painter-poets + "I am silent" poem -->
+<div class="pair">
+  <div class="persian">
+    شعرهای کوتاه این دفتر در خوانش چنان چون ضرب‌آهنگ قلم‌مویی در خلق یک اثر می‌باشد و غنای آن در مرحلهٔ نخست یادآور تک‌بیت‌های شگفت‌انگیز شاعران کلاسیک پارسی و گاه هایکوهای ژرف ژاپنی است؛ و در کار شعر همانند نقاشی نه پیرو دیگران که متکی بر خویشتن خویش است. صورتگران شاعر در کار خویش باریک‌بین و بی‌همتا هستند — در سرزمین‌های دیگر نیز می‌توان از ژنی‌هایی چون وانگ وی، نقاش و شاعر چینی (۶۳۷–۷۴۰ میلادی)، و میکل‌آنژ، پیکرتراش، نقاش و شاعر ایتالیایی، یاد کرد.
+    <br><br>
+    از جعفری است:
+    <div class="poem-block">
+      <div class="poem-fa">من<br>خاموشم<br>تا ماه... با تو... بگوید</div>
+    </div>
+  </div>
+  <div class="english">
+    Read aloud, the short poems of this collection are like the rhythm of a brushstroke bringing a work into being; their richness, at first encounter, recalls the astonishing single couplets of the classical Persian poets, and at times the profound Japanese haiku. In poetry as in painting he follows no one but his own self. Painter-poets are keen-eyed and without peer in their work — in other lands too one can name geniuses like Wang Wei, the Chinese painter and poet (637–740 AD), and Michelangelo, the Italian sculptor, painter, and poet.
+    <br><br>
+    From Jafari:
+    <div class="poem-block">
+      <div class="poem-en">I<br>am silent<br>so that the moon… may speak with you…</div>
+    </div>
+  </div>
+</div>
+
+<!-- Farrokhi Block 3 — moon as collaborator, Wang Wei, Basho, Jafari poems -->
+<div class="pair">
+  <div class="persian">
+    که گویی ماه از سویی به یاری شاعر آمده است تا با همدلی از ناگفته‌های او و یگانه شدن با شاعر بگوید که خاموشی و شب سرشار از ناگفته‌هاست.
+    <br><br>
+    و این شعر از وانگ وی در برگردان فارسی:
+    <div class="poem-block">
+      <div class="poem-fa">تنهایم و عود می‌نوازم در نیزار دور<br>نوایی را با سوت زمزمه می‌کنم<br>در نیزار بی‌انتها کسی نیست<br>ماه و انوار رخشانش</div>
+    </div>
+    و این شعر باشو (۱۶۴۴–۱۶۹۴ میلادی)، از برگردان فارسی شاملو و پاشایی:
+    <div class="poem-block">
+      <div class="poem-fa">ابرها<br>استراحتی می‌دهند<br>نظارگان ماه را</div>
+    </div>
+    و این شعر از جعفری که تابلویی شگفت‌انگیز است:
+    <div class="poem-block">
+      <div class="poem-fa">پنجاه سال است<br>که این قمری<br>بر شاخهٔ پر برف نشسته است.</div>
+    </div>
+    که در آن زمان به بی‌زمانی و قمری به جاودانگی راه می‌یابد.
+    <br><br>
+    و باز این شعر جعفری:
+    <div class="poem-block">
+      <div class="poem-fa">وقتی به یاد تو گریه می‌کنم، اشک‌هایم آبی است...<br>من تو را آسمانی دوست دارم<br>که عشق آبی است و آسمان نیز</div>
+    </div>
+  </div>
+  <div class="english">
+    — as if the moon has come from one side to the poet's aid, to become one with him and say, with fellow-feeling, what he leaves unspoken: that silence and night are brimming with the unsaid.
+    <br><br>
+    And this poem by Wang Wei, in Persian rendering:
+    <div class="poem-block">
+      <div class="poem-en">Alone, I play the oud in the far reed-grove —<br>under my breath I hum a tune.<br>In the endless reeds there is no one.<br>The moon, and its shining rays.</div>
+    </div>
+    And this poem by Bashō (1644–1694 AD), from the Persian of Shamlou and Pashaei:
+    <div class="poem-block">
+      <div class="poem-en">Clouds<br>give a moment's rest<br>to the moon-gazers.</div>
+    </div>
+    And this poem by Jafari, which is an astonishing painting:
+    <div class="poem-block">
+      <div class="poem-en">For fifty years now<br>this turtledove<br>has perched on a snow-laden branch.</div>
+    </div>
+    — in which time finds its way to timelessness, and the turtledove to eternity.
+    <br><br>
+    And again, this poem of Jafari's:
+    <div class="poem-block">
+      <div class="poem-en">When I weep in memory of you, my tears are blue…<br>I love you a sky's love —<br>for love is blue, and so is the sky.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Farrokhi Block 4 — earthquake poem -->
+<div class="pair">
+  <div class="persian">
+    و این شعر، یادمان غمبار زلزلهٔ رودبار در ۱۳۶۹:
+    <div class="poem-block">
+      <div class="poem-fa">در شب زلزله...<br>ماه در چشم کرم شبتاب<br>بارانی از مهتاب شد... و...<br>بر آوارها ریخت.<br>کرم شبتاب توان نداشت تا بشنود<br>غم‌انگیزترین همسرایی را<br>از مردمی که<br>هرگز چنین یکدل نخوانده‌اند.<br>تا... آخرین نفس...</div>
+    </div>
+    که تابلوی غمبار و غم‌آوایی دردناک است تا... آخرین نفس....
+  </div>
+  <div class="english">
+    And this poem — a grievous memorial to the Rudbar earthquake of 1369 (1990):
+    <div class="poem-block">
+      <div class="poem-en">On the night of the earthquake…<br>the moon, in the eye of the firefly,<br>became a rain of moonlight… and…<br>poured down on the rubble.<br>The firefly hadn't the strength to hear<br>the most sorrowful chorus<br>from a people who<br>had never sung so of one heart.<br>Until… the last breath…</div>
+    </div>
+    — a grievous tableau, a painful dirge, until… the last breath….
+  </div>
+</div>
+
+<!-- Farrokhi Block 5 — long poems / in becoming -->
+<div class="pair">
+  <div class="persian">
+    سروده‌های بلند جعفری همانند شعرهای کوتاه وی و تابلوهای شگفت‌انگیزش، تو در توست. شعر او پیوسته نیست و همانند بسیاری از شاعران ماندگار، در گذر زمان و با توجه به تاریخ سروده‌ها، از رمانتیک تا شعر روز، از نظر شکل و محتوا دگرگون می‌شود — که ذات جعفری صورتگر و شاعر ایستا نیست و مدام در شدن است:
+    <div class="poem-block">
+      <div class="poem-fa">در کوره‌راه‌ها<br>آبی، خاکستری، سیاه<br>دهقانی است با چوبدست بلندش<br>سپید، سیاه<br>خرش را می‌گویم<br>با خرواری از خارهای باران‌زده<br>سیاه سیاه...<br><br>بختش را می‌گویم.<br>که همچون سایه در کنار پاهایش روییده است.</div>
+    </div>
+    که تابلویی است از دهقانی با جامهٔ آبی، شلوار خاکستری، و خر سیاه‌وسفید، بارکش با باری از خارهای باران‌خورده برای افروختن هیزم اجاق و تنور دیگران — نماد فقر روستا و...
+  </div>
+  <div class="english">
+    Jafari's long poems, like his short poems and his astonishing paintings, are fold-within-fold. His poetry is not uniform; like that of many enduring poets, it changes over time — and you can track the change by the dates of the poems, from the romantic to the verse of the day — shifting in both form and content. For the essence of Jafari, image-maker and poet, is not static: it is forever in the act of becoming:
+    <div class="poem-block">
+      <div class="poem-en">On the back roads —<br>blue, gray, black —<br>a peasant with his long staff.<br>White, black.<br>His donkey, I mean —<br>under a donkey-load of rain-beaten thorns.<br>Black, black…<br><br>His fortune, I mean —<br>which has grown like a shadow at his feet.</div>
+    </div>
+    — a tableau of a peasant in a blue robe and gray trousers, with a black-and-white pack donkey bearing rain-beaten thorns to kindle the firewood of others' hearths and ovens: a symbol of village poverty, and…
+  </div>
+</div>
+
+<!-- Farrokhi Block 6 — waterfall poem -->
+<div class="pair">
+  <div class="persian">
+    و تابلو شعر آبشار:
+    <div class="poem-block">
+      <div class="poem-fa">آن آبشار سرخوش و مستم<br>که سال‌ها<br>بر ماسه‌های گرم تنت اشک ریختم<br>دیوانه‌وار<br>تا که بمیرم به دامنت<br>از دام برف‌های سپیدم گریختم</div>
+    </div>
+    که در آن ریزش انوار خورشید بر تنهٔ آبشار و قطره‌های رنگارنگ آب چون برق، تیر نگاه، و امواج سینهٔ آبشار به سپیدی ماه است — و در شوق یکی شدن، قله تا دریا را در می‌نوردد. با رسیدن به دریا در آرزوی بازگشت به دره‌های دور و قله است — چرخه‌ای که آرزوی بازگشت به آغاز را مطرح می‌سازد. شعری است که حدود شصت سال پیش سروده شده و از شعر شاعران آن روزگار اگر فراتر نباشد با همان سبک و سیاق با آن‌ها پهلو می‌زند. گویای جانی همیشه شاعر و مداماً هوشیار است — احساس فرو شدن در طبیعت، یگانه شدن با آبشار، آرزوی فرو شدن در دریای بی‌پایان، و باز آرزوی بازگشت به قله.
+  </div>
+  <div class="english">
+    And the tableau-poem of the waterfall:
+    <div class="poem-block">
+      <div class="poem-en">I am that blithe and drunken waterfall<br>who for years<br>wept on the warm sands of your body,<br>madly,<br>so that I might die at your skirt —<br>I fled the snare of my own white snows.</div>
+    </div>
+    In it the sun's rays fall on the body of the waterfall, the many-colored droplets like lightning, like an arrow of the gaze, and the waves of the waterfall's breast are white as the moon — and in its ardor to become one, it spans peak to sea. Reaching the sea, it longs to return to the distant valleys and the summit — a cycle that voices the wish to return to the beginning. This is a poem written some sixty years ago, and it stands level with the verse of the poets of that age, if not beyond it, in the very same style and idiom. It bespeaks a soul forever a poet and perpetually awake — the sense of sinking into nature, of becoming one with the waterfall, the wish to sink into the endless sea, and again the wish to return to the peak.
+  </div>
+</div>
+
+<!-- Farrokhi Block 7 — romances / love poems -->
+<div class="pair">
+  <div class="persian">
+    عاشقانه‌های جعفری در این دفتر اندک نیست، چرا که بسیاری از این نمودها از جانی همیشه عاشق بر می‌خیزند — و در برترین نما، نه عشقی اروتیک، که عشقی است به انسان و همهٔ باشندگان:
+    <div class="poem-block">
+      <div class="poem-fa">دوستت دارم<br>این گمان<br>ای سرود سالخورد جاودان<br>این سرشتهٔ فرشته‌های آسمان<br>این یقین<br>این کهن‌ترین ترانهٔ زمین<br>مثل رنگ ابر<br>مثل بوی خاک<br>مثل طعم اشک<br>مثل خواب کوه‌ها همیشگی است...</div>
+    </div>
+  </div>
+  <div class="english">
+    Jafari's love poems in this collection are not few, for many of these showings rise from a soul forever in love — and at their highest, this is no erotic love but a love for the human and for all beings:
+    <div class="poem-block">
+      <div class="poem-en">I love you —<br>this surmise,<br>O ancient, everlasting anthem,<br>this thing kneaded by the angels of heaven,<br>this certainty,<br>this oldest song of the earth —<br>like the color of cloud,<br>like the smell of clay,<br>like the taste of tears,<br>like the sleep of mountains, it is everlasting…</div>
+    </div>
+  </div>
+</div>
+
+<!-- Farrokhi Block 8 — tower poem -->
+<div class="pair">
+  <div class="persian">
+    و باز در این دفتر اینجا و آنجا صورتگر بزرگ را می‌بینی که در آرزوی در خود شدن است — تا از جان خویش تابلویی بی‌بدیل برآورد و سرایش و پردازش‌های خود را یک و همان کند:
+    <div class="poem-block">
+      <div class="poem-fa">کاشکی من برج ویرانی به راهی دور بودم<br>تا که در شب‌های بارانی<br>کبوترها نم‌آلوده به زیر سقف ایوانم<br>به یک پا تکیه می‌دادند و می‌خفتند.<br>…<br>پای ایوان در کنار آتش سوزان<br>دو شبگرد غم‌آلوده<br>برای یکدگر از سرگذشت خویش می‌گفتند.</div>
+    </div>
+  </div>
+  <div class="english">
+    And here and there in this collection, again, you see the great image-maker longing to turn inward — to raise from his own soul a peerless tableau, and make his composing and his renderings one and the same:
+    <div class="poem-block">
+      <div class="poem-en">Would that I were a ruined tower on a far road,<br>so that on rainy nights<br>the rain-damp pigeons, beneath the roof of my veranda,<br>would lean on one leg and sleep.<br>…<br>At the foot of the veranda, beside the burning fire,<br>two grief-laden night-wanderers<br>told each other the tale of all that had befallen them.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Farrokhi Block 9 — closing -->
+<div class="pair">
+  <div class="persian">
+    که جعفری در هنر، تمام دنیایش پنجره‌ای است دستی و حنجره‌ای توانمند — که در این قلعهٔ پیر بس سخن‌های ناگفته دارد، در تجانس آوایی و تجسم کلماتش و رنگین‌کمان رنگ‌ها و نقش‌بندی‌هایش.
+    <br><br>
+    بگذار خواننده را بر خوانش سروده‌های این دفتر واگذاریم و چونان هوکوسایی باشیم که آرزویش خلاصه کردن همهٔ آثار خود در نقطه‌ای بود، و بس.
+  </div>
+  <div class="english">
+    For Jafari, in art, his whole world is a window wrought by hand and a powerful throat — and in this aged fortress he holds many unspoken words, in the sound-kinship and the embodiment of his words, and in the rainbow of his colors and compositions.
+    <br><br>
+    Let us leave the reader to the reading of this collection's poems, and be like Hokusai, whose wish was to distill all his works into a single point — and nothing more.
+  </div>
+</div>
+
+<div class="signature">
+  باجلان فرخی (م.ح)، اردیبهشت ۱۳۹۶<br>
+  <em>Bajlan Farrokhi (M.H.) — Spring 2017</em>
+</div>
+<div class="section-break"><span class="section-label-fa">از جعفری</span><span class="section-label-en">From Jafari</span></div>
+<!-- camera-paste source — English needs retranslation -->
+<div class="pair">
+  <div class="persian">
+    <span class="label" style="text-align:right; direction:rtl;">فارسی</span>
+    امشب صدای کبود ترانم را نقاشی کردم.<br>
+    در دیوارهای تو در توی سیاهی<br>
+    گردان نان‌های ناز<br>
+    کی ترا شناختی؟<br>
+    منی آواز خواندم<br>
+    برین باد و کارپوری آواز خواندم<br>
+    پرسی و خط آلی، یک آنکه دوستش دارم<br>
+    آواز خستهٔ مرا زانی کرد<br>
+    میو تو آواز خواندم<br>
+    کانفی مهتابی کردی در گاتهام‌های تردیدم<br>
+    تمام شب تابی در مربع خنده‌های کویر<br>
+    کودکی آن برای نقاشی می‌کرده‌ای<br>
+    کاشی باران باریا — کاش باران ببارد<br>
+    بودی کامنگل<br>
+    آواز پرنده نیر رنگ‌تر می‌کند... پُر
+  </div>
+  <div class="english">
+    <span class="label">English</span>
+    <span class="needs-work">Tonight I painted the dark blue of my song.<br>
+    In your maze of blackness —<br>
+    the spinning sweet breads —<br>
+    when did you know me?<br>
+    I sang as myself,<br>
+    I sang above the wind and the work,<br>
+    Persian and the green line — the one I love.<br>
+    My tired song made me forget.<br>
+    I sang with you,<br>
+    you who became moonlit in my cities of doubt,<br>
+    all the fireflies in the square of the desert's laughter —<br>
+    childhood was making paintings of that.<br>
+    O rain-tile — if only it would rain.<br>
+    You were like a brazier.<br>
+    The bird's song makes the sky more full of color... full.</span>
+    <span class="needs-work-note">[ source text garbled in scanning — retranslation needed ]</span>
+  </div>
+</div>
+
+<div class="signature">
+  محمد ابراهیم جعفری<br>
+  <em>Mohammad Ebrahim Jafari</em>
+</div>
+</div>
+
+<div id="tab-poems" class="tab-panel poems">
+  <div id="toc" class="toc-wrapper">
+    <div class="toc"><span class="toc-title">Poems — اشعار</span><table class="toc-table"><tr class="toc-header"><th class="toc-col-english" style="text-align:left;">Page &amp; Title</th><th class="toc-col-dates" style="text-align:left;">Translated<span style="float:right;">Written</span></th><th class="toc-col-persian"><div style="display:flex;"><span style="flex:1;direction:rtl;text-align:right;">عنوان</span><span style="flex-shrink:0;min-width:2.2rem;padding-right:1.2rem;padding-left:0.3rem;text-align:left;white-space:nowrap;">صفحه</span></div></th></tr><tr onclick="location.href='#bird-behind-wall'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">12</span><div class="toc-english-text"><div class="toc-english-title">Adobe</div><div class="toc-first-line">A bird calls</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span>4-8-2026</span><span>Autumn 1989</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page"></span><div class="toc-persian-text"><div class="toc-persian-title-text">بوی کاهگل</div><div class="toc-persian-first-line">پرنده ای</div></div></div></td></tr><tr onclick="location.href='#old-news'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">28</span><div class="toc-english-text"><div class="toc-english-title">Old News</div><div class="toc-first-line">I wish I was a ruined watch tower</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1960 - ۱۳۳۹</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۲۸</span><div class="toc-persian-text"><div class="toc-persian-title-text">آخرین خبر</div><div class="toc-persian-first-line">کاشکی من برج ویرانی به راهی دور بودم</div></div></div></td></tr><tr onclick="location.href='#moonlight-sunlight'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">30</span><div class="toc-english-text"><div class="toc-english-title">Moonlight, Sunlight</div><div class="toc-first-line">Go - be moonlight for another’s evening</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span>4-3-2026</span><span>Borojerd 1960 - ۱۳۳۹</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۳۰</span><div class="toc-persian-text"><div class="toc-persian-title-text">مهتاب</div><div class="toc-persian-first-line">بُرو مهتاب شام دیگران باش</div></div></div></td></tr><tr onclick="location.href='#ancient-tree'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">35</span><div class="toc-english-text"><div class="toc-english-title">Ancient Tree</div><div class="toc-first-line">An ancient tree</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span>3/22/26</span><span>1961 - ۱۳۴۰</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۳۵</span><div class="toc-persian-text"><div class="toc-persian-title-text">درختی کهن</div><div class="toc-persian-first-line">تک درختی کهن</div></div></div></td></tr><tr onclick="location.href='#life-tune'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">40</span><div class="toc-english-text"><div class="toc-english-title">Life...</div><div class="toc-first-line">Life...</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>University Quarter, Tehran, 1963 - ۱۳۴۲</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۴۰</span><div class="toc-persian-text"><div class="toc-persian-title-text">زندگی...</div><div class="toc-persian-first-line">زندگی...</div></div></div></td></tr><tr onclick="location.href='#shadow-daughter'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">48</span><div class="toc-english-text"><div class="toc-english-title">To my daughter Shade</div><div class="toc-first-line">moments</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span>4-29-26</span><span>1980s دهه ۱۳۶۰</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۴۸</span><div class="toc-persian-text"><div class="toc-persian-title-text">به دخترم سایه</div><div class="toc-persian-first-line">لحظه ها</div></div></div></td></tr><tr onclick="location.href='#jungle-bomb'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">61</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">In the space between the sea & jungle</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>May 9, 1988, Isfahan - ۱۳۶۷/۲/۱۹</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۶۱</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">در فاصله دریا و جنگل</div></div></div></td></tr><tr onclick="location.href='#laugh-cry'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">62</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">I told you my poem …</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>Nov 1988 - ۱۳۶۷/۹</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۶۲</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">شعرم را برای تو گفتم...</div></div></div></td></tr><tr onclick="location.href='#soul-mold'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">66</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">Ah struggle…</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1989 - ۱۳۶۸</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۶۶</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">های...</div></div></div></td></tr><tr onclick="location.href='#gone-coming'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">100</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">Spring came</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>12/17/1989 ۱۳۶۸/۱۲/۱۷</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۱۰۰</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">بهار می آید و تو رفته ای</div></div></div></td></tr><tr onclick="location.href='#quiet-moon'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">127</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">I</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>April 1991 ۱۳۷۰ فروردین</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۱۲۷</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">من</div></div></div></td></tr><tr onclick="location.href='#heart-partridge'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">128</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">One thousand birds of love</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1/4/1991 کلاردشت ۱۳۷۰/۱/۴</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۱۲۸</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">هزار پرنده عاشق</div></div></div></td></tr><tr onclick="location.href='#meager-dew'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">131</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">No matter how much</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>April 15 1992 ۱۳۷۰/۱/۱۶</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۱۳۱</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">هر چه دوستم داری</div></div></div></td></tr><tr onclick="location.href='#water-cage'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">149</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">I watered the cage</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>July 25 1993 - ۱۳۷۲/۵/۳</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۱۴۹</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">قفس را دادم</div></div></div></td></tr><tr onclick="location.href='#morning-glory'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">202</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">you</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span>05/03/2026</span><span>2000s - دهه ۱۳۸۰</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۲۰۲</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">تو</div></div></div></td></tr><tr onclick="location.href='#snow-beautiful'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">203</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">Snow falls...</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span>05/3/2026</span><span>1990s - دهه ۱۳۷۰</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۲۰۳</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">برف میبارد...</div></div></div></td></tr><tr onclick="location.href='#stay-go'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num"></span><div class="toc-english-text"><div class="toc-english-title">Stay</div><div class="toc-first-line">You wish to stay</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span></span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page"></span><div class="toc-persian-text"><div class="toc-persian-title-text">می خواهی بمان</div><div class="toc-persian-first-line">می خواهی بمان،</div></div></div></td></tr></table></div>
+  </div>
+  <div class="page">
+    <div class="poem-section" id="bird-behind-wall"><div class="poem-header"><p class="poem-header-persian">بوی کاهگل</p><p class="poem-header-english">Adobe</p><p class="poem-header-meta">Autumn 1989 · p. 12 · translated 4-8-2026</p><span class="poem-status is-rendered">Rendered</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>پرنده ای
 پشت دیوار کاهگلی
 می خواند.
 دیوار را نقاشی کردم
@@ -393,7 +1047,7 @@ the rain washed it away.
 The smell of wet hay
 with bird song
 remains</p></div></div></div></div>
-<div class="poem-section" id="old-news"><div class="poem-header"><p class="poem-header-persian">آخرین خبر</p><p class="poem-header-english">Old News</p><p class="poem-header-meta">1960 - ۱۳۳۹ · p. 28</p></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>کاشکی من برج ویرانی به راهی دور بودم
+<div class="poem-section" id="old-news"><div class="poem-header"><p class="poem-header-persian">آخرین خبر</p><p class="poem-header-english">Old News</p><p class="poem-header-meta">1960 - ۱۳۳۹ · p. 28</p><span class="poem-status is-rendered">Rendered</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>کاشکی من برج ویرانی به راهی دور بودم
 تا که در شب های بارانی
 
 کبوتر ها نم آلوده
@@ -452,7 +1106,7 @@ by it’s base
 2 watchmen burn fire
 telling tales & adventures
 to one another</p></div></div></div></div>
-<div class="poem-section" id="moonlight-sunlight"><div class="poem-header"><p class="poem-header-persian">مهتاب</p><p class="poem-header-english">Moonlight, Sunlight</p><p class="poem-header-meta">Borojerd 1960 - ۱۳۳۹ · p. 30 · translated 4-3-2026</p></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>بُرو مهتاب شام دیگران باش
+<div class="poem-section" id="moonlight-sunlight"><div class="poem-header"><p class="poem-header-persian">مهتاب</p><p class="poem-header-english">Moonlight, Sunlight</p><p class="poem-header-meta">Borojerd 1960 - ۱۳۳۹ · p. 30 · translated 4-3-2026</p><span class="poem-status is-rendered">Rendered</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>بُرو مهتاب شام دیگران باش
  دو روزی هم به کام دیگران باش
  مرا در سرد سیر غم رها کن
  برو خورشید بام دیگران باش</p></div></div><div class="english"><span class="label">Translation</span><div class="poem-block english-poem"><p>Go - be moonlight for another’s evening
@@ -460,7 +1114,7 @@ For a day – or two even
 Go be their longing
 Leave me in the cold rut of grief [but]
 Go – be sunlight for someone else’s dawning</p></div></div></div></div>
-<div class="poem-section" id="ancient-tree"><div class="poem-header"><p class="poem-header-persian">درختی کهن</p><p class="poem-header-english">Ancient Tree</p><p class="poem-header-meta">1961 - ۱۳۴۰ · p. 35 · translated 3/22/26</p></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>تک درختی کهن
+<div class="poem-section" id="ancient-tree"><div class="poem-header"><p class="poem-header-persian">درختی کهن</p><p class="poem-header-english">Ancient Tree</p><p class="poem-header-meta">1961 - ۱۳۴۰ · p. 35 · translated 3/22/26</p><span class="poem-status is-rendered">Rendered</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>تک درختی کهن
 به سینه دشت...
 خسته از باد و حمله طوفان
 دستمالی سپید بر پنجه
@@ -475,7 +1129,7 @@ A white handkerchief
    Begging the
         armies of the wind for
 		                     mercy</p></div></div></div></div>
-<div class="poem-section" id="life-tune"><div class="poem-header"><p class="poem-header-persian">زندگی...</p><p class="poem-header-english">Life...</p><p class="poem-header-meta">University Quarter, Tehran, 1963 - ۱۳۴۲ · p. 40</p></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>زندگی...
+<div class="poem-section" id="life-tune"><div class="poem-header"><p class="poem-header-persian">زندگی...</p><p class="poem-header-english">Life...</p><p class="poem-header-meta">University Quarter, Tehran, 1963 - ۱۳۴۲ · p. 40</p><span class="poem-status is-rendered">Rendered</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>زندگی...
 یک نوا
 یک ترانه
 یک آواز
@@ -498,7 +1152,7 @@ tenderness –
 
 two doves, two days in each other's arms,
 the third, caught in the hawk's talon.</p></div></div></div><div class="footnotes"><span class="label">Translator's Notes</span><p>[ناز - coy, charm, flirt]</p></div></div>
-<div class="poem-section" id="shadow-daughter"><div class="poem-header"><p class="poem-header-persian">به دخترم سایه</p><p class="poem-header-english">To my daughter Shade</p><p class="poem-header-meta">1980s دهه ۱۳۶۰ · p. 48 · translated 4-29-26</p></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>لحظه ها
+<div class="poem-section" id="shadow-daughter"><div class="poem-header"><p class="poem-header-persian">به دخترم سایه</p><p class="poem-header-english">To my daughter Shade</p><p class="poem-header-meta">1980s دهه ۱۳۶۰ · p. 48 · translated 4-29-26</p><span class="poem-status is-rendered">Rendered</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>لحظه ها
 مثل دانه های کوچکند
 روی خاک خوب
 سبز میشوند
@@ -517,7 +1171,7 @@ Good earth
 is loving earth
 moist earth
 fruitful earth…</p></div></div></div></div>
-<div class="poem-section" id="jungle-bomb"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">May 9, 1988, Isfahan - ۱۳۶۷/۲/۱۹ · p. 61</p></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>در فاصله دریا و جنگل
+<div class="poem-section" id="jungle-bomb"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">May 9, 1988, Isfahan - ۱۳۶۷/۲/۱۹ · p. 61</p><span class="poem-status is-rendered">Rendered</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>در فاصله دریا و جنگل
  زنی را دوست دارم...
  در هر نمناران به جنگل پناه می برم
 تا در آغوشش...
@@ -529,14 +1183,14 @@ fruitful earth…</p></div></div></div></div>
 Everytime they bomb the jungle
 I go to the shelter of her hug
 Into her sea without thinking</p></div></div></div></div>
-<div class="poem-section" id="laugh-cry"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">Nov 1988 - ۱۳۶۷/۹ · p. 62</p></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>شعرم را برای تو گفتم...
+<div class="poem-section" id="laugh-cry"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">Nov 1988 - ۱۳۶۷/۹ · p. 62</p><span class="poem-status is-rendered">Rendered</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>شعرم را برای تو گفتم...
 خندیدی...
 با دیگری خواندم...
 گریست...</p></div></div><div class="english"><span class="label">Translation</span><div class="poem-block english-poem"><p>I told you my poem …
 You laughed …
 I sang another…
 Weeping…</p></div></div></div></div>
-<div class="poem-section" id="soul-mold"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1989 - ۱۳۶۸ · p. 66</p></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>های...
+<div class="poem-section" id="soul-mold"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1989 - ۱۳۶۸ · p. 66</p><span class="poem-status is-rendered">Rendered</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>های...
 جنگ...
 جانم را...
 که در فاصله
@@ -545,7 +1199,7 @@ Weeping…</p></div></div></div></div>
 Y’know my soul was molded
 In those distances
 Between a lover’s breathing</p></div></div></div></div>
-<div class="poem-section" id="gone-coming"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">12/17/1989 ۱۳۶۸/۱۲/۱۷ · p. 100</p></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>بهار می آید و تو رفته ای
+<div class="poem-section" id="gone-coming"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">12/17/1989 ۱۳۶۸/۱۲/۱۷ · p. 100</p><span class="poem-status is-rendered">Rendered</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>بهار می آید و تو رفته ای
 ای کاش
 ای کاش بهار رفته بود و تو می آمدی</p></div></div><div class="english"><span class="label">Translation</span><div class="poem-block english-poem"><p>Spring came
 & you had gone
@@ -553,13 +1207,13 @@ Between a lover’s breathing</p></div></div></div></div>
 O but if
 O but if spring had gone 
 & you were coming</p></div></div></div></div>
-<div class="poem-section" id="quiet-moon"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">April 1991 ۱۳۷۰ فروردین · p. 127</p></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>من
+<div class="poem-section" id="quiet-moon"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">April 1991 ۱۳۷۰ فروردین · p. 127</p><span class="poem-status is-rendered">Rendered</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>من
 خاموشم
 تا ماه... با تو... بگوید</p></div></div><div class="english"><span class="label">Translation</span><div class="poem-block english-poem"><p>I 
 Am quiet
 Until you hear
 From the moon</p></div></div></div></div>
-<div class="poem-section" id="heart-partridge"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1/4/1991 کلاردشت ۱۳۷۰/۱/۴ · p. 128</p></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>هزار پرنده عاشق
+<div class="poem-section" id="heart-partridge"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1/4/1991 کلاردشت ۱۳۷۰/۱/۴ · p. 128</p><span class="poem-status is-rendered">Rendered</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>هزار پرنده عاشق
 …در سرم میخوانند
 …دلم کبک تنهاییست
 …بی حرف
@@ -568,7 +1222,7 @@ are chanting in my head…
 my heart is a lone partridge…
 without words…
 snow around its head…</p></div></div></div></div>
-<div class="poem-section" id="meager-dew"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">April 15 1992 ۱۳۷۰/۱/۱۶ · p. 131</p></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>هر چه دوستم داری
+<div class="poem-section" id="meager-dew"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">April 15 1992 ۱۳۷۰/۱/۱۶ · p. 131</p><span class="poem-status is-rendered">Rendered</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>هر چه دوستم داری
  نمیگویم کم است, 
 کوچک ترین دانه باران
  بزرگترین شبنم است…</p></div></div><div class="english"><span class="label">Translation</span><div class="poem-block english-poem"><p>No matter how much
@@ -581,10 +1235,10 @@ In the smallest grain
 Of rain
 
 Is the largest dew-drop</p></div></div></div></div>
-<div class="poem-section" id="water-cage"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">July 25 1993 - ۱۳۷۲/۵/۳ · p. 149</p></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>قفس را دادم
+<div class="poem-section" id="water-cage"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">July 25 1993 - ۱۳۷۲/۵/۳ · p. 149</p><span class="poem-status is-rendered">Rendered</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>قفس را دادم
 پرنده... سبز نشد...</p></div></div><div class="english"><span class="label">Translation</span><div class="poem-block english-poem"><p>I watered the cage
 the bird... ain't no greener...</p></div></div></div></div>
-<div class="poem-section" id="morning-glory"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">2000s - دهه ۱۳۸۰ · p. 202 · translated 05/03/2026</p></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>تو
+<div class="poem-section" id="morning-glory"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">2000s - دهه ۱۳۸۰ · p. 202 · translated 05/03/2026</p><span class="poem-status is-rendered">Rendered</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>تو
 خاک خشک را تر کن
 دانه نیلوفر
 با باد...
@@ -593,7 +1247,7 @@ the bird... ain't no greener...</p></div></div></div></div>
 wet the dry earth
 morning glory seeds
 with the wind...</p></div></div></div><div class="footnotes"><span class="label">Translator's Notes</span><p>نیلوفر - water lily - but possibly also morning glory?</p></div></div>
-<div class="poem-section" id="snow-beautiful"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1990s - دهه ۱۳۷۰ · p. 203 · translated 05/3/2026</p></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>برف میبارد...
+<div class="poem-section" id="snow-beautiful"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1990s - دهه ۱۳۷۰ · p. 203 · translated 05/3/2026</p><span class="poem-status is-rendered">Rendered</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>برف میبارد...
 برف میبارد...
 من پیرتر میشوم
 تو زیباتر...
@@ -602,7 +1256,7 @@ with the wind...</p></div></div></div><div class="footnotes"><span class="label"
 Snow falls...
 I grow older
 you... more beautiful...</p></div></div></div></div>
-<div class="poem-section" id="stay-go"><div class="poem-header"><p class="poem-header-persian">می خواهی بمان</p><p class="poem-header-english">Stay</p><p class="poem-header-meta"></p></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>می خواهی بمان،
+<div class="poem-section" id="stay-go"><div class="poem-header"><p class="poem-header-persian">می خواهی بمان</p><p class="poem-header-english">Stay</p><p class="poem-header-meta"></p><span class="poem-status is-rendered">Rendered</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>می خواهی بمان،
 میخواهی برو...
 رفتنِ تو،
 دل انگیز تر از
@@ -612,8 +1266,136 @@ to go
 your going
 is more enchanting
 than another’s arrival</p></div></div></div></div>
+  </div>
+</div>
+
+<div id="tab-drafts" class="tab-panel poems">
+  <p class="drafts-note">Work in progress — the English here is a raw machine draft awaiting a finished translation.</p>
+  <div id="toc-drafts" class="toc-wrapper">
+    <div class="toc"><span class="toc-title">Drafts — پیش‌نویس‌ها</span><table class="toc-table"><tr class="toc-header"><th class="toc-col-english" style="text-align:left;">Page &amp; Title</th><th class="toc-col-dates" style="text-align:left;">Translated<span style="float:right;">Written</span></th><th class="toc-col-persian"><div style="display:flex;"><span style="flex:1;direction:rtl;text-align:right;">عنوان</span><span style="flex-shrink:0;min-width:2.2rem;padding-right:1.2rem;padding-left:0.3rem;text-align:left;white-space:nowrap;">صفحه</span></div></th></tr><tr onclick="location.href='#city-smoke'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num">25</span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">From the side of the plain</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>1968 - ۱۳۴۷</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page">۲۵</span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">از کنار ..دشت</div></div></div></td></tr><tr onclick="location.href='#fifty-moons'"><td class="toc-col-english"><div class="toc-english-row"><span class="toc-page-num"></span><div class="toc-english-text"><div class="toc-english-title"></div><div class="toc-first-line">In the night,</div></div></div></td><td class="toc-col-dates"><div class="toc-dates-inner"><span></span><span>January 1972 - تهران دی ماه ۱۳۵۱</span></div></td><td class="toc-col-persian"><div class="toc-persian-col"><span class="toc-persian-page"></span><div class="toc-persian-text"><div class="toc-persian-title-text"></div><div class="toc-persian-first-line">در عبور شب</div></div></div></td></tr></table></div>
+  </div>
+  <div class="page">
+    <div class="poem-section" id="city-smoke"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">1968 - ۱۳۴۷ · p. 25</p><span class="poem-status is-draft">Draft</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>از کنار ..دشت
+از جوار کوه....
+از زلال آبی قدیم پرشکوه....
+من به شهر دود آمدم....
+من به شهر پر صدای بی سرود...
+نه... به شهر بی امید خسته خمود آمدم..... عمر می گذشت....
+آه می وزید...
+مار خستگی... دست چیدن مرا....
+چشم دیدن مرا...
+پای رفتن مرا به راه عشق می گزید...
+در چنین چم کبود... در چنین غروب غم....
+در چنین خمار خسته خمود...
+وای اگر خیال تو نبود
+برق چشمه زلال تو نبود.
+وای اگر صدای تو نبود... راز تو نبود
+زخمه های ساز تو نبود
+بازوان باز تو نبود
+در شبان پر هراس شهر ...
+مرد خسته ای در آرزوی ماه بود
+زیر پای سایه های غم کوچه تو غرق آه بود...
+در غروب این ستاره ها....
+در صدای زخمدار این مناره ها...
+
+در صدای دور
+در صدای حجم های آهنین بی سرود.....
+عمرها تباه بود.
+شهر پرده ای سیاه بود
+عشق روی تو چراغ راه بود.... شعله ای برای محو هر گناه بود...
+
+۱۳۴۷</p></div></div><div class="english"><span class="label">Machine Draft</span><div class="poem-block english-poem"><p>From the side of the plain
+From the side of the mountain...
+From the clear blue of the old, glorious...
+I came to the city of smoke...
+I came to the city full of noise without a song...
+No... I came to the city without hope, tired and hunched..... Life was passing by...
+It was sighing...
+The snake of fatigue... my hand-wringing...
+My eyes seeing...
+It was biting my feet on the path of love...
+In such a blue sky... in such a sunset of sadness...
+In such a drunkenness, tired and hunched...
+Wow, if it weren't for your imagination
+There wouldn't be the electricity of your clear spring.
+Wow, if it weren't for your voice... There wouldn't be your secret
+There wouldn't be your wounds
+There wouldn't be your open arms
+In the frightened shepherd of the city...
+A tired man was longing for the moon
+Under the shadows of sadness, your alley was drowning in sighs...
+In the sunset of these stars...
+In the wounded voice of these minarets...
+In the distant sound
+In the sound of songless iron volumes.....
+Life was ruined.
+The city was a black curtain
+Love on you was a beacon.... It was a flame to erase every sin...
+
+1347</p></div></div></div></div>
+<div class="poem-section" id="fifty-moons"><div class="poem-header"><p class="poem-header-persian"></p><p class="poem-header-english"></p><p class="poem-header-meta">January 1972 - تهران دی ماه ۱۳۵۱</p><span class="poem-status is-draft">Draft</span></div><div class="pair"><div class="persian"><span class="label">متن اصلی</span><div class="poem-block persian-poem"><p>در عبور شب
+گرد گیسوی تو میگردم
+مست از بوی تو می گردم
+لب به گوش تو میکنم نجوا
+این منم پنجاه
+داغ تر از تب
+سردتر از آه
+خنده ات با اشک من همراه...
+چند مهتاب دگر ؟
+چند قرص ماه؟
+
+تهران دی ماه ۱۳۵۱</p></div></div><div class="english"><span class="label">Machine Draft</span><div class="poem-block english-poem"><p>In the night,
+I wander around your hair
+I wander drunk on your scent
+I whisper in your ear
+This is me, fifty
+Hotter than fever
+Colder than a sigh
+Your laughter is accompanied by my tears...
+How many more moons?
+How many moons?
+
+Tehran, January 1972</p></div></div></div></div>
+  </div>
 </div>
 
 <a href="#toc" class="back-to-toc" title="Back to contents">^</a>
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('.tab-btn');
+    var panels = document.querySelectorAll('.tab-panel');
+    var backToToc = document.querySelector('.back-to-toc');
+    function activate(name) {
+      buttons.forEach(function (b) {
+        b.classList.toggle('active', b.dataset.tab === name);
+      });
+      panels.forEach(function (p) {
+        p.classList.toggle('active', p.id === 'tab-' + name);
+      });
+      var onPoems = name === 'poems' || name === 'drafts';
+      document.body.classList.toggle('on-poems', onPoems);
+      if (backToToc) {
+        backToToc.setAttribute('href', name === 'drafts' ? '#toc-drafts' : '#toc');
+      }
+      if (history.replaceState) history.replaceState(null, '', '#' + name);
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { activate(b.dataset.tab); });
+    });
+    // Open the tab whose panel contains the hash target; else the named tab; else preface.
+    var hash = (location.hash || '').replace('#', '');
+    function panelHas(tab) {
+      return hash && document.getElementById('tab-' + tab) &&
+        document.getElementById('tab-' + tab).querySelector('#' + CSS.escape(hash));
+    }
+    if (hash === 'drafts' || hash === 'toc-drafts' || panelHas('drafts')) {
+      activate('drafts');
+    } else if (hash === 'poems' || hash === 'toc' || panelHas('poems')) {
+      activate('poems');
+    } else {
+      activate('preface');
+    }
+  })();
+</script>
 </body>
 </html>
