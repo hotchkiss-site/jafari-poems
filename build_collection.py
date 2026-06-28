@@ -269,6 +269,15 @@ CSS = """
       margin-top: 0.1rem;
     }
 
+    /* slug = filename stem / anchor, shown under the title in the TOC */
+    .toc-slug {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      color: #b3a78f;
+      letter-spacing: 0.02em;
+      margin-top: 0.2rem;
+    }
+
     /* center column: two sub-cells side by side */
     .toc-dates-inner {
       display: flex;
@@ -348,6 +357,17 @@ CSS = """
       font-size: 1.1rem;
       color: #9c7f60;
       letter-spacing: 0.04em;
+    }
+
+    /* File handle: the poem's id == filename stem (poems/<id>.poem, meta/<id>.toml)
+       and the anchor (#<id>). Shown muted/monospace so it reads as a handle, not
+       part of the poem. */
+    .poem-header-slug {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92rem;
+      color: #b0a48f;
+      letter-spacing: 0.02em;
+      margin: 0.35rem 0 0;
     }
 
     .poem-status {
@@ -882,6 +902,7 @@ def render_toc(poems, english_source="translation", title="Poems — اشعار"
             f'<div class="toc-english-text">'
             f'<div class="toc-english-title">{english_title}</div>'
             f'<div class="toc-first-line">{fl_en}</div>'
+            f'<div class="toc-slug">{poem_id}</div>'
             f'</div>'
             f'</div>'
             f'</td>'
@@ -982,6 +1003,7 @@ def render_draft_section(poem):
         f'<p class="poem-header-persian">{poem.get("persian_title", "")}</p>'
         f'<p class="poem-header-english">{poem.get("english_title", "")}</p>'
         f'<p class="poem-header-meta">{meta_line(poem)}</p>'
+        f'<p class="poem-header-slug">{poem_id}</p>'
         f'{badges_html}'
         "</div>"
         '<div class="pair">'
@@ -1010,6 +1032,7 @@ def render_poem_section(poem, english_field="translation", english_label="Transl
         f'<p class="poem-header-persian">{poem.get("persian_title", "")}</p>'
         f'<p class="poem-header-english">{poem.get("english_title", "")}</p>'
         f'<p class="poem-header-meta">{meta_line(poem)}</p>'
+        f'<p class="poem-header-slug">{poem.get("id", "")}</p>'
         f'{status_html}'
         "</div>"
         '<div class="pair">'

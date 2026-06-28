@@ -1,0 +1,11 @@
+id                  = "jungle-refuge"
+english_title       = ""
+persian_title       = ""
+date_written        = "1988 - ۱۳۶۷/۲/۱۶"
+date_translated     = "6/28/26"
+page_number         = "61"
+persian_page_number = "۶۱"
+source              = "raw photos/persian_poems.md"
+tags                = ["love", "war", "sea", "forest"]
+notes               = "Untitled in source. Dateline 'اصفهان ۱۳۶۷/۲/۱۶' (Isfahan, spring 1988). Imported as a draft with a literal pass (machine), a working crib (lantern), and a finished translation (Ben) staged but withheld from the Poems tab. جنگل read as 'forest' (Caspian woodland), not 'jungle'."
+draft               = true

@@ -1,0 +1,11 @@
+id                  = "laughed-wept"
+english_title       = ""
+persian_title       = ""
+date_written        = "1988 - ۱۳۶۷/۹"
+date_translated     = "6/28/26"
+page_number         = "62"
+persian_page_number = "۶۲"
+source              = "raw photos/persian_poems.md"
+tags                = ["love", "poetry", "loss"]
+notes               = "Untitled in source. Imported as a draft with machine / lantern / Ben layers; the finished translation is staged but withheld from the Poems tab. The pivot is گریست (3rd-sing. 'wept') — the other listener weeps, not the poet."
+draft               = true

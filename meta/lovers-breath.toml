@@ -1,0 +1,11 @@
+id                  = "lovers-breath"
+english_title       = ""
+persian_title       = ""
+date_written        = "1989 - ۱۳۶۸"
+date_translated     = "6/28/26"
+page_number         = "66"
+persian_page_number = "۶۶"
+source              = "raw photos/persian_poems.md"
+tags                = ["war", "love", "fragment"]
+notes               = "Untitled in source. A deliberately unfinished fragment (note the trailing '...؟...'). جانم را carries an object-marker with no resolving verb; the suspension is kept in translation rather than smoothed out. Imported as a draft with machine / lantern / Ben layers; finished translation staged but withheld from the Poems tab."
+draft               = true
