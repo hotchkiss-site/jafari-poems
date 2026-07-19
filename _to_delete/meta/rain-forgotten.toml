@@ -1,0 +1,11 @@
+id                  = "rain-forgotten"
+english_title       = ""
+persian_title       = ""
+date_written        = "Tehran, Autumn 1989 - تهران، پاییز ۱۳۶۸"
+date_translated     = ""
+page_number         = ""
+persian_page_number = ""
+source              = "raw-jafari-adobe-1.txt"
+tags                = ["rain", "love", "memory", "loss"]
+notes               = "Untitled in source. Source includes a polished human translation (kept in the translation section); imported as a draft per instruction — flip draft to false to render it. The machine section holds the raw MT shown in the Drafts tab. Lantern added 7/19/26 (agent): keeps the 7-line shape; takes که فراموش کرده‌ای / به خاطر آوری as addressed to the rain itself (the rain forgot the smell and remembers by falling on kāhgel); renders چون برگردد + برده است as future perfect ('will have carried me out of memory') to keep the به خاطر آوردن / از خاطر بردن hinge. های may carry a hāy-hāy (weeping) undertone — see chat 7/19/26."
+draft               = true

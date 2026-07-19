@@ -1,0 +1,11 @@
+id                  = "nightingale-cloud"
+english_title       = ""
+persian_title       = ""
+date_written        = "2001 - ۱۳۸۰"
+date_translated     = "7/19/26"
+page_number         = "182"
+persian_page_number = "۱۸۲"
+source              = "raw-jafari-adobe-1.txt"
+tags                = ["nightingale", "rain", "longing"]
+notes               = "Untitled in source. The translation slot holds Ben's own rendering (7/19/26): 'couldn't weather a cloud' / 'took a shine to' both carry the هوا weather-desire pun; 'if the rain won't rain' keeps the بارون نباره cognate pair; register is a slight Irish lilt, which licenses the closing 'is but'. The source's polished human translation (originally imported into the translation slot) is preserved in lantern as an alternative. The machine section holds the raw MT."
+draft               = false

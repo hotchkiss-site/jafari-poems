@@ -3,6 +3,10 @@
 build_collection.py — render all .poem files in a folder to one HTML file.
 Sorted by page_number. Includes a table of contents with first lines and dates.
 
+Each .poem file is self-contained: a ===meta=== TOML section followed by the
+text sections (===persian===, ===machine===, ===lantern===, ===translation===,
+===footnotes===). There is no separate meta/ directory.
+
 Usage: python build_collection.py poems/
 Output: index.html (or pass --out to specify)
 Command while in folder: python build_collection.py poems/
@@ -61,13 +65,20 @@ def parse_sections(text: str) -> dict:
     return sections
 
 
-def load_poem(meta_path: Path, poems_dir: Path) -> dict:
-    """Merge a meta/*.toml file with its corresponding poems/*.poem sections."""
-    poem = parse_toml(meta_path.read_text(encoding="utf-8"))
-    poem_id = poem.get("id", meta_path.stem)
-    poem_path = poems_dir / f"{poem_id}.poem"
-    if poem_path.exists():
-        poem.update(parse_sections(poem_path.read_text(encoding="utf-8")))
+def load_poem(poem_path: Path) -> dict:
+    """Parse a self-contained .poem file: ===meta=== TOML + text sections.
+
+    The metadata fields come from the ===meta=== section (flat TOML); every
+    other ===section=== is attached as a text field. Text sections win on a
+    key collision, matching the old meta/ + poems/ merge order.
+    """
+    sections = parse_sections(poem_path.read_text(encoding="utf-8"))
+    poem = parse_toml(sections.pop("meta", ""))
+    if poem.get("id", poem_path.stem) != poem_path.stem:
+        print(f"Warning: meta id '{poem.get('id')}' != filename stem "
+              f"'{poem_path.stem}' in {poem_path} — using the filename.")
+    poem["id"] = poem_path.stem
+    poem.update(sections)
     return poem
 
 
@@ -111,6 +122,17 @@ def load_preface(preface_dir: Path) -> list:
 CSS = """
     *, *::before, *::after { box-sizing: border-box; }
 
+    /* ── illumination tokens (unwan carpet) ── */
+    :root {
+      --lapis: #24407e;
+      --gold: #cfa64b;
+      --gold-line: rgba(207, 166, 75, 0.4);
+      --gold-faint: rgba(207, 166, 75, 0.22);
+      --lapis-cream: #e9dcc0;
+      --lapis-muted: #a9b7d8;
+      --lapis-slug: #7d8db4;
+    }
+
     body {
       background: #f5f0e8;
       color: #2a1f14;
@@ -125,11 +147,49 @@ CSS = """
       margin: 0 auto;
     }
 
+    /* ── the unwan carpet: lapis field holding header + tabs (and, on the
+       Poems tab, extending through the TOC below it) ── */
+    .carpet {
+      position: relative;
+      background: var(--lapis);
+      padding: 2.8rem 1rem 0.8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    body.poems-open .carpet {
+      margin-bottom: 0;
+      padding-bottom: 0.2rem;
+    }
+
+    .corner {
+      position: absolute;
+      width: min(9vw, 84px);
+      height: min(9vw, 84px);
+      background: var(--gold);
+      opacity: 0.92;
+      pointer-events: none;
+      -webkit-mask: __CORNER_MASK__ center / contain no-repeat;
+              mask: __CORNER_MASK__ center / contain no-repeat;
+    }
+
+    .c-tl { top: 10px; left: 10px; }
+    .c-tr { top: 10px; right: 10px; transform: scaleX(-1); }
+    .c-bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
+    .c-br { bottom: 10px; right: 10px; transform: scale(-1, -1); }
+
+    /* when the carpet continues into the poems TOC, its own bottom pair
+       yields to the pair at the TOC's foot */
+    body.poems-open .carpet .carpet-close { display: none; }
+
+    @media (max-width: 900px) {
+      .c-bl, .c-br { display: none; }
+    }
+
     .book-header {
       text-align: center;
-      margin-bottom: 3rem;
-      padding-bottom: 2rem;
-      border-bottom: 2px solid #c9843a;
+      margin: 0 auto;
+      max-width: 900px;
+      padding-bottom: 1.8rem;
     }
 
     .book-title-persian {
@@ -137,18 +197,19 @@ CSS = """
       font-weight: 700;
       direction: rtl;
       margin: 0 0 0.4rem;
+      color: var(--gold);
     }
 
     .book-title-english {
       font-size: 1.63rem;
       font-style: italic;
-      color: #6b5240;
+      color: var(--lapis-cream);
       margin: 0 0 0.6rem;
     }
 
     .book-author {
       font-size: 1.25rem;
-      color: #9c7f60;
+      color: var(--lapis-muted);
       letter-spacing: 0.05em;
     }
 
@@ -158,6 +219,39 @@ CSS = """
       padding: 0 2rem 3.5rem;
       margin-bottom: 3.5rem;
     }
+
+    /* ── poems TOC: the carpet continues (drafts TOC stays cream — only the
+       finished book is illuminated) ── */
+    #tab-poems .toc-wrapper {
+      position: relative;
+      background: var(--lapis);
+      padding-top: 0.2rem;
+      margin-top: 0;
+    }
+
+    /* dogmoj dash opens the table in place of a repeated "Poems" title */
+    .toc-rule {
+      width: min(300px, 55%);
+      aspect-ratio: 16;
+      margin: 1.6rem auto 1.5rem;
+      background: var(--gold);
+      opacity: 0.85;
+      -webkit-mask: __RULE_MASK__ center / contain no-repeat;
+              mask: __RULE_MASK__ center / contain no-repeat;
+    }
+
+    #tab-poems .toc-table tr { border-bottom-color: var(--gold-faint); }
+    #tab-poems .toc-table tr:hover { background: rgba(207, 166, 75, 0.08); }
+    #tab-poems .toc-table tr.toc-header:hover { background: none; }
+    #tab-poems .toc-table th { color: var(--gold); border-bottom-color: var(--gold-line); }
+    #tab-poems .toc-english-title { color: var(--lapis-cream); }
+    #tab-poems .toc-first-line,
+    #tab-poems .toc-persian-first-line { color: var(--lapis-muted); }
+    #tab-poems .toc-slug { color: var(--lapis-slug); }
+    #tab-poems .toc-page-num,
+    #tab-poems .toc-persian-page,
+    #tab-poems .toc-dates-inner { color: var(--lapis-muted); }
+    #tab-poems .toc-persian-title-text { color: var(--lapis-cream); }
 
     .toc {
       max-width: 1400px;
@@ -615,41 +709,48 @@ CSS = """
       }
     }
 
-    /* ── Tabs ───────────────────────────────────────────── */
+    /* ── Tabs: typography only (no ornament on chrome); the active tab is a
+       gold cartouche pill echoing the .poem-status badge vocabulary ── */
     .tabs {
-      max-width: 900px;
-      margin: 0 auto 2.5rem;
+      max-width: 700px;
+      margin: 0 auto;
       display: flex;
-      gap: 0.5rem;
-      border-bottom: 2px solid #c9843a;
-      padding: 0 1rem;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.4rem 0 0.8rem;
     }
 
     .tab-btn {
       appearance: none;
       background: none;
-      border: none;
+      border: 1px solid transparent;
       font-family: inherit;
-      font-size: 1.25rem;
-      color: #9c7f60;
+      font-size: 1.18rem;
+      color: var(--lapis-muted);
       cursor: pointer;
-      padding: 0.7rem 1.4rem;
-      border-radius: 6px 6px 0 0;
-      transition: background 0.15s, color 0.15s;
-      position: relative;
-      top: 2px;
+      padding: 0.32rem 1.15rem;
+      border-radius: 1.4rem;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
     }
 
     .tab-btn:hover {
-      color: #6b5240;
+      color: var(--lapis-cream);
     }
 
     .tab-btn.active {
-      color: #2a1f14;
-      font-weight: 600;
-      border: 2px solid #c9843a;
-      border-bottom: 2px solid #f5f0e8;
-      background: #f5f0e8;
+      color: var(--gold);
+      border-color: var(--gold);
+      background: rgba(207, 166, 75, 0.09);
+    }
+
+    .tab-btn:focus-visible {
+      outline: 2px solid var(--lapis-cream);
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 640px) {
+      .tabs { gap: 0.3rem; }
+      .tab-btn { font-size: 1.02rem; padding: 0.26rem 0.8rem; }
     }
 
     .tab-panel {
@@ -865,7 +966,7 @@ def first_line(text):
     return ""
 
 
-def render_toc(poems, english_source="translation", title="Poems — اشعار"):
+def render_toc(poems, english_source="translation", title="Poems — اشعار", heading_html=None):
     header = (
         '<tr class="toc-header">'
         '<th class="toc-col-english" style="text-align:left;">Page &amp; Title</th>'
@@ -933,9 +1034,11 @@ def render_toc(poems, english_source="translation", title="Poems — اشعار"
 
         rows.append(f"<tr {onclick}>{col_english}{col_dates}{col_persian}</tr>")
 
+    if heading_html is None:
+        heading_html = f'<span class="toc-title">{title}</span>'
     return (
         '<div class="toc">'
-        f'<span class="toc-title">{title}</span>'
+        + heading_html +
         '<table class="toc-table">'
         + header
         + "".join(rows)
@@ -1085,6 +1188,7 @@ TAB_SCRIPT = """
       });
       var onPoems = name === 'poems' || name === 'drafts';
       document.body.classList.toggle('on-poems', onPoems);
+      document.body.classList.toggle('poems-open', name === 'poems');
       if (backToToc) {
         backToToc.setAttribute('href', name === 'drafts' ? '#toc-drafts' : '#toc');
       }
@@ -1127,11 +1231,42 @@ LAYER_SCRIPT = """
 """
 
 
-def render_collection(poems, preface, book_persian, book_english, author):
+# ── ornaments — vendored masks from the tazhib found-object library ──
+# ornaments/corner-bhutan.svg  (corner/bhutan — quarter design, mirrored ×4)
+# ornaments/rule-dogmoj.svg    (rule/dogmoj — diamond-and-leaf dash, 16:1)
+# Inlined as data URIs at build time so index.html works over file:// (CSS
+# mask-image is CORS-restricted; external URLs fail on a null origin).
+ORNAMENTS = {
+    "__CORNER_MASK__": "corner-bhutan.svg",
+    "__RULE_MASK__":   "rule-dogmoj.svg",
+}
+
+
+def ornament_css(css: str, ornaments_dir: Path) -> str:
+    """Substitute ornament mask data-URIs into the CSS; degrade to hidden if absent."""
+    import base64
+    missing = []
+    for token, fname in ORNAMENTS.items():
+        path = ornaments_dir / fname
+        if path.is_file():
+            b64 = base64.b64encode(path.read_bytes()).decode()
+            css = css.replace(token, f'url("data:image/svg+xml;base64,{b64}")')
+        else:
+            missing.append(fname)
+            css = css.replace(token, "none")
+    if missing:
+        print(f"Warning: missing ornament file(s) {missing} in {ornaments_dir} — "
+              "corners/rule will not render.")
+        css += "\n    .corner, .toc-rule { display: none; }\n"
+    return css
+
+
+def render_collection(poems, preface, book_persian, book_english, author, ornaments_dir):
     rendered = [p for p in poems if not is_draft(p)]
     drafts   = [p for p in poems if is_draft(p)]
 
-    toc = render_toc(rendered)
+    css = ornament_css(CSS, ornaments_dir)
+    toc = render_toc(rendered, heading_html='<div class="toc-rule" aria-hidden="true"></div>')
     sections = "\n".join(render_poem_section(p) for p in rendered)
 
     drafts_toc = render_toc(drafts, english_source=draft_english, title="Drafts — پیش‌نویس‌ها")
@@ -1146,22 +1281,25 @@ def render_collection(poems, preface, book_persian, book_english, author):
   <title>{book_english} \u2014 {author}</title>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <style>
-{CSS}
+{css}
   </style>
 </head>
 <body>
-<div class="page">
+<div class="carpet">
+  <div class="corner c-tl" aria-hidden="true"></div>
+  <div class="corner c-tr" aria-hidden="true"></div>
+  <div class="corner c-bl carpet-close" aria-hidden="true"></div>
+  <div class="corner c-br carpet-close" aria-hidden="true"></div>
   <div class="book-header">
     <p class="book-title-persian">{book_persian}</p>
     <p class="book-title-english">{book_english}</p>
     <p class="book-author">{author}</p>
   </div>
-</div>
-
-<div class="tabs">
-  <button class="tab-btn active" data-tab="preface">Preface &middot; \u067e\u06cc\u0634\u06af\u0641\u062a\u0627\u0631</button>
-  <button class="tab-btn" data-tab="poems">Poems &middot; \u0627\u0634\u0639\u0627\u0631</button>
-  <button class="tab-btn" data-tab="drafts">Drafts &middot; \u067e\u06cc\u0634\u200c\u0646\u0648\u06cc\u0633</button>
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="preface">Preface &middot; \u067e\u06cc\u0634\u06af\u0641\u062a\u0627\u0631</button>
+    <button class="tab-btn" data-tab="poems">Poems &middot; \u0627\u0634\u0639\u0627\u0631</button>
+    <button class="tab-btn" data-tab="drafts">Drafts &middot; \u067e\u06cc\u0634\u200c\u0646\u0648\u06cc\u0633</button>
+  </div>
 </div>
 
 <div id="tab-preface" class="tab-panel preface active">
@@ -1170,6 +1308,8 @@ def render_collection(poems, preface, book_persian, book_english, author):
 
 <div id="tab-poems" class="tab-panel poems">
   <div id="toc" class="toc-wrapper">
+    <div class="corner c-bl" aria-hidden="true"></div>
+    <div class="corner c-br" aria-hidden="true"></div>
     {toc}
   </div>
   <div class="page">
@@ -1196,9 +1336,8 @@ def render_collection(poems, preface, book_persian, book_english, author):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Render all poems (meta/ + poems/) to one HTML file.")
+    parser = argparse.ArgumentParser(description="Render all self-contained .poem files to one HTML file.")
     parser.add_argument("folder", nargs="?", default="poems", help="Path to poems/ folder (default: poems)")
-    parser.add_argument("--meta", default=None, help="Path to meta/ folder (default: sibling of poems/)")
     parser.add_argument("--preface", default=None, help="Path to preface/ folder (default: sibling of poems/)")
     parser.add_argument("--out", default="index.html", help="Output HTML path")
     parser.add_argument("--book-persian", default="\u0628\u0648\u06cc \u06a9\u0627\u0647\u06af\u0644 \u0648 \u0622\u0648\u0627\u0632 \u067e\u0631\u0646\u062f\u0647")
@@ -1207,22 +1346,18 @@ def main():
     args = parser.parse_args()
 
     poems_dir   = Path(args.folder)
-    meta_dir    = Path(args.meta) if args.meta else poems_dir.parent / "meta"
     preface_dir = Path(args.preface) if args.preface else poems_dir.parent / "preface"
 
     if not poems_dir.is_dir():
         print(f"Error: poems folder '{poems_dir}' not found.")
         sys.exit(1)
-    if not meta_dir.is_dir():
-        print(f"Error: meta folder '{meta_dir}' not found. Run migrate.py first.")
+
+    poem_files = sorted(poems_dir.glob("*.poem"))
+    if not poem_files:
+        print(f"No .poem files found in {poems_dir}.")
         sys.exit(1)
 
-    meta_files = sorted(meta_dir.glob("*.toml"))
-    if not meta_files:
-        print(f"No .toml files found in {meta_dir}.")
-        sys.exit(1)
-
-    poems = [load_poem(f, poems_dir) for f in meta_files]
+    poems = [load_poem(f) for f in poem_files]
 
     def sort_key(p):
         pn = p.get("page_number")
@@ -1235,7 +1370,9 @@ def main():
 
     preface = load_preface(preface_dir)
 
-    html = render_collection(poems, preface, args.book_persian, args.book_english, args.author)
+    ornaments_dir = poems_dir.parent / "ornaments"
+    html = render_collection(poems, preface, args.book_persian, args.book_english,
+                             args.author, ornaments_dir)
 
     out_path = Path(args.out)
     out_path.write_text(html, encoding="utf-8")

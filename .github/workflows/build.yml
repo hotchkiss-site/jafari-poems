@@ -5,8 +5,8 @@ on:
     branches: [main]
     paths:
       - "poems/**.poem"
-      - "meta/**.toml"
       - "preface/**.html"
+      - "ornaments/**.svg"
       - "build_collection.py"
 
 permissions:

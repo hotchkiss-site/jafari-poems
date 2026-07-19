@@ -1,3 +1,17 @@
+===meta===
+
+id                  = "bomb-kiss"
+english_title       = ""
+persian_title       = ""
+date_written        = "1984 - ۱۳۶۳"
+date_translated     = ""
+page_number         = "50"
+persian_page_number = "۵۰"
+source              = "raw-jafari-adobe-3.txt"
+tags                = ["love", "war", "betrayal"]
+notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending."
+draft               = false
+
 ===persian===
 
 چشمانم را بستم
@@ -50,6 +64,6 @@ there
 you were - 
 already in another's arms
 
-... Oy... uh... war
+... ugh ... war
 
 ===footnotes===

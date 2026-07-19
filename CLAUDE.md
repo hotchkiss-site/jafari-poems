@@ -5,14 +5,16 @@ A git-based bilingual poetry collection. The poems are translations of Mohammad 
 ## Repository layout
 
 ```
-poems/          one .poem file per poem — text sections only
-meta/           one .toml file per poem — structured metadata
+poems/          one self-contained .poem file per poem — ===meta=== TOML + text sections
 preface/        front matter — one self-contained HTML fragment per section
+ornaments/      vendored SVG masks from the tazhib found-object library
+                (corner-bhutan, rule-dogmoj) — inlined as data URIs at build time
 schema.toml     authoritative list of allowed metadata fields
 build_collection.py   renders preface + poems → index.html (tabbed)
 build_poem.py         renders a single poem → <id>.html
-new-poem.sh     interactive scaffolding for a new poem (both files)
-migrate.py      one-time migration script (kept for reference)
+new-poem.sh     interactive scaffolding for a new poem (one file)
+migrate.py      historic one-time script from the 2026-06 split (kept for reference;
+                the split was reversed 2026-07 — poems are single-file again)
 index.html      generated output — do not edit by hand
 ```
 
@@ -23,9 +25,13 @@ and **Drafts** (poems with `draft = true` — English still in draft: a literal 
 ## File formats
 
 ### `poems/<id>.poem`
-Plain text with named section delimiters. No metadata header.
+Plain text with named section delimiters. The first section is `===meta===`,
+holding the poem's structured metadata as flat TOML; every other section is text.
 
 ```
+===meta===
+<flat TOML — all fields defined in schema.toml>
+
 ===persian===
 <original Persian text>
 
@@ -50,8 +56,8 @@ The three English sections are **layers** of increasing refinement, and **who wr
 
 `lantern` is optional and need not be present in every file. In the **Drafts** tab each non-empty layer gets a clickable, latching badge under the poem; click one or several to show those layers side by side on the English side (empty layers show no badge). The **Poems** tab renders only the finished `translation`. The `===section===` parser is generic, so adding another layer later is a builder change, not a parser one.
 
-### `meta/<id>.toml`
-Flat TOML. All fields defined in `schema.toml`. Every field is present in every file (empty string or empty array if unused).
+### The `===meta===` section
+Flat TOML inside the poem file. All fields defined in `schema.toml`. Every field is present in every poem (empty string or empty array if unused).
 
 ```toml
 id                  = "ancient-tree"
@@ -67,7 +73,7 @@ notes               = ""
 draft               = false
 ```
 
-The `id` field must match the filename stem exactly. It is the link between the two files — there is no other join key.
+The `id` field must match the `.poem` filename stem exactly (the build warns on mismatch and trusts the filename).
 
 `draft = true` marks a poem whose English is not yet a finished translation. Drafts are pulled out of the **Poems** tab into a separate **Drafts** tab, where each non-empty English layer (`machine` / `lantern` / `translation`→"Ben") is shown as a togglable badge for side-by-side comparison (see the `.poem` format above); the most refined available layer is shown by default. A draft *may* already carry a finished `===translation===` that is staged but withheld from the Poems tab — it surfaces as the "Ben" layer in Drafts and stays out of Poems until you flip `draft` to `false` (e.g. poems imported in bulk as drafts that already had a human translation in the source). Finished poems are `draft = false`, carry a "Rendered" badge, and appear in **Poems** with their `translation`. Promote a poem by writing its finished `===translation===` and flipping `draft` to `false`.
 
@@ -96,15 +102,25 @@ The build reads the `<!--meta-->` header (drives the `.section-break` heading) a
 ./new-poem.sh
 ```
 
-The script prompts for all fields, writes both files, and guards against duplicate IDs. Open `poems/<id>.poem` to add text; open `meta/<id>.toml` to edit metadata later.
+The script prompts for all fields, writes the single `poems/<id>.poem` (===meta=== section pre-filled), and guards against duplicate IDs. Open the file to add text or edit metadata later.
 
 ## Adding a new metadata field
 
 1. Add it to `schema.toml` with `type`, `required`, and `description`.
-2. Backfill existing files:
+2. Backfill existing files — append the field at the end of each ===meta=== block:
    ```bash
-   for f in meta/*.toml; do echo 'new_field = ""' >> "$f"; done
+   python3 - <<'EOF'
+   from pathlib import Path
+   for f in Path('poems').glob('*.poem'):
+       lines = f.read_text(encoding='utf-8').splitlines(keepends=True)
+       i = next(k for k, ln in enumerate(lines) if ln.startswith('===persian==='))
+       while i > 0 and lines[i-1].strip() == '':
+           i -= 1
+       lines.insert(i, 'new_field           = ""\n')
+       f.write_text(''.join(lines), encoding='utf-8')
+   EOF
    ```
+   (or simply hand-edit — the field goes at the end of the ===meta=== block, aligned like its neighbours)
 3. If the field should appear in the rendered HTML, update `build_collection.py` (see `render_poem_section` and `render_toc`).
 
 ## Adding / editing a preface section
@@ -121,15 +137,15 @@ python build_collection.py poems/
 python build_poem.py ancient-tree
 ```
 
-Both scripts read from `meta/` (defaults to sibling of `poems/`) and `poems/`. `build_collection.py` also reads `preface/` (sibling of `poems/`). Pass `--meta <path>` / `--preface <path>` to override. If `preface/` is absent the Preface tab is simply empty.
+Both scripts read self-contained `.poem` files from `poems/`. `build_collection.py` also reads `preface/` (sibling of `poems/`); pass `--preface <path>` to override. If `preface/` is absent the Preface tab is simply empty.
 
-CI runs `build_collection.py` automatically on pushes to `main` that touch `poems/`, `meta/`, `preface/`, or the build script, and commits the updated `index.html`.
+CI runs `build_collection.py` automatically on pushes to `main` that touch `poems/`, `preface/`, `ornaments/`, or the build script, and commits the updated `index.html`.
 
 ## Conventions
 
-- **Slugs** are lowercase, hyphen-separated English words (`shadow-daughter`, `ancient-tree`). The slug is the filename stem for both `poems/` and `meta/`, and the HTML anchor id. It is also shown on the rendered site as a muted monospace tag — under each title in the TOC and in each poem's header — so a poem on the page maps straight back to its `poems/<slug>.poem` + `meta/<slug>.toml` files.
+- **Slugs** are lowercase, hyphen-separated English words (`shadow-daughter`, `ancient-tree`). The slug is the filename stem for both `poems/` and `meta/`, and the HTML anchor id. It is also shown on the rendered site as a muted monospace tag — under each title in the TOC and in each poem's header — so a poem on the page maps straight back to its `poems/<slug>.poem` file.
 - **Dates** are freeform strings. Both Gregorian and Solar Hijri dates are welcome in the same field, separated by ` - ` (Gregorian first), e.g. `1988 - ۱۳۶۷`. Convention for the Gregorian half: map the Solar Hijri year by **its actual overlap, not a fixed offset** — a SH year runs ~21 Mar to ~20 Mar, so it spans two Gregorian years. If the source names a month or season, pin the Gregorian year to it: **months 1–9 (spring → autumn, Farvardin–Azar) → SH year + 621; the winter months 10–12 (Dey–Bahman–Esfand) → SH year + 622** (Dey itself straddles the New Year, so round it to +622). Thus `بهار ۱۳۶۸` (spring) → **1989**, `اسفند ۱۳۶۷` and `زمستان ۱۳۶۷` (Esfand / winter) → **1989**, but `۱۳۶۷/۲` or `۱۳۶۷/۹` (spring/autumn) → **1988**. With no month or season given, default a bare `۱۳xx` to + 621. Keep the season/month in the Persian half (`1989 - اسفند ۱۳۶۷`).
-- **`meta` `notes` vs `===footnotes===`** — opposite audiences, easy to mix up. The `===footnotes===` section of a `.poem` is **published**: it renders under the poem as "Translator's Notes" (word choices, cultural context, variants — for the reader). The `notes` field in `meta/*.toml` is **private**: it is parsed but never shown on the site — curator/provenance commentary for collaborators (source file, OCR caveats, why a slug or rendering was chosen). Put reader-facing notes in `===footnotes===`; put behind-the-scenes notes in meta `notes`.
+- **meta `notes` vs `===footnotes===`** — opposite audiences, easy to mix up. The `===footnotes===` section of a `.poem` is **published**: it renders under the poem as "Translator's Notes" (word choices, cultural context, variants — for the reader). The `notes` field in the `===meta===` section is **private**: it is parsed but never shown on the site — curator/provenance commentary for collaborators (source file, OCR caveats, why a slug or rendering was chosen). Put reader-facing notes in `===footnotes===`; put behind-the-scenes notes in meta `notes`.
 - **Tags** are lowercase English words. Add new ones freely; update `schema.toml` notes if a tag develops a specific meaning.
 - **The `machine` section** is a scratch space — the raw literal pass. It is **not** rendered in the **Poems** tab (which shows only `translation`), but in the **Drafts** tab it *does* surface as a togglable "Machine" badge alongside `lantern` and "Ben", for side-by-side comparison.
 - `index.html` is committed by CI and should not be edited manually.
@@ -146,7 +162,7 @@ session generates something meant to outlast it, write it into the right file:
 - **Repo structure, file formats, build behavior** → this file (`CLAUDE.md`)
 - **Farsi grammar explanations** → `farsi-grammar.md` — one section per point; **append**
   a new section, never overwrite earlier entries or recreate the file
-- **Per-poem editorial notes** → the `notes` field in that poem's `meta/*.toml`
+- **Per-poem editorial notes** → the `notes` field in that poem's `===meta===` section
 
 When asked to "remember" a convention or explanation, default to documenting it in one of
 these files rather than to memory.

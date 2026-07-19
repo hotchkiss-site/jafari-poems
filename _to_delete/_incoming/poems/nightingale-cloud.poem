@@ -1,3 +1,5 @@
+===meta===
+
 id                  = "nightingale-cloud"
 english_title       = ""
 persian_title       = ""
@@ -9,3 +11,30 @@ source              = "raw-jafari-adobe-1.txt"
 tags                = ["nightingale", "rain", "longing"]
 notes               = "Untitled in source. Source includes a polished human translation (kept in the translation section); imported as a draft per instruction — flip draft to false to render it. The machine section holds the raw MT shown in the Drafts tab."
 draft               = true
+
+===persian===
+
+هوای ابر را بلبل نداره
+به جز شوق گل و سنبل نداره
+نمی‌دونه اگه بارون نباره
+گل پژمرده بوی گل نداره
+
+۱۳۸۰
+
+===machine===
+
+The nightingale has no longing for the cloud
+- only desire for the rose and hyacinth.
+It doesn't know: if the rain doesn't fall,
+the wilted flower has no flower's scent...
+
+1380
+
+===translation===
+
+The nightingale has no use for clouds
+just the rose and hyacinth.
+It doesn't know: if the rain won't fall,
+the wilted flower has no scent...
+
+===footnotes===
