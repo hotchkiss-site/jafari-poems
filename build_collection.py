@@ -1197,7 +1197,7 @@ TAB_SCRIPT = """
     buttons.forEach(function (b) {
       b.addEventListener('click', function () { activate(b.dataset.tab); });
     });
-    // Open the tab whose panel contains the hash target; else the named tab; else preface.
+    // Open the tab whose panel contains the hash target; else the named tab; else poems.
     var hash = (location.hash || '').replace('#', '');
     function panelHas(tab) {
       return hash && document.getElementById('tab-' + tab) &&
@@ -1205,10 +1205,10 @@ TAB_SCRIPT = """
     }
     if (hash === 'drafts' || hash === 'toc-drafts' || panelHas('drafts')) {
       activate('drafts');
-    } else if (hash === 'poems' || hash === 'toc' || panelHas('poems')) {
-      activate('poems');
-    } else {
+    } else if (hash === 'preface' || panelHas('preface')) {
       activate('preface');
+    } else {
+      activate('poems');
     }
   })();
 """
@@ -1284,7 +1284,7 @@ def render_collection(poems, preface, book_persian, book_english, author, orname
 {css}
   </style>
 </head>
-<body>
+<body class="on-poems poems-open">
 <div class="carpet">
   <div class="corner c-tl" aria-hidden="true"></div>
   <div class="corner c-tr" aria-hidden="true"></div>
@@ -1296,17 +1296,17 @@ def render_collection(poems, preface, book_persian, book_english, author, orname
     <p class="book-author">{author}</p>
   </div>
   <div class="tabs">
-    <button class="tab-btn active" data-tab="preface">Preface &middot; \u067e\u06cc\u0634\u06af\u0641\u062a\u0627\u0631</button>
-    <button class="tab-btn" data-tab="poems">Poems &middot; \u0627\u0634\u0639\u0627\u0631</button>
+    <button class="tab-btn" data-tab="preface">Preface &middot; \u067e\u06cc\u0634\u06af\u0641\u062a\u0627\u0631</button>
+    <button class="tab-btn active" data-tab="poems">Poems &middot; \u0627\u0634\u0639\u0627\u0631</button>
     <button class="tab-btn" data-tab="drafts">Drafts &middot; \u067e\u06cc\u0634\u200c\u0646\u0648\u06cc\u0633</button>
   </div>
 </div>
 
-<div id="tab-preface" class="tab-panel preface active">
+<div id="tab-preface" class="tab-panel preface">
   {preface_html}
 </div>
 
-<div id="tab-poems" class="tab-panel poems">
+<div id="tab-poems" class="tab-panel poems active">
   <div id="toc" class="toc-wrapper">
     <div class="corner c-bl" aria-hidden="true"></div>
     <div class="corner c-br" aria-hidden="true"></div>
