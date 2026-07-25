@@ -761,6 +761,23 @@ CSS = """
       display: block;
     }
 
+    /* ── colophon: quiet link home ── */
+    .site-colophon {
+      margin: 3.5rem 0 0;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    .site-colophon a {
+      color: #b3a78f;
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid transparent;
+    }
+    .site-colophon a:hover {
+      color: var(--gold);
+      border-bottom-color: var(--gold-line);
+    }
+
     /* ── Preface (namespaced; mirrors the standalone intro page) ─ */
     .preface {
       max-width: 900px;
@@ -1326,6 +1343,8 @@ def render_collection(poems, preface, book_persian, book_english, author, orname
     {drafts_sections}
   </div>
 </div>
+
+<p class="site-colophon"><a href="https://bbben.org">bbben.org</a></p>
 
 <a href="#toc" class="back-to-toc" title="Back to contents">^</a>
 <script>{TAB_SCRIPT}</script>
