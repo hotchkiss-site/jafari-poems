@@ -155,3 +155,76 @@ So "struck" is a defensible interpretive step toward impact, not a literal equiv
 
 Also: the trailing ellipsis (افتاد**...**) is the fall and then the held breath — "the bomb
 fell…" keeps that hush; "the bomb struck." closes it off hard.
+
+---
+
+## The root و-ق-ع (*w-q-ʿ*) — "to fall," and why reality and event are the same word
+
+**واقعیت** (*vâqe'iyat*, "reality") and **واقعه** (*vâqe'e*, "event, occurrence") are not
+two words that happen to look alike. Both are built on the Arabic triliteral root **و-ق-ع**,
+"to fall, to drop, to befall." Reality is *what has fallen out*; an event is *what falls*.
+The same root gives **وقوع** (*voqu'*, "occurrence"), **موقع** (*mowqe'*, "the place or time
+something falls" → occasion, position), **موقعیت** (situation), **توقع** (*towqo'*,
+"expectation" — what one supposes will fall out), and the همه‌جا-collocation
+**اتفاق افتادن**, which does the identical thing in Persian with a Persian verb
+(see the افتادن entry above: "an event falls" = "to happen").
+
+**Where it bites — Jafari's aphorism in `preface/01-jafari-words.html`:**
+
+> وقتی نگاهی نو به واقعیت می‌کنی، واقعیت به واقعه تبدیل می‌شود.
+> *vaqti negâhi now be vâqe'iyat mikoni, vâqe'iyat be vâqe'e tabdil mishavad.*
+
+The aphorism *is* the etymology: look at the fallen-out world freshly and it starts falling
+again. "Reality turns into an occurrence" states the sense and drops the pun.
+
+**English has the same figure, in Latin.** *Cadere*, "to fall," gives **case** (what is the
+case = what has fallen out), **occasion** (*ob-cadere*, falling toward), **incident**
+(*in-cadere*, falling into), **accident**, **chance**, **cadence**, **decay**. So the pun can
+be carried across by falling in a different language: **reality → occasion** keeps a
+fall on both sides of the sentence, where *reality → event* (*ex-venire*, "to come out")
+loses it. That is why the preface reads "reality turns into an occasion."
+
+---
+
+## سیل کردن (*sil kardan*) in Lori and Bakhtiari — "to look," not "to flood"
+
+In standard Persian **سیل** is *seyl*, "flood, torrent," and a reader who meets
+سیل کرد in a line of verse will reach for water. In the **Lori / Bakhtiari / Laki**
+dialects of the Zagros, however, **سیل کردن** (*sil kardan*) is the ordinary verb for
+**to look, to gaze** — سیلم کن, "look at me" — where standard Persian would use
+نگاه کردن. The two are false friends, and dialect quatrains are exactly where the
+trap is set, because the *do-bayti* is the Zagros form par excellence (Baba Taher).
+
+**Where it bites — the folk quatrain quoted by Sinai in `preface/02-sinai-pomegranate.html`:**
+
+> سفیده ناله سو... سیل شفق کرد
+> "the white one gave a moan… and **looked at** the dawn-glow"
+
+An earlier English had the dawn-glow *flooding* red, which inverts the grammar: شفق is the
+**object** of the looking, not the subject of a flood. The dove looks; the dawn is looked at.
+
+Other markers of the same dialect layer in that quatrain, all of them contractions that
+drop a standard Persian consonant: **آفتو** ← آفتاب (sun), **مِزه** ← مزه (taste),
+**مِثه** ← مثل (like), **زعفرونی** ← زعفرانی (saffron-colored), **دِ** ← در (in),
+**سایه‌بون** ← سایه‌بان (awning, arbor), **نشستن** for نشستند (3rd plural past without ـد).
+
+---
+
+## کوره‌راه (*kure-râh*) — a byway, with no kiln in it
+
+**کوره‌راه** is a single lexical item: a **narrow track, byway, footpath** — the small
+unmade road between fields or over a hill. It is *not* کوره (*kure*, "kiln, furnace")
+compounded with راه ("road"), however invitingly it decomposes. The first element is the
+older *kur-/kura-* "small, blind, dead-end" that also sits in کوره‌ده (a hamlet, a
+one-horse village) and کوره‌سواد (a scrap of literacy) — a diminishing, dead-end sense,
+not a heat sense. English **byroad**, **back road**, **cart track** all land it.
+
+**Where it bites — `poems/road-peasant.poem`, line 1:**
+
+> در کوره راه ها....
+> "on the back roads…"
+
+The machine pass produced "In the furnace of the roads," and the first lantern half-kept the
+error as "the rough kiln-hot tracks" — an image of heat that the Persian does not contain,
+and one that fights the poem's own palette (blue, gray, black, rain-beaten thorns). Corrected
+to "On the back roads," which also matches Farrokhi's quotation of the poem in the preface.

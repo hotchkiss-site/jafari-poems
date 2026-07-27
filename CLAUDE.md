@@ -94,7 +94,22 @@ date: ۱۳۹۶ / 2017
 <div class="signature">…author · date…</div>
 ```
 
-The build reads the `<!--meta-->` header (drives the `.section-break` heading) and drops the body verbatim into the namespaced `.preface` container. Available classes: `pair` / `persian` / `english` (bilingual column), `poem-block` + `poem-fa` / `poem-en` (a quoted poem), `aphorism`, `footnotes` (+ `footnotes-fa`), `signature`, `label`, `needs-work` (+ `needs-work-note`). Preface CSS is scoped under `.preface` and poem CSS under `.poems`, so the shared class names (`pair`, `persian`, …) never collide between tabs.
+The build reads the `<!--meta-->` header (drives the `.section-break` heading) and drops the body verbatim into the namespaced `.preface` container. Preface CSS is scoped under `.preface` and poem CSS under `.poems`, so the shared class names (`pair`, `persian`, …) never collide between tabs.
+
+Available classes:
+
+| class | what it is |
+| --- | --- |
+| `pair` / `persian` / `english` | the bilingual two-column block (Persian RTL, English LTR) |
+| `poem-block` + `poem-fa` / `poem-en` | **a quoted poem.** Renders as a tinted, gold-framed plate with a dogmoj flourish at its head, in type a size larger than the prose around it — the essayists' prose and the verse they quote share a column, so the verse has to announce itself. Verse type matches the Poems tab, so a poem looks the same wherever it appears in the book. |
+| `poem-block[data-poet="…"]` | names the poet under the plate, in the plate's own language. **Used only for verse by another hand** (Wang Wei, Bashō, MacLeish); an unattributed plate is Jafari's own. |
+| `poem-cite` | a muted monospace slug link inside a plate (`→ drunk-waterfall`) for a quoted poem that also stands in this collection. English column only. Clicking it opens the tab holding that poem — see the cross-tab note under Conventions. |
+| `aphorism` | one of Jafari's standalone maxims, marked with a gold ◇. Block-level: put each maxim in its own span and let the CSS space them, rather than joining them with `<br><br>`. Any footnote `<sup>` belongs *inside* the span. |
+| `tnote` | a **`<details>`** element — an editorial aside in the translator's voice, kept visibly separate from the authors' own footnotes and folded shut so it neither competes with the poem nor shoves the two columns out of register. Write it as `<details class="tnote"><summary>Translator's note</summary><p>…</p></details>` in the English column. Use it where an etymology or a dialect fact actually unlocks a line; a page of open notes drowns the verse. |
+| `lacuna` | `⟨…⟩` standing for a passage that **cannot be read** in a damaged source — an unread patch, not an authorial ellipsis. |
+| `footnotes` (+ `footnotes-fa`) | the section author's own footnotes |
+| `signature`, `label` | author/date sign-off; the فارسی / ENGLISH column labels |
+| `needs-work` (+ `needs-work-note`) | provisional English, with a bracketed status line |
 
 ## Adding a new poem
 
@@ -146,6 +161,17 @@ CI runs `build_collection.py` automatically on pushes to `main` that touch `poem
 - **Slugs** are lowercase, hyphen-separated English words (`shadow-daughter`, `ancient-tree`). The slug is the filename stem for both `poems/` and `meta/`, and the HTML anchor id. It is also shown on the rendered site as a muted monospace tag — under each title in the TOC and in each poem's header — so a poem on the page maps straight back to its `poems/<slug>.poem` file.
 - **Dates** are freeform strings. Both Gregorian and Solar Hijri dates are welcome in the same field, separated by ` - ` (Gregorian first), e.g. `1988 - ۱۳۶۷`. Convention for the Gregorian half: map the Solar Hijri year by **its actual overlap, not a fixed offset** — a SH year runs ~21 Mar to ~20 Mar, so it spans two Gregorian years. If the source names a month or season, pin the Gregorian year to it: **months 1–9 (spring → autumn, Farvardin–Azar) → SH year + 621; the winter months 10–12 (Dey–Bahman–Esfand) → SH year + 622** (Dey itself straddles the New Year, so round it to +622). Thus `بهار ۱۳۶۸` (spring) → **1989**, `اسفند ۱۳۶۷` and `زمستان ۱۳۶۷` (Esfand / winter) → **1989**, but `۱۳۶۷/۲` or `۱۳۶۷/۹` (spring/autumn) → **1988**. With no month or season given, default a bare `۱۳xx` to + 621. Keep the season/month in the Persian half (`1989 - اسفند ۱۳۶۷`).
 - **meta `notes` vs `===footnotes===`** — opposite audiences, easy to mix up. The `===footnotes===` section of a `.poem` is **published**: it renders under the poem as "Translator's Notes" (word choices, cultural context, variants — for the reader). The `notes` field in the `===meta===` section is **private**: it is parsed but never shown on the site — curator/provenance commentary for collaborators (source file, OCR caveats, why a slug or rendering was chosen). Put reader-facing notes in `===footnotes===`; put behind-the-scenes notes in meta `notes`.
+- **Preface quotations vs. the canonical English.** Several poems quoted in the preface also
+  stand in `poems/` — sometimes in a variant wording, since the essayists quote from the printed
+  book. The preface keeps its **own rendering**, pitched to serve the argument the essayist is
+  making around it (Farrokhi glosses `تا ماه با تو بگوید` as the moon *speaking for* the poet, so
+  the preface reads "so that the moon… may speak with you," where Ben's finished `quiet-moon`
+  reads "until you hear from the moon"). The canonical English for the poem itself is always the
+  one in `poems/`; the `poem-cite` slug link is what ties the two together, so the difference is
+  visible to the reader instead of hidden. Do not silently overwrite either side to match the other.
+- **Cross-tab anchors.** Any in-page `#slug` link whose target lives in a different tab panel
+  activates that panel before scrolling (handled in `TAB_SCRIPT`). This is what makes a preface
+  `poem-cite` work, and it lands on drafts as well as finished poems.
 - **Tags** are lowercase English words. Add new ones freely; update `schema.toml` notes if a tag develops a specific meaning.
 - **The `machine` section** is a scratch space — the raw literal pass. It is **not** rendered in the **Poems** tab (which shows only `translation`), but in the **Drafts** tab it *does* surface as a togglable "Machine" badge alongside `lantern` and "Ben", for side-by-side comparison.
 - `index.html` is committed by CI and should not be edited manually.
