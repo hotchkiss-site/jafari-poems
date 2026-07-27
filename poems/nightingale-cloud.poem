@@ -4,13 +4,13 @@ id                  = "nightingale-cloud"
 english_title       = ""
 persian_title       = ""
 date_written        = "2001 - ۱۳۸۰"
-date_translated     = ""
+date_translated     = "7/19/26"
 page_number         = ""
 persian_page_number = ""
 source              = "raw-jafari-adobe-1.txt"
 tags                = ["nightingale", "rain", "longing"]
-notes               = "Untitled in source. Source includes a polished human translation (kept in the translation section); imported as a draft per instruction — flip draft to false to render it. The machine section holds the raw MT shown in the Drafts tab. Corrected (July 2026): this poem's ===translation=== held an agent rendering, staged there by the pages 61-69 bulk import. Per CLAUDE.md that layer is Ben's alone, so the rendering is now the ===lantern=== and ===translation=== is empty again. date_translated is cleared for the same reason."
-draft               = true
+notes               = "Untitled in source. ===translation=== holds Ben's own rendering (7/19/26): 'couldn't weather a cloud' / 'took a shine to' carry the هوا weather-desire pun; 'if the rain won't rain' keeps the بارون نباره cognate pair; the register is a slight Irish lilt, which licenses the closing 'is but'. History: the source's polished rendering, imported into this slot by the pages 61-69 bulk import, was moved to ===lantern=== in the July 2026 slot audit (the slot is Ben's alone) and stays there as the alternative. The machine section holds the raw MT."
+draft               = false
 
 ===persian===
 
@@ -39,4 +39,11 @@ the wilted flower has no scent...
 
 ===translation===
 
+Nightingale couldn't weather a cloud
+he only ever took a shine to hyacinth & rose
+he doesn't know - if the rain won't rain,
+the wilted rose is but a scentless rose.
+
 ===footnotes===
+
+The Persian is a do-baytī — a folk quatrain in colloquial speech (نداره، بارون), the register of Bābā Tāher's songs — and its first line turns on هوا: at once "weather" and "craving." The nightingale has no *havā* for clouds. No single English word holds both senses, so this translation scatters the pun across three — "weather," "took a shine," "rain won't rain." Read it aloud with a slight Irish lilt: Hiberno-English keeps "took a shine to" and "is but" in one living voice, much as the original's dialect carries its old forms unselfconsciously.
