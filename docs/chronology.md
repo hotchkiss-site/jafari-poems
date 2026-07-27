@@ -5,8 +5,12 @@ the book's one out-of-sequence poem, a frontispiece; the chronological run prope
 Across that run, 80 poems carry both a page number and a datable year and they are **99.2%
 concordant** — 26 out-of-order pairs out of 3,160. That is strong enough to plan by: an unconverted
 page's date can be interpolated from its neighbours, and a poem whose date fights its page number is
-worth re-checking against the page — three times now, doing so has found a wrong page number rather
-than a wrong date.
+worth re-checking against the page. Of the five checked so far, three were wrong **page numbers**
+(`dark-city` 13→43-44, `city-smoke` 25→45-46, `bird-behind-wall` 12→21) and two were correct as
+printed and deliberate (`bird-behind-wall` on 21 as a frontispiece, `winter-studio` on 90). **No date
+in this book has yet proved wrong.** Dates come from the poet's own line at the foot of the poem;
+page numbers come from scanner footers. Doubt the page number, and then consider that the book may
+simply mean it.
 
 Generated from `poems/*.poem` metadata; regenerate after each conversion batch. **Parse both
 calendars when you do** — an earlier pass of this file read only the Persian half of `date_written`
@@ -140,15 +144,22 @@ Ahead: **110–126, 132–148, 150–201, 204+.** Pages 42–46 and 61–109 are
 `nightingale-cloud` (۱۳۸۰) is the only poem in the collection without a page number; by date it
 belongs near 202.
 
-## Inversions worth checking against the page
+## The book's own exceptions to its chronology
 
-- ~~`bird-behind-wall`~~ — **resolved, and not an error.** Recorded as page 12, it looked like the
-  book's largest anomaly: a ۱۳۶۸ poem sitting on one side of 40 inverted pairs. Ben confirmed it is
-  page **21** — the first page after the preface, before the chronological sequence starts on 22. It
-  is the book's frontispiece, placed for effect. The lesson is the one this file keeps learning from
-  a different direction: *the page number was wrong, and then the anomaly was not an anomaly at all.*
-- **`winter-studio` (p90, ۱۳۷۰/۹/۲۷ = 18 December 1991)** sits among pages dated ۱۳۶۸–۱۳۶۹. The
-  largest *local* inversion. Confirm the folio digit and the date line against the photograph.
-- **`snow-beautiful` (p203, ۱۳۷۰) after `morning-glory` (p202, ۱۳۸۰).** One of the two dates is
-  probably wrong, or the book's last section is not chronological. Check both when those pages are
-  photographed.
+Two, both confirmed against the page rather than corrected:
+
+- **Page 21, `bird-behind-wall` (۱۳۶۸).** The first page after the preface, standing before the
+  chronological run begins on 22 — a frontispiece.
+- **Page 90, `winter-studio` (۱۳۷۰/۹/۲۷).** Two years later than its neighbours, in the middle of the
+  ۱۳۶۸–۱۳۶۹ run.
+
+Both were logged here as suspects and both turned out to be the book meaning what it says. Treat a
+residual inversion as a question, not a defect.
+
+## Still to check
+
+- **`snow-beautiful` (p203, ۱۳۷۰) after `morning-glory` (p202, ۱۳۸۰).** The last open inversion. One
+  of the two dates is probably wrong, or the book's final section is not chronological — but on the
+  record so far, expect the page numbers to be the suspect, or the book to mean it. Check both when
+  those pages are photographed.
+- **`nightingale-cloud`** has no page number at all; by date (۱۳۸۰) it belongs near 202.

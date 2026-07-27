@@ -1,7 +1,7 @@
 ===meta===
 
 id                  = "war-delirium"
-english_title       = ""
+english_title       = "Shell Shock"
 persian_title       = ""
 date_written        = "1989 - ۱۳۶۸"
 date_translated     = ""
@@ -9,7 +9,7 @@ page_number         = "68"
 persian_page_number = "۶۸"
 source              = "raw photos/persian_poems.md"
 tags                = ["war", "love", "shelter", "color"]
-notes               = "Untitled in source; dated تهران ۱۳۶۸ (Tehran, 1989). هذیان = 'delirium' (fever/shell-shock). Hinges on the symmetry نفرت از جنگ / نفرت از صلح (hatred of war in the eyes, of peace in the teeth). Shares the drained-palette imagery of the page-67 poem and the پناهگاه (shelter) of the page-60 poem. Imported as a draft with machine and lantern layers. Corrected (July 2026): this poem's ===translation=== held an agent rendering, staged there by the pages 61-69 bulk import. Per CLAUDE.md that layer is Ben's alone, so the rendering is now the ===lantern=== and ===translation=== is empty again, superseding the import's earlier and rougher lantern (kept in git history). date_translated is cleared for the same reason — it recorded 6/28/26, the date of the agent pass."
+notes               = "Untitled in source; dated تهران ۱۳۶۸ (Tehran, 1989). هذیان = 'delirium' (fever/shell-shock). Hinges on the symmetry نفرت از جنگ / نفرت از صلح (hatred of war in the eyes, of peace in the teeth). Shares the drained-palette imagery of the page-67 poem and the پناهگاه (shelter) of the page-60 poem. Imported as a draft with machine and lantern layers. Corrected (July 2026): this poem's ===translation=== held an agent rendering, staged there by the pages 61-69 bulk import. Per CLAUDE.md that layer is Ben's alone, so the rendering is now the ===lantern=== and ===translation=== is empty again, superseding the import's earlier and rougher lantern (kept in git history). date_translated is cleared for the same reason — it recorded 6/28/26, the date of the agent pass. **English title 'Shell Shock' is the translator's, at Ben's direction (July 2026) — it is not in the Persian**, which is untitled; هذیان بعد از جنگ is the first line. The cost is worth recording: هذیان recurs four times in the book (the drowsy delirium of the alleys in dark-city, the fevered raving of horse-hooves, talking in one's sleep in letter-alizadeh) and 'shell shock' cannot carry those, so this rendering gains a punch and breaks a thread. Ben's direction (July 2026): the first line is a line and not a title — the book carries hardly any titles, and he titles poems himself while working, so 'Shell Shock' is his English title over an untitled Persian poem and persian_title stays empty. And the English is not to mimic the Persian's punctuation — it should breathe on its own — so the lantern is punctuated for English even though the Persian body carries no commas and one full stop. What the lantern does keep from the Persian: the refrain repeated word for word (the perseveration is the symptom), the bare plurals in 'in eyes / in teeth', and the آه/نگاه rhyme as sigh/eye."
 draft               = true
 
 ===persian===
@@ -49,25 +49,66 @@ We must return to the shelter
 Tehran 1368
 
 ===lantern===
-
-Delirium after the war...
+Shell shock, after the war...
 If the clouds were not grey,
-the rain would take another colour,
+the rain would be another colour,
 and your tears
-would be a faint green.
-The colour of war stays in a sigh, stays in a gaze.
-I have seen the hatred of war in their eyes,
-and the hatred of peace in their teeth.
+would be pale green.
+The colour of war stays in the sigh, stays in the eye.
+I have seen the hatred of war in eyes,
+and the hatred of peace in teeth.
 If the clouds were not grey,
-the rain would take another colour.
-I know your eyes are more beautiful in the moonlight —
+the rain would be another colour.
+I know your eyes are more beautiful in the moonlight,
 but...
-we have to go back to the shelter.
+we must go back to the shelter.
 
-— Tehran, 1368
+Tehran, 1368
 
 ===translation===
 
 ===footnotes===
+هذیان is the raving of fever or shell-shock, and بعد از جنگ dates it: ۱۳۶۸ is 1989, a year after the
+August 1988 ceasefire. **So there is no raid.** The poem announces itself as a symptom and then
+performs one — the counterfactual comes back word for word, the way a delirious man repeats himself,
+and the closing line is a reflex firing after the danger has stopped. What breaks off the tenderness
+is not a siren but the war still running inside him. پناهگاه is the same bomb-shelter as the page-60
+poem, which was written while the shelter was still needed.
 
-هذیان is the raving of fever or shell-shock — "delirium." The sharpest line is the symmetry of نفرت از جنگ ... و نفرت از صلح: hatred of war seen in the eyes, hatred of peace bared in the teeth — a people sickened by war yet unable to be at peace. The colour logic (grey cloud → grey rain → drained tears) is the same drained palette as the page-67 painter's poem; here the longed-for beauty of the moonlit face is cut short by the return to the bomb-shelter (پناهگاه), the same shelter as the page-60 poem.
+**Why the rain would be a different colour.** The counterfactual is a painter's, and it is doing more
+than it appears to. Rain has no colour of its own; it takes the sky's — which is why rain against an
+overcast looks grey and rain at sunset looks gold. Tears are rain on a face, so they borrow too. The
+chain runs: the clouds are grey, so the rain is grey, so her weeping is grey — and if the sky were
+anything else, the same tears would come out سبز کم‌رنگ, a pale green, which in this book is the
+colour of longing (page 88, "the green of longing"). He is saying that grief takes its colour from
+the weather and the weather is war: under this sky there is not even longing left in her crying. And
+he cannot change the sky. He is a painter, so the only way he has of saying *the war has ruined us*
+is to say *the grey has ruined the rain* — which the next line then states outright: رنگ جنگ در آه
+می‌ماند, the colour of war stays.
+
+The Persian turns to sound at exactly the point where it states that finding. رنگ جنگ (*rang-e jang*,
+"the colour of war") rhymes inside itself, and the line then closes on آه … نگاه (*âh … negâh*) —
+four rhyming syllables in one line. English can have one of the two: *stays in the sigh, stays in the
+eye*, taking نگاه as the eye rather than the gaze, which the next line's چشم‌ها is about to do
+regardless.
+
+چشم‌ها and دندان‌ها are bare plurals — "in eyes," "in teeth," with no possessive. Not *their* eyes,
+not *our* teeth: an anatomy, and a diagnosis. Eyes are where a thing is received and teeth are where
+it is bared, so the body is split, one half sick of the war and the other half unable to stop. That
+someone should hate *the peace*, a year after it arrived, is the coldest line in the book.
+
+**And the grey has ash in it.** خاکستری is خاکستر — ash — with an adjective ending: Persian's ordinary
+word for the colour is *ash-coloured*, the way English "orange" is a fruit nobody tastes any more.
+Two things make that worth saying here. The poem's subject is what war leaves behind, and ash is
+precisely residue. And خاکستر is built on خاک, clay — the word this book renders "clay," and the word
+standing in its own title, بوی کاهگل, the smell of straw-and-clay. Adobe is what the walls are made
+of; ash is what adobe becomes when the house burns. The smell the book is named for and the colour
+the war leaves behind are the same material, before and after fire.
+
+*Ash-grey* for خاکستری was weighed and not taken. It is defensible on the ground just given, but the
+poem wants to make its own reveal: for five lines this may be weather, and then line six tells you it
+is war. Ash in the second line arrives with the answer already inside it. Grey is also flat, and
+flatness is how delirium sounds — every other word in this poem is ordinary (clouds, rain, tears,
+eyes, teeth, moonlight, shelter), so a compound would be the one literary thing on the page. The
+etymology is here instead, for whoever wants it. خاکستری is also the poet's own colour, loved outright
+on page 76 ("I love the greys, the greys…") and turned against him here.

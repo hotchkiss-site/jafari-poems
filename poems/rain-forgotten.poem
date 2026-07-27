@@ -9,12 +9,12 @@ page_number         = "73"
 persian_page_number = "۷۳"
 source              = "raw photos/persian_poems.md"
 tags                = ["rain", "memory", "love", "adobe"]
-notes               = "Untitled in source. Source includes a polished human translation (kept in the translation section); imported as a draft per instruction — flip draft to false to render it. The machine section holds the raw MT shown in the Drafts tab. Merged (July 2026) with `rain-memory`, a duplicate of this poem created by the pages 61-69 bulk import, which did not dedupe against the file already in the repo. The agent rendering the older file had staged in ===translation=== is withdrawn from that slot, which is Ben's; the page-73 lantern stands. Both files were agent-made, so there is no Ben layer here to protect: this is a merge of an import from the Adobe dump with a conversion of the page-73 photograph transcription. The page number, Persian, machine pass and lantern come from the page-73 side. **The two sources disagree on the first word** — the dump reads های... باران... ('hey... rain...') and the transcription reads های... یاران... ('hey... friends...'), one letter apart. The poem's own logic favours باران, since the next line is تو می‌باری, 'you are raining', and page 95 calls the addressee بارانِ من. The transcription's reading is kept as the text of record because it is photograph-derived, but it should be checked against page 73."
+notes               = "Untitled in source. Source includes a polished human translation (kept in the translation section); imported as a draft per instruction — flip draft to false to render it. The machine section holds the raw MT shown in the Drafts tab. Merged (July 2026) with `rain-memory`, a duplicate of this poem created by the pages 61-69 bulk import, which did not dedupe against the file already in the repo. The agent rendering the older file had staged in ===translation=== is withdrawn from that slot, which is Ben's; the page-73 lantern stands. Both files were agent-made, so there is no Ben layer here to protect: this is a merge of an import from the Adobe dump with a conversion of the page-73 photograph transcription. The page number, Persian, machine pass and lantern come from the page-73 side. The two sources disagreed on the first word — the dump read های... باران... ('hey... rain...') and the transcription های... یاران... ('hey... friends...'), one letter apart. Ben checked page 73: it is باران, rain, so the dump had it right and the transcription is corrected. The Persian, machine pass and lantern here follow, and the addressee shift this note used to flag is gone with it: the poem speaks to the rain throughout."
 draft               = true
 
 ===persian===
 
-های... یاران...
+های... باران...
 تو می‌باری...
 تا بوی کاهگل را
 که فراموش کرده‌ای
@@ -28,7 +28,7 @@ draft               = true
 
 ===machine===
 
-Hey... friends...
+Hey... rain...
 You are raining...
 so that you may bring to mind
 the smell of straw-and-clay
@@ -42,7 +42,7 @@ Tehran, autumn 1368
 
 ===lantern===
 
-Hey... friends...
+Hey... rain...
 you are raining...
 so that the smell of adobe
 you have let go of

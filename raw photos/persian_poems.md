@@ -540,7 +540,7 @@ Tehran, autumn 1368
 ## Page 73
 
 **Original Persian:**
-های... یاران...
+های... باران...
 تو می‌باری...
 تا بوی کاهگل را
 که فراموش کرده‌ای
@@ -553,7 +553,7 @@ Tehran, autumn 1368
 تهران، پاییز ۱۳۶۸
 
 **English Translation:**
-Hey... friends...
+Hey... rain...
 You are raining...
 so that you may bring to mind
 the smell of straw-and-clay
@@ -1863,12 +1863,12 @@ Two of the five pages were poems already in the repo under wrong page numbers, b
 scanner footers in the Adobe dumps. Dates in this book come from the poet's own line at the foot of
 the poem; page numbers come from footers. **Doubt the page number first.**
 
-- **Page 73, first word** — this page reads `های... یاران...` ("hey... friends..."), but the same
-  poem in `raw-jafari-adobe-1.txt` reads `های... باران...` ("hey... rain..."), one letter apart. The
-  poem's own logic favours `باران`: the next line is `تو می‌باری`, "you are raining", and page 95
-  addresses the beloved as `بارانِ من`. Left as transcribed, since this side is photograph-derived,
-  but **worth re-checking against the page** — see `poems/rain-forgotten.poem`, into which the two
-  versions have been merged.
+- **Page 73, first word — resolved.** This page had been transcribed `های... یاران...` ("hey...
+  friends...") against the Adobe dump's `های... باران...` ("hey... rain..."), one letter apart. Ben
+  checked the page: it is **`باران`**, rain, and the transcription above is corrected. The poem's own
+  logic had pointed that way — the next line is `تو می‌باری`, "you are raining", and page 95 addresses
+  the beloved as `بارانِ من` — and it also removes an addressee shift that had looked odd: the poem
+  speaks to the rain from first line to last. Merged into `poems/rain-forgotten.poem`.
 
 **Per-page flags:**
 
