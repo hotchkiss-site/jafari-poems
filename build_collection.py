@@ -939,25 +939,14 @@ CSS = """
       display: block;
     }
 
-    /* Jafari's maxims — each one stands alone, marked, not run together
-       as prose */
+    /* Jafari's maxims. The printed page stacks them as separate paragraphs —
+       tight, unmarked, no blank line between — so each gets its own line and
+       nothing more. Only the verse and the two quotations are set apart. */
     .preface .aphorism {
       display: block;
-      position: relative;
       font-style: italic;
       color: #4a3520;
-      margin: 1.4rem 0;
-      padding-inline-start: 1.6rem;
-    }
-
-    .preface .aphorism::before {
-      content: '◇';
-      position: absolute;
-      inset-inline-start: 0;
-      top: 0.05em;
-      font-size: 0.8em;
-      font-style: normal;
-      color: var(--gold);
+      margin: 0.35rem 0;
     }
 
     .preface .aphorism sup {
