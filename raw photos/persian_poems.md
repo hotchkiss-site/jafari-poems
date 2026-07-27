@@ -956,8 +956,10 @@ page order under `## Page NN` headings. It is a *grounding dump*, not a rendered
 poems become real when they are converted into `poems/<slug>.poem` files (see
 `../jafari-conversion-skill.md` for that job, and `../CLAUDE.md` for the `.poem` format).
 
-**Where the run stands.** Pages **61–89** are transcribed. Pages 61–69 came from an earlier
-source; **70–89** were read from the photographs in this folder. The next batch continues at
+**Where the run stands.** Pages **61–89** are transcribed, and **all of them are now converted**
+into `poems/*.poem` — pages 61–69 in an earlier pass, page 70 as `stay-go`, and pages 71–89 in
+July 2026 (16 new files; pages 79–82 recombined into `letter-alizadeh`). Pages 61–69 came from an
+earlier source; **70–89** were read from the photographs in this folder. The next batch continues at
 **page 90**. The photographs themselves are gitignored (`raw photos/*`, markdown excepted) —
 they are bulky and their content lives here now, so do not expect them to be in a fresh clone.
 
@@ -998,6 +1000,18 @@ asks you to stand one up (then keep `draft = true`).
 - **Page 72, line 4** — printed `در دیوارهای توبه تو`, literally "on the walls of your
   repentance", which sits oddly with the rest of the poem. Possibly a typesetting slip for
   `تو به تو` ("winding walls"). Transcribed verbatim, **not** emended. Ben to adjudicate.
+  **Update (July 2026): the manuscript supports the emendation.** The handwritten page that closes
+  the book — transcribed in `preface/04-coda-from-jafari.html` — is a variant fair copy of this
+  poem, and it reads `در دیوارهای تو به توی سایه`. So the printed `توبه تو` is very likely the
+  typesetting slip it looks like. Still not emended in the transcription above; the decision is
+  Ben's, and both texts are now on the page for him.
+- **Page 72 is the title poem, and it has a twin.** Its last three lines
+  (`بوی کاهگل / آواز پرنده را / پررنگ‌تر می‌کند`) are where the book's title comes from, and the
+  handwritten signed page at the end of the book is a fair copy of the whole poem. Converted as
+  `poems/adobe-birdsong.poem`, cross-linked from the preface coda. The printed text is also the key
+  that finally decoded that page's corrupt OCR — `صدای کبوترانم` had been split into
+  `صدای کبود ترانم`, `من با دوتار پیری` into `برین باد و کارپوری`, `رنگین` into `زانی`, and
+  `بوی کاهگل` itself into `بودی کامنگل`.
 - **Pages 79–82** — a single continuous poem (the letter to Hossein Alizadeh) broken across
   four printed pages: heading once on 79, date once at the end of 82. Kept split here to
   preserve page numbering; **recombine into one `.poem`** when converting.

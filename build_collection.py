@@ -1524,11 +1524,10 @@ def main():
     poems = [load_poem(f) for f in poem_files]
 
     def sort_key(p):
-        pn = p.get("page_number")
-        try:
-            return (0, int(pn))
-        except (TypeError, ValueError):
-            return (1, 0)
+        # a poem spanning several printed pages carries a range ("79-82");
+        # sort it by the page it starts on
+        m = re.match(r"\s*(\d+)", p.get("page_number") or "")
+        return (0, int(m.group(1))) if m else (1, 0)
 
     poems.sort(key=sort_key)
 
