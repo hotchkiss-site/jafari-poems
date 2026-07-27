@@ -1,8 +1,8 @@
 # Chronology: what the page order tells us
 
-**The book is arranged by composition date.** Of the 87 poems converted so far, 78 carry both a
-page number and a datable year, and they are **98% concordant** — 52 out-of-order pairs out of
-3,003. That is strong enough to plan by: an unconverted page's date can be interpolated from its
+**The book is arranged by composition date.** Of the 87 poems converted so far, 82 carry both a
+page number and a datable year, and they are **98% concordant** — 57 out-of-order pairs out of
+3,321. That is strong enough to plan by: an unconverted page's date can be interpolated from its
 neighbours, and a poem whose date fights its page number is worth re-checking against the
 photograph.
 
@@ -39,16 +39,18 @@ pages 58–65. What follows is war-haunted rather than war-time — `war-deliriu
 **Two gaps are where more war material would be.** Both are behind us in the book, and neither is
 photographed yet:
 
-- **Pages 41–47** — the largest chronological hole in the book. Page 40 is ۱۳۴۲ (1963) and page 48
-  is ۱۳۶۰ (1981), so seven pages carry an eighteen-year jump. By interpolation they hold
-  ۱۳۴۳–۱۳۵۹: the late Pahlavi years, the revolution (۱۳۵۷), and the war's outbreak
-  (Shahrivar ۱۳۵۹). **The highest-value pages in the book to photograph next.** Two poems already
-  in the collection almost certainly live here — `oldest-song` (۱۳۴۵) and `fifty-moons` (۱۳۵۱) —
-  so photographing these pages would place them as well as adding what is missing.
-- ~~Page 55~~ — **not missing.** It is the second printed page of `horse-hooves`, whose footer
-  markers step ۵۴ → ۵۵ inside the Persian and again inside the English; `page_number` is now the
-  range `54-55`. `almond-flowers` spans `23-24` the same way. When a page looks absent, check
-  whether a neighbouring poem simply runs onto it.
+- **Pages 42–46** — the largest chronological hole in the book, and now known to be five pages
+  rather than seven. Ben confirmed against the printed book (July 2026) that `oldest-song` (۱۳۴۵) is
+  page **41** and `fifty-moons` (۱۳۵۱) is page **47**, so the two poems already in the collection
+  *bracket* the gap rather than sitting inside it. What is missing therefore runs ۱۳۴۵–۱۳۵۱ at the
+  edges and, by interpolation, ۱۳۴۶–۱۳۵۹ in between: the late Pahlavi years, the revolution
+  (۱۳۵۷), and the war's outbreak (Shahrivar ۱۳۵۹). **Still the highest-value pages in the book to
+  photograph.**
+- ~~Pages 27, 55~~ — **not missing.** Poems in this book run onto a second page often enough that
+  an absent page number is more likely a continuation than a gap. Eight are known so far:
+  `almond-flowers` 23-24, `drunk-waterfall` 26-27, `with-you` 38-39, `horse-hooves` 54-55,
+  `letter-alizadeh` 79-82, `sparrow-hunter` 102-103, `look-again` 104-105, `not-having` 108-109.
+  **Check the neighbours before calling a page missing.**
 
 ## What the remaining ~200 pages should hold
 
@@ -69,14 +71,16 @@ printed page broke mid-poem. That is enough to place poems the dumps left unnumb
 | `blowing-winds` | **29** | between the 28 pair and the 30 pair; only one page available |
 | `longest-shadow` | **31** | between the 30 pair and the 32 marker |
 | `half-ghazal` | **33** | between the 32 pair and `road-peasant` on 34 |
-| `moon-crystal` | 37–39 | after the 36 pair, before the 40 pair; likely 37 |
-| `with-you` | 37–39 | same window, after `moon-crystal`; 36 Persian lines, may take two pages |
-| `oldest-song` | 41–47 | follows the 40 pair immediately; likely **41** |
-| `fifty-moons` | 41–47 | by date (۱۳۵۱, between page 40's ۱۳۴۲ and page 48's ۱۳۶۰) |
+| `moon-crystal` | **37** | bounded 37–39 by the markers; forced once `with-you` was confirmed |
+| `with-you` | **38-39** | bounded 37–39; Ben confirmed the span |
+| `oldest-song` | **41** | follows the 40 pair immediately; Ben confirmed |
+| `fifty-moons` | **47** | inferred 41–47 by date; Ben confirmed the page |
 
-The first three are now set. The rest are recorded in each poem's meta `notes` as bounded
-inferences and left unset, because a page can hold two poems (25, 61, 62 and 66 each do), so a
-one-poem-one-page assumption is not safe on its own.
+All seven are now set. The first three were tight enough to assert from the markers alone; the last
+four were left as bounded inferences in each poem's meta `notes` — a page can hold two poems (25,
+61, 62 and 66 each do), so one-poem-one-page is not safe on its own — and Ben confirmed them
+against the book. Every inference the markers produced turned out right, which is worth knowing
+next time: **the dumps' footers are trustworthy, the one-poem-per-page assumption is not.**
 
 `rain-forgotten` (۱۳۶۸) and `nightingale-cloud` (۱۳۸۰) have no markers anywhere near them; by
 date they belong around pages 66–100 and 202 respectively.
@@ -87,8 +91,8 @@ text sources, so new poems can only come from photographs.
 
 ## Pages still unconverted
 
-Behind the front: **1–11, 14–21, 27, 37–39, 41–47** — thirty pages, and the last two runs are
-partly accounted for by the un-numbered poems above. These are holes in the Adobe dumps, not
+Behind the front: **1–11, 14–21, 42–46** — twenty-four pages, down from thirty once the recovered
+and confirmed page numbers landed. These are holes in the Adobe dumps, not
 deliberate omissions; anything photographed there is new material.
 
 Ahead: **110–126, 132–148, 150–201, 204+.** Pages 61–109 are transcribed in
