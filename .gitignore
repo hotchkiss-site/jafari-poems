@@ -13,3 +13,9 @@ collection.html
 
 # scratch / backup files
 *- Copy.py
+
+# raw source photographs of the book pages — bulky, and the whole point of
+# "raw photos/persian_poems.md" is that the text has been lifted out of them.
+# Keep the markdown (and any future FLAGS/notes), drop the images.
+raw photos/*
+!raw photos/*.md

@@ -138,6 +138,38 @@ These all came up converting `raw-jafari-adobe-1.txt`. Handle them the same way 
   *existing, different* `city-smoke`. And two distinct poems can share a date (`bird-behind-wall` and
   `rain-forgotten` are both Tehran, Autumn ۱۳۶۸). Read the block before calling it a duplicate.
 
+## When the source is photographs of the book (not a text dump)
+
+Some batches arrive as phone photos of the printed pages rather than an OCR dump — one page per
+image, e.g. `raw photos/PXL_*.jpg`. These do **not** go straight to `.poem` files. They land first
+in **`raw photos/persian_poems.md`**, a page-ordered grounding transcription
+(`## Page NN` → `**Original Persian:**` → `**English Translation:**`), which is the staging area a
+later pass converts into `poems/*.poem`. That file's own "Notes for the next agent" section is
+authoritative for the current state of the run and where the next batch picks up — **read it first.**
+
+What this batch taught (pages 70–89, July 2026):
+
+- **Read the pages with vision; don't reach for an OCR binary.** Persian ligatures, ezāfe
+  diacritics and the poet's ellipses survive a careful vision read far better than tesseract,
+  which mangles exactly the idiosyncratic spacing you are sworn to preserve.
+- **Confirm the printed folio digit on every page.** Filename order usually equals page order, but
+  the page number in the corner is the ground truth — the whole value of this file is that the
+  page numbers are trustworthy. Check, don't infer.
+- **Rescue a dim photo before asking for a retake.** Crop the text block and, with PIL:
+  grayscale → `resize(×3–5, LANCZOS)` → `ImageOps.autocontrast(cutoff=1)` →
+  `ImageFilter.UnsharpMask(radius=6–10, percent=220–260, threshold=1–2)` →
+  `ImageEnhance.Contrast(≈1.8)`; then crop a single doubtful *line* at ×5. This resolved the
+  worst page of twenty. Do the work in a scratch dir, never in the repo.
+- **A poem can run across several printed pages.** Pages 79–82 are one letter-poem — heading on the
+  first page, date on the last. Keep them split by page in the markdown (page numbers are the point)
+  but recombine them into a single `.poem`.
+- **Marginalia and dedications are not poem body.** Put them on an italic editorial line, and check
+  *whose hand* they are. A handwritten English couplet on page 70 turned out to be **Ben's own**
+  draft — it belonged in `===lantern===`, which means lantern is not exclusively the agent's layer
+  when the source itself carries a human draft. Ask before assuming it's yours to fill.
+- **The photos are gitignored** (`raw photos/*`, with `!raw photos/*.md`). The transcription is the
+  durable artifact; a fresh clone will not have the images.
+
 ## Checklist
 
 - [ ] Read & segment the whole dump into poem blocks.
