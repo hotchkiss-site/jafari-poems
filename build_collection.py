@@ -939,25 +939,14 @@ CSS = """
       display: block;
     }
 
-    /* Jafari's maxims — each one stands alone, marked, not run together
-       as prose */
+    /* Jafari's maxims. The printed page stacks them as separate paragraphs —
+       tight, unmarked, no blank line between — so each gets its own line and
+       nothing more. Only the verse and the two quotations are set apart. */
     .preface .aphorism {
       display: block;
-      position: relative;
       font-style: italic;
       color: #4a3520;
-      margin: 1.4rem 0;
-      padding-inline-start: 1.6rem;
-    }
-
-    .preface .aphorism::before {
-      content: '◇';
-      position: absolute;
-      inset-inline-start: 0;
-      top: 0.05em;
-      font-size: 0.8em;
-      font-style: normal;
-      color: var(--gold);
+      margin: 0.35rem 0;
     }
 
     .preface .aphorism sup {
@@ -1535,11 +1524,10 @@ def main():
     poems = [load_poem(f) for f in poem_files]
 
     def sort_key(p):
-        pn = p.get("page_number")
-        try:
-            return (0, int(pn))
-        except (TypeError, ValueError):
-            return (1, 0)
+        # a poem spanning several printed pages carries a range ("79-82");
+        # sort it by the page it starts on
+        m = re.match(r"\s*(\d+)", p.get("page_number") or "")
+        return (0, int(m.group(1))) if m else (1, 0)
 
     poems.sort(key=sort_key)
 

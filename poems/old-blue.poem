@@ -1,0 +1,61 @@
+===meta===
+
+id                  = "old-blue"
+english_title       = ""
+persian_title       = ""
+date_written        = "November 1989 - آبان ۱۳۶۸"
+date_translated     = ""
+page_number         = "78"
+persian_page_number = "۷۸"
+source              = "raw photos/persian_poems.md"
+tags                = ["love", "thirst", "sky", "blue"]
+notes               = "Untitled in source. The first three terms — رنگ ابر / بوی خاک / طعم اشک, the colour of cloud, the smell of clay, the taste of tears — are the poet's own triad from oldest-song (Tehran ۱۳۴۵, some twenty-three years earlier), where they are similes for an undying love; here they are things he claims intimacy with. The close is genuinely ambiguous: آبی قدیمی‌ام is either 'I am an old blue' (matching صمیمی‌ام two lines up) or 'my old blue' as the thing thirsted for. The lantern takes the second and the footnote records the first. خاک is rendered 'clay' throughout the book, per ADR 0001. Imported as a draft with machine / lantern layers; ===translation=== left for Ben."
+draft               = true
+
+===persian===
+
+من به رنگ ابر
+و به بوی خاک
+و به طعمِ اشک
+و به عمق آسمان صمیمی‌ام
+تشنه... تشنهٔ
+قطره... قطره...
+آبی قدیمی‌ام...
+آبان ۱۳۶۸
+
+===machine===
+
+I am intimate as the color of cloud
+and the smell of earth
+and the taste of tears
+and the depth of the sky
+thirsty... thirsting for
+a drop... a drop...
+I am an old blue...
+Aban 1368
+
+===lantern===
+
+I am on intimate terms with the colour of cloud
+and the smell of clay
+and the taste of tears
+and the depth of the sky —
+thirsty... thirsting for
+a drop... one drop...
+of my own old blue...
+
+Aban 1368
+
+===translation===
+
+===footnotes===
+
+The colour of cloud, the smell of clay, the taste of tears: Jafari had used this
+exact triad some twenty-three years earlier, in the poem that stands here as oldest-song and
+that Farrokhi quotes in his introduction, where the three are similes for a love that goes on
+always. Here they are not comparisons but company — things he says he is intimate with.
+
+The last line can be read two ways, and Persian does not choose: آبی قدیمی‌ام is either "I am an
+old blue," which chimes with صمیمی‌ام ("I am intimate") three lines above, or "my old blue," the
+thing he is thirsting for a drop of.
+
