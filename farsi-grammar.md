@@ -228,3 +228,48 @@ The machine pass produced "In the furnace of the roads," and the first lantern h
 error as "the rough kiln-hot tracks" — an image of heat that the Persian does not contain,
 and one that fights the poem's own palette (blue, gray, black, rain-beaten thorns). Corrected
 to "On the back roads," which also matches Farrokhi's quotation of the poem in the preface.
+
+---
+
+## کم‌رنگ / پررنگ — how Persian turns a colour down and up
+
+**It is not a colour system.** It is Persian's ordinary compounding — کم ("little, low") and پر
+("full, much") prefixed to a noun — applied to رنگ, "colour":
+
+- **کم‌رنگ** (*kam-rang*), "low-coloured" → pale, faint, dilute, washed out
+- **پررنگ** (*por-rang*), "full-coloured" → deep, saturated, bold
+
+The pattern `<colour> + کم‌رنگ` gives the light shade of that colour: آبی کم‌رنگ light blue,
+قرمز کم‌رنگ pale red. It is not a comparative — that would be کم‌رنگ‌تر — so سبز کم‌رنگ is *a pale
+green*, not *a greener/less green than something*.
+
+**But "less green" catches something "pale green" loses.** English *pale green* names a tint you
+could buy in a tube; Persian says *green, low on colour*. And the same two prefixes run through the
+whole language, which is what gives کم‌رنگ its flavour: کم‌نور (dim, "low-light"), کم‌عمق (shallow),
+کم‌حرف (taciturn), کم‌رو (shy, "low-face"), **کم‌خون (anaemic, "low-blood")** — against پرنور (bright),
+پرکار (industrious), پرحرف (talkative). **کم‌ words are deficiency words.** So کم‌رنگ says the colour
+is *insufficient*, in the same breath the language uses for anaemia and dimness — which is why
+"faintly green" or "a thin green" can be truer to it than the flat "pale green."
+
+Other axes, not to be confused with this one:
+
+- **تیره / روشن** — dark / light. سبز تیره dark green, سبز روشن light green. This is *value*.
+- **سیر** — literally "sated, full-fed", so سبز سیر is a deep, replete green.
+- **رنگ‌پریده** — "colour-fled," of a face: pale, pallid, blanched.
+- **بی‌رنگ** colourless; **رنگین** many-coloured, and رنگین‌تر "more coloured."
+
+**Where it bites — one dial, two poems, four pages apart:**
+
+> `adobe-birdsong` (p. 72), the title poem —
+> بوی کاهگل / آواز پرنده را / **پررنگ‌تر** می‌کند
+> "the smell of adobe makes the bird's song *more deeply coloured*"
+
+> `war-delirium` (p. 68) —
+> و اشک‌های تو / سبز **کم‌رنگ** بودند
+> "and your tears would be *a pale green*"
+
+The book's title sentence turns the saturation **up**; the war poem finds it turned **down**. Same
+dial, opposite ends — and پررنگ‌تر returns a third time in the Alizadeh letter (نَفَسِ پرنده... با سازِ
+تو... پررنگ‌تر می‌شود). An English that renders one end as "deepens the colour" and the other as
+"thins" keeps the two related; reaching for an unrelated word at either end drops a line that runs
+through the whole book.
