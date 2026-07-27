@@ -3,13 +3,13 @@
 id                  = "gone-coming"
 english_title       = ""
 persian_title       = ""
-date_written        = "12/17/1989 ۱۳۶۸/۱۲/۱۷"
+date_written        = "March 1990 - ۱۳۶۸/۱۲/۱۷"
 date_translated     = ""
 page_number         = "100"
 persian_page_number = "۱۰۰"
-source              = ""
-tags                = []
-notes               = ""
+source              = "raw photos/persian_poems.md"
+tags                = ["love", "spring", "parting"]
+notes               = "date_written had been recorded as '12/17/1989 ۱۳۶۸/۱۲/۱۷', reading the Persian date as a US month/day and taking the wrong year: ۱۳۶۸/۱۲/۱۷ is 17 Esfand = 8 March 1990. Corrected to the house format. The page-100 photograph also carries Ben's pencilled draft of this poem at the head, which is (but for an unused 'but') the finished ===translation=== already here — see raw photos/persian_poems.md."
 draft               = false
 
 ===persian===

@@ -1601,8 +1601,9 @@ Transcription and conversion are at different points, so keep them apart in your
 - **Pages 61–89 are transcribed *and* converted** into `poems/*.poem` — 61–69 in an earlier pass,
   page 70 as `stay-go`, and 71–89 in July 2026 (16 new files; pages 79–82 recombined into
   `letter-alizadeh`).
-- **Pages 90–109 are transcribed but *not yet converted*.** That is the next conversion job, and
-  the per-page flags below are written for whoever takes it.
+- **Pages 90–109 are transcribed *and* converted** (July 2026, 16 files: page 100 was already
+  `gone-coming`, pages 102–103 joined as `sparrow-hunter`, 104–105 as `look-again`, 108–109 as
+  `not-having`). The next conversion job begins with whatever page 110 onward brings.
 
 **The photo workflow.** New photographs arrive in `raw photos/incoming/`. Transcribe them into
 this file, then **move them to `raw photos/processed/`** so `incoming/` is always exactly the
@@ -1686,9 +1687,20 @@ hold a human draft**, not only agent work.
   sequence kept as-is; this is the book's ordering, not a transcription slip.
 - **Pages 102–103** — page 102 carries no date, which by the rule above would make 103 its
   continuation; but 102 ends on a full stop and a complete image, and 103's four lines read
-  as a self-contained coda. **Kept as two entries — this boundary is a judgment call**, and
-  the likeliest single alternative is that they are one poem ending "Hey... song... how much
-  I love you." Decide before converting.
+  as a self-contained coda. **Kept as two entries here — but converted as one poem**
+  (`sparrow-hunter`). The deciding evidence came from page 95: it ends
+  `های... بارانِ من... چقدر ترا دوست دارم`, the identical closing formula page 103 uses
+  (`های... آواز... چقدر تو را دوست دارم`). It is one of the poet's closing apostrophes, not a
+  standalone poem — and page 103 carries the date page 102 lacks. Easy to split again if Ben
+  disagrees.
+- **Page 102 is where the book's title appears verbatim.** `با بوی کاهگل و آواز پرنده`, with the
+  `و`, exactly as on the cover. Page 72 has the two phrases inside a sentence
+  (`بوی کاهگل / آواز پرنده را / پررنگ‌تر می‌کند`) and the dream-Alizadeh repeats that claim on
+  page 79 — so the phrase occurs three times in the book, and only here as the phrase itself.
+- **Page 102 also settles the `عاشقانه‌های ابری` question.** It is printed
+  `... از «عاشقانه‌های ابری»` — "*... from* Cloudy Love Poems" — which means the heading above
+  page 88 names a **sequence**, not that poem. `gray-gaze`'s title fields, filled speculatively
+  when 88 was converted, have been cleared.
 - **Page 104** — quotes `«مسیر نبض عناصر»` and footnotes it, at the foot of page 105, to
   **سهراب سپهری** (Sohrab Sepehri). This is the first real `===footnotes===` material in the
   run; keep it attached to the poem, not folded into the body.
@@ -1696,6 +1708,13 @@ hold a human draft**, not only agent work.
   crows on the roof are being seen as him. Also note the poem says `برخیزم...` at the end of
   108 and `برخیزم همهٔ کبوترانم را` at the top of 109 — read as the poem's own refrain, not a
   printer's catchword (no other page in this run uses catchwords).
+- **Page 90 is out of date order.** `۱۳۷۰/۹/۲۷` is 18 December 1991, where pages 91–109 are
+  ۱۳۶۸–۱۳۶۹, in a book that is otherwise 99% chronological. Worth confirming the folio and the
+  date against the photograph before it is trusted.
+- **Day-level dates resolve exactly.** Where the source gives a day (`۱۳۶۸/۱۰/۶`) the Gregorian
+  half of `date_written` is computed rather than rounded: 6 Dey ۱۳۶۸ is 27 December 1989, though
+  the month-level convention in `../CLAUDE.md` would round Dey to +622 and say 1990. The rounding
+  rule is for month-only and season-only dates, which is what it was written for.
 - **Dates** — the run is mostly 1368 but climbs into 1369 and, on page 90, **1370**; page 74 is
   `دههٔ ۷۰`, a decade rather than a year, listed as printed. For the Gregorian half of a `.poem`
   `date_written`, use the season/month rule in `../CLAUDE.md` — not a flat +621.

@@ -1,8 +1,8 @@
 # Chronology: what the page order tells us
 
-**The book is arranged by composition date.** Of the 71 poems converted so far, 59 carry both a
-page number and a datable year, and they are **99% concordant** — 22 out-of-order pairs out of
-1,711. That is strong enough to plan by: an unconverted page's date can be interpolated from its
+**The book is arranged by composition date.** Of the 87 poems converted so far, 78 carry both a
+page number and a datable year, and they are **98% concordant** — 52 out-of-order pairs out of
+3,003. That is strong enough to plan by: an unconverted page's date can be interpolated from its
 neighbours, and a poem whose date fights its page number is worth re-checking against the
 photograph.
 
@@ -14,7 +14,8 @@ Generated from `poems/*.poem` metadata; regenerate after each conversion batch.
 | --- | --- | --- | --- |
 | 13–40 | ۱۳۳۷–۱۳۴۲ | 1958–1963 | the earliest work: Borujerd, the road, the waterfall, the peasant |
 | 48–65 | ۱۳۶۰–۱۳۶۷ | 1981–1988 | **the Iran–Iraq war** |
-| 66–100 | ۱۳۶۸ | 1989 | the year after the ceasefire — painting, doves, the Alizadeh letter |
+| 66–100 | ۱۳۶۸ | 1989–90 | the year after the ceasefire — painting, doves, the Alizadeh letter |
+| 101–109 | ۱۳۶۹ | 1990 | Isfahan, Nowruz, the young painters, the doves let go |
 | 127–131 | ۱۳۷۰ | 1991 | |
 | 149 | ۱۳۷۲ | 1993 | |
 | 202 | ۱۳۸۰ | 2001 | |
@@ -90,10 +91,14 @@ Behind the front: **1–11, 14–21, 27, 37–39, 41–47** — thirty pages, an
 partly accounted for by the un-numbered poems above. These are holes in the Adobe dumps, not
 deliberate omissions; anything photographed there is new material.
 
-Ahead: **90–126, 132–148, 150–201, 204+.** Pages 61–89 are transcribed in
-`raw photos/persian_poems.md` and fully converted; the next photograph batch continues at page 90.
+Ahead: **110–126, 132–148, 150–201, 204+.** Pages 61–109 are transcribed in
+`raw photos/persian_poems.md` and fully converted; the next photograph batch continues at page 110.
 
-## Two inversions worth checking against the page
+## Three inversions worth checking against the page
+
+- **`winter-studio` (p90, ۱۳۷۰/۹/۲۷ = 18 December 1991)** sits among pages dated ۱۳۶۸–۱۳۶۹. It is
+  the single largest local inversion in the book and the reason the concordance slipped from 99% to
+  98% when pages 90–109 came in. Confirm the folio digit and the date line against the photograph.
 
 - **`snow-beautiful` (p203, ۱۳۷۰) after `morning-glory` (p202, ۱۳۸۰).** One of the two dates is
   probably wrong, or the book's last section is not chronological. Check both when those pages are
