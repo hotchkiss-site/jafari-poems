@@ -5,11 +5,11 @@ english_title       = ""
 persian_title       = ""
 date_written        = "1960s - دهه ۱۳۴۰"
 date_translated     = ""
-page_number         = ""
-persian_page_number = ""
+page_number         = "31"
+persian_page_number = "۳۱"
 source              = "raw-jafari-adobe-1.txt"
 tags                = ["shadow", "resistance", "love"]
-notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending."
+notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending. Page number recovered from the page-footer markers in the Adobe dump rather than from a photograph: the dump prints each printed page's folio twice, once after the Persian half of a block and once after the English, so a block falling wholly between two marker pairs sits on the page between them. This block falls between the page-30 pair (moonlight-sunlight) and the page-32 marker (wooden-horse), leaving only page 31."
 draft               = true
 
 ===persian===

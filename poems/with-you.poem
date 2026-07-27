@@ -9,7 +9,7 @@ page_number         = ""
 persian_page_number = ""
 source              = "raw-jafari-adobe-1.txt"
 tags                = ["love", "longing", "maryam"]
-notes               = "Untitled in source; dedicated 'برای مریم' (For Maryam). Stray OCR '<Br>' markers removed from the body. English block is a raw machine draft (kept in the machine section); finished translation pending."
+notes               = "Untitled in source; dedicated 'برای مریم' (For Maryam). Stray OCR '<Br>' markers removed from the body. English block is a raw machine draft (kept in the machine section); finished translation pending. Page number not recovered, but bounded: the block sits between the page-36 pair (beggar-dogs) and the page-40 pair (life-tune), after moon-crystal, so it is on page 37–39; at thirty-six Persian lines it may well take two of them. Note also that برای مریم is a printed dedication rather than a line of the poem, and is currently kept as the first line of ===persian===; by the convention in jafari-conversion-skill.md it belongs in meta notes. Left as it stands for Ben to decide."
 draft               = true
 
 ===persian===

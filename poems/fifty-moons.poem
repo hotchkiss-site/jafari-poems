@@ -9,7 +9,7 @@ page_number         = ""
 persian_page_number = ""
 source              = "raw_Jafari-adobe-2.txt"
 tags                = ["love", "aging", "moon", "night"]
-notes               = "Untitled in source; written in Tehran. English block is a raw machine draft (kept in the machine section); finished translation pending."
+notes               = "Untitled in source; written in Tehran. English block is a raw machine draft (kept in the machine section); finished translation pending. Page number not recovered, but bounded by date: ۱۳۵۱ (1972) falls between page 40 (۱۳۴۲) and page 48 (۱۳۶۰), so this poem belongs in the unaccounted 41–47 run, later in it than oldest-song (۱۳۴۵). In raw_Jafari-adobe-2.txt it sits between the page-25 fragment and page 48's poem, which is consistent but not decisive."
 draft               = true
 
 ===persian===

@@ -41,8 +41,13 @@ photographed yet:
 - **Pages 41–47** — the largest chronological hole in the book. Page 40 is ۱۳۴۲ (1963) and page 48
   is ۱۳۶۰ (1981), so seven pages carry an eighteen-year jump. By interpolation they hold
   ۱۳۴۳–۱۳۵۹: the late Pahlavi years, the revolution (۱۳۵۷), and the war's outbreak
-  (Shahrivar ۱۳۵۹). **The highest-value pages in the book to photograph next.**
-- **Page 55** — a single missing page between two ۱۳۶۶ war poems.
+  (Shahrivar ۱۳۵۹). **The highest-value pages in the book to photograph next.** Two poems already
+  in the collection almost certainly live here — `oldest-song` (۱۳۴۵) and `fifty-moons` (۱۳۵۱) —
+  so photographing these pages would place them as well as adding what is missing.
+- ~~Page 55~~ — **not missing.** It is the second printed page of `horse-hooves`, whose footer
+  markers step ۵۴ → ۵۵ inside the Persian and again inside the English; `page_number` is now the
+  range `54-55`. `almond-flowers` spans `23-24` the same way. When a page looks absent, check
+  whether a neighbouring poem simply runs onto it.
 
 ## What the remaining ~200 pages should hold
 
@@ -51,11 +56,39 @@ At roughly 9 pages a year from page 89 (۱۳۶۸) through page 202 (۱۳۸۰), p
 poet from his mid-fifties into his seventies. Expect the painting poems to keep going (they
 dominate pages 71–89), and expect aging, and the deaths of contemporaries, rather than the war.
 
+## Recovering page numbers from the Adobe dumps
+
+The three `raw-jafari-adobe-*.txt` dumps preserve the printed page footers, twice per block —
+once after the Persian half and once after the English. So a block falling wholly between two
+marker pairs is on the page between them, and two consecutive markers *inside* a block mean the
+printed page broke mid-poem. That is enough to place poems the dumps left unnumbered:
+
+| poem | page | basis |
+| --- | --- | --- |
+| `blowing-winds` | **29** | between the 28 pair and the 30 pair; only one page available |
+| `longest-shadow` | **31** | between the 30 pair and the 32 marker |
+| `half-ghazal` | **33** | between the 32 pair and `road-peasant` on 34 |
+| `moon-crystal` | 37–39 | after the 36 pair, before the 40 pair; likely 37 |
+| `with-you` | 37–39 | same window, after `moon-crystal`; 36 Persian lines, may take two pages |
+| `oldest-song` | 41–47 | follows the 40 pair immediately; likely **41** |
+| `fifty-moons` | 41–47 | by date (۱۳۵۱, between page 40's ۱۳۴۲ and page 48's ۱۳۶۰) |
+
+The first three are now set. The rest are recorded in each poem's meta `notes` as bounded
+inferences and left unset, because a page can hold two poems (25, 61, 62 and 66 each do), so a
+one-poem-one-page assumption is not safe on its own.
+
+`rain-forgotten` (۱۳۶۸) and `nightingale-cloud` (۱۳۸۰) have no markers anywhere near them; by
+date they belong around pages 66–100 and 202 respectively.
+
+**The dumps are fully harvested.** Every run of Persian in all three of them is already in a
+`.poem` file — checked line by line, normalised. There is no unconverted material hiding in the
+text sources, so new poems can only come from photographs.
+
 ## Pages still unconverted
 
-Behind the front: **1–12, 14–21, 24, 27, 29, 31, 33, 37–39, 41–47, 55.** These are holes in the
-Adobe text dumps that pages 13–60 came from, not deliberate omissions — anything photographed
-there is new material.
+Behind the front: **1–11, 14–21, 27, 37–39, 41–47** — thirty pages, and the last two runs are
+partly accounted for by the un-numbered poems above. These are holes in the Adobe dumps, not
+deliberate omissions; anything photographed there is new material.
 
 Ahead: **90–126, 132–148, 150–201, 204+.** Pages 61–89 are transcribed in
 `raw photos/persian_poems.md` and fully converted; the next photograph batch continues at page 90.

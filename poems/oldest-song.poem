@@ -9,7 +9,7 @@ page_number         = ""
 persian_page_number = ""
 source              = "raw-jafari-adobe-1.txt"
 tags                = ["love", "eternity", "nature"]
-notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending."
+notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending. Page number not recovered, but bounded below: the block follows the page-40 pair (life-tune) immediately in the dump, and the next attributed page in the book is 48, so it falls in the unaccounted 41–47 run — most likely 41. Its ۱۳۴۵ (1966) date fits that gap, which by interpolation covers ۱۳۴۳–۱۳۵۹."
 draft               = true
 
 ===persian===
