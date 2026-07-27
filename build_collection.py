@@ -830,7 +830,7 @@ CSS = """
       gap: 2.5rem;
       margin-bottom: 2.5rem;
       padding-bottom: 2.5rem;
-      border-bottom: 1px solid #ddd0b8;
+      border-bottom: 1px solid #e6dbc4;
     }
 
     .preface .pair:last-of-type {
@@ -855,24 +855,79 @@ CSS = """
       padding-left: 1.2rem;
     }
 
+    /* ── quoted verse ───────────────────────────────────────────────
+       In the preface the essayists' prose and the poems they quote sit
+       in the same column, so the verse has to announce itself: a tinted
+       plate, a gold frame, a dogmoj flourish at its head, and type a
+       size larger than the prose around it (matching the Poems tab, so
+       a poem looks the same everywhere in the book). */
     .preface .poem-block {
-      background: rgba(255,255,255,0.45);
-      border-radius: 6px;
-      padding: 1rem 1.5rem;
-      margin: 1rem 0;
+      background: #fdf8ec;
+      border: 1px solid var(--gold-faint);
+      border-radius: 2px;
+      padding: 1.5rem 1.75rem 1.4rem;
+      margin: 2rem 0;
+    }
+
+    .preface .poem-block::before {
+      content: '';
+      display: block;
+      width: 96px;
+      height: 6px;
+      margin: 0 auto 1.1rem;
+      background: var(--gold);
+      opacity: 0.7;
+      -webkit-mask: __RULE_MASK__ center / contain no-repeat;
+              mask: __RULE_MASK__ center / contain no-repeat;
+    }
+
+    /* verse by another hand (Wang Wei, Basho, MacLeish) names its poet;
+       an unattributed plate is Jafari's own */
+    .preface .poem-block[data-poet]::after {
+      content: attr(data-poet);
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.82rem;
+      font-style: normal;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #a58a5e;
     }
 
     .preface .poem-fa {
       direction: rtl;
-      font-size: 1.25rem;
-      line-height: 2.2;
+      font-size: 1.38rem;
+      line-height: 2.25;
       text-align: right;
     }
 
     .preface .poem-en {
-      font-size: 1.15rem;
-      line-height: 2.1;
+      font-size: 1.25rem;
+      line-height: 2.05;
       font-style: italic;
+      color: #3a2a18;
+    }
+
+    /* a quoted poem that also stands in this collection — the slug links
+       through to its own section, where the canonical English lives */
+    .preface .poem-cite {
+      display: block;
+      margin-top: 1.1rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      font-style: normal;
+    }
+
+    .preface .poem-cite a {
+      color: #a58a5e;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(207, 166, 75, 0.35);
+    }
+
+    .preface .poem-cite a:hover {
+      color: #8a6a2f;
+      border-bottom-color: var(--gold);
     }
 
     .preface .label {
@@ -884,9 +939,71 @@ CSS = """
       display: block;
     }
 
+    /* Jafari's maxims — each one stands alone, marked, not run together
+       as prose */
     .preface .aphorism {
+      display: block;
+      position: relative;
       font-style: italic;
       color: #4a3520;
+      margin: 1.4rem 0;
+      padding-inline-start: 1.6rem;
+    }
+
+    .preface .aphorism::before {
+      content: '◇';
+      position: absolute;
+      inset-inline-start: 0;
+      top: 0.05em;
+      font-size: 0.8em;
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .preface .aphorism sup {
+      font-style: normal;
+    }
+
+    /* editorial aside in the translator's own voice — kept visibly separate
+       from the authors' footnotes, and folded shut so it never competes with
+       the poem or shoves the two columns out of register */
+    .preface details.tnote {
+      margin: 1rem 0 1.5rem;
+      padding-inline-start: 1rem;
+      border-inline-start: 2px solid rgba(207, 166, 75, 0.4);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      font-style: normal;
+      color: #6f5a41;
+    }
+
+    .preface details.tnote > summary {
+      list-style: none;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      color: #a58a5e;
+    }
+
+    .preface details.tnote > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .preface details.tnote > summary::after {
+      content: ' +';
+    }
+
+    .preface details.tnote[open] > summary::after {
+      content: ' −';
+    }
+
+    .preface details.tnote > summary:hover {
+      color: var(--gold);
+    }
+
+    .preface details.tnote p {
+      margin: 0.7rem 0 0.2rem;
     }
 
     .preface .footnotes {
@@ -911,6 +1028,18 @@ CSS = """
       font-size: 1.15rem;
     }
 
+    .preface .signature::before {
+      content: '';
+      display: block;
+      width: 128px;
+      height: 8px;
+      margin: 0 auto 1.2rem;
+      background: var(--gold);
+      opacity: 0.55;
+      -webkit-mask: __RULE_MASK__ center / contain no-repeat;
+              mask: __RULE_MASK__ center / contain no-repeat;
+    }
+
     .preface .needs-work {
       opacity: 0.75;
       font-style: italic;
@@ -921,6 +1050,13 @@ CSS = """
       color: #a07850;
       display: block;
       margin-top: 0.5rem;
+    }
+
+    /* an unread passage in a damaged source — not an elision */
+    .preface .lacuna {
+      color: #b0956e;
+      font-style: normal;
+      letter-spacing: 0.05em;
     }
 
     @media (max-width: 640px) {
@@ -939,6 +1075,10 @@ CSS = """
         border-top: 2px solid #8aab72;
         padding-left: 0;
         padding-top: 1rem;
+      }
+      .preface .poem-block {
+        padding: 1.2rem 1.1rem 1.1rem;
+        margin: 1.6rem 0;
       }
     }
 """
@@ -1213,6 +1353,22 @@ TAB_SCRIPT = """
     }
     buttons.forEach(function (b) {
       b.addEventListener('click', function () { activate(b.dataset.tab); });
+    });
+    // An in-page link whose target lives in another tab (a preface citation
+    // pointing at the poem itself) opens that tab first, then scrolls.
+    document.addEventListener('click', function (ev) {
+      var a = ev.target && ev.target.closest && ev.target.closest('a[href^="#"]');
+      if (!a) return;
+      var id = a.getAttribute('href').slice(1);
+      if (!id) return;
+      var target = document.getElementById(id);
+      if (!target) return;
+      var panel = target.closest('.tab-panel');
+      if (!panel || panel.classList.contains('active')) return;
+      ev.preventDefault();
+      activate(panel.id.replace(/^tab-/, ''));
+      target.scrollIntoView();
+      if (history.replaceState) history.replaceState(null, '', '#' + id);
     });
     // Open the tab whose panel contains the hash target; else the named tab; else poems.
     var hash = (location.hash || '').replace('#', '');

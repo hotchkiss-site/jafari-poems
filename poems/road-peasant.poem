@@ -9,7 +9,7 @@ page_number         = "34"
 persian_page_number = "۳۴"
 source              = "raw-jafari-adobe-1.txt"
 tags                = ["peasant", "road", "fate"]
-notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending."
+notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending. کوره‌راه is one word — a byway or narrow track — not کوره (kiln) + راه (road): the machine pass read it as 'the furnace of the roads' and the first lantern kept a trace of that as 'kiln-hot tracks'. Corrected to 'back roads', which is also how Farrokhi's quotation of this poem reads in the preface."
 draft               = true
 
 ===persian===
@@ -44,7 +44,7 @@ Autumn 1340 on the road to Borujerd
 
 ===lantern===
 
-On the rough kiln-hot tracks —
+On the back roads —
 blue, grey, black —
 stands the figure of a peasant with his long staff,
 white and black:
