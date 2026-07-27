@@ -54,6 +54,13 @@ The three English sections are **layers** of increasing refinement, and **who wr
 - **`lantern`** — the **agent's interpretive working draft**: a crib that steps from the literal `machine` toward faithful English — resolving idiom, image, and ambiguity — without claiming to be the final hand. **This is the home for an AI collaborator's own translation work.** Optional in principle, but when an agent translates, its rendering goes here.
 - **`translation`** — **Ben's finished human translation.** **Ben is the repo owner — the human you (the agent) are working with** — and this layer is labelled "Ben" in the UI because it is *his* hand. **It is Ben's slot. By default an agent does NOT write its own rendering into `===translation===`; put your work in `lantern` and leave `translation` empty for Ben.** The one exception is when Ben explicitly asks you to stand in and draft a translation for him to revise later (e.g. the page 61–69 bulk import) — then you may stage a translation here, but keep the poem `draft = true` so it stays out of the Poems tab until Ben signs off.
 
+**This went wrong once, so it is worth stating flatly: do not put your English in
+`===translation===`, even when asked to make it finished.** The Drafts tab labels that layer "Ben",
+so an agent rendering placed there is published under his name. Eleven poems were in that state and
+are recorded in `docs/adr/0003-translation-layer-ownership.md`, along with how to tell his hand from
+an agent's — `draft = false` plus a translation is his; lower case, `&` for *and*, bracketed glosses
+and contractions are his voice.
+
 `lantern` is optional and need not be present in every file. In the **Drafts** tab each non-empty layer gets a clickable, latching badge under the poem; click one or several to show those layers side by side on the English side (empty layers show no badge). The **Poems** tab renders only the finished `translation`. The `===section===` parser is generic, so adding another layer later is a builder change, not a parser one.
 
 ### The `===meta===` section

@@ -3,29 +3,44 @@
 id                  = "jungle-bomb"
 english_title       = ""
 persian_title       = ""
-date_written        = "May 9, 1988, Isfahan - ۱۳۶۷/۲/۱۹"
+date_written        = "1988 - ۱۳۶۷/۲/۱۶"
 date_translated     = ""
 page_number         = "61"
 persian_page_number = "۶۱"
-source              = ""
-tags                = []
-notes               = ""
+source              = "raw photos/persian_poems.md"
+tags                = ["love", "war", "sea", "forest"]
+notes               = "Merged (July 2026) with `jungle-refuge`, a duplicate of this poem created by the pages 61-69 bulk import, which did not dedupe against the file already in the repo. Ben's finished ===translation=== here is untouched. The Persian, machine pass, lantern and footnotes come from the import. That import had also staged an agent rendering in ===translation===, which per CLAUDE.md is Ben's slot alone; that rendering is now this file's ===lantern===, and the import's earlier, rougher lantern is superseded (kept in git history). The import's Persian is the better text — the older file read نمناران, a corruption of بمباران ('bombardment'). Note also a date disagreement the merge cannot settle: the older file's dateline read ۱۳۶۷/۲/۱۹ and the import's ۱۳۶۷/۲/۱۶; neither is photograph-verified, and the import's is taken here because it comes from the transcription. Worth checking against page 61."
 draft               = false
 
 ===persian===
 
 در فاصله دریا و جنگل
- زنی را دوست دارم...
- در هر نمناران به جنگل پناه می برم
+زنی را دوست دارم...
+در هر بمباران به جنگل پناه می‌برم
 تا در آغوشش...
 به دریا بیاندیشم...
 
-
-۱۳۶۷/۲/۱۹ اصفهان
-
+اصفهان ۱۳۶۷/۲/۱۶
 
 ===machine===
 
+In the distance between the sea and the jungle
+There is a woman I love...
+During every bombardment, I take refuge in the jungle
+So that in her embrace...
+I can think of the sea...
+
+Isfahan 1367/2/16
+
+===lantern===
+
+In the distance between the sea and the forest
+there is a woman I love...
+At every bombardment I take refuge in the forest,
+so that, in her arms,
+I may think of the sea...
+
+— Isfahan, 1367/2/16
 
 ===translation===
 
@@ -35,5 +50,6 @@ Everytime they bomb the jungle
 I go to the shelter of her hug
 Into her sea without thinking
 
-
 ===footnotes===
+
+جنگل (jangal) is rendered "forest" rather than "jungle": Jafari's recurring war-poem image is the wooded Caspian littoral, a place of refuge between the mountains and the sea. The same sea/forest pairing returns in the page-65 poem ("still the forest is bound to the sea"). The dateline places this in Isfahan, spring 1367 (May 1988), in the closing months of the Iran–Iraq war.

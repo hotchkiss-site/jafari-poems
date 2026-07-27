@@ -4,12 +4,12 @@ id                  = "war-delirium"
 english_title       = ""
 persian_title       = ""
 date_written        = "1989 - ۱۳۶۸"
-date_translated     = "6/28/26"
+date_translated     = ""
 page_number         = "68"
 persian_page_number = "۶۸"
 source              = "raw photos/persian_poems.md"
 tags                = ["war", "love", "shelter", "color"]
-notes               = "Untitled in source; dated تهران ۱۳۶۸ (Tehran, 1989). هذیان = 'delirium' (fever/shell-shock). Hinges on the symmetry نفرت از جنگ / نفرت از صلح (hatred of war in the eyes, of peace in the teeth). Shares the drained-palette imagery of the page-67 poem and the پناهگاه (shelter) of the page-60 poem. Imported as a draft with machine / lantern / Ben layers; finished translation staged but withheld from the Poems tab."
+notes               = "Untitled in source; dated تهران ۱۳۶۸ (Tehran, 1989). هذیان = 'delirium' (fever/shell-shock). Hinges on the symmetry نفرت از جنگ / نفرت از صلح (hatred of war in the eyes, of peace in the teeth). Shares the drained-palette imagery of the page-67 poem and the پناهگاه (shelter) of the page-60 poem. Imported as a draft with machine and lantern layers. Corrected (July 2026): this poem's ===translation=== held an agent rendering, staged there by the pages 61-69 bulk import. Per CLAUDE.md that layer is Ben's alone, so the rendering is now the ===lantern=== and ===translation=== is empty again, superseding the import's earlier and rougher lantern (kept in git history). date_translated is cleared for the same reason — it recorded 6/28/26, the date of the agent pass."
 draft               = true
 
 ===persian===
@@ -51,24 +51,6 @@ Tehran 1368
 ===lantern===
 
 Delirium after the war...
-If the clouds were not grey
-the rain would wear another colour
-and your tears
-would be a pale green.
-The colour of war lingers in a sigh, lingers in a gaze.
-I have seen the hatred of war in people's eyes,
-and the hatred of peace in their teeth.
-If the clouds were not grey
-the rain would wear another colour.
-I know your eyes are lovelier in the moonlight,
-but...
-we must go back to the shelter.
-
-Tehran 1368
-
-===translation===
-
-Delirium after the war...
 If the clouds were not grey,
 the rain would take another colour,
 and your tears
@@ -83,6 +65,8 @@ but...
 we have to go back to the shelter.
 
 — Tehran, 1368
+
+===translation===
 
 ===footnotes===
 

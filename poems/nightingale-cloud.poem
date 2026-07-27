@@ -9,7 +9,7 @@ page_number         = ""
 persian_page_number = ""
 source              = "raw-jafari-adobe-1.txt"
 tags                = ["nightingale", "rain", "longing"]
-notes               = "Untitled in source. Source includes a polished human translation (kept in the translation section); imported as a draft per instruction — flip draft to false to render it. The machine section holds the raw MT shown in the Drafts tab."
+notes               = "Untitled in source. Source includes a polished human translation (kept in the translation section); imported as a draft per instruction — flip draft to false to render it. The machine section holds the raw MT shown in the Drafts tab. Corrected (July 2026): this poem's ===translation=== held an agent rendering, staged there by the pages 61-69 bulk import. Per CLAUDE.md that layer is Ben's alone, so the rendering is now the ===lantern=== and ===translation=== is empty again. date_translated is cleared for the same reason."
 draft               = true
 
 ===persian===
@@ -30,11 +30,13 @@ the wilted flower has no flower's scent...
 
 1380
 
-===translation===
+===lantern===
 
 The nightingale has no use for clouds
 just the rose and hyacinth.
 It doesn't know: if the rain won't fall,
 the wilted flower has no scent...
+
+===translation===
 
 ===footnotes===

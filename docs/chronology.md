@@ -1,11 +1,12 @@
 # Chronology: what the page order tells us
 
-**The book is arranged by composition date.** Of the 88 poems converted so far, 84 carry both a page
-number and a datable year, and they are **98% concordant** — 66 out-of-order pairs out of 3,486.
-Forty of those pairs involve a single suspect poem (`bird-behind-wall`, below); without it the figure
-is **99.2%**. That is strong enough to plan by: an unconverted page's date can be interpolated from
-its neighbours, and a poem whose date fights its page number is worth re-checking against the
-photograph — twice now, doing so has found a wrong page number rather than a wrong date.
+**The book is arranged by composition date.** Pages **1–20 are the preface**; page **21** carries
+the book's one out-of-sequence poem, a frontispiece; the chronological run proper begins on page 22.
+Across that run, 80 poems carry both a page number and a datable year and they are **99.2%
+concordant** — 26 out-of-order pairs out of 3,160. That is strong enough to plan by: an unconverted
+page's date can be interpolated from its neighbours, and a poem whose date fights its page number is
+worth re-checking against the page — three times now, doing so has found a wrong page number rather
+than a wrong date.
 
 Generated from `poems/*.poem` metadata; regenerate after each conversion batch. **Parse both
 calendars when you do** — an earlier pass of this file read only the Persian half of `date_written`
@@ -16,6 +17,8 @@ and so missed the book's largest anomaly entirely, because that poem's date is r
 
 | pages | Solar Hijri | Gregorian | what is there |
 | --- | --- | --- | --- |
+| 1–20 | — | 2017 | the preface: Jafari's own page (۷), Sinai, Farrokhi |
+| 21 | ۱۳۶۸ | 1989 | `bird-behind-wall` — the opening poem, out of sequence by design |
 | 22–40 | ۱۳۳۷–۱۳۴۲ | 1958–1963 | the earliest work: Borujerd, the road, the waterfall, the peasant |
 | 41–47 | ۱۳۴۵–۱۳۵۱ | 1966–1972 | the gallows, the dark city, the city of smoke |
 | 48–65 | ۱۳۶۰–۱۳۶۷ | 1981–1988 | **the Iran–Iraq war** |
@@ -29,11 +32,8 @@ Rate of travel between page 89 and page 202: about **9 pages per year**.
 
 ## The war window is pages 48–65, and it is done
 
-Nineteen converted poems fall inside ۱۳۵۹–۱۳۶۷ (Sept 1980 – Aug 1988), and every one of them
-sits between pages 48 and 65: `shadow-daughter`, `shepherd-figs`, `bomb-kiss`, `green-woodpecker`,
-`barren-cloud`, `drink-sea`, `horse-hooves`, `sunless-gaze`, `green-pond`, `gray-kisses`,
-`one-thing`, `shelter-wall`, `jungle-bomb`, `jungle-refuge`, `laugh-cry`, `laughed-wept`,
-`snow-without-you`, `dotar-player`, `jungle-to-sea`.
+Seventeen converted poems fall inside ۱۳۵۹–۱۳۶۷ (Sept 1980 – Aug 1988), and every one of them
+sits between pages 48 and 65: `shadow-daughter`, `shepherd-figs`, `bomb-kiss`, `green-woodpecker`, `barren-cloud`, `drink-sea`, `horse-hooves`, `sunless-gaze`, `green-pond`, `gray-kisses`, `one-thing`, `shelter-wall`, `jungle-bomb`, `laugh-cry`, `snow-without-you`, `dotar-player`, `jungle-to-sea`.
 
 Page 66 onward is ۱۳۶۸ — entirely after the August 1988 ceasefire. So **the front-line material
 is behind us, not ahead**: the bombs, the shelter, the missiles over Tehran, and the nights Sinai
@@ -58,8 +58,8 @@ gone. The run 41–47 is now continuous and it is **all early**:
 
 **Pages 47 and 48 are adjacent, and nine years apart.** ۱۳۵۲–۱۳۵۹ — 1973 to 1980, the last years of
 the Shah, the revolution of ۱۳۵۷, and the war's outbreak in Shahrivar ۱۳۵۹ — has no page in this
-book. It cannot be hiding in the unphotographed run behind it either: pages 22–40 are ۱۳۳۷–۱۳۴۲, so
-pages 1–21 are earlier still, not later. Whatever the reason — not written, not kept, not chosen for
+book. Nor can it be hiding behind page 22: pages 1–20 are the preface and page 21 is the
+frontispiece. Whatever the reason — not written, not kept, not chosen for
 this volume — the silence is the book's own, and it is worth knowing before anyone goes looking for
 more.
 
@@ -104,8 +104,9 @@ dumps' footers are trustworthy where they are legible, and the one-poem-per-page
 not.** But two markers were legible and *wrong* — see the next section — so a marker-derived page
 number is a hypothesis until a photograph confirms it.
 
-`rain-forgotten` (۱۳۶۸) and `nightingale-cloud` (۱۳۸۰) have no markers anywhere near them; by
-date they belong around pages 66–100 and 202 respectively.
+`nightingale-cloud` (۱۳۸۰) has no marker anywhere near it and is the one poem still without a page
+number; by date it belongs near 202. (`rain-forgotten` was in the same position until it was merged
+with the page-73 conversion.)
 
 **The dumps are fully harvested.** Every run of Persian in all three of them is already in a
 `.poem` file — checked line by line, normalised. There is no unconverted material hiding in the
@@ -129,20 +130,23 @@ diacritics, the line breaks the dumps had merged, and one real semantic aid — 
 
 ## Pages still unconverted
 
-Behind the front: **1–11, 13–21** — twenty pages, down from twenty-four. Page 13 joined the list
-when `dark-city` left it. These are holes in the Adobe dumps, not deliberate omissions; by
-interpolation they are all ۱۳۳۷ or earlier, the poet's earliest work.
+**Behind the front: none.** Pages 1–20 are the preface and pages 21–109 are complete — every page
+accounted for, either by a poem or as the second page of one. The run of "missing" early pages that
+this file tracked for several revisions was an artifact of two wrong page numbers and of not knowing
+where the preface ended.
 
 Ahead: **110–126, 132–148, 150–201, 204+.** Pages 42–46 and 61–109 are transcribed in
 `raw photos/persian_poems.md` and fully converted; the next photograph batch continues at page 110.
+`nightingale-cloud` (۱۳۸۰) is the only poem in the collection without a page number; by date it
+belongs near 202.
 
 ## Inversions worth checking against the page
 
-- **`bird-behind-wall` (p12, Autumn ۱۳۶۸ / 1989)** — the book's largest anomaly by a wide margin: it
-  is on one side of **40** of the 66 inverted pairs. A ۱۳۶۸ poem cannot belong on page 12 in a book
-  whose pages 22–40 are ۱۳۳۷–۱۳۴۲. Given that two other dump-derived page numbers have now proved
-  wrong by 30 and by 20, "12" is the thing to doubt. Pages 61–109 are all accounted for, so its true
-  page is likely 110 or beyond. **The single most valuable page number to verify.**
+- ~~`bird-behind-wall`~~ — **resolved, and not an error.** Recorded as page 12, it looked like the
+  book's largest anomaly: a ۱۳۶۸ poem sitting on one side of 40 inverted pairs. Ben confirmed it is
+  page **21** — the first page after the preface, before the chronological sequence starts on 22. It
+  is the book's frontispiece, placed for effect. The lesson is the one this file keeps learning from
+  a different direction: *the page number was wrong, and then the anomaly was not an anomaly at all.*
 - **`winter-studio` (p90, ۱۳۷۰/۹/۲۷ = 18 December 1991)** sits among pages dated ۱۳۶۸–۱۳۶۹. The
   largest *local* inversion. Confirm the folio digit and the date line against the photograph.
 - **`snow-beautiful` (p203, ۱۳۷۰) after `morning-glory` (p202, ۱۳۸۰).** One of the two dates is

@@ -4,12 +4,12 @@ id                  = "jungle-to-sea"
 english_title       = ""
 persian_title       = ""
 date_written        = "1989 - اسفند ۱۳۶۷"
-date_translated     = "6/28/26"
+date_translated     = ""
 page_number         = "65"
 persian_page_number = "۶۵"
 source              = "raw photos/persian_poems.md"
 tags                = ["love", "war", "sea", "forest"]
-notes               = "Untitled in source; dated اسفند ۱۳۶۷ (Esfand, the last month of 1367 = Feb–Mar 1989). Companion to the page-61 poem, reusing the sea/forest figure for the lovers. Imported as a draft with machine / lantern / Ben layers; finished translation staged but withheld from the Poems tab."
+notes               = "Untitled in source; dated اسفند ۱۳۶۷ (Esfand, the last month of 1367 = Feb–Mar 1989). Companion to the page-61 poem, reusing the sea/forest figure for the lovers. Imported as a draft with machine and lantern layers. Corrected (July 2026): this poem's ===translation=== held an agent rendering, staged there by the pages 61-69 bulk import. Per CLAUDE.md that layer is Ben's alone, so the rendering is now the ===lantern=== and ===translation=== is empty again, superseding the import's earlier and rougher lantern (kept in git history). date_translated is cleared for the same reason — it recorded 6/28/26, the date of the agent pass."
 draft               = true
 
 ===persian===
@@ -40,19 +40,6 @@ Esfand 1367
 
 ===lantern===
 
-The war is over...
-and... you go on...
-and the forest is still bound to the sea...
-and I love you... because
-every day
-the forest's bashful longing
-you speak — naked —
-to the sea...
-
-Esfand 1367
-
-===translation===
-
 The war has ended...
 and... you go on...
 and still the forest is bound to the sea...
@@ -62,6 +49,8 @@ you tell — naked —
 to the sea...
 
 — Esfand 1367
+
+===translation===
 
 ===footnotes===
 

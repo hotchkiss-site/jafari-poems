@@ -31,6 +31,23 @@ Some poems in a dump are **already in the repo**. Always check before adding.
   page numbers can repeat. In the `-2` dump, the "To my daughter, Shadow" poem was already
   present as `shadow-daughter`; only two of the three blocks were new.
 
+### The dedupe step needs a similarity check, not a grep
+
+**This step failed once and cost four duplicate files** (ADR 0003). Exact-match grep is not enough,
+because a single OCR'd letter defeats it — `نمناران` for `بمباران`, `باران` for `یاران` — and both of
+those slipped through. Compare *normalised* Persian across the whole collection instead:
+
+```python
+import re, difflib
+from pathlib import Path
+norm = lambda s: re.sub(r'[.،؛:؟!«»…\-–0-9۰-۹ً-ْ]', '', re.sub(r'[\s‌]+', '', s))
+# ... build {slug: norm(persian)} for every poems/*.poem, then for each candidate block:
+#     difflib.SequenceMatcher(None, norm(block), existing).ratio() > 0.70  → look at it by hand
+```
+
+Anything above ~70% is the same poem in two transcriptions. Check every hit by eye before merging,
+and when you merge, keep **Ben's** file and take the better Persian from the other.
+
 ## Mapping a poem block → the four `.poem` sections
 
 The `.poem` format has four named sections. Map the dump as follows:
@@ -50,6 +67,12 @@ side-by-side comparison, so an empty layer simply shows no badge. See CLAUDE.md 
 
 Key conventions, learned from the existing files:
 
+- **Never write into `===translation===`.** That layer is Ben's hand alone. Your rendering goes in
+  `===lantern===`, however finished it feels. The pages 61–69 import staged agent English in the
+  translation slot under a one-off licence, and because the Drafts tab labels that layer **"Ben"**,
+  the site spent a month attributing agent work to the owner of the book. See ADR 0003. If Ben asks
+  for a translation stood up, say so in that poem's `notes` — a later reader has no other way to
+  tell.
 - **Keep the machine draft, don't promote it.** The `machine` section is scratch and is *never
   rendered*. The `translation` section is the *finished human* English and *is* rendered. Do **not**
   paste the machine output into `translation` — that would misrepresent raw MT as a finished

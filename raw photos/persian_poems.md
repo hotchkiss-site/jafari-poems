@@ -1788,7 +1788,12 @@ poems become real when they are converted into `poems/<slug>.poem` files (see
 
 **Where the run stands.** Pages **42–46** and **61–109** are transcribed. Pages 61–69 came from an
 earlier source; 70–109 and then 42–46 were read from photographs. The next batch of photographs
-continues at **page 110**; behind the front, pages **1–11 and 13–21** are still unphotographed.
+continues at **page 110**.
+
+**Nothing is missing behind the front.** Ben confirmed (July 2026) that pages **1–20 are the
+preface** and that page **21** is `bird-behind-wall`, the book's opening poem — so pages 21–109 are
+now complete, and the run of absent early pages this file used to track was an artifact of two wrong
+page numbers. The collection stands at 84 poems.
 
 Transcription and conversion are at different points, so keep them apart in your head:
 
@@ -1857,6 +1862,13 @@ They cannot be behind page 22 either, since 22–40 are ۱۳۳۷–۱۳۴۲. See
 Two of the five pages were poems already in the repo under wrong page numbers, both taken from
 scanner footers in the Adobe dumps. Dates in this book come from the poet's own line at the foot of
 the poem; page numbers come from footers. **Doubt the page number first.**
+
+- **Page 73, first word** — this page reads `های... یاران...` ("hey... friends..."), but the same
+  poem in `raw-jafari-adobe-1.txt` reads `های... باران...` ("hey... rain..."), one letter apart. The
+  poem's own logic favours `باران`: the next line is `تو می‌باری`, "you are raining", and page 95
+  addresses the beloved as `بارانِ من`. Left as transcribed, since this side is photograph-derived,
+  but **worth re-checking against the page** — see `poems/rain-forgotten.poem`, into which the two
+  versions have been merged.
 
 **Per-page flags:**
 

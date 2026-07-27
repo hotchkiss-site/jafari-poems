@@ -4,12 +4,12 @@ id                  = "snow-without-you"
 english_title       = ""
 persian_title       = ""
 date_written        = "1989 - زمستان ۱۳۶۷"
-date_translated     = "6/28/26"
+date_translated     = ""
 page_number         = "63"
 persian_page_number = "۶۳"
 source              = "raw photos/persian_poems.md"
 tags                = ["love", "absence", "snow", "winter"]
-notes               = "Untitled in source; dated زمستان ۱۳۶۷ (Winter 1367). Imported as a draft with machine / lantern / Ben layers; finished translation staged but withheld from the Poems tab. Built on the refrain بی تو ('without you') and the repeated verb می‌گذرم ('I pass')."
+notes               = "Untitled in source; dated زمستان ۱۳۶۷ (Winter 1367). Imported as a draft with machine and lantern layers. Built on the refrain بی تو ('without you') and the repeated verb می‌گذرم ('I pass'). Corrected (July 2026): this poem's ===translation=== held an agent rendering, staged there by the pages 61-69 bulk import. Per CLAUDE.md that layer is Ben's alone, so the rendering is now the ===lantern=== and ===translation=== is empty again, superseding the import's earlier and rougher lantern (kept in git history). date_translated is cleared for the same reason — it recorded 6/28/26, the date of the agent pass."
 draft               = true
 
 ===persian===
@@ -46,22 +46,6 @@ Winter 1367
 
 ===lantern===
 
-You leave on a short journey.
-I — without you — through the alley...
-without you — through the house... I pass...
-Without you, I pass...
-Snow is falling...
-the snow falls without you...
-snow falls on my cheeks, falls into tears...
-Without you, I pass through the snow...
-The alley is silent...
-the house is silent...
-wordless, I pass through the snow...
-
-Winter 1367
-
-===translation===
-
 You go away on a short journey.
 I pass through the alley without you...
 through the house without you...
@@ -75,6 +59,8 @@ the house has gone quiet...
 and wordless, I pass through the snow...
 
 — Winter 1367
+
+===translation===
 
 ===footnotes===
 
