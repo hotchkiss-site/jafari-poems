@@ -165,6 +165,16 @@ CI runs `build_collection.py` automatically on pushes to `main` that touch `poem
 
 ## Conventions
 
+- **Titles.** The book itself carries hardly any — most poems are untitled and the slug does the
+  identifying. So `english_title` is normally **Ben's** to fill, as a translator's title, while he
+  works on a poem (`war-delirium` → "Shell Shock"); `persian_title` holds only a title actually
+  printed above the poem. An agent should still not invent one: leave both empty, and if a title
+  seems called for, propose it rather than write it. Where Ben has titled an untitled poem, say so in
+  meta `notes` so the English title is never mistaken for the Persian's.
+- **The English does not have to mimic the Persian's punctuation.** Ben's direction: it has to breathe
+  on its own. Where the Persian's pointing carries meaning worth keeping — a repetition that is doing
+  structural work, an ellipsis that holds a pause, a bare plural — say so in `===footnotes===` and
+  keep *that*, rather than reproducing comma placement.
 - **Slugs** are lowercase, hyphen-separated English words (`shadow-daughter`, `ancient-tree`). The slug is the filename stem for both `poems/` and `meta/`, and the HTML anchor id. It is also shown on the rendered site as a muted monospace tag — under each title in the TOC and in each poem's header — so a poem on the page maps straight back to its `poems/<slug>.poem` file.
 - **Dates** are freeform strings. Both Gregorian and Solar Hijri dates are welcome in the same field, separated by ` - ` (Gregorian first), e.g. `1988 - ۱۳۶۷`. Convention for the Gregorian half: map the Solar Hijri year by **its actual overlap, not a fixed offset** — a SH year runs ~21 Mar to ~20 Mar, so it spans two Gregorian years. If the source names a month or season, pin the Gregorian year to it: **months 1–9 (spring → autumn, Farvardin–Azar) → SH year + 621; the winter months 10–12 (Dey–Bahman–Esfand) → SH year + 622** (Dey itself straddles the New Year, so round it to +622). Thus `بهار ۱۳۶۸` (spring) → **1989**, `اسفند ۱۳۶۷` and `زمستان ۱۳۶۷` (Esfand / winter) → **1989**, but `۱۳۶۷/۲` or `۱۳۶۷/۹` (spring/autumn) → **1988**. With no month or season given, default a bare `۱۳xx` to + 621. **When the source gives a day**
   (`۱۳۶۸/۱۰/۶`), compute the Gregorian date instead of rounding — 6 Dey ۱۳۶۸ is 27 December 1989,
