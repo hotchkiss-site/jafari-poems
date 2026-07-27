@@ -169,7 +169,14 @@ CI runs `build_collection.py` automatically on pushes to `main` that touch `poem
   (`گاتهام‌ها`, `کامنگل`) that a previous English had faithfully translated. **Read the image
   directly; do not run it through OCR and translate the output.** When a reading stays
   uncertain, mark it `lacuna` (`⟨…⟩`) rather than guessing, and record the superseded
-  transcription in an HTML comment so nothing is lost. See `docs/adr/0002-*`.
+  transcription in an HTML comment so nothing is lost. See `docs/adr/0002-*`. A withdrawn line
+  that is good English but nobody's translation goes in `docs/ghost-lines.md` rather than quietly
+  out of existence.
+- **The book is chronological** — 99% concordant across every poem with both a page and a date, so
+  an unconverted page's date can be interpolated from its neighbours and a poem whose date fights
+  its page number is worth re-checking. `docs/chronology.md` holds the page↔year map, what the
+  remaining pages should contain, and which gaps are worth photographing next; regenerate it after
+  each conversion batch.
 - **Preface quotations vs. the canonical English.** Several poems quoted in the preface also
   stand in `poems/` — sometimes in a variant wording, since the essayists quote from the printed
   book. The preface keeps its **own rendering**, pitched to serve the argument the essayist is
