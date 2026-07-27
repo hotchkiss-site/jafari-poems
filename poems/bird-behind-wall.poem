@@ -5,11 +5,11 @@ english_title       = "Adobe"
 persian_title       = "بوی کاهگل"
 date_written        = "Autumn 1989"
 date_translated     = "4-8-2026"
-page_number         = "12"
-persian_page_number = ""
+page_number         = "21"
+persian_page_number = "۲۱"
 source              = ""
 tags                = []
-notes               = ""
+notes               = "Page 21, confirmed by Ben (July 2026); it had been recorded as 12, which is inside the preface. **This is the book's opening poem** — page 21 is the first page after the preface (1–20), and the chronological sequence proper starts on page 22 with the earliest work (۱۳۳۷). So a ۱۳۶۸ poem standing alone on 21 is a frontispiece, placed for effect rather than in sequence, and it should be read as the one deliberate exception to the book's chronological order rather than as a mis-numbering. It was the largest apparent anomaly in docs/chronology.md until the page was confirmed."
 draft               = false
 
 ===persian===

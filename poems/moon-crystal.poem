@@ -5,11 +5,11 @@ english_title       = ""
 persian_title       = ""
 date_written        = "Summer 1962, Tuyserkan - تویسرکان تابستان ۱۳۴۱"
 date_translated     = ""
-page_number         = ""
-persian_page_number = ""
+page_number         = "37"
+persian_page_number = "۳۷"
 source              = "raw-jafari-adobe-1.txt"
 tags                = ["love", "night", "longing"]
-notes               = "Untitled in source; dedicated 'برای مریم' (For Maryam). English block is a raw machine draft (kept in the machine section); finished translation pending."
+notes               = "Untitled in source; dedicated 'برای مریم' (For Maryam). English block is a raw machine draft (kept in the machine section); finished translation pending. Page number not recovered, but bounded: the block sits between the page-36 pair (beggar-dogs) and the page-40 pair (life-tune), with only with-you between, so it is on page 37, 38 or 39 — most likely 37, being the first of the two. Page 37 now follows by elimination: the dump bounds this poem between the page-36 pair and the page-40 pair with only with-you after it, and Ben has confirmed with-you as 38–39, leaving 37."
 draft               = true
 
 ===persian===

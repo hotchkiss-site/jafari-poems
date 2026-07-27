@@ -4,12 +4,12 @@ id                  = "drop-of-red"
 english_title       = ""
 persian_title       = ""
 date_written        = "1989 - ۱۳۶۸"
-date_translated     = "6/28/26"
+date_translated     = ""
 page_number         = "67"
 persian_page_number = "۶۷"
 source              = "raw photos/persian_poems.md"
 tags                = ["love", "longing", "painting", "memory"]
-notes               = "Untitled in source; dated تهران ۱۳۶۸ (Tehran, 1989). A painter's poem — memory as a grey square, eyelids as brushwork, red the one withheld colour. چراغ رنگ = 'lamp of colour'; 'lamp' kept over 'lantern' to avoid colliding with this collection's layer name. Imported as a draft with machine / lantern / Ben layers; finished translation staged but withheld from the Poems tab."
+notes               = "Untitled in source; dated تهران ۱۳۶۸ (Tehran, 1989). A painter's poem — memory as a grey square, eyelids as brushwork, red the one withheld colour. چراغ رنگ = 'lamp of colour'; 'lamp' kept over 'lantern' to avoid colliding with this collection's layer name. Imported as a draft with machine and lantern layers. Corrected (July 2026): this poem's ===translation=== held an agent rendering, staged there by the pages 61-69 bulk import. Per CLAUDE.md that layer is Ben's alone, so the rendering is now the ===lantern=== and ===translation=== is empty again, superseding the import's earlier and rougher lantern (kept in git history). date_translated is cleared for the same reason — it recorded 6/28/26, the date of the agent pass."
 draft               = true
 
 ===persian===
@@ -60,29 +60,6 @@ Tehran 1368
 
 ===lantern===
 
-When I am heartsick I think of you.
-Your memory is a square, faded and trembling
-on a ground of pale grey.
-Within these squares
-I —
-by the closing of my eyelids —
-paint the past.
-Between you and me
-stand dust and a wall.
-By the magic of these squares
-I pass through the walls.
-To reach you,
-the only way is to pass through.
-I must take the lamp of color in my hand
-and search for you among my greys.
-If only I could
-paint one drop more
-in red...
-
-Tehran 1368
-
-===translation===
-
 When the longing takes me, I think of you.
 The memory of you is a square, blurred and trembling
 against a ground of pale grey.
@@ -103,6 +80,8 @@ one more drop
 of red...
 
 — Tehran, 1368
+
+===translation===
 
 ===footnotes===
 

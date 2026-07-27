@@ -4,12 +4,12 @@ id                  = "dotar-player"
 english_title       = ""
 persian_title       = ""
 date_written        = "1989 - زمستان ۱۳۶۷"
-date_translated     = "6/28/26"
+date_translated     = ""
 page_number         = "64"
 persian_page_number = "۶۴"
 source              = "raw photos/persian_poems.md"
 tags                = ["love", "music", "longing"]
-notes               = "Untitled in source; dated زمستان ۱۳۶۷ (Winter 1367). Imported as a draft with machine / lantern / Ben layers; finished translation staged but withheld from the Poems tab. Extended conceit: beloved as دوتار (two-stringed lute), poet as restless player. دشت ارژن = Dasht-e Arjan, a plain near Shiraz."
+notes               = "Untitled in source; dated زمستان ۱۳۶۷ (Winter 1367). Imported as a draft with machine and lantern layers. Extended conceit: beloved as دوتار (two-stringed lute), poet as restless player. دشت ارژن = Dasht-e Arjan, a plain near Shiraz. Corrected (July 2026): this poem's ===translation=== held an agent rendering, staged there by the pages 61-69 bulk import. Per CLAUDE.md that layer is Ben's alone, so the rendering is now the ===lantern=== and ===translation=== is empty again, superseding the import's earlier and rougher lantern (kept in git history). date_translated is cleared for the same reason — it recorded 6/28/26, the date of the agent pass."
 draft               = true
 
 ===persian===
@@ -43,20 +43,6 @@ Winter 1367
 ===lantern===
 
 You are dreaming.
-You are a dotar —
-and I, the player, restless and without rest.
-The plain of Arjan, silent.
-A fire upon my soul.
-I strike the strings, I sing...
-You start awake —
-and on your body remains
-the print of my fingers.
-
-Winter 1367
-
-===translation===
-
-You are dreaming.
 You are a dotar,
 and I, your player — restless, without rest.
 The Arjan plain lies silent,
@@ -67,6 +53,8 @@ left upon your body,
 the print of my fingers.
 
 — Winter 1367
+
+===translation===
 
 ===footnotes===
 

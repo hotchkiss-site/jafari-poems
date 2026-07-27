@@ -87,6 +87,10 @@ reading of the transcription could have settled, and falsified a few earlier dec
 - A new rule, recorded in `CLAUDE.md`: **read the source image directly; do not translate
   OCR output.** Every error in 6–12 above was invisible from the transcription alone, and
   one of them (`دانم`) had already been reasoned about at length and confidently defended.
+- Two withdrawn English lines were good enough to keep as English, and are recorded in
+  `docs/ghost-lines.md` so they neither re-enter the book as translations nor disappear: "tonight I
+  painted the bruise-blue sound of my song" (from §4, an OCR split of `کبوترانم`, "my doves") and
+  "out of *I do not know* grows *I know*" (from §1, the `دائم`/`دانم` misreading).
 - §4 is still marked `needs-work`. It is no longer nonsense, but the ⟨…⟩ patches want a
   fluent reader of the hand. That is now a reading problem, not a sourcing problem.
 - Open follow-up carried over from ADR 0001 §6: whether to reconcile the preface's quotation

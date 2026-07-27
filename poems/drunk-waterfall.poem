@@ -5,11 +5,11 @@ english_title       = ""
 persian_title       = ""
 date_written        = "1960 - ۱۳۳۹"
 date_translated     = ""
-page_number         = "26"
-persian_page_number = "۲۶"
+page_number         = "26-27"
+persian_page_number = "۲۶–۲۷"
 source              = "raw-jafari-adobe-1.txt"
 tags                = ["love", "longing", "water", "snow"]
-notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending."
+notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending. Page number confirmed by Ben against the printed book (July 2026). Page 27 is this poem's second page, which is why 27 had looked like a hole in the collection."
 draft               = true
 
 ===persian===

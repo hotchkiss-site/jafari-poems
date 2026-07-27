@@ -1,0 +1,51 @@
+===meta===
+
+id                  = "rain-complaint"
+english_title       = ""
+persian_title       = ""
+date_written        = "Winter 1990 - زمستان ۱۳۶۸"
+date_translated     = ""
+page_number         = "91"
+persian_page_number = "۹۱"
+source              = "raw photos/persian_poems.md"
+tags                = ["rain", "adobe", "clay", "longing"]
+notes               = "Untitled in source. خاک is given as 'clay' per the convention in ADR 0001, so that the book's own بوی خاک / بوی کاهگل family stays audible. زمستان ۱۳۶۸ is winter (months 10–12), so the Gregorian half is 1990 (+622). Imported as a draft with machine / lantern layers; ===translation=== left for Ben."
+draft               = true
+
+===persian===
+
+باران،
+تو از آسمان بازمی‌گردی
+تا قصهٔ دلتنگی خود را
+برای خاک بگویی...
+اما بوی کاهگل... مَجال شکوه نمی‌دهد...
+زمستان ۱۳۶۸
+
+===machine===
+
+Rain,
+you come back down from the sky
+to tell the earth
+the story of your own longing...
+but the smell of straw-and-clay... leaves no room for complaint...
+Winter 1368
+
+===lantern===
+
+Rain,
+you come back down out of the sky
+to tell the clay
+the story of your own homesickness...
+but the smell of adobe... gives you no opening to complain...
+
+Winter 1368
+
+===translation===
+
+===footnotes===
+
+Five lines and a complete reversal: the rain descends in order to complain, and
+what its own arrival releases from the ground — the smell of wet adobe — leaves it nothing to
+complain about. مجال is the room or opening to do a thing, so the rain is not refuted, it is simply
+given no gap to speak into.
+

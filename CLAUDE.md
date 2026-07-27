@@ -54,6 +54,13 @@ The three English sections are **layers** of increasing refinement, and **who wr
 - **`lantern`** — the **agent's interpretive working draft**: a crib that steps from the literal `machine` toward faithful English — resolving idiom, image, and ambiguity — without claiming to be the final hand. **This is the home for an AI collaborator's own translation work.** Optional in principle, but when an agent translates, its rendering goes here.
 - **`translation`** — **Ben's finished human translation.** **Ben is the repo owner — the human you (the agent) are working with** — and this layer is labelled "Ben" in the UI because it is *his* hand. **It is Ben's slot. By default an agent does NOT write its own rendering into `===translation===`; put your work in `lantern` and leave `translation` empty for Ben.** The one exception is when Ben explicitly asks you to stand in and draft a translation for him to revise later (e.g. the page 61–69 bulk import) — then you may stage a translation here, but keep the poem `draft = true` so it stays out of the Poems tab until Ben signs off.
 
+**This went wrong once, so it is worth stating flatly: do not put your English in
+`===translation===`, even when asked to make it finished.** The Drafts tab labels that layer "Ben",
+so an agent rendering placed there is published under his name. Eleven poems were in that state and
+are recorded in `docs/adr/0003-translation-layer-ownership.md`, along with how to tell his hand from
+an agent's — `draft = false` plus a translation is his; lower case, `&` for *and*, bracketed glosses
+and contractions are his voice.
+
 `lantern` is optional and need not be present in every file. In the **Drafts** tab each non-empty layer gets a clickable, latching badge under the poem; click one or several to show those layers side by side on the English side (empty layers show no badge). The **Poems** tab renders only the finished `translation`. The `===section===` parser is generic, so adding another layer later is a builder change, not a parser one.
 
 ### The `===meta===` section
@@ -159,7 +166,10 @@ CI runs `build_collection.py` automatically on pushes to `main` that touch `poem
 ## Conventions
 
 - **Slugs** are lowercase, hyphen-separated English words (`shadow-daughter`, `ancient-tree`). The slug is the filename stem for both `poems/` and `meta/`, and the HTML anchor id. It is also shown on the rendered site as a muted monospace tag — under each title in the TOC and in each poem's header — so a poem on the page maps straight back to its `poems/<slug>.poem` file.
-- **Dates** are freeform strings. Both Gregorian and Solar Hijri dates are welcome in the same field, separated by ` - ` (Gregorian first), e.g. `1988 - ۱۳۶۷`. Convention for the Gregorian half: map the Solar Hijri year by **its actual overlap, not a fixed offset** — a SH year runs ~21 Mar to ~20 Mar, so it spans two Gregorian years. If the source names a month or season, pin the Gregorian year to it: **months 1–9 (spring → autumn, Farvardin–Azar) → SH year + 621; the winter months 10–12 (Dey–Bahman–Esfand) → SH year + 622** (Dey itself straddles the New Year, so round it to +622). Thus `بهار ۱۳۶۸` (spring) → **1989**, `اسفند ۱۳۶۷` and `زمستان ۱۳۶۷` (Esfand / winter) → **1989**, but `۱۳۶۷/۲` or `۱۳۶۷/۹` (spring/autumn) → **1988**. With no month or season given, default a bare `۱۳xx` to + 621. Keep the season/month in the Persian half (`1989 - اسفند ۱۳۶۷`).
+- **Dates** are freeform strings. Both Gregorian and Solar Hijri dates are welcome in the same field, separated by ` - ` (Gregorian first), e.g. `1988 - ۱۳۶۷`. Convention for the Gregorian half: map the Solar Hijri year by **its actual overlap, not a fixed offset** — a SH year runs ~21 Mar to ~20 Mar, so it spans two Gregorian years. If the source names a month or season, pin the Gregorian year to it: **months 1–9 (spring → autumn, Farvardin–Azar) → SH year + 621; the winter months 10–12 (Dey–Bahman–Esfand) → SH year + 622** (Dey itself straddles the New Year, so round it to +622). Thus `بهار ۱۳۶۸` (spring) → **1989**, `اسفند ۱۳۶۷` and `زمستان ۱۳۶۷` (Esfand / winter) → **1989**, but `۱۳۶۷/۲` or `۱۳۶۷/۹` (spring/autumn) → **1988**. With no month or season given, default a bare `۱۳xx` to + 621. **When the source gives a day**
+  (`۱۳۶۸/۱۰/۶`), compute the Gregorian date instead of rounding — 6 Dey ۱۳۶۸ is 27 December 1989,
+  where the +622 winter rounding would say 1990. The rounding rule exists for month-only and
+  season-only dates; a day-level date can honour the actual-overlap principle exactly. Keep the season/month in the Persian half (`1989 - اسفند ۱۳۶۷`).
 - **meta `notes` vs `===footnotes===`** — opposite audiences, easy to mix up. The `===footnotes===` section of a `.poem` is **published**: it renders under the poem as "Translator's Notes" (word choices, cultural context, variants — for the reader). The `notes` field in the `===meta===` section is **private**: it is parsed but never shown on the site — curator/provenance commentary for collaborators (source file, OCR caveats, why a slug or rendering was chosen). Put reader-facing notes in `===footnotes===`; put behind-the-scenes notes in meta `notes`.
 - **Photograph the page before trusting a transcription.** Two preface sections were rebuilt
   from photographs of the printed/handwritten source (`preface/01`, `preface/04`), and in both
@@ -169,7 +179,14 @@ CI runs `build_collection.py` automatically on pushes to `main` that touch `poem
   (`گاتهام‌ها`, `کامنگل`) that a previous English had faithfully translated. **Read the image
   directly; do not run it through OCR and translate the output.** When a reading stays
   uncertain, mark it `lacuna` (`⟨…⟩`) rather than guessing, and record the superseded
-  transcription in an HTML comment so nothing is lost. See `docs/adr/0002-*`.
+  transcription in an HTML comment so nothing is lost. See `docs/adr/0002-*`. A withdrawn line
+  that is good English but nobody's translation goes in `docs/ghost-lines.md` rather than quietly
+  out of existence.
+- **The book is chronological** — 99% concordant across every poem with both a page and a date, so
+  an unconverted page's date can be interpolated from its neighbours and a poem whose date fights
+  its page number is worth re-checking. `docs/chronology.md` holds the page↔year map, what the
+  remaining pages should contain, and which gaps are worth photographing next; regenerate it after
+  each conversion batch.
 - **Preface quotations vs. the canonical English.** Several poems quoted in the preface also
   stand in `poems/` — sometimes in a variant wording, since the essayists quote from the printed
   book. The preface keeps its **own rendering**, pitched to serve the argument the essayist is

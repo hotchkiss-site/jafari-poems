@@ -3,13 +3,13 @@
 id                  = "laugh-cry"
 english_title       = ""
 persian_title       = ""
-date_written        = "Nov 1988 - ۱۳۶۷/۹"
+date_written        = "1988 - ۱۳۶۷/۹"
 date_translated     = ""
 page_number         = "62"
 persian_page_number = "۶۲"
-source              = ""
-tags                = []
-notes               = ""
+source              = "raw photos/persian_poems.md"
+tags                = ["love", "poetry", "loss"]
+notes               = "Merged (July 2026) with `laughed-wept`, a duplicate of this poem created by the pages 61-69 bulk import, which did not dedupe against the file already in the repo. Ben's finished ===translation=== here is untouched. The Persian, machine pass, lantern and footnotes come from the import. That import had also staged an agent rendering in ===translation===, which per CLAUDE.md is Ben's slot alone; that rendering is now this file's ===lantern===, and the import's earlier, rougher lantern is superseded (kept in git history). The import's Persian adds the ۱۳۶۷/۹ dateline the older file had dropped. The two English readings differ at 'با دیگری خواندم': Ben has 'I sang another', the agent pass reads it as reading the poem to another person, whose weeping is the third-person گریست. Both are left standing, in their own layers."
 draft               = false
 
 ===persian===
@@ -19,11 +19,25 @@ draft               = false
 با دیگری خواندم...
 گریست...
 
+۱۳۶۷/۹
+
 ===machine===
-I told you my poem...
+
+I recited my poem for you...
 You laughed...
-I read it to someone else...
-You cried...
+I read it with another...
+They wept...
+
+1367/9
+
+===lantern===
+
+I said my poem to you —
+you laughed.
+I read it to another —
+she wept.
+
+— 1367/9
 
 ===translation===
 
@@ -32,5 +46,6 @@ You laughed …
 I sang another…
 Weeping…
 
-
 ===footnotes===
+
+The contrast turns on a single verb: گریست ("wept," third-person singular) — it is the other listener, not the poet, who weeps. So the poem you laughed at, read aloud to someone else, drew tears. Four lines, two reactions, and the whole distance between them.

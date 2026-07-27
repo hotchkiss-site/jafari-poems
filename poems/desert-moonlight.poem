@@ -4,12 +4,12 @@ id                  = "desert-moonlight"
 english_title       = ""
 persian_title       = ""
 date_written        = "1989 - بهار ۱۳۶۸"
-date_translated     = "6/28/26"
+date_translated     = ""
 page_number         = "69"
 persian_page_number = "۶۹"
 source              = "raw photos/persian_poems.md"
 tags                = ["love", "desert", "spring", "ghazal"]
-notes               = "Untitled in source; dated بهار ۱۳۶۸ (Spring 1989). The only formally classical piece here — a rhymed, metrical ghazal-style fragment (line-ends -âni: بارانی/بیابانی/پنهانی/چراغانی). چراغانی = festival illumination of a city. Imported as a draft with machine / lantern / Ben layers; finished translation staged but withheld from the Poems tab."
+notes               = "Untitled in source; dated بهار ۱۳۶۸ (Spring 1989). The only formally classical piece here — a rhymed, metrical ghazal-style fragment (line-ends -âni: بارانی/بیابانی/پنهانی/چراغانی). چراغانی = festival illumination of a city. Imported as a draft with machine and lantern layers. Corrected (July 2026): this poem's ===translation=== held an agent rendering, staged there by the pages 61-69 bulk import. Per CLAUDE.md that layer is Ben's alone, so the rendering is now the ===lantern=== and ===translation=== is empty again, superseding the import's earlier and rougher lantern (kept in git history). date_translated is cleared for the same reason — it recorded 6/28/26, the date of the agent pass."
 draft               = true
 
 ===persian===
@@ -36,17 +36,6 @@ Spring 1368
 
 ===lantern===
 
-O you — that rain-fresh, dew-bright thing,
-the desert's unstinting moonlight —
-when I come back from my journey to your eyes
-with the flames of a hidden fire,
-each leaf, in my wet gaze, is a garden,
-each bud a glad city strung with lights.
-
-Spring 1368
-
-===translation===
-
 O you — that rain-freshened, dewy grace,
 the desert's unstinting moonlit face:
 when I come home from the journey to your eyes
@@ -56,6 +45,8 @@ every bud a glad city ablaze with light.
 
 — Spring 1368
 
+===translation===
+
 ===footnotes===
 
-The only formally classical piece in this group: a rhymed, metrical fragment in the manner of a ghazal, the line-ends chiming بارانی / بیابانی / پنهانی / چراغانی (-âni). The finished English reaches for a little of that music (grace / face) without forcing the full mono-rhyme. چراغانی is the festival lighting-up of a city — lamps strung for celebration — so the closing bud opens like a town lit for a feast. نگاهِ تَر, "the wet/moist gaze," is a gaze brimming to tears with feeling, not with grief.
+The only formally classical piece in this group: a rhymed, metrical fragment in the manner of a ghazal, the line-ends chiming بارانی / بیابانی / پنهانی / چراغانی (-âni). The lantern reaches for a little of that music (grace / face) without forcing the full mono-rhyme. چراغانی is the festival lighting-up of a city — lamps strung for celebration — so the closing bud opens like a town lit for a feast. نگاهِ تَر, "the wet/moist gaze," is a gaze brimming to tears with feeling, not with grief.

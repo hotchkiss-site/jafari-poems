@@ -7,9 +7,9 @@ date_written        = "1989 - ۱۳۶۸"
 date_translated     = ""
 page_number         = "66"
 persian_page_number = "۶۶"
-source              = ""
-tags                = []
-notes               = ""
+source              = "raw photos/persian_poems.md"
+tags                = ["war", "love", "fragment"]
+notes               = "Merged (July 2026) with `lovers-breath`, a duplicate of this poem created by the pages 61-69 bulk import, which did not dedupe against the file already in the repo. Ben's finished ===translation=== here is untouched. The Persian, machine pass, lantern and footnotes come from the import. That import had also staged an agent rendering in ===translation===, which per CLAUDE.md is Ben's slot alone; that rendering is now this file's ===lantern===, and the import's earlier, rougher lantern is superseded (kept in git history). The import's Persian is the better text: it keeps the trailing '...؟...' that leaves the grammar unfinished, and drops a stray tab character."
 draft               = false
 
 ===persian===
@@ -17,17 +17,30 @@ draft               = false
 های...
 جنگ...
 جانم را...
-که در فاصله
-نفس های عاشقانه شکل می گیرد	
+که در فاصله...
+نفس‌های عاشقانه شکل می‌گیرد...؟...
 
-
+۱۳۶۸
 
 ===machine===
-Hey...
+
+Alas...
 War...
 My soul...
-That is formed in the distance
-of romantic breaths
+Which in the space...
+Of a lover's breaths takes shape...?...
+
+1368
+
+===lantern===
+
+Ah...
+war...
+my soul —
+that takes its shape
+in the space between a lover's breaths...?...
+
+— 1368
 
 ===translation===
 
@@ -37,5 +50,6 @@ Y’know my soul was molded
 In those distances
 Between a lover’s breathing
 
-
 ===footnotes===
+
+A fragment, and deliberately broken — the ellipses and the trailing "...؟..." leave the grammar unfinished. جانم را carries an object-marker (را) with no settled verb, so the line hangs: "my soul —" as something done to, or asked after. I kept the suspension rather than resolving it into a clean sentence. فاصله ("distance, gap, interval") is the same word that opens the page-61 poem; here the gap is between two breaths.

@@ -1,15 +1,15 @@
 ===meta===
 
 id                  = "gray-gaze"
-english_title       = "Cloudy Love Poems... Winter Songs..."
-persian_title       = "عاشقانه‌های ابری... ترانه‌های زمستانی..."
+english_title       = ""
+persian_title       = ""
 date_written        = "Winter 1990 - زمستان ۱۳۶۸"
 date_translated     = ""
 page_number         = "88"
 persian_page_number = "۸۸"
 source              = "raw photos/persian_poems.md"
 tags                = ["love", "grays", "longing", "color", "painting"]
-notes               = "The heading عاشقانه‌های ابری... ترانه‌های زمستانی... is printed above this poem, but it is plural and reads like a heading for a sequence of winter love poems rather than a title for these eleven lines — page 89 is another winter ۱۳۶۸ love poem that may fall under it. Recorded as the title with that caveat; Ben to decide. The square of laughter (چهارگوش خنده‌ها here, مربع خنده‌ها in adobe-birdsong and in the Alizadeh letter) is one of the poet's fixed images. زمستان ۱۳۶۸ is winter, so 1990 (+622). Imported as a draft with machine / lantern layers; ===translation=== left for Ben."
+notes               = "The heading عاشقانه‌های ابری... ترانه‌های زمستانی... is printed above this poem, but it is plural and reads like a heading for a sequence of winter love poems rather than a title for these eleven lines — page 89 is another winter ۱۳۶۸ love poem that may fall under it. Recorded as the title with that caveat; Ben to decide. The square of laughter (چهارگوش خنده‌ها here, مربع خنده‌ها in adobe-birdsong and in the Alizadeh letter) is one of the poet's fixed images. زمستان ۱۳۶۸ is winter, so 1990 (+622). Imported as a draft with machine / lantern layers; ===translation=== left for Ben. Correction (page 102 batch): the heading عاشقانه‌های ابری... ترانه‌های زمستانی... printed above this poem is a **sequence heading, not a title** — page 102 is printed '... از «عاشقانه‌های ابری»', '... from Cloudy Love Poems', which only makes sense if the phrase names a group of poems. The title fields, filled speculatively on import, are cleared; the poem is untitled like its neighbours and belongs to that sequence."
 draft               = true
 
 ===persian===

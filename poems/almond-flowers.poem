@@ -5,11 +5,11 @@ english_title       = "Almond Flowers"
 persian_title       = "گل های بادام"
 date_written        = "1959 - بروجرد ۱۳۳۸"
 date_translated     = ""
-page_number         = "23"
-persian_page_number = "۲۳"
+page_number         = "23-24"
+persian_page_number = "۲۳–۲۴"
 source              = "raw-jafari-adobe-1.txt"
 tags                = ["love", "longing", "mystery"]
-notes               = "Titled in source ('گل های بادام' / 'Almond Flowers'). English block is a raw machine draft (kept in the machine section); finished translation pending."
+notes               = "Titled in source ('گل های بادام' / 'Almond Flowers'). English block is a raw machine draft (kept in the machine section); finished translation pending. Spans two printed pages: the dump's footer markers step from ۲۳ to ۲۴ inside the block, between the ninth quatrain and the English. page_number is a range."
 draft               = true
 
 ===persian===

@@ -3,36 +3,58 @@
 id                  = "rain-forgotten"
 english_title       = ""
 persian_title       = ""
-date_written        = "Tehran, Autumn 1989 - تهران، پاییز ۱۳۶۸"
+date_written        = "Autumn 1989 - تهران، پاییز ۱۳۶۸"
 date_translated     = ""
-page_number         = ""
-persian_page_number = ""
-source              = "raw-jafari-adobe-1.txt"
-tags                = ["rain", "love", "memory", "loss"]
-notes               = "Untitled in source. Source includes a polished human translation (kept in the translation section); imported as a draft per instruction — flip draft to false to render it. The machine section holds the raw MT shown in the Drafts tab."
+page_number         = "73"
+persian_page_number = "۷۳"
+source              = "raw photos/persian_poems.md"
+tags                = ["rain", "memory", "love", "adobe"]
+notes               = "Untitled in source. Source includes a polished human translation (kept in the translation section); imported as a draft per instruction — flip draft to false to render it. The machine section holds the raw MT shown in the Drafts tab. Merged (July 2026) with `rain-memory`, a duplicate of this poem created by the pages 61-69 bulk import, which did not dedupe against the file already in the repo. The agent rendering the older file had staged in ===translation=== is withdrawn from that slot, which is Ben's; the page-73 lantern stands. Both files were agent-made, so there is no Ben layer here to protect: this is a merge of an import from the Adobe dump with a conversion of the page-73 photograph transcription. The page number, Persian, machine pass and lantern come from the page-73 side. **The two sources disagree on the first word** — the dump reads های... باران... ('hey... rain...') and the transcription reads های... یاران... ('hey... friends...'), one letter apart. The poem's own logic favours باران, since the next line is تو می‌باری, 'you are raining', and page 95 calls the addressee بارانِ من. The transcription's reading is kept as the text of record because it is photograph-derived, but it should be checked against page 73."
 draft               = true
 
 ===persian===
 
-های... باران... تو می باری...
+های... یاران...
+تو می‌باری...
 تا بوی کاهگل را
-که فراموش کرده ای
-به خاطر آوری باران ببار...
+که فراموش کرده‌ای
+به خاطر آوری.
+باران ببار...
 زنی را که دوست دارم
-سفر می کند و چون برگردد
-مرا از خاطر برده است.
-
+سفر می‌کند
+و چون برگردد
+مرا از خاطر برده است...
 تهران، پاییز ۱۳۶۸
 
 ===machine===
 
-Hey... rain... you are raining... to remind you of the smell of straw that you have forgotten . Rain... the woman I love is traveling and when she returns she has forgotten me.
+Hey... friends...
+You are raining...
+so that you may bring to mind
+the smell of straw-and-clay
+that you have forgotten.
+Rain, rain down...
+The woman I love
+goes travelling
+and when she comes back
+she has put me out of mind...
+Tehran, autumn 1368
 
-Tehran, Autumn 1989
+===lantern===
+
+Hey... friends...
+you are raining...
+so that the smell of adobe
+you have let go of
+comes back to mind.
+Rain, rain down...
+The woman I love
+is off travelling,
+and when she comes back
+she has put me out of mind...
+
+Tehran, autumn 1368
 
 ===translation===
-
-O... rain... you are raining... so that you bring back the smell of adobe that you have forgotten— pour, rain...
-The woman I love is traveling, and when she returns she has carried me out of her memory.
 
 ===footnotes===
