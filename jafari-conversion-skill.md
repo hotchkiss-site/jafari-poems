@@ -141,8 +141,10 @@ These all came up converting `raw-jafari-adobe-1.txt`. Handle them the same way 
 ## When the source is photographs of the book (not a text dump)
 
 Some batches arrive as phone photos of the printed pages rather than an OCR dump — one page per
-image, e.g. `raw photos/PXL_*.jpg`. These do **not** go straight to `.poem` files. They land first
-in **`raw photos/persian_poems.md`**, a page-ordered grounding transcription
+image. New photos land in **`raw photos/incoming/`**; once transcribed, **move them to
+`raw photos/processed/`**, so `incoming/` is always exactly the backlog. These do **not** go
+straight to `.poem` files. They are transcribed first into
+**`raw photos/persian_poems.md`**, a page-ordered grounding transcription
 (`## Page NN` → `**Original Persian:**` → `**English Translation:**`), which is the staging area a
 later pass converts into `poems/*.poem`. That file's own "Notes for the next agent" section is
 authoritative for the current state of the run and where the next batch picks up — **read it first.**
