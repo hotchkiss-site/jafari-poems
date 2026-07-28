@@ -3,13 +3,13 @@
 id                  = "heart-partridge"
 english_title       = ""
 persian_title       = ""
-date_written        = "1/4/1991 کلاردشت ۱۳۷۰/۱/۴"
+date_written        = "March 1991 - کلاردشت ۱۳۷۰/۱/۴"
 date_translated     = ""
 page_number         = "128"
 persian_page_number = "۱۲۸"
 source              = ""
 tags                = []
-notes               = ""
+notes               = "Page confirmed against the photograph (July 2026). Gregorian half corrected: this field previously read '1/4/1991', which was the Persian ۱۳۷۰/۱/۴ transliterated rather than converted. Farvardin 4, 1370 is 24 March 1991. Written at Kelardasht. سر در برف is the partridge of the proverb, head buried in the snow and certain it cannot be seen."
 draft               = false
 
 ===persian===

@@ -1,0 +1,87 @@
+===meta===
+
+id                  = "free-song"
+english_title       = ""
+persian_title       = ""
+date_written        = "2003 - تهران ۱۳۸۲"
+date_translated     = ""
+page_number         = "188"
+persian_page_number = "۱۸۸"
+source              = "raw photos/persian_poems.md"
+tags                = ["song", "moonlight", "dawn", "freedom", "cloud"]
+notes               = "Untitled in source. Rhymed on -اد throughout (تابید / داد / شاد است / آزاد است) and it repeats its own opening four lines at the midpoint — a refrain structure, not a printing fault. بگوشم and نمیدانم are printed without the zero-width joiner in lines 1 and 3 and نمی‌دانم with it in line 13; kept exactly as printed. The first line is another sense-crossing: morning light arrives in the ear. Bare year ۱۳۸۲ → +621 = 2003. Imported as a draft with machine / lantern layers; ===translation=== left for Ben."
+draft               = true
+
+===persian===
+
+بگوشم نور صبح حنجرت تابید
+و بیداری سبزی گوش‌هایم را نوازش داد
+نمیدانم که بوی ابر می‌آید
+و یا غم در دلم شاد است.
+صدایی مهربان داری که با مهتاب همراه است
+بخوان تا انتظار خاک تر گردد
+سفر کردست بی‌مهتاب.
+بخوان
+آغوش واکرده که با مهتاب برگردد.
+خیالت از سفر آمد
+و روی سایه‌ها خوابید
+بگوشم نور صبح حنجرت تابید.
+نمی‌دانم که بوی ابر می‌آید
+و یا غم در دلم شاد است.
+صدایی مهربان داری
+که با مهتاب همزاد است
+صدا از ماه می‌آید
+بخوان
+آواز آزاد است.
+تهران ۱۳۸۲
+
+===machine===
+
+The morning light of your throat shone into my ear
+and a green wakefulness stroked my ears.
+I cannot tell whether the smell of cloud is coming
+or whether the grief in my heart is glad.
+You have a kind voice that keeps company with the moonlight —
+sing, until the earth's waiting turns wet.
+It has gone travelling with no moonlight on it.
+Sing —
+it has opened its arms to come back with the moonlight.
+Your image came home from the journey
+and lay down to sleep on the shadows.
+The morning light of your throat shone into my ear.
+I cannot tell whether the smell of cloud is coming
+or whether the grief in my heart is glad.
+You have a kind voice
+that is the moonlight's twin.
+The sound is coming from the moon —
+sing:
+the song is free.
+Tehran 1382
+
+===lantern===
+
+The morning light of your throat shone into my ear
+and a green wakefulness stroked my hearing.
+I cannot tell whether the smell of cloud is coming
+or whether the grief in my heart is glad.
+You have a kind voice that keeps company with the moonlight —
+sing, until the earth's waiting turns wet.
+It has gone travelling with no moonlight on it.
+Sing.
+It has opened its arms to come back with the moonlight.
+Your image came home from the journey
+and lay down to sleep on the shadows.
+The morning light of your throat shone into my ear.
+I cannot tell whether the smell of cloud is coming
+or whether the grief in my heart is glad.
+You have a kind voice
+that is the moonlight's twin.
+The sound is coming from the moon.
+Sing:
+the song is free.
+
+Tehran 1382
+
+===translation===
+
+===footnotes===

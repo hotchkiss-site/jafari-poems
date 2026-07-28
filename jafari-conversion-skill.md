@@ -195,6 +195,50 @@ What this batch taught (pages 70–89, July 2026):
 - **The photos are gitignored** (`raw photos/*`, with `!raw photos/*.md`). The transcription is the
   durable artifact; a fresh clone will not have the images.
 
+What the next batch taught (pages 110–199, 90 photographs → 80 poems, July 2026):
+
+- **Write the transcription to disk every ten pages, not at the end.** Ninety images is far more
+  than one comfortable working set. Appending each chunk to `persian_poems.md` before reading the
+  next means a long run cannot lose work, and the anchor to insert before (`## Notes for the next
+  agent`) is stable across the whole job.
+- **Generate the `.poem` files with a script that reads the Persian back out of
+  `persian_poems.md`.** Do not retype Persian into eighty files by hand — it is the one step where
+  silent corruption is guaranteed, and the staging file is already the verified text. Supply only
+  metadata, the authored `lantern`, and any footnotes; let the script pull `===persian===` and
+  `===machine===` verbatim and join multi-page poems. The scaffold used here is small: parse the
+  markdown by `## Page NN`, take the two labelled blocks, and offer `strip` (drop N leading lines,
+  for a printed title) and `tail` (drop N trailing lines, for a printed footnote).
+- **Verify by construction, then verify again by parse.** After generating, re-parse every
+  `poems/*.poem`: `id` equals the filename stem, the meta TOML actually loads, the field set matches
+  `schema.toml` exactly, all five text sections exist, and **no page number is claimed by two
+  poems**. That last check is what catches a botched multi-page recombination. Note that older files
+  legitimately have no `===lantern===`, so absence there is not an error.
+- **Compute Gregorian dates, don't reckon them in your head.** Sixty-odd day-level Jalali dates is
+  too many to convert by eye. Run them through a proper Jalali→Gregorian conversion in one pass and
+  read the results off; the month-level rounding rule in `../CLAUDE.md` exists for month-only and
+  season-only dates and will be a year wrong on day-level ones roughly half the time.
+- **The missing-date rule is the whole continuation detector.** Every poem in this book ends with a
+  date line, so a page without one runs on. It found all five multi-page poems in this batch with no
+  guesswork. Check for the date line before reading for sense.
+- **Dedications live in the outer margin and are never poem body.** Fifteen pages in this batch
+  carried one. They go to meta `notes`. A `با یاد` dedication ("in memory of") marks an elegy and is
+  worth saying so in the notes, because it changes how the poem should be read.
+- **Look for the dedicatee's name inside the poem.** Twice in this batch the dedicatee's name is also
+  a common noun the poem is built on — `فیروزه` (turquoise / Firouzeh) and `عاطفه` (tenderness /
+  Atefeh) — so an English that just translates the noun deletes the person. Check any elegy for this
+  before rendering it.
+- **Persian couplets get typeset in two columns and read *across*.** Right column is the first
+  hemistich, left column the second. Read down one column alone and you get fluent nonsense that
+  looks like a poem, which is exactly how this is missed.
+- **Ben's marginalia are dated, and they are his.** Nine pages in this batch carry his hand. Where
+  the poem already exists with a finished `===translation===`, the margin is usually that same text
+  and nothing is owed. Where the poem is new, the margin goes in `===lantern===` **and the meta
+  `notes` must say it is his**, verbatim spelling and all — a later reader has no other way to tell
+  his draft from an agent's. See ADR 0003 for why that matters.
+- **Check his marginal dates against the convention rather than copying them.** His Gregorian years
+  in this batch run one ahead (a flat +622 where months 1–9 take +621). His days are right. Flag the
+  divergence; do not silently adopt or silently correct it.
+
 ## Checklist
 
 - [ ] Read & segment the whole dump into poem blocks.

@@ -1,0 +1,64 @@
+===meta===
+
+id                  = "gardener-seed"
+english_title       = ""
+persian_title       = ""
+date_written        = "1993 - در کارگاه حجم سبز ۱۳۷۲"
+date_translated     = ""
+page_number         = "143"
+persian_page_number = "۱۴۳"
+source              = "raw photos/persian_poems.md"
+tags                = ["gardener", "seed", "teaching", "rain", "sepehri"]
+notes               = "Untitled in source. The date line names a place — در کارگاه حجم سبز ۱۳۷۲, 'at the Green Volume workshop, 1372' — and حجم سبز (The Green Volume, 1967) is Sohrab Sepehri's best-known collection, so the studio is named after it; that ties this page to page 141, where Sepehri is named outright. Jafari taught, and this is a teaching poem: the gardener gives an address and a letter, and cannot do more. Bare year ۱۳۷۲ → +621 = 1993. Imported as a draft with machine / lantern layers; ===translation=== left for Ben."
+draft               = true
+
+===persian===
+
+باغبان، سبز شدن را،
+به گیاه نمی‌آموزد...
+باغبان،
+نشانی بهار را به دانه...
+و... نامهٔ باران را به سبزه می‌دهد...
+نمی‌توان، به پرنده یاد داد، که...
+در کویر... یا... برگ بید... لانه بسازد...
+من باغبانم...
+اگر دانهٔ شوقی در توست...
+آن را خواهم رویاند...
+در کارگاه حجم سبز ۱۳۷۲
+
+===machine===
+
+The gardener does not teach
+the plant how to go green...
+The gardener
+gives the seed the address of spring...
+and... gives the grass the letter of the rain...
+You cannot teach a bird to...
+build its nest... in the desert... or... on a willow leaf...
+I am a gardener...
+If there is a seed of longing in you...
+I will bring it up...
+At the Green Volume workshop, 1372
+
+===lantern===
+
+A gardener does not teach the plant
+how to go green.
+A gardener
+hands the seed the address of spring
+and hands the grass the letter of the rain.
+You cannot teach a bird
+to build its nest in the desert, or on a willow leaf.
+I am a gardener.
+If there is a seed of longing in you,
+I will bring it up...
+
+At the Green Volume workshop, 1372
+
+===translation===
+
+===footnotes===
+
+*The Green Volume* — حجم سبز — is Sohrab Sepehri's 1967 collection, and the workshop in the
+dateline is named after it. The poem is about teaching, written from a room named for another
+poet's book, by a man who says a teacher can only give directions and wait.

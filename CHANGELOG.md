@@ -1,5 +1,57 @@
 # Changelog
 
+## 2026-07-27 — Pages 110–199 converted (80 new poems; the collection reaches ۱۳۸۶)
+
+### What changed
+- 90 photographs in `raw photos/incoming/` read page by page, printed folio
+  confirmed on every one, and transcribed into `raw photos/persian_poems.md`
+  (pages 110–199, none missing, none duplicated). Photos moved to
+  `raw photos/processed/`.
+- **80 new `poems/*.poem` files**, all `draft = true`, with `machine` (the
+  literal pass) and `lantern` (an interpretive rendering) filled and
+  `===translation===` left empty for Ben. Collection goes 84 → **164 poems**.
+- Five poems recombined across a page break: `village-nights` 133–134,
+  `walnut-leaf` 150–151, `coloured-stones` 165–166, `friends-cloud` 169–170,
+  `mother-tenderness` 184–185. Each was found by the missing-date-line rule.
+- Five pages were already in the repo and were left untouched (`quiet-moon` 127,
+  `heart-partridge` 128, `meager-dew` 131, `water-cage` 149,
+  `nightingale-cloud` 182) — confirmed by a normalised-Persian similarity sweep
+  of all 90 pages against all 84 existing poems.
+- `docs/chronology.md` regenerated; `jafari-conversion-skill.md` and the
+  "Notes for the next agent" section extended with what this batch taught.
+
+### What it settled
+- **The page-72 crux.** Page 160 prints `تُو به تُو` with the vowels marked, so
+  the title poem's `توبه تو` is a typesetting run-together on the evidence of two
+  independent witnesses (this and the handwritten coda). Not emended — Ben's call.
+- **The poet's birth year: ۱۳۱۸ / 1939**, from `پنجاه و پنج بهار` on page 159.
+  The four `شصت سال` ("sixty years") on pages 163/181/183/190 are a round figure
+  spread over nine years, not an age.
+- **Every poem in the collection now has a page number** — `nightingale-cloud`'s
+  182 was the last one open, and the folio confirmed it.
+- **The book runs to ۱۳۸۶ (winter 2008)** by page 199, not ۱۳۸۰. Rate of travel is
+  ~5 pages a year in the late book, not 9.
+
+### Date corrections (on Ben's instruction: "disregard my calendar scribbles if they are wrong")
+- `heart-partridge` 128: `1/4/1991 …` → **`March 1991 - کلاردشت ۱۳۷۰/۱/۴`**. The old value
+  transliterated the Persian ۱۳۷۰/۱/۴ instead of converting it; Farvardin 4 is 24 March 1991.
+- `meager-dew` 131: `April 15 1992 …` → **`April 1991 - ۱۳۷۰/۱/۱۶`**. Wrong in day and
+  year; Farvardin 16 is 5 April 1991.
+- `quiet-moon` 127: separator/word order normalised to the documented
+  `Gregorian - Persian` form. Year was already right.
+- `water-cage` 149 and `nightingale-cloud` 182 were correct and are untouched.
+- Each corrected poem carries a `notes` line recording the old value and the reason.
+
+### Resolved
+- **Page 174 line 2 is a misprint in the book, not a transcription slip.** Re-read
+  at ×5 on an enhanced crop: the dot sits below the letter, so the page really does
+  print `فابوس`. The word wanted is `فانوس` (lantern). Persian left exactly as
+  printed; both English layers read it as lantern.
+
+### Still open (recorded, not acted on)
+- Page 156 (`tree-belief`) is the only chronological break in pages 110–199.
+- `snow-beautiful` (p203, دهه ۱۳۷۰) sits sixteen years behind page 199 (۱۳۸۶).
+
 ## 2026-07-19 — Unwan carpet header (found-object ornaments; lachak retired)
 
 ### What changed

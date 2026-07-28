@@ -3,13 +3,13 @@
 id                  = "meager-dew"
 english_title       = ""
 persian_title       = ""
-date_written        = "April 15 1992 ۱۳۷۰/۱/۱۶"
+date_written        = "April 1991 - ۱۳۷۰/۱/۱۶"
 date_translated     = ""
 page_number         = "131"
 persian_page_number = "۱۳۱"
 source              = ""
 tags                = []
-notes               = ""
+notes               = "Page confirmed against the photograph (July 2026). Gregorian half corrected: this field previously read 'April 15 1992', which was wrong in both day and year. Farvardin 16, 1370 is 5 April 1991. The pencil note in the margin of the printed page reads 'April 5 1992' — the day is right, the year is a flat +622 where months 1-9 take +621."
 draft               = false
 
 ===persian===

@@ -1,0 +1,62 @@
+===meta===
+
+id                  = "doves-know"
+english_title       = ""
+persian_title       = ""
+date_written        = "May 1990 - ۱۳۶۹/۲/۱۲"
+date_translated     = ""
+page_number         = "110"
+persian_page_number = "۱۱۰"
+source              = "raw photos/persian_poems.md"
+tags                = ["doves", "moon", "knowing", "love"]
+notes               = "Untitled in source. The poem turns on a one-letter pair printed in two otherwise identical lines: پیش از ('before') and بیش از ('more than'). Not an OCR artefact — the repetition is the poem, and English cannot hold both in the same shape, so the lantern lets the two readings stand as consecutive lines the way the Persian does. ۱۳۶۹/۲/۱۲ is 12 Ordibehesht = 2 May 1990. Imported as a draft with machine / lantern layers; ===translation=== left for Ben."
+draft               = true
+
+===persian===
+
+همیشه کبوتران
+پیش از من و تو می‌دانند...
+همیشه کبوتران
+بیش از من و تو می‌دانند...
+هر کبوتری
+مهتاب را
+بیشتر از من و تو می‌بیند...
+روزها دلگیرند....
+بیا در مهتاب آغاز کنیم...
+۱۳۶۹/۲/۱۲
+
+===machine===
+
+Always the doves
+know before you and I...
+Always the doves
+know more than you and I...
+Every dove
+sees the moonlight
+more than you and I do...
+The days are dreary....
+Come, let us begin in the moonlight...
+1369/2/12
+
+===lantern===
+
+Always the doves
+know before you and I...
+Always the doves
+know more than you and I...
+Every dove
+sees the moonlight
+more than we do...
+The days are dreary....
+Come — let us begin in the moonlight...
+
+1369/2/12
+
+===translation===
+
+===footnotes===
+
+Two lines of this poem are identical but for one letter: پیش از, *before*, and بیش از, *more
+than*. Persian sets them side by side and lets the eye slip between them; English has no pair that
+close, so the two lines here simply say the two things, one after the other, and the reader has to
+supply the slippage.
