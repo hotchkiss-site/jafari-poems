@@ -9,7 +9,7 @@ page_number         = "190"
 persian_page_number = "۱۹۰"
 source              = "raw photos/persian_poems.md"
 tags                = ["desert", "rain", "thirst", "time", "aging"]
-notes               = "Untitled in source. Seven short lines, and the turn is in the last one: the desert gets everything it wanted, and what it wanted was to be thirsty. شصت سال is the round figure again (see also 163, 181, 183). Bare year ۱۳۸۳ → +621 = 2004. Imported as a draft with machine / lantern layers; ===translation=== left for Ben."
+notes               = "Untitled in source. Seven short lines, and the turn is in the last one: the desert gets everything it wanted, and what it wanted was to be thirsty. شصت سال is the round figure again (see also 163, 181, 183). Bare year ۱۳۸۳ → +621 = 2004. Imported as a draft with machine / lantern layers; ===translation=== left for Ben. Photo check 2026-07-31 (p190): the page prints تشنه باران with no ezāfe hamza — in a book whose typesetter does mark تشنهٔ (p78, old-blue) — light typographic evidence for کویرِ تشنه، باران شد ('the thirsty desert became rain') over کویر، تشنهٔ باران شد ('became thirsty for rain'). Both readings stay live for the translator."
 draft               = true
 
 ===persian===

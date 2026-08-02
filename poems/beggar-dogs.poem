@@ -9,7 +9,7 @@ page_number         = "36"
 persian_page_number = "۳۶"
 source              = "raw-jafari-adobe-1.txt"
 tags                = ["city", "politics", "satire"]
-notes               = "Untitled in source. Originally published in نشریه نامه دانشجو, Tehran University (1962). English block is a raw machine draft (kept in the machine section); finished translation pending."
+notes               = "Untitled in source. Originally published in نشریه نامه دانشجو, Tehran University (1962). English block is a raw machine draft (kept in the machine section); finished translation pending. Unphotographed suspicion (p36, Adobe dump): line 3 پا با سنگها را میکشت is semantically impossible — almost certainly بابا سگ‌ها را می‌کشت (سنگ/سگ OCR confusion plus a split بابا, which recurs later in با با گوشت). NOTE the lantern already translates 'dogs' while the transcription reads 'stones': the divergence stands recorded here until the page is photographed — do not silently harmonize either side."
 draft               = true
 
 ===persian===

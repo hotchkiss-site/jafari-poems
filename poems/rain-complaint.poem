@@ -9,7 +9,7 @@ page_number         = "91"
 persian_page_number = "۹۱"
 source              = "raw photos/persian_poems.md"
 tags                = ["rain", "adobe", "clay", "longing"]
-notes               = "Untitled in source. خاک is given as 'clay' per the convention in ADR 0001, so that the book's own بوی خاک / بوی کاهگل family stays audible. زمستان ۱۳۶۸ is winter (months 10–12), so the Gregorian half is 1990 (+622). Imported as a draft with machine / lantern layers; ===translation=== left for Ben."
+notes               = "Untitled in source. خاک is given as 'earth' per ADR 0004 (2026-07-31), which superseded the 'clay' convention once cited as ADR 0001; کاهگل remains 'adobe'. زمستان ۱۳۶۸ is winter (months 10–12), so the Gregorian half is 1990 (+622). Imported as a draft with machine / lantern layers; ===translation=== left for Ben."
 draft               = true
 
 ===persian===
@@ -34,7 +34,7 @@ Winter 1368
 
 Rain,
 you come back down out of the sky
-to tell the clay
+to tell the earth
 the story of your own homesickness...
 but the smell of adobe... gives you no opening to complain...
 

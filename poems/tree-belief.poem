@@ -9,7 +9,7 @@ page_number         = "156"
 persian_page_number = "۱۵۶"
 source              = "raw photos/persian_poems.md"
 tags                = ["tree", "earth", "cloud", "water", "belief"]
-notes               = "Untitled in source. DATE FLAG: printed ۱۳۷۲/۱/۱۶, which puts this page more than a year BEFORE its neighbours (153-155 are ۱۳۷۳, and page 157 is ۱۳۷۳/۴/۵) in a book that is otherwise 99% chronological. Either a typesetting slip for ۱۳۷۴ — which would be out of order the other way — or the book means it, as it did on pages 90 and 96-97. Transcribed and dated as printed; worth checking the folio again before this is trusted. 16 Farvardin = 5 April 1993. Imported as a draft with machine / lantern layers; ===translation=== left for Ben."
+notes               = "Untitled in source. DATE FLAG: printed ۱۳۷۲/۱/۱۶, which puts this page more than a year BEFORE its neighbours (153-155 are ۱۳۷۳, and page 157 is ۱۳۷۳/۴/۵) in a book that is otherwise 99% chronological. Either a typesetting slip for ۱۳۷۴ — which would be out of order the other way — or the book means it, as it did on pages 90 and 96-97. Transcribed and dated as printed; worth checking the folio again before this is trusted. 16 Farvardin = 5 April 1993. Imported as a draft with machine / lantern layers; ===translation=== left for Ben. Photo check 2026-07-31 (p156): the fatha is printed on the alef of اَبر — plausibly set to block the ezāfe misreading آبِ ابر — and the transcription's floating combining mark after آب has been re-attached accordingly (آب اَبر). The date line is printed ۱۳۷۲/۱/۱۶ exactly as transcribed: folio and date confirmed, the inversion is the book's own."
 draft               = true
 
 ===persian===
@@ -21,7 +21,7 @@ draft               = true
 همین را دوست داریم.
 ابر،
 روح آب است...
-آب َابر را نمی‌بیند... باور می‌کند...
+آب اَبر را نمی‌بیند... باور می‌کند...
 ابر سطحِ باور را تر می‌کند...
 ۱۳۷۲/۱/۱۶
 

@@ -171,6 +171,12 @@ Ahead: **200–201, and 204 onward.** Pages 42–46 and 61–199 are transcribed
 came from the Adobe dumps and have never been photographed. **The next photograph batch should start
 at page 200** and will immediately settle the last open inversion (below).
 
+A verification pass over the never-photographed early pages — **21–41 and 47–60**, the Adobe-dump
+imports — is also wanted: ten poems there carry readings flagged as suspect (2026-07-31 review,
+recorded in each poem's meta notes): `dried-spring` 22, `drunk-waterfall` 26–27, `blowing-winds` 29,
+`wooden-horse` 32, `beggar-dogs` 36, `moon-crystal` 37, `with-you` 38–39, `fifty-moons` 47,
+`green-woodpecker` 51, `sunless-gaze` 56.
+
 ## The book's own exceptions to its chronology
 
 Three, all confirmed against the page rather than corrected:
@@ -192,7 +198,8 @@ it says. Treat a residual inversion as a question, not a defect.
   only inversion in the whole of pages 110–199**, which are otherwise strictly monotone. Either a
   typesetting slip for ۱۳۷۴ — which would be out of order in the other direction — or the book means
   it, as it did on pages 90 and 96–97. Recorded as printed. Check the folio and the date line against
-  the photograph.
+  the photograph. **Checked 2026-07-31: the photograph confirms folio ۱۵۶ and the printed date
+  ۱۳۷۲/۱/۱۶ exactly as transcribed — the inversion is the book's own, its third exception.**
 - **Page 148 / 149.** `old-stalk` is ۱۳۷۲/۵/۲۱ and `water-cage` ۱۳۷۲/۵/۳, eighteen days earlier — a
   local swap of the 96–97 kind, too small to be worth doubting the page numbers over.
 - **`snow-beautiful` (p203, دهه ۱۳۷۰) after `wounded-gazelle` (p199, زمستان ۱۳۸۶).** The last open

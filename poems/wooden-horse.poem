@@ -9,7 +9,7 @@ page_number         = "32"
 persian_page_number = "۳۲"
 source              = "raw-jafari-adobe-1.txt"
 tags                = ["city", "childhood", "disillusion"]
-notes               = "Untitled in source; opens 'شهر دود / شهر داد'. Distinct from 'city-smoke' despite the shared 'city of smoke' image. English block is a raw machine draft (kept in the machine section); finished translation pending."
+notes               = "Untitled in source; opens 'شهر دود / شهر داد'. Distinct from 'city-smoke' despite the shared 'city of smoke' image. English block is a raw machine draft (kept in the machine section); finished translation pending. Unphotographed suspicion (p32, Adobe dump): چوب گزینم کو — word division uncertain; if چوبِ گَز (tamarisk, the wood of Rostam's arrow in the Shahnameh) the allusion changes the line. Verify against a photograph."
 draft               = true
 
 ===persian===

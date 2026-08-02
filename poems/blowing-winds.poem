@@ -9,7 +9,7 @@ page_number         = "29"
 persian_page_number = "۲۹"
 source              = "raw-jafari-adobe-1.txt"
 tags                = ["wind", "memory", "melancholy"]
-notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending. Page number recovered from the page-footer markers in the Adobe dump rather than from a photograph: the dump prints each printed page's folio twice, once after the Persian half of a block and once after the English, so a block falling wholly between two marker pairs sits on the page between them. This block falls between the page-28 pair (old-news) and the page-30 pair (moonlight-sunlight), leaving only page 29."
+notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending. Page number recovered from the page-footer markers in the Adobe dump rather than from a photograph: the dump prints each printed page's folio twice, once after the Persian half of a block and once after the English, so a block falling wholly between two marker pairs sits on the page between them. This block falls between the page-28 pair (old-news) and the page-30 pair (moonlight-sunlight), leaving only page 29. Unphotographed suspicion (p29, Adobe dump): line 4 is prose-length — probable lost lineation from the dump; re-lineate from a photograph."
 draft               = true
 
 ===persian===

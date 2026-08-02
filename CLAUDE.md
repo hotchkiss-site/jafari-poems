@@ -208,6 +208,26 @@ CI runs `build_collection.py` automatically on pushes to `main` that touch `poem
 - **Cross-tab anchors.** Any in-page `#slug` link whose target lives in a different tab panel
   activates that panel before scrolling (handled in `TAB_SCRIPT`). This is what makes a preface
   `poem-cite` work, and it lands on drafts as well as finished poems.
+- **Text encoding.** All files are **UTF-8, no BOM, already NFC**. Persian diacritics are stored the
+  only way Unicode allows: as **separate combining codepoints following the base letter** in logical
+  order — `دِ` is `U+062F` + `U+0650`, two codepoints, and NFC does *not* fuse them. So a "character"
+  count is not a letter count, and any regex that strips or matches diacritics must target the
+  combining range `U+064B–U+0652` (`ً ٌ ٍ َ ُ ِ ّ ْ`) plus `U+0654` (hamza above, which is how the
+  ezāfe on a word ending in ه is written: `هٔ` = `ه` + `U+0654`, *not* the precomposed `ۀ` U+06C0).
+  In use across the corpus: kasra (mostly ezāfe) ≫ hamza-above > fatha > damma > shadda > fathatan.
+  Note `آ` (U+0622) *is* precomposed and would split under NFD — which is why the files must stay NFC.
+- **`U+200C` ZWNJ is not a diacritic but is load-bearing** — `می‌شود` vs `میشود` — and the printed book
+  is inconsistent about it. **Transcribe it as printed** and note the omission rather than tidying it;
+  several pages (129, 138, 188, 189) deliberately keep the book's missing joiners.
+- **Use the Persian letterforms, never the Arabic lookalikes.** `ی` U+06CC not `ي` U+064A; `ک` U+06A9
+  not `ك` U+0643; digits `۰-۹` U+06F0–06F9 not `٠-٩` U+0660–0669. They render near-identically and
+  **silently break grep and the dedupe similarity check**, which is how four strays survived for
+  months. Never use Arabic Presentation Forms (U+FB50–FDFF, U+FE70–FEFF) — those are positional
+  glyph shapes, not text. A quick audit:
+  ```bash
+  python -c "from pathlib import Path;t=''.join(f.read_text(encoding='utf-8') for f in list(Path('poems').glob('*.poem'))+[Path('raw photos/persian_poems.md')]);print({n:t.count(c) for n,c in [('ي',chr(0x064A)),('ك',chr(0x0643)),('ة',chr(0x0629)),('ۀ',chr(0x06C0))]})"
+  ```
+  All four counts should be **0**.
 - **Tags** are lowercase English words. Add new ones freely; update `schema.toml` notes if a tag develops a specific meaning.
 - **The `machine` section** is a scratch space — the raw literal pass. It is **not** rendered in the **Poems** tab (which shows only `translation`), but in the **Drafts** tab it *does* surface as a togglable "Machine" badge alongside `lantern` and "Ben", for side-by-side comparison.
 - `index.html` is committed by CI and should not be edited manually.

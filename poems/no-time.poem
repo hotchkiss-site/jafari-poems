@@ -9,7 +9,7 @@ page_number         = "168"
 persian_page_number = "۱۶۸"
 source              = "raw photos/persian_poems.md"
 tags                = ["birds", "time", "love", "togetherness"]
-notes               = "Untitled in source. Turns on وقت: love 'does not want time', and then هیچ وقت نداریم, which is at once 'we have no time' and 'we never do'. English can only hold one at a time; the lantern takes the first and lets 'always' in the last line do the other. 11 Tir = 1 July 1996. Imported as a draft with machine / lantern layers; ===translation=== left for Ben."
+notes               = "Untitled in source. Turns on وقت: love 'does not want time', and then هیچ وقت نداریم, which is at once 'we have no time' and 'we never do'. English can only hold one at a time; the lantern takes the first and lets 'always' in the last line do the other. 11 Tir = 1 July 1996. Imported as a draft with machine / lantern layers; ===translation=== left for Ben. Photo check 2026-07-31 (p168): the page prints با همیم — the doubled م (هممیم) was a transcription slip, corrected to match the page."
 draft               = true
 
 ===persian===
@@ -18,7 +18,7 @@ draft               = true
 دوست داشتن وقت نمی‌خواهد...
 من و تو...
 هیچ وقت نداریم...
-و... همیشه با هممیم...
+و... همیشه با همیم...
 ۱۳۷۵/۴/۱۱
 
 ===machine===

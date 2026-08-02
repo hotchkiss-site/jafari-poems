@@ -9,7 +9,7 @@ page_number         = "22"
 persian_page_number = "۲۲"
 source              = "raw-jafari-adobe-1.txt"
 tags                = ["longing", "hope", "nature"]
-notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending."
+notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending. Unphotographed suspicion (p22, Adobe dump): شادی م (line 5) carries a stray space — likely شادی‌ام (or شادیم as printed); check the ZWNJ situation on a photograph rather than tidying."
 draft               = true
 
 ===persian===

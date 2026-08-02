@@ -9,7 +9,7 @@ page_number         = "78"
 persian_page_number = "۷۸"
 source              = "raw photos/persian_poems.md"
 tags                = ["love", "thirst", "sky", "blue"]
-notes               = "Untitled in source. The first three terms — رنگ ابر / بوی خاک / طعم اشک, the colour of cloud, the smell of clay, the taste of tears — are the poet's own triad from oldest-song (Tehran ۱۳۴۵, some twenty-three years earlier), where they are similes for an undying love; here they are things he claims intimacy with. The close is genuinely ambiguous: آبی قدیمی‌ام is either 'I am an old blue' (matching صمیمی‌ام two lines up) or 'my old blue' as the thing thirsted for. The lantern takes the second and the footnote records the first. خاک is rendered 'clay' throughout the book, per ADR 0001. Imported as a draft with machine / lantern layers; ===translation=== left for Ben."
+notes               = "Untitled in source. The first three terms — رنگ ابر / بوی خاک / طعم اشک, the colour of cloud, the smell of earth, the taste of tears — are the poet's own triad from oldest-song (Tehran ۱۳۴۵, some twenty-three years earlier), where they are similes for an undying love; here they are things he claims intimacy with. The close is genuinely ambiguous: آبی قدیمی‌ام is either 'I am an old blue' (matching صمیمی‌ام three lines up) or 'my old blue' as the thing thirsted for. The lantern takes the second and the footnote records the first. خاک is rendered 'earth' per ADR 0004 (2026-07-31; supersedes the 'clay' convention once cited as ADR 0001). Imported as a draft with machine / lantern layers; ===translation=== left for Ben. Photo check 2026-07-31 (p78): transcription verbatim-confirmed against the page, including the printed hamza on تشنهٔ (the ezāfe launching the closing chain) and the kasra on طعمِ only. Lantern 2026-07-31: 'smell of clay' → 'smell of earth' per ADR 0004."
 draft               = true
 
 ===persian===
@@ -37,7 +37,7 @@ Aban 1368
 ===lantern===
 
 I am on intimate terms with the colour of cloud
-and the smell of clay
+and the smell of earth
 and the taste of tears
 and the depth of the sky —
 thirsty... thirsting for
@@ -50,7 +50,7 @@ Aban 1368
 
 ===footnotes===
 
-The colour of cloud, the smell of clay, the taste of tears: Jafari had used this
+The colour of cloud, the smell of earth, the taste of tears: Jafari had used this
 exact triad some twenty-three years earlier, in the poem that stands here as oldest-song and
 that Farrokhi quotes in his introduction, where the three are similes for a love that goes on
 always. Here they are not comparisons but company — things he says he is intimate with.

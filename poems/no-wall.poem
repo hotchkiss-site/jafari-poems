@@ -9,7 +9,7 @@ page_number         = "171"
 persian_page_number = "۱۷۱"
 source              = "raw photos/persian_poems.md"
 tags                = ["walls", "shelter", "rain", "thirst", "dew", "love"]
-notes               = "Untitled in source. Rhymed (دیوار است / کار است، ابریشم / نم نم / باشم / شبنم). Walls are the recurring furniture of the war poems; here the wish is simply not to know where any of them are. 22 Shahrivar = 12 September 1996. Imported as a draft with machine / lantern layers; ===translation=== left for Ben."
+notes               = "Untitled in source. Rhymed (دیوار است / کار است، ابریشم / نم نم / باشم / شبنم). Walls are the recurring furniture of the war poems; here the wish is simply not to know where any of them are. 22 Shahrivar = 12 September 1996. Imported as a draft with machine / lantern layers; ===translation=== left for Ben. Photo check 2026-07-31 (p171): the page prints تر از with a space — 'drunk and wet from the drizzle', not تراز 'level'. Transcription corrected and the lantern re-read accordingly (it had been forced into 'level with the drizzle' by the joined form)."
 draft               = true
 
 ===persian===
@@ -22,7 +22,7 @@ draft               = true
 غرق در بوی گیاهی تلخ...
 در پناهی... بافته از پشم و ابریشم...
 گاه با هم در خَمِ یک راه...
-مست و تراز بارشِ نم نم...
+مست و تر از بارشِ نم نم...
 من همیشه تشنه باشم...
 تو گیاهی خیس در شبنم...
 ۱۳۷۵/۶/۲۲
@@ -52,7 +52,7 @@ Sometimes hidden from the moon's looking,
 steeped in the smell of a bitter herb,
 in a shelter woven of wool and silk;
 sometimes together in the bend of one road,
-drunk and level with the drizzle.
+drunk and wet from the drizzle.
 Let me be always thirsty,
 and you a plant wet with dew...
 

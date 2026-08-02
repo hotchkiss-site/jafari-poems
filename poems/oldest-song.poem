@@ -9,7 +9,7 @@ page_number         = "41"
 persian_page_number = "۴۱"
 source              = "raw-jafari-adobe-1.txt"
 tags                = ["love", "eternity", "nature"]
-notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending. Page number not recovered, but bounded below: the block follows the page-40 pair (life-tune) immediately in the dump, and the next attributed page in the book is 48, so it falls in the unaccounted 41–47 run — most likely 41. Its ۱۳۴۵ (1966) date fits that gap, which by interpolation covers ۱۳۴۳–۱۳۵۹. Page number confirmed by Ben against the printed book (July 2026). It is the first page of the 41–47 run, as the dump's marker order suggested."
+notes               = "Untitled in source. English block is a raw machine draft (kept in the machine section); finished translation pending. Page number not recovered, but bounded below: the block follows the page-40 pair (life-tune) immediately in the dump, and the next attributed page in the book is 48, so it falls in the unaccounted 41–47 run — most likely 41. Its ۱۳۴۵ (1966) date fits that gap, which by interpolation covers ۱۳۴۳–۱۳۵۹. Page number confirmed by Ben against the printed book (July 2026). It is the first page of the 41–47 run, as the dump's marker order suggested. Lantern 2026-07-31: بوی خاک 'smell of soil' → 'smell of earth' per ADR 0004 — the recurring formula rendered consistently (it stands again at p78, old-blue)."
 draft               = true
 
 ===persian===
@@ -52,7 +52,7 @@ this thing kneaded from the angels of the sky,
 this certainty,
 this oldest song of the earth.
 Like the color of cloud,
-like the smell of soil,
+like the smell of earth,
 like the taste of tears,
 like the sleep of mountains...
 it goes on forever...

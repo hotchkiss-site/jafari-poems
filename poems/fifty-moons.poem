@@ -3,13 +3,13 @@
 id                  = "fifty-moons"
 english_title       = ""
 persian_title       = ""
-date_written        = "January 1972 - تهران دی ماه ۱۳۵۱"
+date_written        = "January 1973 - تهران دی ماه ۱۳۵۱"
 date_translated     = ""
 page_number         = "47"
 persian_page_number = "۴۷"
 source              = "raw_Jafari-adobe-2.txt"
 tags                = ["love", "aging", "moon", "night"]
-notes               = "Untitled in source; written in Tehran. English block is a raw machine draft (kept in the machine section); finished translation pending. Page number not recovered, but bounded by date: ۱۳۵۱ (1972) falls between page 40 (۱۳۴۲) and page 48 (۱۳۶۰), so this poem belongs in the unaccounted 41–47 run, later in it than oldest-song (۱۳۴۵). In raw_Jafari-adobe-2.txt it sits between the page-25 fragment and page 48's poem, which is consistent but not decisive. Page number confirmed by Ben against the printed book (July 2026). It is the last page of the 41–47 run — so the two poems already in the collection bracket that gap rather than sitting side by side in it."
+notes               = "Untitled in source; written in Tehran. English block is a raw machine draft (kept in the machine section); finished translation pending. Page number not recovered, but bounded by date: ۱۳۵۱ (1972) falls between page 40 (۱۳۴۲) and page 48 (۱۳۶۰), so this poem belongs in the unaccounted 41–47 run, later in it than oldest-song (۱۳۴۵). In raw_Jafari-adobe-2.txt it sits between the page-25 fragment and page 48's poem, which is consistent but not decisive. Page number confirmed by Ben against the printed book (July 2026). It is the last page of the 41–47 run — so the two poems already in the collection bracket that gap rather than sitting side by side in it. Date corrected 2026-07-31: دی ۱۳۵۱ runs 22 Dec 1972 – 20 Jan 1973, so the Gregorian half is January 1973, not 1972 (winter months → +622 per the dating convention). Unphotographed suspicion (p47): این منم پنجاه ('this is me, fifty') fights the poet's age in ۱۳۵۱ (~33) — پنجاه may belong to the moon-count the poem closes on, or lineation was lost in the dump; verify against a photograph."
 draft               = true
 
 ===persian===
