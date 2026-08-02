@@ -273,3 +273,56 @@ dial, opposite ends — and پررنگ‌تر returns a third time in the Alizad
 تو... پررنگ‌تر می‌شود). An English that renders one end as "deepens the colour" and the other as
 "thins" keeps the two related; reaching for an unrelated word at either end drops a line that runs
 through the whole book.
+
+## تاب (*tâb*) — two roots wearing one spelling
+
+**تاب** carries three live senses in Persian — *shine*, *twist*, and *endurance* — and they
+do not come from one word. Two separate Iranian roots fell together into an identical form,
+and classical poetry has been mining the collision ever since.
+
+**Root 1 — تابیدن (*tâbidan*) "to shine, radiate, burn."** Proto-Iranian \*tap-, from PIE
+\*tep- "to be warm." Cognate with Latin *tepēre* (English *tepid*) and Sanskrit *tapati*
+"heats, shines" / *tapas* "heat, ascetic ardor." Its Persian family:
+
+- تب (*tab*) "fever"
+- تابستان (*tâbestân*) "summer"
+- تابش (*tâbesh*) "radiance"; تابان, تابنده "shining"
+- مهتاب (*mahtâb*) "moonlight"; آفتاب (*âftâb*) "sunlight"
+
+**Root 2 — تابیدن / تافتن (*tâbidan / tâftan*) "to twist, spin, wind."** A distinct root
+whose deeper reconstruction is best held loosely. Its family:
+
+- تاب (*tâb*) "a twist, a curl" — **تابِ زلف** (*tâb-e zolf*), the curl of the beloved's
+  lock, a stock ghazal image
+- پیچ و تاب (*pich-o-tâb*) "twists and turns," writhing
+- تاب (*tâb*) "a swing" — the thing that oscillates
+- تاب خوردن "to warp, to buckle"
+
+**The third sense comes off Root 2.** *tâb* as **endurance, tensile strength, the capacity
+to bear** is generally derived from the twist root on a rope metaphor: a twisted cord has
+strength to hold against a pull. Hence تاب آوردن (*tâb âvardan*) "to endure, bear up," and
+
+- **بی‌تاب** (*bi-tâb*) — "without twist" → without tensile strength → unable to bear it →
+  **restless, impatient, languishing**; in the lover's register, *pining*.
+
+**Why the other sense still hums.** Because Root 1 is spelled and pronounced identically,
+بی‌تاب also reads at the edge of hearing as **"without shine" — lustreless**. Classical
+poetry works this seam deliberately: the beloved's *tâb-e zolf* both twists and gleams, and
+the lover is *bi-tâb* both without patience and without light.
+
+**Where it bites — `poems/tree-eyes.poem`:**
+
+> من درختم / زرد خورشید / آبی آب / سبز بی‌تاب
+Chafing green was chosen here eventually.
+The primary reading of سبز بی‌تاب is Root 2: **restless green**, and that is not in doubt.
+But the poem's other two colours are borrowed straight from light-sources — the sun's yellow,
+the water's blue — so a green that is *bi-tâb* is also, in overtone, a green with no lamp
+behind it. The unrest and the dimness are the same word. Not the meaning; an overtone, and
+one a stacked colour-list makes audible in a way ordinary prose would not.
+
+Note also that بی‌تاب sits in the poem's rhyme spine — آب (*âb*) → بی‌تاب (*bi-tâb*) →
+ناب (*nâb*) — which argues that the water, the unrest, and the purity are one substance.
+No English rendering gets the chain; say so in `===footnotes===` rather than forcing it.
+
+**Not related:** Arabic طاب (*tâba*, "to be good, pleasant"), spelled with ط, is a wholly
+separate word that only looks adjacent in transliteration. تب (*tab*) "fever" *is* family.
