@@ -77,8 +77,10 @@ reading of the transcription could have settled, and falsified a few earlier dec
     `lacuna` (`⟨…⟩`) where the hand cannot be read with confidence, and the superseded OCR
     preserved in an HTML comment. The manuscript confirms `شناختم` (first person),
     gives `خط آبی رنگ` ("the blue line" — a painter's line) for the OCR's `خط آلی`, gives
-    `کودکی‌ام را نقاشی کردم` ("I painted my childhood"), and shows `کاش باران ببارد` once
-    rather than twice. It contains no `گاتهام‌ها`, `کامنگل`, `کارپوری`, or
+    and `کودکی‌ام را نقاشی کردم` ("I painted my childhood"). *(Corrected later: this ADR
+    first said the manuscript shows `کاش باران ببارد` once rather than twice. The printed twin on
+    page 72 — `poems/adobe-birdsong.poem` — shows the poet writes the line twice, and the doubling
+    the OCR had garbled is real.)* It contains no `گاتهام‌ها`, `کامنگل`, `کارپوری`, or
     `گردان نان‌های ناز`; the conjectures `جوانی` and `شب‌تابی` offered earlier are withdrawn.
     One word in the sixth line is struck through by the poet himself.
 
