@@ -7,7 +7,7 @@
 ## Context
 
 The four preface sections (`preface/01`–`04`) were carried over as lightly-edited Google
-Translate output. A close read against the Persian (recorded in `claude-comment.md`)
+Translate output. A close read against the Persian (recorded in `archive/claude-comment_2026-06-19.md`)
 found one outright error, several places where loaded terms and wordplay had collapsed,
 and inconsistent rendering of recurring keywords across the three essayists (Jafari,
 Khosrow Sinai, Bajlan Farrokhi). The owner asked that the recommendations be applied to
@@ -18,7 +18,7 @@ This ADR records the editorial decisions, since they are judgment calls a future
 
 ## Decision
 
-1. **Apply the reworked English** from `claude-comment.md` to the `english` columns of
+1. **Apply the reworked English** from `archive/claude-comment_2026-06-19.md` to the `english` columns of
    `preface/01`, `02`, and `03`. Persian source text is left intact (it is the original),
    except two clear transcription typos in §2 corrected so the words are readable:
    `غیبغب → غبغب` (the pigeon-throat/dewlap idiom) and `تقرعن → تفرعن` ("playing the
@@ -65,7 +65,7 @@ This ADR records the editorial decisions, since they are judgment calls a future
 
 - The preface now reads as considered translation rather than machine draft, and key
   terms are consistent across the three essays.
-- `claude-comment.md` remains the working analysis with the etymological reasoning behind
+- `archive/claude-comment_2026-06-19.md` remains the working analysis with the etymological reasoning behind
   each change; this ADR is the durable summary.
 - Open follow-ups for the owner: (a) recover and re-translate the §4 coda from the print
   source; (b) decide whether to reconcile the two `old-news` / tower-poem translations,

@@ -5,12 +5,12 @@ rendered as a single-page website and served via GitHub Pages.
 
 ## How the site works
 
-Every `.poem` file in `poems/` is read by `build_collection.py` and compiled
-into `index.html`. GitHub Actions rebuilds and commits `index.html` automatically
-whenever you push a change to any `.poem` file or to `build_collection.py`.
+Every `.poem` file in `poems/` (and every preface section in `preface/`) is read by
+`build_collection.py` and compiled into `index.html`. GitHub Actions rebuilds and commits
+`index.html` automatically whenever you push a change to a `.poem` file, a preface section,
+an ornament or `build_collection.py`.
 
-Github page:
-https://hotchkiss-site.github.io/jafari-poems/
+Live at https://jafari.bbben.org/ (the `CNAME` file; the github.io address redirects there).
 
 ## How to add or edit a poem
 
@@ -21,31 +21,10 @@ https://hotchkiss-site.github.io/jafari-poems/
 
 ## .poem file format
 
-```
-id: kebab-case-identifier
-persian_title: عنوان فارسی
-english_title: English Title
-date_written: Autumn 1989
-date_translated: 4-8-2026
-page_number: 12
-
-===persian===
-متن شعر فارسی
-سطر به سطر
-
-===translation===
-English translation
-line by line
-
-===footnotes===
-Optional translator's notes. Leave the section blank (or omit it)
-if there are no notes for this poem.
-```
-
-All fields before the first `===` marker are key/value pairs separated by `:`.
-The three section markers (`===persian===`, `===translation===`, `===footnotes===`)
-delimit the body content. A blank `===footnotes===` section is fine — the notes
-block simply won't appear in the rendered HTML.
+A `.poem` file is a `===meta===` section of flat TOML (the fields in `schema.toml`), then
+text sections: `===persian===`, the three English layers (`===machine===`, `===lantern===`,
+`===translation===`) and `===footnotes===`. The full format, and who writes which layer, is in
+[`docs/FORMATS.md`](docs/FORMATS.md) and [`CLAUDE.md`](CLAUDE.md).
 
 ## Local preview
 

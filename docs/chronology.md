@@ -214,7 +214,7 @@ it says. Treat a residual inversion as a question, not a defect.
 
 - **Day-level dates resolve exactly.** Where the source gives a day, the Gregorian half of
   `date_written` is computed, not rounded: `۱۳۶۹/۱۰/۱۹` is 9 January **1991**, though the month-level
-  convention in `../CLAUDE.md` would round Dey to +622 and also say 1991 — but `۱۳۷۰/۱/۱۶` is 5 April
+  convention in `translation-conventions.md` would round Dey to +622 and also say 1991 — but `۱۳۷۰/۱/۱۶` is 5 April
   **1991**, where a flat +622 would say 1992. Ben's own marginal notes on pages 127 and 131 use +622
   and land a year late; **he has ruled that the computed date wins** ("disregard my calendar
   scribbles if they are wrong"), and `heart-partridge`, `meager-dew` and `quiet-moon` have been

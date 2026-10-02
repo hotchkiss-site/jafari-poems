@@ -63,7 +63,7 @@ There is also an optional **`===lantern===`** section: a working *interpretive* 
 between the literal `machine` pass and a finished `translation`. It is **authored**, not lifted from
 the dump — leave it empty during a bulk import unless you're deliberately drafting. In the Drafts tab
 each non-empty layer (`machine` / `lantern` / `translation`→"Ben") becomes a togglable badge for
-side-by-side comparison, so an empty layer simply shows no badge. See CLAUDE.md → `.poem` format.
+side-by-side comparison, so an empty layer simply shows no badge. See `docs/FORMATS.md` → `.poem` format.
 
 Key conventions, learned from the existing files:
 
@@ -215,7 +215,7 @@ What the next batch taught (pages 110–199, 90 photographs → 80 poems, July 2
   legitimately have no `===lantern===`, so absence there is not an error.
 - **Compute Gregorian dates, don't reckon them in your head.** Sixty-odd day-level Jalali dates is
   too many to convert by eye. Run them through a proper Jalali→Gregorian conversion in one pass and
-  read the results off; the month-level rounding rule in `../CLAUDE.md` exists for month-only and
+  read the results off; the month-level rounding rule in `docs/translation-conventions.md` exists for month-only and
   season-only dates and will be a year wrong on day-level ones roughly half the time.
 - **The missing-date rule is the whole continuation detector.** Every poem in this book ends with a
   date line, so a page without one runs on. It found all five multi-page poems in this batch with no

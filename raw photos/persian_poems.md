@@ -4621,7 +4621,7 @@ Winter 1386
 **What this file is.** A page-by-page transcription of photographs of the printed book, kept in
 page order under `## Page NN` headings. It is a *grounding dump*, not a rendered artifact — the
 poems become real when they are converted into `poems/<slug>.poem` files (see
-`../jafari-conversion-skill.md` for that job, and `../CLAUDE.md` for the `.poem` format).
+`../jafari-conversion-skill.md` for that job, and `../docs/FORMATS.md` for the `.poem` format).
 
 **Where the run stands.** Pages **42–46** and **61–199** are transcribed **and fully converted**.
 Pages 61–69 came from an earlier source; 70–109, then 42–46, then 110–199 were read from
@@ -4849,11 +4849,11 @@ more as the formal poems increase.
   date against the photograph before it is trusted.
 - **Day-level dates resolve exactly.** Where the source gives a day (`۱۳۶۸/۱۰/۶`) the Gregorian
   half of `date_written` is computed rather than rounded: 6 Dey ۱۳۶۸ is 27 December 1989, though
-  the month-level convention in `../CLAUDE.md` would round Dey to +622 and say 1990. The rounding
+  the month-level convention in `../docs/translation-conventions.md` would round Dey to +622 and say 1990. The rounding
   rule is for month-only and season-only dates, which is what it was written for.
 - **Dates** — the run is mostly 1368 but climbs into 1369 and, on page 90, **1370**; page 74 is
   `دههٔ ۷۰`, a decade rather than a year, listed as printed. For the Gregorian half of a `.poem`
-  `date_written`, use the season/month rule in `../CLAUDE.md` — not a flat +621.
+  `date_written`, use the season/month rule in `../docs/translation-conventions.md` — not a flat +621.
 
 **Per-page flags, pages 110–199:**
 

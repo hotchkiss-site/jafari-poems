@@ -46,7 +46,7 @@ Nobel lecture has "whatever inspiration is, it's born from a continuous *I don't
 
 `دائم` ("continually") had been transcribed as `دانم` ("I know"), which turned an open-ended
 statement into a closed aphorism: not-knowing *producing* knowing. It survived two translation
-passes and a written defence in `claude-comment.md` before a photograph of the page killed it.
+passes and a written defence in `archive/claude-comment_2026-06-19.md` before a photograph of the page killed it.
 
 Worth keeping as a cautionary specimen rather than as a line: **it was a better aphorism than
 the real one, which is exactly why nobody caught it.** The genuine line is humbler and truer —
@@ -55,4 +55,4 @@ inspiration keeps growing out of not-knowing, and never arrives at knowing at al
 ---
 
 *See `docs/adr/0002-preface-presentation-and-source-photographs.md` for how these were found,
-and the "Photograph the page before trusting a transcription" convention in `CLAUDE.md`.*
+and the "Photograph the page before trusting a transcription" convention in `docs/translation-conventions.md`.*
