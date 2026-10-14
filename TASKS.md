@@ -1,7 +1,7 @@
 ---
 type: tasks
 scope: project
-domain: websites
+domain: web
 title: jafari-poems — tasks
 status: active
 inherits: CLAUDE.md

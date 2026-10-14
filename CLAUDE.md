@@ -1,7 +1,7 @@
 ---
 type: agents
 scope: project
-domain: websites
+domain: web
 title: Jafari Poems — codebase guide
 status: active
 inherits: ../CLAUDE.md
@@ -28,7 +28,7 @@ A git-based bilingual poetry collection. The poems are translations of Mohammad 
   photographing the page, the chronology, preface quotations, encoding, letterforms, tags.
 - **`docs/adr/`**: the settled calls, one ADR each. **`TASKS.md`** and **`log/`**: open work
   and what each session did; settings in `.claude/close-out.md`.
-- **One clone.** This repo lives at `corpus/websites/jafari-poems` only (Ben, 2026-10-01;
+- **One clone.** This repo lives at `corpus/web/websites/jafari-poems` only (Ben, 2026-10-01;
   the `jaanam/translation/` clone is retired). jaanam's homepage shelf reads it from here by
   path and links to the live site: experiments can read production, production never
   depends on experiments.

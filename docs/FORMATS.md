@@ -1,7 +1,7 @@
 ---
 type: spec
 scope: project
-domain: websites
+domain: web
 title: Jafari Poems — file formats
 status: active
 inherits: ../CLAUDE.md

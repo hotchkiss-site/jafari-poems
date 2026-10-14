@@ -31,7 +31,7 @@ preference — one poem, one file.
   The barg draws a static lapis/gold/ivory Persian tile spandrel (quarter-dome girih
   fan) into each; bottom pair hides below 900px so the foot stays clear.
 - The ornament code itself lives in the shared jaanam kit (canonical home
-  `corpus/websites/kit/lachak.js`, mirrored to `jaanam/kit/`) — not in this repo.
+  `corpus/web/kit/lachak.js`, mirrored to `jaanam/kit/`) — not in this repo.
   **Note:** the include path assumes the jaanam layout (`translation/<coll>/` two
   levels below `kit/`); a standalone deploy of this repo would need the barg vendored
   or the path adjusted.

@@ -12,7 +12,7 @@ The contract is `RECORDS.md` in the logbook repo. Adopted 2026-10-01.*
 
 *Minimum tier, adopted lightly (Ben, 2026-10-01). The settled calls are ADRs in `docs/adr/`,
 one file each, numbered; they stand in for `DECISIONS.md`, and a new call is a new ADR. The
-repo lives in `corpus/websites/` only (Ben, 2026-10-01); jaanam's homepage shelf reads it from
+repo lives in `corpus/web/` only (Ben, 2026-10-01); jaanam's homepage shelf reads it from
 here by path.*
 
 ## Root exceptions
@@ -49,7 +49,7 @@ here by path.*
 4. **`docs/chronology.md`**: regenerate after every conversion batch.
 5. **`jafari-conversion-skill.md`**: what a batch taught.
 6. **`farsi-grammar.md`**: append, never rewrite.
-7. **`../STATUS.md`** (websites root): this site's row, when its stage changes.
+7. **`../../STATUS.md`** (web root): this site's row, when its stage changes.
 
 ## Commit message
 

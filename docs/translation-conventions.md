@@ -1,7 +1,7 @@
 ---
 type: spec
 scope: project
-domain: websites
+domain: web
 title: Jafari Poems — translation and transcription conventions
 status: active
 inherits: ../CLAUDE.md
