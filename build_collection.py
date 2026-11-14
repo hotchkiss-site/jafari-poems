@@ -229,15 +229,13 @@ CSS = """
       margin-top: 0;
     }
 
-    /* dogmoj dash opens the table in place of a repeated "Poems" title */
+    /* a run of the faience tulip band opens the table in place of a repeated
+       "Poems" title; round fits a whole number of tiles to the width */
     .toc-rule {
-      width: min(300px, 55%);
-      aspect-ratio: 16;
+      width: min(320px, 70%);
+      height: 22px;
       margin: 1.6rem auto 1.5rem;
-      background: var(--gold);
-      opacity: 0.85;
-      -webkit-mask: __RULE_MASK__ center / contain no-repeat;
-              mask: __RULE_MASK__ center / contain no-repeat;
+      background: __TOC_BAND__ center / auto 100% round;
     }
 
     #tab-poems .toc-table tr { border-bottom-color: var(--gold-faint); }
@@ -482,6 +480,15 @@ CSS = """
 
     .poem-status.is-draft {
       color: #b8702a;
+    }
+
+    .poem-status.is-illuminated {
+      color: #9a7a2c;
+      text-decoration: none;
+    }
+    .poem-status.is-illuminated:hover,
+    .poem-status.is-illuminated:focus-visible {
+      background: rgba(207, 166, 75, 0.12);
     }
 
     .drafts-note {
@@ -1274,6 +1281,9 @@ def render_poem_section(poem, english_field="translation", english_label="Transl
         status_html = '<span class="poem-status is-draft">Draft</span>'
     else:
         status_html = '<span class="poem-status is-rendered">Rendered</span>'
+    page = ILLUMINATED.get(poem.get("id", ""))
+    if page:
+        status_html += f' <a class="poem-status is-illuminated" href="{page}">Illuminated</a>'
 
     return (
         f'<div class="poem-section" id="{poem.get("id", "")}">'
@@ -1393,15 +1403,33 @@ LAYER_SCRIPT = """
 """
 
 
-# ── ornaments — vendored masks from the tazhib found-object library ──
-# ornaments/corner-bhutan.svg  (corner/bhutan — quarter design, mirrored ×4)
-# ornaments/rule-dogmoj.svg    (rule/dogmoj — diamond-and-leaf dash, 16:1)
+# ── ornaments — vendored by copy; production never reads the workshop ──
+# ornaments/corner-lachak.svg       (graft persian/out/corner-lachak-mask.svg — a
+#                                    quarter design, mirrored ×4; a mask, inked gold)
+# ornaments/band-faience-tulip.svg  (graft persian/out/band-faience-tulip-colour.svg —
+#                                    one repeat of the tulip band, in its own colours)
+# ornaments/rule-dogmoj.svg         (tazhib found-object rule/dogmoj — 16:1 dash)
 # Inlined as data URIs at build time so index.html works over file:// (CSS
 # mask-image is CORS-restricted; external URLs fail on a null origin).
 ORNAMENTS = {
-    "__CORNER_MASK__": "corner-bhutan.svg",
+    "__CORNER_MASK__": "corner-lachak.svg",
     "__RULE_MASK__":   "rule-dogmoj.svg",
+    "__TOC_BAND__":    "band-faience-tulip.svg",
 }
+ORNAMENT_CREDIT = "Ornament after Albert Racinet, <i>L’Ornement polychrome</i>, plate “Persan”"
+
+
+def load_illuminated(root: Path) -> dict:
+    """illuminated/leaves.json, written by the graft workshop when it ships a leaf:
+    poem id -> its illuminated page. Absent or empty: no poem links to one."""
+    import json
+    f = root / "illuminated" / "leaves.json"
+    if not f.is_file():
+        return {}
+    return {x["poem"]: "illuminated/" + x["page"] for x in json.loads(f.read_text(encoding="utf-8"))}
+
+
+ILLUMINATED = {}
 
 
 def ornament_css(css: str, ornaments_dir: Path) -> str:
@@ -1489,7 +1517,7 @@ def render_collection(poems, preface, book_persian, book_english, author, orname
   </div>
 </div>
 
-<p class="site-colophon"><a href="https://bbben.org">bbben.org</a></p>
+<p class="site-colophon">{ORNAMENT_CREDIT}<br><a href="https://bbben.org">bbben.org</a></p>
 
 <a href="#toc" class="back-to-toc" title="Back to contents">^</a>
 <script>{TAB_SCRIPT}</script>
@@ -1534,6 +1562,7 @@ def main():
     preface = load_preface(preface_dir)
 
     ornaments_dir = poems_dir.parent / "ornaments"
+    ILLUMINATED.update(load_illuminated(poems_dir.parent))
     html = render_collection(poems, preface, args.book_persian, args.book_english,
                              args.author, ornaments_dir)
 

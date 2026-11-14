@@ -7,6 +7,7 @@ on:
       - "poems/**.poem"
       - "preface/**.html"
       - "ornaments/**.svg"
+      - "illuminated/leaves.json"
       - "build_collection.py"
 
 permissions:
