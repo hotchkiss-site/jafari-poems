@@ -29,12 +29,16 @@ h1{position:relative;margin:0;font-family:"Federo","Old Standard TT",Georgia,ser
 h1[lang=fa],.fa{font-family:"Amiri","Noto Naskh Arabic","Geeza Pro",serif;letter-spacing:0}
 h1[lang=fa]{font-size:clamp(1.6rem,5vw,2.1rem)}
 .rule{margin:.2rem 0 2.2rem}.gap{height:1.7rem}
-.op-m{position:absolute;left:-9999px;top:0;visibility:hidden}.op-m>*{position:static!important;margin-bottom:8px}
+.op-m{position:absolute;left:-9999px;top:0;visibility:hidden}.op-m>*{position:static!important;margin-bottom:8px}.op-m pre{white-space:pre!important}
+.leaf.op{padding-top:0;padding-bottom:0}
+.col.op{max-width:none;min-height:100svh;display:grid;grid-template-rows:1fr auto 1fr;padding:2.5rem 0;box-sizing:border-box}
+.col.op>.opwrap{grid-row:2}.col.op>.op-after{grid-row:3;align-self:start}
+.sheet .col.op{min-height:0;display:block;padding:0}
 .op-m .op-en{font-size:16px}.op-m .op-fa{font-size:19px}.op-m .op-ti{font-size:22px;display:inline-flex}
 .opwrap{container-type:inline-size;display:flex;justify-content:center}
 .opening{--u:min(1px,calc(100cqw / var(--W)));position:relative;flex:none;width:calc(var(--W)*var(--u));height:calc(var(--H)*var(--u))}
 .opening .art{position:absolute;inset:0;width:100%;height:100%;display:block}
-.op-en,.op-fa{position:absolute;font-size:calc(16*var(--u));line-height:1.7}.op-en pre,.op-fa pre{margin:0;font:inherit;white-space:pre-wrap;tab-size:4}
+.op-en,.op-fa{position:absolute;font-size:calc(16*var(--u));line-height:1.7}.op-en pre,.op-fa pre{margin:0;font:inherit;white-space:pre;tab-size:4}
 .op-fa{font-size:calc(19*var(--u));text-align:right;font-family:"Amiri","Noto Naskh Arabic","Geeza Pro",serif}
 .op-ti{position:absolute;margin:0;display:flex;align-items:center;justify-content:center;gap:1.2em;font-size:calc(22*var(--u));letter-spacing:.04em;white-space:nowrap;font-family:"Federo","Old Standard TT",Georgia,serif;font-weight:400}
 .op-ti [lang=fa]{font-family:"Amiri","Noto Naskh Arabic",serif;letter-spacing:0;font-size:1.15em}
