@@ -2,6 +2,7 @@
 type: agents
 scope: project
 domain: web
+kind: website
 title: Jafari Poems — codebase guide
 status: active
 inherits: ../CLAUDE.md
@@ -38,15 +39,19 @@ A git-based bilingual poetry collection. The poems are translations of Mohammad 
 ```
 poems/          one self-contained .poem file per poem — ===meta=== TOML + text sections
 preface/        front matter — one self-contained HTML fragment per section
-ornaments/      vendored SVG masks from the tazhib found-object library
-                (corner-bhutan, rule-dogmoj) — inlined as data URIs at build time
+ornaments/      vendored SVGs, inlined as data URIs at build time: corner-lachak and
+                band-faience-tulip (copied from jaanam/graft), rule-dogmoj (tazhib's
+                found-object library)
+illuminated/    poems set with ornament, copied in by the graft workshop
+                (demo/poems/build.js, `ship`) — never edited here; leaves.json lists them
+                and the build links each poem, and the home's quiet nav, to its page
 schema.toml     authoritative list of allowed metadata fields
-build_collection.py   renders preface + poems → index.html (tabbed)
+build_collection.py   renders preface + poems → index.html (tabbed) and drafts → drafts.html
 build_poem.py         renders a single poem → <id>.html
 new-poem.sh     interactive scaffolding for a new poem (one file)
 migrate.py      historic one-time script from the 2026-06 split (kept for reference;
                 the split was reversed 2026-07 — poems are single-file again)
-index.html      generated output — do not edit by hand
+index.html, drafts.html   generated output — do not edit by hand
 docs/           FORMATS.md (the .poem / meta / preface formats), translation-conventions.md,
                 chronology.md, ghost-lines.md, khak-sweep.md, adr/ (the decisions)
 farsi-grammar.md, jafari-conversion-skill.md   kept at the root by name (farsi-grammar.md
@@ -57,9 +62,9 @@ raw-jafari-adobe-*.txt, raw_Jafari-adobe-2.txt, jafari_intro_full1.html, raw pho
 TASKS.md, log/  the records (archive/ holds what is past, never corrected)
 ```
 
-The rendered `index.html` has three tabs below a shared book header:
-**Preface** (the `preface/` sections), **Poems** (the TOC + finished poem sections),
-and **Drafts** (poems with `draft = true` — English still in draft: a literal `machine` pass, an optional `lantern` crib, and sometimes a staged-but-unreleased "Ben" translation).
+The rendered `index.html` has two tabs below a shared book header:
+**Preface** (the `preface/` sections) and **Poems** (the TOC + finished poem sections).
+**Drafts** (poems with `draft = true` — English still in draft: a literal `machine` pass, an optional `lantern` crib, and sometimes a staged-but-unreleased "Ben" translation) are their own page, `drafts.html`, under the same header; an old `index.html#<draft-id>` link redirects there (2026-11-13).
 
 ## The three English layers
 
@@ -79,7 +84,7 @@ and contractions are his voice.
 ## Building
 
 ```bash
-# Full collection → index.html
+# Full collection → index.html and drafts.html
 python build_collection.py poems/
 
 # Single poem → <id>.html
@@ -88,7 +93,7 @@ python build_poem.py ancient-tree
 
 Both scripts read self-contained `.poem` files from `poems/`. `build_collection.py` also reads `preface/` (sibling of `poems/`); pass `--preface <path>` to override. If `preface/` is absent the Preface tab is simply empty.
 
-CI runs `build_collection.py` automatically on pushes to `main` that touch `poems/`, `preface/`, `ornaments/`, or the build script, and commits the updated `index.html`.
+CI runs `build_collection.py` automatically on pushes to `main` that touch `poems/`, `preface/`, `ornaments/`, `illuminated/leaves.json` or the build script, and commits the updated `index.html` and `drafts.html`.
 
 ## Documenting session decisions (files, not memory)
 

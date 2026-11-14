@@ -760,6 +760,8 @@ CSS = """
       .tab-btn { font-size: 1.02rem; padding: 0.26rem 0.8rem; }
     }
 
+    a.tab-btn { text-decoration: none; }
+
     .tab-panel {
       display: none;
     }
@@ -767,6 +769,36 @@ CSS = """
     .tab-panel.active {
       display: block;
     }
+
+    /* ── the illuminated pages: a quiet line under the tabs ── */
+    .lit {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1rem 0.9rem;
+      text-align: center;
+      font-size: 0.95rem;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--lapis-muted);
+    }
+    .lit-name {
+      font-style: normal;
+      font-variant: small-caps;
+      letter-spacing: 0.1em;
+      color: var(--lapis-slug);
+      margin-right: 0.3rem;
+    }
+    .lit a {
+      white-space: nowrap;
+      color: var(--lapis-muted);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .lit a:hover, .lit a:focus-visible {
+      color: var(--gold);
+      border-bottom-color: var(--gold-line);
+    }
+    .lit-sep { margin: 0 0.5rem; color: var(--lapis-slug); }
 
     /* ── colophon: quiet link home ── */
     .site-colophon {
@@ -1332,7 +1364,14 @@ def render_preface(sections):
 
 TAB_SCRIPT = """
   (function () {
-    var buttons = document.querySelectorAll('.tab-btn');
+    // The drafts live on drafts.html: an old link to one (#<id>, #drafts, #toc-drafts) goes there.
+    var DRAFTS = __DRAFT_IDS__;
+    var h0 = (location.hash || '').replace('#', '');
+    if (h0 === 'drafts' || h0 === 'toc-drafts' || DRAFTS.indexOf(h0) >= 0) {
+      location.replace('drafts.html' + (h0 === 'drafts' ? '' : '#' + h0));
+      return;
+    }
+    var buttons = document.querySelectorAll('button.tab-btn');
     var panels = document.querySelectorAll('.tab-panel');
     var backToToc = document.querySelector('.back-to-toc');
     function activate(name) {
@@ -1342,12 +1381,8 @@ TAB_SCRIPT = """
       panels.forEach(function (p) {
         p.classList.toggle('active', p.id === 'tab-' + name);
       });
-      var onPoems = name === 'poems' || name === 'drafts';
-      document.body.classList.toggle('on-poems', onPoems);
+      document.body.classList.toggle('on-poems', name === 'poems');
       document.body.classList.toggle('poems-open', name === 'poems');
-      if (backToToc) {
-        backToToc.setAttribute('href', name === 'drafts' ? '#toc-drafts' : '#toc');
-      }
       if (history.replaceState) history.replaceState(null, '', '#' + name);
     }
     buttons.forEach(function (b) {
@@ -1361,7 +1396,10 @@ TAB_SCRIPT = """
       var id = a.getAttribute('href').slice(1);
       if (!id) return;
       var target = document.getElementById(id);
-      if (!target) return;
+      if (!target) {
+        if (DRAFTS.indexOf(id) >= 0) { ev.preventDefault(); location.href = 'drafts.html#' + id; }
+        return;
+      }
       var panel = target.closest('.tab-panel');
       if (!panel || panel.classList.contains('active')) return;
       ev.preventDefault();
@@ -1375,9 +1413,7 @@ TAB_SCRIPT = """
       return hash && document.getElementById('tab-' + tab) &&
         document.getElementById('tab-' + tab).querySelector('#' + CSS.escape(hash));
     }
-    if (hash === 'drafts' || hash === 'toc-drafts' || panelHas('drafts')) {
-      activate('drafts');
-    } else if (hash === 'preface' || panelHas('preface')) {
+    if (hash === 'preface' || panelHas('preface')) {
       activate('preface');
     } else {
       activate('poems');
@@ -1429,7 +1465,23 @@ def load_illuminated(root: Path) -> dict:
     return {x["poem"]: "illuminated/" + x["page"] for x in json.loads(f.read_text(encoding="utf-8"))}
 
 
+def illuminated_nav(root: Path) -> str:
+    """The home's quiet line of links to the illuminated pages, in the workshop's order."""
+    import json
+    from html import escape
+    f = root / "illuminated" / "leaves.json"
+    if not f.is_file():
+        return ""
+    links = [f'<a href="illuminated/{escape(x["page"])}">{escape(x.get("title") or x["poem"])}</a>'
+             for x in json.loads(f.read_text(encoding="utf-8"))]
+    if not links:
+        return ""
+    return ('<nav class="lit" aria-label="Illuminated poems"><span class="lit-name">illuminated</span> '
+            + '<span class="lit-sep" aria-hidden="true">·</span>'.join(links) + "</nav>")
+
+
 ILLUMINATED = {}
+LIT_NAV = ""
 
 
 def ornament_css(css: str, ornaments_dir: Path) -> str:
@@ -1462,20 +1514,24 @@ def render_collection(poems, preface, book_persian, book_english, author, orname
     drafts_toc = render_toc(drafts, english_source=draft_english, title="Drafts — پیش‌نویس‌ها")
     drafts_sections = "\n".join(render_draft_section(p) for p in drafts)
     preface_html = render_preface(preface)
+    import json
+    tab_script = TAB_SCRIPT.replace("__DRAFT_IDS__", json.dumps([p.get("id", "") for p in drafts]))
 
-    return f"""<!DOCTYPE html>
+    def head(title):
+        return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{book_english} \u2014 {author}</title>
+  <title>{title}</title>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <style>
 {css}
   </style>
-</head>
-<body class="on-poems poems-open">
-<div class="carpet">
+</head>"""
+
+    def carpet(tabs, nav=""):
+        return f"""<div class="carpet">
   <div class="corner c-tl" aria-hidden="true"></div>
   <div class="corner c-tr" aria-hidden="true"></div>
   <div class="corner c-bl carpet-close" aria-hidden="true"></div>
@@ -1486,11 +1542,49 @@ def render_collection(poems, preface, book_persian, book_english, author, orname
     <p class="book-author">{author}</p>
   </div>
   <div class="tabs">
-    <button class="tab-btn" data-tab="preface">Preface &middot; \u067e\u06cc\u0634\u06af\u0641\u062a\u0627\u0631</button>
-    <button class="tab-btn active" data-tab="poems">Poems &middot; \u0627\u0634\u0639\u0627\u0631</button>
-    <button class="tab-btn" data-tab="drafts">Drafts &middot; \u067e\u06cc\u0634\u200c\u0646\u0648\u06cc\u0633</button>
+    {tabs}
+  </div>
+  {nav}
+</div>"""
+
+    preface_tab = "Preface &middot; پیشگفتار"
+    poems_tab = "Poems &middot; اشعار"
+    drafts_tab = "Drafts &middot; پیش‌نویس"
+    colophon = f'<p class="site-colophon">{ORNAMENT_CREDIT}<br><a href="https://bbben.org">bbben.org</a></p>'
+    drafts_title = f"Drafts — {book_english}"
+    book_title = f"{book_english} — {author}"
+    drafts_tabs = (f'<a class="tab-btn" href="./#preface">{preface_tab}</a>'
+                   f'<a class="tab-btn" href="./#poems">{poems_tab}</a>'
+                   f'<span class="tab-btn active">{drafts_tab}</span>')
+    book_tabs = (f'<button class="tab-btn" data-tab="preface">{preface_tab}</button>'
+                 f'<button class="tab-btn active" data-tab="poems">{poems_tab}</button>'
+                 f'<a class="tab-btn" href="drafts.html">{drafts_tab}</a>')
+
+    drafts_page = f"""{head(drafts_title)}
+<body class="on-poems">
+{carpet(drafts_tabs)}
+
+<div id="tab-drafts" class="tab-panel poems active">
+  <p class="drafts-note">Work in progress — toggle the layers under each poem to compare them side by side: <b>Machine</b> (raw OCR) · <b>Lantern</b> (a working draft) · <b>Ben</b> (the finished translation). Empty layers are hidden.</p>
+  <div id="toc-drafts" class="toc-wrapper">
+    {drafts_toc}
+  </div>
+  <div class="page">
+    {drafts_sections}
   </div>
 </div>
+
+{colophon}
+
+<a href="#toc-drafts" class="back-to-toc" title="Back to contents">^</a>
+<script>{LAYER_SCRIPT}</script>
+</body>
+</html>
+"""
+
+    book_page = f"""{head(book_title)}
+<body class="on-poems poems-open">
+{carpet(book_tabs, LIT_NAV)}
 
 <div id="tab-preface" class="tab-panel preface">
   {preface_html}
@@ -1507,24 +1601,14 @@ def render_collection(poems, preface, book_persian, book_english, author, orname
   </div>
 </div>
 
-<div id="tab-drafts" class="tab-panel poems">
-  <p class="drafts-note">Work in progress \u2014 toggle the layers under each poem to compare them side by side: <b>Machine</b> (raw OCR) \u00b7 <b>Lantern</b> (a working draft) \u00b7 <b>Ben</b> (the finished translation). Empty layers are hidden.</p>
-  <div id="toc-drafts" class="toc-wrapper">
-    {drafts_toc}
-  </div>
-  <div class="page">
-    {drafts_sections}
-  </div>
-</div>
-
-<p class="site-colophon">{ORNAMENT_CREDIT}<br><a href="https://bbben.org">bbben.org</a></p>
+{colophon}
 
 <a href="#toc" class="back-to-toc" title="Back to contents">^</a>
-<script>{TAB_SCRIPT}</script>
-<script>{LAYER_SCRIPT}</script>
+<script>{tab_script}</script>
 </body>
 </html>
 """
+    return book_page, drafts_page
 
 
 def main():
@@ -1562,16 +1646,21 @@ def main():
     preface = load_preface(preface_dir)
 
     ornaments_dir = poems_dir.parent / "ornaments"
+    global LIT_NAV
     ILLUMINATED.update(load_illuminated(poems_dir.parent))
-    html = render_collection(poems, preface, args.book_persian, args.book_english,
-                             args.author, ornaments_dir)
+    LIT_NAV = illuminated_nav(poems_dir.parent)
+    html, drafts_html = render_collection(poems, preface, args.book_persian, args.book_english,
+                                          args.author, ornaments_dir)
 
     out_path = Path(args.out)
     out_path.write_text(html, encoding="utf-8")
+    drafts_path = out_path.with_name("drafts.html")
+    drafts_path.write_text(drafts_html, encoding="utf-8")
     n = len(poems)
     s = len(preface)
-    print(f"Written: {out_path} ({n} poem{'s' if n != 1 else ''}, "
-          f"{s} preface section{'s' if s != 1 else ''})")
+    d = sum(1 for p in poems if is_draft(p))
+    print(f"Written: {out_path} ({n - d} poem{'s' if n - d != 1 else ''}, "
+          f"{s} preface section{'s' if s != 1 else ''}) and {drafts_path} ({d} drafts)")
 
 
 if __name__ == "__main__":
